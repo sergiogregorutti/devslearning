@@ -10,6 +10,7 @@ export default function Home() {
   return (
     <main>
       <H1>DevsLearning</H1>
+      <p>Course directory for developers</p>
     </main>
   );
 }
