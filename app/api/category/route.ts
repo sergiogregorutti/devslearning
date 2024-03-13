@@ -1,4 +1,3 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "../../../lib/dbConnect";
 import Category from "../../../models/Category";
 
