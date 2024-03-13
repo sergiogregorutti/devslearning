@@ -133,30 +133,33 @@ export default function Home() {
           {categories &&
             categories.map((category: any) => (
               <Grid item key={category.name} xs={12} sm={6} lg={3}>
-                <Button
-                  variant="outlined"
-                  component={Link}
-                  to={`/categories/${category._id}`}
-                  sx={{
-                    position: "relative",
-                    fontSize: "20px",
-                    textAlign: "center",
-                    width: "100%",
-                    padding: "13px 10px 13px 42px",
-                    " img": {
-                      position: "absolute",
-                      top: "12px",
-                      left: "13px",
-                    },
-                  }}
+                <Link
+                  href={`/categories/${category._id}`}
+                  style={{ textDecoration: "none" }}
                 >
-                  <img
-                    src={`${process.env.REACT_APP_API}/category/photo/${category._id}`}
-                    alt={category.name}
-                    style={{ height: "38px", marginRight: "10px" }}
-                  />
-                  {category.name}
-                </Button>
+                  <Button
+                    variant="outlined"
+                    sx={{
+                      position: "relative",
+                      fontSize: "20px",
+                      textAlign: "center",
+                      width: "100%",
+                      padding: "13px 10px 13px 42px",
+                      " img": {
+                        position: "absolute",
+                        top: "12px",
+                        left: "13px",
+                      },
+                    }}
+                  >
+                    <img
+                      src={`${process.env.REACT_APP_API}/category/photo/${category._id}`}
+                      alt={category.name}
+                      style={{ height: "38px", marginRight: "10px" }}
+                    />
+                    {category.name}
+                  </Button>
+                </Link>
               </Grid>
             ))}
         </Grid>
