@@ -1,4 +1,3 @@
-import { headers } from "next/headers";
 import dbConnect from "../../../../../lib/dbConnect";
 import Category from "../../../../../models/Category";
 

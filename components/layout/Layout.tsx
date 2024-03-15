@@ -1,4 +1,3 @@
-"use client";
 import { Fragment, ReactNode } from "react";
 import { Container } from "@mui/material";
 import Header from "../header/Header";

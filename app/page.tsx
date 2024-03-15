@@ -2,6 +2,7 @@ import Link from "next/link";
 import dbConnect from "../lib/dbConnect";
 import Category from "../models/Category";
 import Layout from "../components/layout/Layout";
+import HomeImage from "../components/HomeImage";
 import { useTheme } from "@mui/material/styles";
 import {
   Container,
@@ -27,11 +28,11 @@ async function getCategories() {
 export default async function Home() {
   // const theme = useTheme();
   // const matches = useMediaQuery(theme.breakpoints.up("sm"));
-  const matches = false;
+  // const matched = useMediaQuery("(min-width:600px)");
+  // console.log("matched", matched);
+  const matches = true;
 
   const categories = await getCategories();
-  //const [categories, setCategories] = useState<any>();
-  //const categories = [];
 
   return (
     <Layout>
@@ -91,6 +92,8 @@ export default async function Home() {
             paddingTop: { xs: "0 !important", lg: "16px !important" },
           }}
         >
+          <HomeImage />
+          {/*
           {matches ? (
             <img src="../assets/girl.png" style={{ width: "100%" }} />
           ) : (
@@ -103,6 +106,7 @@ export default async function Home() {
               }}
             />
           )}
+          */}
         </Grid>
       </Grid>
 
