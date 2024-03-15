@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import Image from "next/image";
 import { redirect } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import { useTheme } from "@mui/material/styles";
@@ -355,16 +357,20 @@ export default function HeaderEs() {
   const devsLearningLogo = (
     <Link href="/">
       {matches ? (
-        <img
+        <Image
           height="30"
-          src="/img/logo-isologo.svg"
+          width="234"
+          src="../assets/logo-isologo.svg"
           style={{ marginTop: "12px" }}
+          alt="DevsLearning"
         />
       ) : (
-        <img
+        <Image
           height="22"
-          src="/img/logo-isologo.svg"
+          width="172"
+          src="../assets/logo-isologo.svg"
           style={{ marginTop: "12px" }}
+          alt="DevsLearning"
         />
       )}
     </Link>
@@ -444,8 +450,8 @@ export default function HeaderEs() {
     setLanguage(event.target.value);
   };
 
-  if (language === "es") {
-    return redirect("/es/");
+  if (language === "en") {
+    return redirect("/");
   }
 
   return (

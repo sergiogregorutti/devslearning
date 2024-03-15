@@ -11,7 +11,7 @@ export default function Footer() {
       }}
     >
       <Typography sx={{ textAlign: "center", fontSize: "13px" }}>
-        DevsLearning 2021 | Creado por{" "}
+        DevsLearning 2024 | Creado por{" "}
         <a
           href="https://github.com/sergiogregorutti"
           target="_blank"

@@ -3,14 +3,7 @@ import dbConnect from "../lib/dbConnect";
 import Category from "../models/Category";
 import Layout from "../components/layout/Layout";
 import HomeImage from "../components/HomeImage";
-import { useTheme } from "@mui/material/styles";
-import {
-  Container,
-  Grid,
-  Typography,
-  Button,
-  useMediaQuery,
-} from "@mui/material";
+import { Container, Grid, Typography, Button } from "@mui/material";
 
 async function getCategories() {
   await dbConnect();
@@ -26,12 +19,6 @@ async function getCategories() {
 }
 
 export default async function Home() {
-  // const theme = useTheme();
-  // const matches = useMediaQuery(theme.breakpoints.up("sm"));
-  // const matched = useMediaQuery("(min-width:600px)");
-  // console.log("matched", matched);
-  const matches = true;
-
   const categories = await getCategories();
 
   return (
@@ -93,20 +80,6 @@ export default async function Home() {
           }}
         >
           <HomeImage />
-          {/*
-          {matches ? (
-            <img src="../assets/girl.png" style={{ width: "100%" }} />
-          ) : (
-            <img
-              src="../assets/girl.png"
-              style={{
-                height: "150px",
-                marginBottom: "20px",
-                marginTop: "-25px",
-              }}
-            />
-          )}
-          */}
         </Grid>
       </Grid>
 
