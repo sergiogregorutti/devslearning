@@ -1,6 +1,6 @@
-"use client";
-import { useState, useEffect } from "react";
 import Link from "next/link";
+import dbConnect from "../lib/dbConnect";
+import Category from "../models/Category";
 import Layout from "../components/layout/Layout";
 import { useTheme } from "@mui/material/styles";
 import {
@@ -11,30 +11,27 @@ import {
   useMediaQuery,
 } from "@mui/material";
 
-export default function Home() {
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up("sm"));
+async function getCategories() {
+  await dbConnect();
 
-  const [categories, setCategories] = useState<any>();
+  const result = await Category.find({});
 
-  const loadCategories = () => {
-    /*getCategories().then((data) => {
-      if (data.error) {
-        console.log(data.error);
-      } else {
-        setCategories(data);
-      }
-    });*/
-    setCategories([]);
-  };
+  const categories = result.map((doc) => {
+    const category = JSON.parse(JSON.stringify(doc));
+    return category;
+  });
 
-  const init = () => {
-    loadCategories();
-  };
+  return categories;
+}
 
-  useEffect(() => {
-    init();
-  }, []);
+export default async function Home() {
+  // const theme = useTheme();
+  // const matches = useMediaQuery(theme.breakpoints.up("sm"));
+  const matches = false;
+
+  const categories = await getCategories();
+  //const [categories, setCategories] = useState<any>();
+  //const categories = [];
 
   return (
     <Layout>
@@ -153,7 +150,7 @@ export default function Home() {
                     }}
                   >
                     <img
-                      src={`${process.env.REACT_APP_API}/category/photo/${category._id}`}
+                      src={`api/category/photo/${category._id}`}
                       alt={category.name}
                       style={{ height: "38px", marginRight: "10px" }}
                     />
