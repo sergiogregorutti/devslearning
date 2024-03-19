@@ -58,5 +58,5 @@ const courseSchema = new mongoose.Schema(
 
 courseSchema.plugin(mongoosePaginate);
 
-export default mongoose.models.Course ||
+export default mongoose.models.CourseEs ||
   mongoose.model("CourseEs", courseSchema);

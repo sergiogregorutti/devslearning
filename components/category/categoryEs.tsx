@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import {
+  Alert,
   Button,
   FormControl,
   FormControlLabel,
@@ -48,7 +49,7 @@ const getFilteredCourses = (
     sortBy,
     order,
   };
-  return fetch(`/api/courses/by/search`, {
+  return fetch(`/api/es/courses/by/search`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -133,7 +134,7 @@ const CategoryEs = ({ category }: { category: ICategory }) => {
   ) => {
     getFilteredCourses(page, size, newFilters, sortBy, order).then((data) => {
       if (data.error) {
-        console.error("There is an error loading the courses");
+        console.error("Ocurrió un error cargando los cursos");
       } else {
         setFilteredResults(data.courses);
         setPage(0);
@@ -156,7 +157,7 @@ const CategoryEs = ({ category }: { category: ICategory }) => {
               marginBottom: "0",
             }}
           >
-            Free
+            Gratis
           </Typography>
         );
       case "one-time-payment":
@@ -172,7 +173,7 @@ const CategoryEs = ({ category }: { category: ICategory }) => {
               marginBottom: "0",
             }}
           >
-            One Time Payment
+            Único Pago
           </Typography>
         );
       case "subscription":
@@ -188,7 +189,7 @@ const CategoryEs = ({ category }: { category: ICategory }) => {
               marginBottom: "0",
             }}
           >
-            Subscription
+            Subscripción
           </Typography>
         );
     }
@@ -230,14 +231,14 @@ const CategoryEs = ({ category }: { category: ICategory }) => {
           {matches
             ? category && (
                 <img
-                  src={`/api/category/photo/${category._id}`}
+                  src={`/api/es/category/photo/${category._id}`}
                   alt={category.name}
                   style={{ height: "70px", marginRight: "15px" }}
                 />
               )
             : category && (
                 <img
-                  src={`/api/category/photo/${category._id}`}
+                  src={`/api/es/category/photo/${category._id}`}
                   alt={category.name}
                   style={{ height: "50px", marginRight: "10px" }}
                 />
@@ -264,7 +265,7 @@ const CategoryEs = ({ category }: { category: ICategory }) => {
               display: { xs: "none", sm: "block" },
             }}
           >
-            <FormLabel component="legend">Sort By</FormLabel>
+            <FormLabel component="legend">Ordenar Por</FormLabel>
             <RadioGroup
               row
               aria-label="sort-by-radio"
@@ -275,17 +276,17 @@ const CategoryEs = ({ category }: { category: ICategory }) => {
               <FormControlLabel
                 value="priceHighToLow"
                 control={<Radio />}
-                label="Price: High to Low"
+                label="Precio: Mayor a Menor"
               />
               <FormControlLabel
                 value="priceLowToHigh"
                 control={<Radio />}
-                label="Price: Low to High"
+                label="Precio: Menor a Mayor"
               />
               <FormControlLabel
                 value="newest"
                 control={<Radio />}
-                label="Newest"
+                label="Más Nuevos"
               />
             </RadioGroup>
           </FormControl>
@@ -296,7 +297,7 @@ const CategoryEs = ({ category }: { category: ICategory }) => {
               display: { xs: "block", sm: "none" },
             }}
           >
-            <InputLabel id="sort-by-select">Sort By</InputLabel>
+            <InputLabel id="sort-by-select">Ordenar Por</InputLabel>
             <Select
               labelId="sort-by-select"
               id="sort-by-select"
@@ -304,11 +305,22 @@ const CategoryEs = ({ category }: { category: ICategory }) => {
               label="SortBy"
               onChange={handleSortByChange}
             >
-              <MenuItem value="priceHighToLow">Price: High to Low</MenuItem>
-              <MenuItem value="priceLowToHigh">Price: Low to High</MenuItem>
-              <MenuItem value="newest">Newest</MenuItem>
+              <MenuItem value="priceHighToLow">Precio: Mayor a Menor</MenuItem>
+              <MenuItem value="priceLowToHigh">Precio: Menor a Mayor</MenuItem>
+              <MenuItem value="newest">Más Nuevos</MenuItem>
             </Select>
           </FormControl>
+          <Alert
+            severity="info"
+            sx={{
+              fontSize: "12px",
+              borderRadius: "10px",
+              marginTop: { xs: "10px", sm: "0" },
+            }}
+          >
+            Los precios estan expresados en Dolares Estadounidenses y algunos
+            son aproximados según el precio en la moneda local.
+          </Alert>
         </Grid>
         <Grid item sm={9}>
           {filteredResults.map((course: ICourse, i: number) => (
@@ -335,7 +347,7 @@ const CategoryEs = ({ category }: { category: ICategory }) => {
                 }}
               >
                 <img
-                  src={`/api/course/photo/${course._id}`}
+                  src={`/api/es/course/photo/${course._id}`}
                   alt={course.name}
                   style={{
                     width: "80%",
@@ -390,7 +402,7 @@ const CategoryEs = ({ category }: { category: ICategory }) => {
                         marginRight: "10px",
                       }}
                     >
-                      <strong>Platform:</strong> {course.platform}
+                      <strong>Plataforma:</strong> {course.platform}
                     </Typography>
                   )}
                   {course.author && (
@@ -404,7 +416,7 @@ const CategoryEs = ({ category }: { category: ICategory }) => {
                         marginRight: "10px",
                       }}
                     >
-                      <strong>Author:</strong> {course.author}
+                      <strong>Autor:</strong> {course.author}
                     </Typography>
                   )}
                   <Typography
@@ -417,7 +429,7 @@ const CategoryEs = ({ category }: { category: ICategory }) => {
                       marginRight: "10px",
                     }}
                   >
-                    <strong>Price:</strong> US$ {course.price}
+                    <strong>Precio:</strong> US$ {course.price}
                   </Typography>
                   {course.year && (
                     <Typography
@@ -430,7 +442,7 @@ const CategoryEs = ({ category }: { category: ICategory }) => {
                         marginRight: "10px",
                       }}
                     >
-                      <strong>Year:</strong> {course.year}
+                      <strong>Año:</strong> {course.year}
                     </Typography>
                   )}
                 </div>
@@ -442,7 +454,7 @@ const CategoryEs = ({ category }: { category: ICategory }) => {
                     size="small"
                     sx={{ width: "auto" }}
                   >
-                    Visit Course
+                    Visitar Curso
                   </Button>
                 </div>
               </Grid>

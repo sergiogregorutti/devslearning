@@ -1,5 +1,5 @@
-import dbConnect from "../../../../../lib/dbConnect";
-import Course from "../../../../../models/Course";
+import dbConnect from "../../../../../../lib/dbConnect";
+import CourseEs from "../../../../../../models/CourseEs";
 
 export async function GET(
   request: Request,
@@ -9,7 +9,7 @@ export async function GET(
   await dbConnect();
 
   try {
-    const course = await Course.findById(id).exec();
+    const course = await CourseEs.findById(id).exec();
     return new Response(course.photo.data, {
       status: 200,
       headers: { "Content-Type": course.photo.contentType },

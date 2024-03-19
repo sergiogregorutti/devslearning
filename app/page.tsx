@@ -127,7 +127,7 @@ export default async function Home() {
                     }}
                   >
                     <img
-                      src={`api/category/photo/${category._id}`}
+                      src={`/api/category/photo/${category._id}`}
                       alt={category.name}
                       style={{ height: "38px", marginRight: "10px" }}
                     />
