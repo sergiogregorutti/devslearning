@@ -5,7 +5,6 @@ import { useMediaQuery } from "@mui/material";
 export default function HomeImage() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
-  console.log("matches", matches);
 
   return (
     <>
