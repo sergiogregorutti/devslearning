@@ -44,7 +44,7 @@ const courseSchema = new mongoose.Schema(
     },
     category: {
       type: ObjectId,
-      ref: "Category",
+      ref: "CategoryEs",
     },
     link: {
       type: String,
