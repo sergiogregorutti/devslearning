@@ -10,6 +10,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "DevsLearning",
   description: "Course directory for Developers",
+  verification: {
+    google: "google",
+    yandex: "yandex",
+    yahoo: "yahoo",
+    other: {
+      me: ["sergiogregorutti@gmail.com", "https://sergiogregorutti.com"],
+    },
+  },
 };
 
 export default function RootLayout({
