@@ -1,6 +1,8 @@
 import Link from "next/link";
-import dbConnect from "../lib/dbConnect";
-import Category from "../models/Category";
+import dbConnect from "@/lib/dbConnect";
+import Category from "@/models/Category";
+import { getLocalizedPathFromPrefix } from "@/lib/language";
+import LanguageSelector from "@/components/LanguageSelector";
 
 async function getCategories() {
   await dbConnect();
@@ -15,20 +17,30 @@ async function getCategories() {
   return categories;
 }
 
-export default async function Home() {
+export default async function Home({
+  params: { lang },
+}: {
+  params: { lang: string };
+}) {
   const categories = await getCategories();
 
   return (
     <>
+      <LanguageSelector />
       <h1>DevsLearning</h1>
       <p>Course directory for developers</p>
-
       <h2>Categories</h2>
-
       <ul>
         {categories.map((category: any) => (
           <li key={category.name}>
-            <Link href={`/categories/${category._id}`}>{category.name}</Link>
+            <Link
+              href={getLocalizedPathFromPrefix(
+                lang,
+                `/categories/${category._id}`
+              )}
+            >
+              {category.name}
+            </Link>
           </li>
         ))}
       </ul>

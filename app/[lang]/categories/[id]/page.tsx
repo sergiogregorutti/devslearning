@@ -1,8 +1,10 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
-import dbConnect from "../../../lib/dbConnect";
-import Category from "../../../models/Category";
-import Course from "../../../models/Course";
+import { getLocalizedPathFromPrefix } from "../../../../lib/language";
+import dbConnect from "../../../../lib/dbConnect";
+import Category from "../../../../models/Category";
+import Course from "../../../../models/Course";
+import LanguageSelector from "@/components/LanguageSelector";
 
 type Props = {
   params: { id: string };
@@ -42,16 +44,21 @@ export async function generateMetadata(
 }
 
 export default async function CategoryPage({
-  params,
+  params: { lang, id },
 }: {
-  params: { id: string };
+  params: { lang: string; id: string };
 }) {
-  const categoryData = await getCategory(params.id);
-  const courses = await getCourses(params.id);
+  const categoryData = await getCategory(id);
+  const courses = await getCourses(id);
 
   return (
     <>
-      <Link href={`/`}>Go back</Link>
+      <LanguageSelector />
+      <br />
+      <br />
+      <div>
+        <Link href={getLocalizedPathFromPrefix(lang, `/`)}>Go back</Link>
+      </div>
       <h1>{categoryData.name}</h1>
       <h2>Courses</h2>
       <ul>

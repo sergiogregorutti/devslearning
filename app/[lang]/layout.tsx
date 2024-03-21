@@ -2,9 +2,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
-import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "./theme";
-import CssBaseline from "@mui/material/CssBaseline";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -48,15 +45,12 @@ export default function RootLayout({
       </head>
       <body>
         <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            {children}
-            <SpeedInsights />
-            <Analytics />
-            <GoogleAnalytics
-              gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ?? ""}
-            />
-          </ThemeProvider>
+          {children}
+          <SpeedInsights />
+          <Analytics />
+          <GoogleAnalytics
+            gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ?? ""}
+          />
         </AppRouterCacheProvider>
       </body>
     </html>
