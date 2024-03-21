@@ -1,6 +1,6 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./theme";
@@ -45,18 +45,6 @@ export default function RootLayout({
           sizes="16x16"
           href="/favicon-16x16.png"
         />
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-E7NY2W59JZ"
-        />
-        <Script id="google-analytics">
-          {`
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', ${"${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}"});
-          `}
-        </Script>
       </head>
       <body>
         <AppRouterCacheProvider>
@@ -65,6 +53,7 @@ export default function RootLayout({
             {children}
             <SpeedInsights />
             <Analytics />
+            <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
