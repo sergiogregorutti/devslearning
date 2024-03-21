@@ -34,7 +34,7 @@ export default async function CategoryPage({
 
   return (
     <>
-      <Link href={`/`}>Go Back</Link>
+      <Link href={`/`}>Go back</Link>
       <h1>{categoryData.name}</h1>
       <h2>Courses</h2>
       <ul>
