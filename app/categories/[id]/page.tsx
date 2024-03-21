@@ -1,7 +1,13 @@
+import type { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 import dbConnect from "../../../lib/dbConnect";
 import Category from "../../../models/Category";
 import Course from "../../../models/Course";
+
+type Props = {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
 async function getCategory(id: String) {
   await dbConnect();
@@ -22,6 +28,17 @@ async function getCourses(id: String) {
   );
 
   return courses;
+}
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const categoryData = await getCategory(params.id);
+
+  return {
+    title: `${categoryData.name} courses | DevsLearning`,
+  };
 }
 
 export default async function CategoryPage({
