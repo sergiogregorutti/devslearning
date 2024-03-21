@@ -53,7 +53,9 @@ export default function RootLayout({
             {children}
             <SpeedInsights />
             <Analytics />
-            <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
+            <GoogleAnalytics
+              gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ?? ""}
+            />
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
