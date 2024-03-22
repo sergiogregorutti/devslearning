@@ -5,6 +5,7 @@ import dbConnect from "../../../../lib/dbConnect";
 import Category from "../../../../models/Category";
 import Course from "../../../../models/Course";
 import LanguageSelector from "@/components/LanguageSelector";
+import { getDictionary } from "../../dictionaries";
 
 type Props = {
   params: { id: string };
@@ -48,6 +49,7 @@ export default async function CategoryPage({
 }: {
   params: { lang: string; id: string };
 }) {
+  const dictionaty = await getDictionary(lang);
   const categoryData = await getCategory(id);
   const courses = await getCourses(id);
 
@@ -57,10 +59,12 @@ export default async function CategoryPage({
       <br />
       <br />
       <div>
-        <Link href={getLocalizedPathFromPrefix(lang, `/`)}>Go back</Link>
+        <Link href={getLocalizedPathFromPrefix(lang, `/`)}>
+          {dictionaty.categories.goBack}
+        </Link>
       </div>
       <h1>{categoryData.name}</h1>
-      <h2>Courses</h2>
+      <h2>{dictionaty.categories.courses}</h2>
       <ul>
         {courses.docs.map((course: any) => (
           <li key={course.name}>
@@ -68,8 +72,11 @@ export default async function CategoryPage({
             <br />
             {course.description}
             <br />
-            Pricing: {course.pricing} | Price: {course.price} | Platform:{" "}
-            {course.platform} | Author: {course.author} | Year: {course.year}
+            {dictionaty.categories.pricing}: {course.pricing} |{" "}
+            {dictionaty.categories.price}: {course.price} |{" "}
+            {dictionaty.categories.platform}: {course.platform} |{" "}
+            {dictionaty.categories.author}: {course.author} |{" "}
+            {dictionaty.categories.year}: {course.year}
           </li>
         ))}
       </ul>

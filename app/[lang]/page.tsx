@@ -3,6 +3,7 @@ import dbConnect from "@/lib/dbConnect";
 import Category from "@/models/Category";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import LanguageSelector from "@/components/LanguageSelector";
+import { getDictionary } from "./dictionaries";
 
 async function getCategories() {
   await dbConnect();
@@ -22,14 +23,15 @@ export default async function Home({
 }: {
   params: { lang: string };
 }) {
+  const dictionary = await getDictionary(lang);
   const categories = await getCategories();
 
   return (
     <>
-      <LanguageSelector />
+      <LanguageSelector dictionary={dictionary} />
       <h1>DevsLearning</h1>
-      <p>Course directory for developers</p>
-      <h2>Categories</h2>
+      <p>{dictionary.home.titleDescription}</p>
+      <h2>{dictionary.home.categories}</h2>
       <ul>
         {categories.map((category: any) => (
           <li key={category.name}>

@@ -1,9 +1,16 @@
 import Link from "next/link";
 
-export default function LanguageSelector() {
+interface LanguageSelectorProps {
+  dictionary: { [key: string]: any };
+}
+
+export default function LanguageSelector({
+  dictionary,
+}: LanguageSelectorProps) {
   return (
     <>
-      <Link href="/">English</Link> | <Link href="/es/">Spanish</Link>
+      <Link href="/">{dictionary.header.language.english}</Link> |{" "}
+      <Link href="/es/">{dictionary.header.language.spanish}</Link>
     </>
   );
 }

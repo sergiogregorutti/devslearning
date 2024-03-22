@@ -1,0 +1,21 @@
+{
+  "header": {
+    "language": {
+      "english": "Ingles",
+      "spanish": "Español"
+    }
+  },
+  "home": {
+    "titleDescription": "Directorio de cursos para desarrolladores",
+    "categories": "Categorias"
+  },
+  "categories": {
+    "goBack": "Volver",
+    "courses": "Cursos",
+    "pricing": "Tipo de Precio",
+    "price": "Precio",
+    "platform": "Plataforma",
+    "author": "Autor",
+    "year": "Año"
+  }
+}

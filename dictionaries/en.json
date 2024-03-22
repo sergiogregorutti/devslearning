@@ -1,0 +1,21 @@
+{
+  "header": {
+    "language": {
+      "english": "English",
+      "spanish": "Spanish"
+    }
+  },
+  "home": {
+    "titleDescription": "Course directory for developers",
+    "categories": "Categories"
+  },
+  "categories": {
+    "goBack": "Go back",
+    "courses": "Courses",
+    "pricing": "Pricing",
+    "price": "Price",
+    "platform": "Platform",
+    "author": "Author",
+    "year": "Year"
+  }
+}
