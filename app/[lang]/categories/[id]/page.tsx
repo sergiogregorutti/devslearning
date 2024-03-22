@@ -49,22 +49,22 @@ export default async function CategoryPage({
 }: {
   params: { lang: string; id: string };
 }) {
-  const dictionaty = await getDictionary(lang);
+  const dictionary = await getDictionary(lang);
   const categoryData = await getCategory(id);
   const courses = await getCourses(id);
 
   return (
     <>
-      <LanguageSelector />
+      <LanguageSelector dictionary={dictionary} />
       <br />
       <br />
       <div>
         <Link href={getLocalizedPathFromPrefix(lang, `/`)}>
-          {dictionaty.categories.goBack}
+          {dictionary.categories.goBack}
         </Link>
       </div>
       <h1>{categoryData.name}</h1>
-      <h2>{dictionaty.categories.courses}</h2>
+      <h2>{dictionary.categories.courses}</h2>
       <ul>
         {courses.docs.map((course: any) => (
           <li key={course.name}>
@@ -72,11 +72,11 @@ export default async function CategoryPage({
             <br />
             {course.description}
             <br />
-            {dictionaty.categories.pricing}: {course.pricing} |{" "}
-            {dictionaty.categories.price}: {course.price} |{" "}
-            {dictionaty.categories.platform}: {course.platform} |{" "}
-            {dictionaty.categories.author}: {course.author} |{" "}
-            {dictionaty.categories.year}: {course.year}
+            {dictionary.categories.pricing}: {course.pricing} |{" "}
+            {dictionary.categories.price}: {course.price} |{" "}
+            {dictionary.categories.platform}: {course.platform} |{" "}
+            {dictionary.categories.author}: {course.author} |{" "}
+            {dictionary.categories.year}: {course.year}
           </li>
         ))}
       </ul>
