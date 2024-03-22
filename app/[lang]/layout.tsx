@@ -5,7 +5,7 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "DevsLearning",
+  title: "DevsLearning | Course directory for developers",
   description: "Course directory for Developers",
   verification: {
     google: "google",
