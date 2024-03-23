@@ -77,8 +77,12 @@ export default async function CategoryPage({
         />
         {category.name}
       </h1>
-      <h2 style={{ marginBottom: "-20px" }}>{dictionary.categories.courses}</h2>
-      <Courses courses={courses.docs} dictionary={dictionary} />
+      <h2>{dictionary.categories.courses}</h2>
+      <Courses
+        categoryId={category._id}
+        courses={courses.docs}
+        dictionary={dictionary}
+      />
     </>
   );
 }
