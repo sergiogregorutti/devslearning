@@ -32,14 +32,25 @@ export default async function Home({
       <h1>DevsLearning</h1>
       <p>{dictionary.home.titleDescription}</p>
       <h2>{dictionary.home.categories}</h2>
-      <ul>
+      <ul style={{ listStyle: "none", padding: 0 }}>
         {categories.map((category: any) => (
           <li key={category.name}>
+            <img
+              src={`/api/category/photo/${category._id}`}
+              alt={category.name}
+              style={{ height: "38px", marginRight: "10px" }}
+            />
             <Link
               href={getLocalizedPathFromPrefix(
                 lang,
                 `/categories/${category._id}`
               )}
+              style={{
+                lineHeight: "38px",
+                display: "inline-block",
+                position: "relative",
+                top: "-15px",
+              }}
             >
               {category.name}
             </Link>

@@ -5,6 +5,7 @@ import dbConnect from "../../../../lib/dbConnect";
 import Category from "../../../../models/Category";
 import Course from "../../../../models/Course";
 import LanguageSelector from "@/components/LanguageSelector";
+import Courses from "@/components/categories/Courses";
 import { getDictionary } from "../../dictionaries";
 
 type Props = {
@@ -50,7 +51,7 @@ export default async function CategoryPage({
   params: { lang: string; id: string };
 }) {
   const dictionary = await getDictionary(lang);
-  const categoryData = await getCategory(id);
+  const category = await getCategory(id);
   const courses = await getCourses(id);
 
   return (
@@ -63,23 +64,21 @@ export default async function CategoryPage({
           {dictionary.categories.goBack}
         </Link>
       </div>
-      <h1>{categoryData.name}</h1>
-      <h2>{dictionary.categories.courses}</h2>
-      <ul>
-        {courses.docs.map((course: any) => (
-          <li key={course.name}>
-            <strong>{course.name}</strong>
-            <br />
-            {course.description}
-            <br />
-            {dictionary.categories.pricing}: {course.pricing} |{" "}
-            {dictionary.categories.price}: {course.price} |{" "}
-            {dictionary.categories.platform}: {course.platform} |{" "}
-            {dictionary.categories.author}: {course.author} |{" "}
-            {dictionary.categories.year}: {course.year}
-          </li>
-        ))}
-      </ul>
+      <h1>
+        <img
+          src={`/api/category/photo/${category._id}`}
+          alt={category.name}
+          style={{
+            height: "38px",
+            marginRight: "10px",
+            position: "relative",
+            top: "7px",
+          }}
+        />
+        {category.name}
+      </h1>
+      <h2 style={{ marginBottom: "-20px" }}>{dictionary.categories.courses}</h2>
+      <Courses courses={courses.docs} dictionary={dictionary} />
     </>
   );
 }
