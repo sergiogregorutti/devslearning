@@ -67,7 +67,7 @@ export default async function Home() {
                 fontSize: { xs: "16px", sm: "18px", lg: "20px" },
               }}
             >
-              Course directory for developers.
+              Course directory for developers
             </Typography>
           </Container>
         </Grid>

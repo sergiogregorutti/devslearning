@@ -67,7 +67,7 @@ export default async function HomeEs() {
                 fontSize: { xs: "16px", sm: "18px", lg: "20px" },
               }}
             >
-              Directorio de cursos para desarrolladores.
+              Directorio de cursos para desarrolladores
             </Typography>
           </Container>
         </Grid>
