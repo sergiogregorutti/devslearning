@@ -129,6 +129,7 @@ export default function Courses({
           name="sortBy"
           value="priceHighToLow"
           onChange={handleSortByChange}
+          checked={sortBy === "priceHighToLow" ? true : false}
         />
         <label
           htmlFor="priceHighToLow"

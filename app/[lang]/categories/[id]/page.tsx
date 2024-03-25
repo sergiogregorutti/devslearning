@@ -28,6 +28,7 @@ async function getCourses(id: String) {
     { category: id },
     {
       select: "-photo -category",
+      sort: "-price",
     }
   );
 
@@ -79,8 +80,8 @@ export default async function CategoryPage({
       </h1>
       <h2>{dictionary.categories.courses}</h2>
       <Courses
-        categoryId={category._id}
-        courses={courses.docs}
+        categoryId={JSON.parse(JSON.stringify(category._id))}
+        courses={JSON.parse(JSON.stringify(courses.docs))}
         dictionary={dictionary}
       />
     </>
