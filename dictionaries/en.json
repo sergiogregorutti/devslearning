@@ -11,6 +11,10 @@
   },
   "categories": {
     "goBack": "Go back",
+    "sortBy": "Sort by",
+    "priceHighToLow": "Price: High to Low",
+    "priceLowToHigh": "Price: Low to High",
+    "newest": "Newest",
     "courses": "Courses",
     "pricing": "Pricing",
     "price": "Price",

@@ -11,6 +11,10 @@
   },
   "categories": {
     "goBack": "Volver",
+    "sortBy": "Ordenar por",
+    "priceHighToLow": "Precio: Mayor a Menor",
+    "priceLowToHigh": "Precio: Menor a Mayor",
+    "newest": "Más Nuevos",
     "courses": "Cursos",
     "pricing": "Tipo de Precio",
     "price": "Precio",

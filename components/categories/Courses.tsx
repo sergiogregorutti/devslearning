@@ -114,7 +114,7 @@ export default function Courses({
   return (
     <div>
       <strong style={{ display: "inline-block", marginBottom: "5px" }}>
-        Sort By
+        {dictionary.categories.sortBy}
       </strong>
       <div>
         <input
@@ -135,7 +135,7 @@ export default function Courses({
           htmlFor="priceHighToLow"
           style={{ marginTop: "5px", marginBottom: "5px" }}
         >
-          Price: High to Low
+          {dictionary.categories.priceHighToLow}
         </label>
         <br />
 
@@ -156,7 +156,7 @@ export default function Courses({
           htmlFor="priceLowToHigh"
           style={{ marginTop: "5px", marginBottom: "5px" }}
         >
-          Price: Low to High
+          {dictionary.categories.priceLowToHigh}
         </label>
         <br />
 
@@ -177,7 +177,7 @@ export default function Courses({
           htmlFor="newest"
           style={{ marginTop: "5px", marginBottom: "5px" }}
         >
-          Newest
+          {dictionary.categories.newest}
         </label>
         <br />
       </div>
