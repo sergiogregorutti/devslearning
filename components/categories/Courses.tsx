@@ -15,15 +15,17 @@ interface CoursesProps {
   categoryId: number;
   courses: Course[];
   dictionary: { [key: string]: any };
+  language: String;
 }
 
 export default function Courses({
   categoryId,
   courses,
   dictionary,
+  language,
 }: CoursesProps) {
   const [myFilters, setMyFilters] = useState<any>({
-    filters: { category: categoryId },
+    filters: { category: categoryId, language: language },
   });
   const [sortBy, setSortBy] = useState<any>("priceHighToLow");
   const [filteredResults, setFilteredResults] = useState(courses);

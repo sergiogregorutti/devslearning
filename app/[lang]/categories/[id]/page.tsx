@@ -7,6 +7,7 @@ import Course from "../../../../models/Course";
 import LanguageSelector from "@/components/LanguageSelector";
 import Courses from "@/components/categories/Courses";
 import { getDictionary } from "../../dictionaries";
+import { StringifyOptions } from "querystring";
 
 type Props = {
   params: { id: string };
@@ -21,11 +22,11 @@ async function getCategory(id: String) {
   return category;
 }
 
-async function getCourses(id: String) {
+async function getCourses(id: String, lang: String) {
   await dbConnect();
 
   const courses = await Course.paginate(
-    { category: id },
+    { category: id, language: lang },
     {
       select: "-photo -category",
       sort: "-price",
@@ -53,7 +54,7 @@ export default async function CategoryPage({
 }) {
   const dictionary = await getDictionary(lang);
   const category = await getCategory(id);
-  const courses = await getCourses(id);
+  const courses = await getCourses(id, lang);
 
   return (
     <>
@@ -83,6 +84,7 @@ export default async function CategoryPage({
         categoryId={JSON.parse(JSON.stringify(category._id))}
         courses={JSON.parse(JSON.stringify(courses.docs))}
         dictionary={dictionary}
+        language={lang}
       />
     </>
   );
