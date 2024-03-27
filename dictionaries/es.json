@@ -11,6 +11,10 @@
   },
   "categories": {
     "goBack": "Volver",
+    "language": "Idioma",
+    "all": "Todos",
+    "english": "Ingles",
+    "spanish": "Español",
     "sortBy": "Ordenar por",
     "priceHighToLow": "Precio: Mayor a Menor",
     "priceLowToHigh": "Precio: Menor a Mayor",

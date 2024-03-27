@@ -11,6 +11,10 @@
   },
   "categories": {
     "goBack": "Go back",
+    "language": "Language",
+    "all": "All",
+    "english": "English",
+    "spanish": "Spanish",
     "sortBy": "Sort by",
     "priceHighToLow": "Price: High to Low",
     "priceLowToHigh": "Price: Low to High",

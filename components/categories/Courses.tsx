@@ -22,12 +22,18 @@ export default function Courses({
   categoryId,
   courses,
   dictionary,
-  language,
+  language: defaultLanguage,
 }: CoursesProps) {
   const [myFilters, setMyFilters] = useState<any>({
-    filters: { category: categoryId, language: language },
+    category: categoryId,
+    language: defaultLanguage,
   });
-  const [sortBy, setSortBy] = useState<any>("priceHighToLow");
+  const [language, setLanguage] = useState<any>(defaultLanguage);
+  const [sorting, setSorting] = useState<any>({
+    id: "priceHighToLow",
+    sortBy: "price",
+    order: "desc",
+  });
   const [filteredResults, setFilteredResults] = useState(courses);
 
   const getFilteredCourses = (
@@ -60,21 +66,25 @@ export default function Courses({
     switch (value) {
       case "priceHighToLow":
         return {
+          id: "priceHighToLow",
           sortBy: "price",
           order: "desc",
         };
       case "priceLowToHigh":
         return {
+          id: "priceLowToHigh",
           sortBy: "price",
           order: "asc",
         };
       case "newest":
         return {
+          id: "newest",
           sortBy: "year",
           order: "desc",
         };
       default:
         return {
+          id: "priceHighToLow",
           sortBy: "price",
           order: "desc",
         };
@@ -95,11 +105,31 @@ export default function Courses({
     });
   };
 
+  const handleLanguageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    let newFilters = {};
+
+    if (value === "all") {
+      newFilters = {
+        category: categoryId,
+      };
+    } else {
+      newFilters = {
+        ...myFilters,
+        language: value,
+      };
+    }
+
+    loadFilteredResults(newFilters, sorting.sortBy, sorting.order);
+    setMyFilters(newFilters);
+    setLanguage(value);
+  };
+
   const handleSortByChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     const sorting = generateSorting(value);
-    loadFilteredResults(myFilters.filters, sorting.sortBy, sorting.order);
-    setSortBy(value);
+    loadFilteredResults(myFilters, sorting.sortBy, sorting.order);
+    setSorting(sorting);
   };
 
   const renderPricing = (value: String) => {
@@ -115,73 +145,141 @@ export default function Courses({
 
   return (
     <div>
-      <strong style={{ display: "inline-block", marginBottom: "5px" }}>
-        {dictionary.categories.sortBy}
-      </strong>
+      <div style={{ marginBottom: "15px" }}>
+        <strong style={{ display: "inline-block", marginBottom: "5px" }}>
+          {dictionary.categories.language}
+        </strong>
+        <div>
+          <input
+            style={{
+              marginLeft: 0,
+              marginRight: "5px",
+              marginTop: "5px",
+              marginBottom: "5px",
+            }}
+            type="radio"
+            id="all"
+            name="language"
+            value="all"
+            onChange={handleLanguageChange}
+            checked={language === "all" ? true : false}
+          />
+          <label
+            htmlFor="all"
+            style={{ marginTop: "5px", marginBottom: "5px" }}
+          >
+            {dictionary.categories.all}
+          </label>
+          <br />
+
+          <input
+            style={{
+              marginLeft: 0,
+              marginRight: "5px",
+              marginTop: "5px",
+              marginBottom: "5px",
+            }}
+            type="radio"
+            id="en"
+            name="language"
+            value="en"
+            onChange={handleLanguageChange}
+            checked={language === "en" ? true : false}
+          />
+          <label htmlFor="en" style={{ marginTop: "5px", marginBottom: "5px" }}>
+            {dictionary.categories.english}
+          </label>
+          <br />
+
+          <input
+            style={{
+              marginLeft: 0,
+              marginRight: "5px",
+              marginTop: "5px",
+              marginBottom: "5px",
+            }}
+            type="radio"
+            id="es"
+            name="language"
+            value="es"
+            onChange={handleLanguageChange}
+            checked={language === "es" ? true : false}
+          />
+          <label htmlFor="es" style={{ marginTop: "5px", marginBottom: "5px" }}>
+            {dictionary.categories.spanish}
+          </label>
+          <br />
+        </div>
+      </div>
       <div>
-        <input
-          style={{
-            marginLeft: 0,
-            marginRight: "5px",
-            marginTop: "5px",
-            marginBottom: "5px",
-          }}
-          type="radio"
-          id="priceHighToLow"
-          name="sortBy"
-          value="priceHighToLow"
-          onChange={handleSortByChange}
-          checked={sortBy === "priceHighToLow" ? true : false}
-        />
-        <label
-          htmlFor="priceHighToLow"
-          style={{ marginTop: "5px", marginBottom: "5px" }}
-        >
-          {dictionary.categories.priceHighToLow}
-        </label>
-        <br />
+        <strong style={{ display: "inline-block", marginBottom: "5px" }}>
+          {dictionary.categories.sortBy}
+        </strong>
+        <div>
+          <input
+            style={{
+              marginLeft: 0,
+              marginRight: "5px",
+              marginTop: "5px",
+              marginBottom: "5px",
+            }}
+            type="radio"
+            id="priceHighToLow"
+            name="sortBy"
+            value="priceHighToLow"
+            onChange={handleSortByChange}
+            checked={sorting.id === "priceHighToLow" ? true : false}
+          />
+          <label
+            htmlFor="priceHighToLow"
+            style={{ marginTop: "5px", marginBottom: "5px" }}
+          >
+            {dictionary.categories.priceHighToLow}
+          </label>
+          <br />
 
-        <input
-          style={{
-            marginLeft: 0,
-            marginRight: "5px",
-            marginTop: "5px",
-            marginBottom: "5px",
-          }}
-          type="radio"
-          id="priceLowToHigh"
-          name="sortBy"
-          value="priceLowToHigh"
-          onChange={handleSortByChange}
-        />
-        <label
-          htmlFor="priceLowToHigh"
-          style={{ marginTop: "5px", marginBottom: "5px" }}
-        >
-          {dictionary.categories.priceLowToHigh}
-        </label>
-        <br />
+          <input
+            style={{
+              marginLeft: 0,
+              marginRight: "5px",
+              marginTop: "5px",
+              marginBottom: "5px",
+            }}
+            type="radio"
+            id="priceLowToHigh"
+            name="sortBy"
+            value="priceLowToHigh"
+            onChange={handleSortByChange}
+          />
+          <label
+            htmlFor="priceLowToHigh"
+            style={{ marginTop: "5px", marginBottom: "5px" }}
+          >
+            {dictionary.categories.priceLowToHigh}
+          </label>
+          <br />
 
-        <input
-          style={{
-            marginLeft: 0,
-            marginRight: "5px",
-            marginTop: "5px",
-            marginBottom: "5px",
-          }}
-          type="radio"
-          id="newest"
-          name="sortBy"
-          value="newest"
-          onChange={handleSortByChange}
-        />
-        <label
-          htmlFor="newest"
-          style={{ marginTop: "5px", marginBottom: "5px" }}
-        >
-          {dictionary.categories.newest}
-        </label>
-        <br />
+          <input
+            style={{
+              marginLeft: 0,
+              marginRight: "5px",
+              marginTop: "5px",
+              marginBottom: "5px",
+            }}
+            type="radio"
+            id="newest"
+            name="sortBy"
+            value="newest"
+            onChange={handleSortByChange}
+          />
+          <label
+            htmlFor="newest"
+            style={{ marginTop: "5px", marginBottom: "5px" }}
+          >
+            {dictionary.categories.newest}
+          </label>
+          <br />
+        </div>
       </div>
       <ul style={{ listStyle: "none", padding: 0 }}>
         {filteredResults.map((course: any) => (
