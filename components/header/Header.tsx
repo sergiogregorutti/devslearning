@@ -9,7 +9,9 @@ const Header = async ({ lang }: { lang: string }) => {
   return (
     <div>
       Header <br />
+      <br />
       <LanguageSelector dictionary={dictionary} /> <br />
+      <br />
       <a href="/api/auth/login">Login</a> |{" "}
       <a href="/api/auth/logout">Logout</a>
       {session && (
