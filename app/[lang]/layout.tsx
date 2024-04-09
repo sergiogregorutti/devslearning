@@ -1,11 +1,12 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import type { Metadata } from "next";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
+import Header from "@/components/header/Header";
 
 export const metadata: Metadata = {
-  title: "DevsLearning | Course directory for developers",
+  title: "Devs Learning | Course directory for developers",
   description: "Course directory for Developers",
   verification: {
     google: "google",
@@ -19,8 +20,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params: { lang },
 }: Readonly<{
   children: React.ReactNode;
+  params: { lang: string };
 }>) {
   return (
     <html lang="en">
@@ -43,16 +46,17 @@ export default function RootLayout({
           href="/favicon-16x16.png"
         />
       </head>
-      <body>
-        <AppRouterCacheProvider>
+      <UserProvider>
+        <body>
+          <Header lang={lang} />
           {children}
           <SpeedInsights />
           <Analytics />
           <GoogleAnalytics
             gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ?? ""}
           />
-        </AppRouterCacheProvider>
-      </body>
+        </body>
+      </UserProvider>
     </html>
   );
 }
