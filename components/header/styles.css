@@ -1,0 +1,35 @@
+header {
+  height: 60px;
+  background: #0b376b;
+  display: flex;
+  justify-content: center;
+
+  & .container {
+    padding: 0 10px;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+
+    @media (min-width: 768px) {
+      padding: 0 15px;
+    }
+  }
+
+  & h1 {
+    font-size: 20px;
+    color: #fff;
+    margin: 0;
+    padding: 17px 0;
+
+    @media (min-width: 768px) {
+      font-size: 32px;
+      padding: 9px 0;
+    }
+
+    & a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}

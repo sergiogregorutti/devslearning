@@ -1,27 +1,38 @@
 import { getSession } from "@auth0/nextjs-auth0";
+import Link from "next/link";
 import LanguageSelector from "@/components/LanguageSelector";
 import { getDictionary } from "@/app/[lang]/dictionaries";
+import { getLocalizedPathFromPrefix } from "@/lib/language";
+
+import "./styles.css";
 
 const Header = async ({ lang }: { lang: string }) => {
   const session = await getSession();
   const dictionary = await getDictionary(lang);
 
   return (
-    <div>
-      Header <br />
-      <br />
-      <LanguageSelector dictionary={dictionary} /> <br />
-      <br />
-      <a href="/api/auth/login">Login</a> |{" "}
-      <a href="/api/auth/logout">Logout</a>
-      {session && (
-        <div>
-          <img src={session.user.picture} alt={session.user.name} />
-          <h2>{session.user.name}</h2>
-          <p>{session.user.email}</p>
-        </div>
-      )}
-    </div>
+    <header>
+      <div className="container">
+        <h1>
+          <Link href={getLocalizedPathFromPrefix(lang, `/`)}>
+            Devs Learning
+          </Link>
+        </h1>
+        <LanguageSelector dictionary={dictionary} />
+
+        {/* 
+        <a href="/api/auth/login">Login</a> |{" "}
+        <a href="/api/auth/logout">Logout</a>
+        {session && (
+          <div>
+            <img src={session.user.picture} alt={session.user.name} />
+            <h2>{session.user.name}</h2>
+            <p>{session.user.email}</p>
+          </div>
+        )}
+        */}
+      </div>
+    </header>
   );
 };
 

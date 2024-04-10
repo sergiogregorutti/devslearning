@@ -1,9 +1,17 @@
+import { Nunito } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import Header from "@/components/header/Header";
+import Footer from "@/components/footer/Footer";
+
+const nunito = Nunito({
+  subsets: ["latin"],
+  variable: "--font-nunito",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Devs Learning | Course directory for developers",
@@ -18,6 +26,8 @@ export const metadata: Metadata = {
   },
 };
 
+import "./global.css";
+
 export default function RootLayout({
   children,
   params: { lang },
@@ -26,7 +36,7 @@ export default function RootLayout({
   params: { lang: string };
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${nunito.variable}`}>
       <head>
         <link
           rel="apple-touch-icon"
@@ -50,6 +60,7 @@ export default function RootLayout({
         <body>
           <Header lang={lang} />
           {children}
+          <Footer />
           <SpeedInsights />
           <Analytics />
           <GoogleAnalytics
