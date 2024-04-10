@@ -1,0 +1,38 @@
+.language-selector {
+  margin: 16px 0;
+
+  @media (min-width: 768px) {
+    margin: 14px 0;
+  }
+
+  a {
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    min-width: 50px;
+    margin-left: 5px;
+    font-size: 13px;
+    font-weight: bold;
+
+    @media (min-width: 768px) {
+      margin-left: 10px;
+      font-size: 16px;
+      min-width: 60px;
+    }
+
+    &.active {
+      background: #2197f9;
+      border-radius: 14px;
+    }
+
+    &:hover {
+      color: #2197f9;
+
+      &.active {
+        color: #fff;
+      }
+    }
+  }
+}

@@ -4,7 +4,7 @@ import { getLocalizedPathFromPrefix } from "../../../../lib/language";
 import dbConnect from "../../../../lib/dbConnect";
 import Category from "../../../../models/Category";
 import Course from "../../../../models/Course";
-import LanguageSelector from "@/components/LanguageSelector";
+import LanguageSelector from "@/components/languageSelector/LanguageSelector";
 import Courses from "@/components/categories/Courses";
 import { getDictionary } from "../../dictionaries";
 import { StringifyOptions } from "querystring";

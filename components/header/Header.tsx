@@ -1,13 +1,13 @@
-import { getSession } from "@auth0/nextjs-auth0";
+// import { getSession } from "@auth0/nextjs-auth0";
 import Link from "next/link";
-import LanguageSelector from "@/components/LanguageSelector";
+import LanguageSelector from "@/components/languageSelector/LanguageSelector";
 import { getDictionary } from "@/app/[lang]/dictionaries";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 
 import "./styles.css";
 
 const Header = async ({ lang }: { lang: string }) => {
-  const session = await getSession();
+  // const session = await getSession();
   const dictionary = await getDictionary(lang);
 
   return (
@@ -18,7 +18,7 @@ const Header = async ({ lang }: { lang: string }) => {
             Devs Learning
           </Link>
         </h1>
-        <LanguageSelector dictionary={dictionary} />
+        <LanguageSelector dictionary={dictionary} lang={lang} />
 
         {/* 
         <a href="/api/auth/login">Login</a> |{" "}
