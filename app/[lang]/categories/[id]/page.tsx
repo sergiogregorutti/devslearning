@@ -58,7 +58,7 @@ export default async function CategoryPage({
 
   return (
     <>
-      <LanguageSelector dictionary={dictionary} />
+      <LanguageSelector dictionary={dictionary} lang={lang} />
       <br />
       <br />
       <div>
