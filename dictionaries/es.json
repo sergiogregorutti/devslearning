@@ -5,7 +5,11 @@
       "spanish": "Español"
     }
   },
+  "footer": {
+    "createdBy": "Creado por"
+  },
   "home": {
+    "welcomeTo": "Bienvenidos a",
     "titleDescription": "Directorio de cursos para desarrolladores",
     "categories": "Categorias"
   },

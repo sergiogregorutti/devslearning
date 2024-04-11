@@ -1,0 +1,21 @@
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 10px 15px;
+
+  & .container {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+
+    @media (min-width: 768px) {
+      padding: 0 15px;
+    }
+  }
+
+  & a {
+    color: #000;
+  }
+}

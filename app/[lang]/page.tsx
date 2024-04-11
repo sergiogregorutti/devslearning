@@ -5,6 +5,8 @@ import { getLocalizedPathFromPrefix } from "@/lib/language";
 import { getDictionary } from "./dictionaries";
 import { getSession } from "@auth0/nextjs-auth0";
 
+import "./styles.css";
+
 async function getCategories() {
   await dbConnect();
 
@@ -28,8 +30,19 @@ export default async function Home({
 
   return (
     <>
-      <h1>Devs Learning</h1>
-      <p>{dictionary.home.titleDescription}</p>
+      <div className="welcome">
+        <div className="container">
+          <div className="col-text">
+            <span className="welcome-to">{dictionary.home.welcomeTo}</span>
+            <span className="title">Devs Learning</span>
+            <p>{dictionary.home.titleDescription}</p>
+          </div>
+          <div className="col-image">
+            <img src="../assets/boy.svg" />
+          </div>
+        </div>
+      </div>
+
       <h2>{dictionary.home.categories}</h2>
       <ul style={{ listStyle: "none", padding: 0 }}>
         {categories.map((category: any) => (

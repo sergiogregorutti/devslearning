@@ -43,7 +43,7 @@ export async function generateMetadata(
   const categoryData = await getCategory(params.id);
 
   return {
-    title: `${categoryData.name} courses | DevsLearning`,
+    title: `${categoryData.name} courses | Devs Learning`,
   };
 }
 

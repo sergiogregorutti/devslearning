@@ -5,7 +5,11 @@
       "spanish": "Spanish"
     }
   },
+  "footer": {
+    "createdBy": "Created by"
+  },
   "home": {
+    "welcomeTo": "Welcome to",
     "titleDescription": "Course directory for developers",
     "categories": "Categories"
   },

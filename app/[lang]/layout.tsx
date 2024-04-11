@@ -60,7 +60,7 @@ export default function RootLayout({
         <body>
           <Header lang={lang} />
           {children}
-          <Footer />
+          <Footer lang={lang} />
           <SpeedInsights />
           <Analytics />
           <GoogleAnalytics
