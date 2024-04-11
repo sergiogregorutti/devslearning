@@ -9,6 +9,8 @@ import Courses from "@/components/categories/Courses";
 import { getDictionary } from "../../dictionaries";
 import { StringifyOptions } from "querystring";
 
+import "./styles.css";
+
 type Props = {
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
@@ -57,35 +59,29 @@ export default async function CategoryPage({
   const courses = await getCourses(id, lang);
 
   return (
-    <>
-      <LanguageSelector dictionary={dictionary} lang={lang} />
-      <br />
-      <br />
-      <div>
-        <Link href={getLocalizedPathFromPrefix(lang, `/`)}>
-          {dictionary.categories.goBack}
-        </Link>
-      </div>
-      <h1>
-        <img
-          src={`/api/category/photo/${category._id}`}
-          alt={category.name}
-          style={{
-            height: "38px",
-            marginRight: "10px",
-            position: "relative",
-            top: "7px",
-          }}
+    <div className="technology">
+      <div className="container">
+        <h1>
+          <img
+            src={`/api/category/photo/${category._id}`}
+            alt={category.name}
+            style={{
+              height: "38px",
+              marginRight: "10px",
+              position: "relative",
+              top: "7px",
+            }}
+          />
+          {category.name}
+        </h1>
+        <h2>{dictionary.categories.courses}</h2>
+        <Courses
+          categoryId={JSON.parse(JSON.stringify(category._id))}
+          courses={JSON.parse(JSON.stringify(courses.docs))}
+          dictionary={dictionary}
+          language={lang}
         />
-        {category.name}
-      </h1>
-      <h2>{dictionary.categories.courses}</h2>
-      <Courses
-        categoryId={JSON.parse(JSON.stringify(category._id))}
-        courses={JSON.parse(JSON.stringify(courses.docs))}
-        dictionary={dictionary}
-        language={lang}
-      />
-    </>
+      </div>
+    </div>
   );
 }

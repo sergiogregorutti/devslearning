@@ -38,7 +38,7 @@ export default async function Home({
             <p>{dictionary.home.titleDescription}</p>
           </div>
           <div className="col-image">
-            <img src="../assets/boy.svg" />
+            <img src="/assets/boy.svg" />
           </div>
         </div>
       </div>

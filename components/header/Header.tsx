@@ -15,7 +15,7 @@ const Header = async ({ lang }: { lang: string }) => {
       <div className="container">
         <h1>
           <Link href={getLocalizedPathFromPrefix(lang, `/`)}>
-            Devs Learning
+            <img src="/assets/logo2024.svg" />
           </Link>
         </h1>
         <LanguageSelector dictionary={dictionary} lang={lang} />

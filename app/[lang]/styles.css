@@ -50,23 +50,39 @@
         order: 1;
 
         & .welcome-to {
-          font-size: 65px;
-          line-height: 50px;
+          font-size: 50px;
+          line-height: 45px;
           text-align: left;
           margin-bottom: 15px;
         }
 
         & .title {
-          font-size: 65px;
-          line-height: 50px;
+          font-size: 50px;
+          line-height: 45px;
           text-align: left;
         }
 
         & p {
           margin: 10px 0 0 0;
-          font-size: 24px;
+          font-size: 20px;
           text-align: left;
         }
+      }
+    }
+
+    @media (min-width: 1024px) {
+      & .welcome-to {
+        font-size: 65px !important;
+        line-height: 50px !important;
+      }
+
+      & .title {
+        font-size: 65px !important;
+        line-height: 50px !important;
+      }
+
+      & p {
+        font-size: 24px !important;
       }
     }
 
