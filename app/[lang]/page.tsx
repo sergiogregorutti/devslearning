@@ -57,7 +57,7 @@ export default async function Home({
                 )}
               >
                 <img
-                  src={`/api/category/photo/${category._id}`}
+                  src={`/assets/technologies/${category._id}.svg`}
                   alt={category.name}
                 />
                 <span>{category.name}</span>
