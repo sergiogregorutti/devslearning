@@ -11,7 +11,7 @@
   "home": {
     "welcomeTo": "Bienvenidos a",
     "titleDescription": "Directorio de cursos para desarrolladores",
-    "categories": "Categorias"
+    "technologiesTitle": "¿Que te gustaría aprender?"
   },
   "categories": {
     "goBack": "Volver",

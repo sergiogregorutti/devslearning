@@ -43,32 +43,29 @@ export default async function Home({
         </div>
       </div>
 
-      <h2>{dictionary.home.categories}</h2>
-      <ul style={{ listStyle: "none", padding: 0 }}>
-        {categories.map((category: any) => (
-          <li key={category.name}>
-            <img
-              src={`/api/category/photo/${category._id}`}
-              alt={category.name}
-              style={{ height: "38px", marginRight: "10px" }}
-            />
-            <Link
-              href={getLocalizedPathFromPrefix(
-                lang,
-                `/categories/${category._id}`
-              )}
-              style={{
-                lineHeight: "38px",
-                display: "inline-block",
-                position: "relative",
-                top: "-15px",
-              }}
-            >
-              {category.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <div className="technologies">
+        <div className="container">
+          <h2>{dictionary.home.technologiesTitle}</h2>
+          <div className="technologies-list">
+            {categories.map((category: any) => (
+              <Link
+                className="item"
+                key={category.name}
+                href={getLocalizedPathFromPrefix(
+                  lang,
+                  `/categories/${category._id}`
+                )}
+              >
+                <img
+                  src={`/api/category/photo/${category._id}`}
+                  alt={category.name}
+                />
+                <span>{category.name}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
     </>
   );
 }

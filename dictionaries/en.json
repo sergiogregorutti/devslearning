@@ -11,7 +11,7 @@
   "home": {
     "welcomeTo": "Welcome to",
     "titleDescription": "Course directory for developers",
-    "categories": "Categories"
+    "technologiesTitle": "What do you want to learn?"
   },
   "categories": {
     "goBack": "Go back",

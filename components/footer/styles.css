@@ -2,6 +2,7 @@ footer {
   display: flex;
   justify-content: center;
   padding: 10px 15px;
+  margin-top: 20px;
 
   & .container {
     width: 100%;
