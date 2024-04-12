@@ -25,9 +25,13 @@
     "newest": "Newest",
     "courses": "Courses",
     "pricing": "Pricing",
+    "pricingFree": "Free",
+    "pricingOneTime": "One Time Payment",
+    "pricingSubscription": "Subscription",
     "price": "Price",
     "platform": "Platform",
     "author": "Author",
-    "year": "Year"
+    "year": "Year",
+    "visitCourse": "Visit course"
   }
 }

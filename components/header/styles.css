@@ -5,6 +5,7 @@ header {
   background: #0b376b;
   display: flex;
   justify-content: center;
+  z-index: 9999;
 
   & .container {
     padding: 0 15px;

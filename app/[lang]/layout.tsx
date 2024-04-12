@@ -1,4 +1,4 @@
-import { Nunito } from "next/font/google";
+import { Nunito, Poppins } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -11,6 +11,13 @@ const nunito = Nunito({
   subsets: ["latin"],
   variable: "--font-nunito",
   display: "swap",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  display: "swap",
+  weight: ["300", "400"],
 });
 
 export const metadata: Metadata = {
@@ -36,7 +43,7 @@ export default function RootLayout({
   params: { lang: string };
 }>) {
   return (
-    <html lang="en" className={`${nunito.variable}`}>
+    <html lang="en" className={`${nunito.variable} ${poppins.variable}`}>
       <head>
         <link
           rel="apple-touch-icon"

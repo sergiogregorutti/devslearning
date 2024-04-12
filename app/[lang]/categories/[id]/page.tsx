@@ -1,18 +1,14 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import Link from "next/link";
-import { getLocalizedPathFromPrefix } from "../../../../lib/language";
 import dbConnect from "../../../../lib/dbConnect";
 import Category from "../../../../models/Category";
 import Course from "../../../../models/Course";
-import LanguageSelector from "@/components/languageSelector/LanguageSelector";
 import Courses from "@/components/categories/Courses";
 import { getDictionary } from "../../dictionaries";
-import { StringifyOptions } from "querystring";
 
 import "./styles.css";
 
 type Props = {
-  params: { id: string };
+  params: { lang: string; id: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
@@ -39,13 +35,25 @@ async function getCourses(id: String, lang: String) {
 }
 
 export async function generateMetadata(
-  { params, searchParams }: Props,
+  { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const categoryData = await getCategory(params.id);
 
+  let pageTitle = "";
+
+  switch (params.lang) {
+    case "en":
+      pageTitle = `${categoryData.name} courses | Devs Learning`;
+      break;
+
+    case "es":
+      pageTitle = `Cursos de ${categoryData.name} | Devs Learning`;
+      break;
+  }
+
   return {
-    title: `${categoryData.name} courses | Devs Learning`,
+    title: pageTitle,
   };
 }
 
@@ -61,20 +69,7 @@ export default async function CategoryPage({
   return (
     <div className="technology">
       <div className="container">
-        <h1>
-          <img
-            src={`/api/category/photo/${category._id}`}
-            alt={category.name}
-            style={{
-              height: "38px",
-              marginRight: "10px",
-              position: "relative",
-              top: "7px",
-            }}
-          />
-          {category.name}
-        </h1>
-        <h2>{dictionary.categories.courses}</h2>
+        <h1>{category.name}</h1>
         <Courses
           categoryId={JSON.parse(JSON.stringify(category._id))}
           courses={JSON.parse(JSON.stringify(courses.docs))}

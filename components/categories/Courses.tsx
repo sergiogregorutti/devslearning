@@ -1,5 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import Link from "next/link";
 
 interface Course {
   name: string;
@@ -17,6 +18,8 @@ interface CoursesProps {
   dictionary: { [key: string]: any };
   language: String;
 }
+
+import "./styles.css";
 
 export default function Courses({
   categoryId,
@@ -135,178 +138,148 @@ export default function Courses({
   const renderPricing = (value: String) => {
     switch (value) {
       case "free":
-        return <>Free</>;
+        return (
+          <span className="pricing-free">
+            {dictionary.categories.pricingFree}
+          </span>
+        );
       case "one-time-payment":
-        return <>One Time Payment</>;
+        return (
+          <span className="pricing-one-time">
+            {dictionary.categories.pricingOneTime}
+          </span>
+        );
       case "subscription":
-        return <>Subscription</>;
+        return (
+          <span className="pricing-subscription">
+            {dictionary.categories.pricingSubscription}
+          </span>
+        );
     }
   };
 
   return (
-    <div>
-      <div style={{ marginBottom: "15px" }}>
-        <strong style={{ display: "inline-block", marginBottom: "5px" }}>
-          {dictionary.categories.language}
-        </strong>
+    <div className="courses">
+      <div className="filter-and-sorting">
         <div>
-          <input
-            style={{
-              marginLeft: 0,
-              marginRight: "5px",
-              marginTop: "5px",
-              marginBottom: "5px",
-            }}
-            type="radio"
-            id="all"
-            name="language"
-            value="all"
-            onChange={handleLanguageChange}
-            checked={language === "all" ? true : false}
-          />
-          <label
-            htmlFor="all"
-            style={{ marginTop: "5px", marginBottom: "5px" }}
-          >
-            {dictionary.categories.all}
-          </label>
-          <br />
-
-          <input
-            style={{
-              marginLeft: 0,
-              marginRight: "5px",
-              marginTop: "5px",
-              marginBottom: "5px",
-            }}
-            type="radio"
-            id="en"
-            name="language"
-            value="en"
-            onChange={handleLanguageChange}
-            checked={language === "en" ? true : false}
-          />
-          <label htmlFor="en" style={{ marginTop: "5px", marginBottom: "5px" }}>
-            {dictionary.categories.english}
-          </label>
-          <br />
-
-          <input
-            style={{
-              marginLeft: 0,
-              marginRight: "5px",
-              marginTop: "5px",
-              marginBottom: "5px",
-            }}
-            type="radio"
-            id="es"
-            name="language"
-            value="es"
-            onChange={handleLanguageChange}
-            checked={language === "es" ? true : false}
-          />
-          <label htmlFor="es" style={{ marginTop: "5px", marginBottom: "5px" }}>
-            {dictionary.categories.spanish}
-          </label>
-          <br />
-        </div>
-      </div>
-      <div>
-        <strong style={{ display: "inline-block", marginBottom: "5px" }}>
-          {dictionary.categories.sortBy}
-        </strong>
-        <div>
-          <input
-            style={{
-              marginLeft: 0,
-              marginRight: "5px",
-              marginTop: "5px",
-              marginBottom: "5px",
-            }}
-            type="radio"
-            id="priceHighToLow"
-            name="sortBy"
-            value="priceHighToLow"
-            onChange={handleSortByChange}
-            checked={sorting.id === "priceHighToLow" ? true : false}
-          />
-          <label
-            htmlFor="priceHighToLow"
-            style={{ marginTop: "5px", marginBottom: "5px" }}
-          >
-            {dictionary.categories.priceHighToLow}
-          </label>
-          <br />
-
-          <input
-            style={{
-              marginLeft: 0,
-              marginRight: "5px",
-              marginTop: "5px",
-              marginBottom: "5px",
-            }}
-            type="radio"
-            id="priceLowToHigh"
-            name="sortBy"
-            value="priceLowToHigh"
-            onChange={handleSortByChange}
-          />
-          <label
-            htmlFor="priceLowToHigh"
-            style={{ marginTop: "5px", marginBottom: "5px" }}
-          >
-            {dictionary.categories.priceLowToHigh}
-          </label>
-          <br />
-
-          <input
-            style={{
-              marginLeft: 0,
-              marginRight: "5px",
-              marginTop: "5px",
-              marginBottom: "5px",
-            }}
-            type="radio"
-            id="newest"
-            name="sortBy"
-            value="newest"
-            onChange={handleSortByChange}
-          />
-          <label
-            htmlFor="newest"
-            style={{ marginTop: "5px", marginBottom: "5px" }}
-          >
-            {dictionary.categories.newest}
-          </label>
-          <br />
-        </div>
-      </div>
-      <ul style={{ listStyle: "none", padding: 0 }}>
-        {filteredResults.map((course: any) => (
-          <li key={course.name}>
-            <div>
-              <img
-                src={`/api/course/photo/${course._id}`}
-                alt={course.name}
-                style={{
-                  height: "70px",
-                  marginTop: "20px",
-                  marginBottom: "5px",
-                }}
+          <span className="label">{dictionary.categories.sortBy}</span>
+          <div className="inputs">
+            <label className="custom-radio-button" htmlFor="priceHighToLow">
+              {dictionary.categories.priceHighToLow}
+              <input
+                type="radio"
+                id="priceHighToLow"
+                name="sortBy"
+                value="priceHighToLow"
+                onChange={handleSortByChange}
+                checked={sorting.id === "priceHighToLow" ? true : false}
               />
+              <span className="checkmark"></span>
+            </label>
+
+            <label className="custom-radio-button" htmlFor="priceLowToHigh">
+              {dictionary.categories.priceLowToHigh}
+              <input
+                type="radio"
+                id="priceLowToHigh"
+                name="sortBy"
+                value="priceLowToHigh"
+                onChange={handleSortByChange}
+              />
+              <span className="checkmark"></span>
+            </label>
+
+            <label className="custom-radio-button" htmlFor="newest">
+              {dictionary.categories.newest}
+              <input
+                type="radio"
+                id="newest"
+                name="sortBy"
+                value="newest"
+                onChange={handleSortByChange}
+              />
+              <span className="checkmark"></span>
+            </label>
+          </div>
+        </div>
+        <div>
+          <span className="label">{dictionary.categories.language}</span>
+          <div className="inputs">
+            <label className="custom-radio-button" htmlFor="all">
+              {dictionary.categories.all}
+              <input
+                type="radio"
+                id="all"
+                name="language"
+                value="all"
+                onChange={handleLanguageChange}
+                checked={language === "all" ? true : false}
+              />
+              <span className="checkmark"></span>
+            </label>
+
+            <label className="custom-radio-button" htmlFor="en">
+              {dictionary.categories.english}
+              <input
+                type="radio"
+                id="en"
+                name="language"
+                value="en"
+                onChange={handleLanguageChange}
+                checked={language === "en" ? true : false}
+              />
+              <span className="checkmark"></span>
+            </label>
+
+            <label className="custom-radio-button" htmlFor="es">
+              {dictionary.categories.spanish}
+              <input
+                type="radio"
+                id="es"
+                name="language"
+                value="es"
+                onChange={handleLanguageChange}
+                checked={language === "es" ? true : false}
+              />
+              <span className="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div className="courses-list">
+        {filteredResults.map((course: any) => (
+          <div className="item" key={course.name}>
+            <div className="image">
+              {renderPricing(course.pricing)}
+              <img src={`/api/course/photo/${course._id}`} alt={course.name} />
             </div>
-            <strong>{course.name}</strong>
-            <br />
-            {course.description}
-            <br />
-            {dictionary.categories.pricing}: {renderPricing(course.pricing)} |{" "}
-            {dictionary.categories.price}: {course.price} |{" "}
-            {dictionary.categories.platform}: {course.platform} |{" "}
-            {dictionary.categories.author}: {course.author} |{" "}
-            {dictionary.categories.year}: {course.year}
-          </li>
+            <div className="content">
+              <h3>{course.name}</h3>
+              <p>{course.description}</p>
+              <div className="details">
+                <span>
+                  <strong>{dictionary.categories.price}:</strong> US$&nbsp;
+                  {course.price}
+                </span>
+                <span>
+                  <strong>{dictionary.categories.platform}:</strong>{" "}
+                  {course.platform}
+                </span>
+                <span>
+                  <strong>{dictionary.categories.author}:</strong>{" "}
+                  {course.author}
+                </span>
+                <span>
+                  <strong>{dictionary.categories.year}:</strong> {course.year}
+                </span>
+              </div>
+              <Link className="btn" href={course.link} target="_blank">
+                {dictionary.categories.visitCourse}
+              </Link>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

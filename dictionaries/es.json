@@ -25,9 +25,13 @@
     "newest": "Más Nuevos",
     "courses": "Cursos",
     "pricing": "Tipo de Precio",
+    "pricingFree": "Gratis",
+    "pricingOneTime": "Único Pago",
+    "pricingSubscription": "Subscripción",
     "price": "Precio",
     "platform": "Plataforma",
     "author": "Autor",
-    "year": "Año"
+    "year": "Año",
+    "visitCourse": "Visitar curso"
   }
 }
