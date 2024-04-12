@@ -1,0 +1,154 @@
+.courses {
+  & .filter-and-sorting {
+    display: grid;
+    grid-template-columns: 63% 37%;
+
+    & .label {
+      display: inline-block;
+      font-family: var(--font-poppins) !important;
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    & .custom-radio-button {
+      display: block;
+      position: relative;
+      padding-left: 25px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      user-select: none;
+
+      & input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      & .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 16px;
+        width: 16px;
+        border: 2px solid #2196f3;
+        border-radius: 50%;
+      }
+
+      & input:checked ~ .checkmark:after {
+        display: block;
+      }
+
+      & .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+        top: 3px;
+        left: 3px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #2196f3;
+      }
+    }
+
+    @media (min-width: 768px) {
+      grid-template-columns: 230px 230px;
+    }
+  }
+
+  & .courses-list {
+    margin-top: 20px;
+
+    @media (min-width: 768px) {
+      margin-top: 40px;
+    }
+
+    & .item {
+      display: grid;
+      grid-template-columns: 1fr;
+      column-gap: 15px;
+
+      & .image {
+        position: relative;
+
+        & span {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          border-radius: 5px;
+          padding: 4px 10px;
+          color: #fff;
+          font-size: 14px;
+
+          &.pricing-free {
+            background: #03e40c;
+          }
+
+          &.pricing-one-time {
+            background: #0b376b;
+          }
+
+          &.pricing-subscription {
+            background: #9747ff;
+          }
+        }
+
+        & img {
+          width: 100%;
+          border-radius: 5px;
+        }
+      }
+
+      & .content {
+        & h3 {
+          font-size: 24px;
+          line-height: 24px;
+          margin: 10px 0 10px 0;
+        }
+
+        & p {
+          font-family: var(--font-poppins) !important;
+          margin: 0 0 10px 0;
+          font-size: 16px;
+          line-height: 17px;
+          font-weight: 400;
+        }
+
+        & .details {
+          & span {
+            margin-right: 15px;
+          }
+        }
+
+        & .btn {
+          display: inline-block;
+          margin-top: 10px;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 100px;
+          background: #2197f9;
+          padding: 10px 24px;
+
+          &:hover {
+            background: #1a73e8;
+          }
+        }
+      }
+
+      & + .item {
+        margin-top: 40px;
+      }
+
+      @media (min-width: 768px) {
+        grid-template-columns: 215px 1fr;
+
+        & .content {
+          & h3 {
+            margin: 0 0 10px 0;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "header": {
+    "language": {
+      "english": "Ingles",
+      "spanish": "Español"
+    }
+  },
+  "footer": {
+    "createdBy": "Creado por"
+  },
+  "home": {
+    "welcomeTo": "Bienvenidos a",
+    "titleDescription": "Directorio de cursos para desarrolladores",
+    "technologiesTitle": "¿Que te gustaría aprender?"
+  },
+  "categories": {
+    "goBack": "Volver",
+    "language": "Idioma",
+    "all": "Todos",
+    "english": "Ingles",
+    "spanish": "Español",
+    "sortBy": "Ordenar por",
+    "priceHighToLow": "Precio: Mayor a Menor",
+    "priceLowToHigh": "Precio: Menor a Mayor",
+    "newest": "Más Nuevos",
+    "courses": "Cursos",
+    "pricing": "Tipo de Precio",
+    "pricingFree": "Gratis",
+    "pricingOneTime": "Único Pago",
+    "pricingSubscription": "Subscripción",
+    "price": "Precio",
+    "platform": "Plataforma",
+    "author": "Autor",
+    "year": "Año",
+    "visitCourse": "Visitar curso"
+  }
+}

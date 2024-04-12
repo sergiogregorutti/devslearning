@@ -1,29 +1,21 @@
-import { Container, Typography } from "@mui/material";
+import { getDictionary } from "@/app/[lang]/dictionaries";
 
-export default function Footer() {
+import "./styles.css";
+
+export default async function Footer({ lang }: { lang: string }) {
+  const dictionary = await getDictionary(lang);
+
   return (
-    <Container
-      sx={{
-        borderTop: "1px solid #ccc",
-        marginTop: "25px",
-        paddingTop: "5px",
-        paddingBottom: "15px",
-      }}
-    >
-      <Typography sx={{ textAlign: "center", fontSize: "13px" }}>
-        DevsLearning 2024 | Created by{" "}
-        <a
-          href="https://github.com/sergiogregorutti"
-          target="_blank"
-          rel="noreferrer"
-          style={{
-            color: "#2097f8",
-            textDecoration: "none",
-          }}
-        >
-          @sergiogregorutti
-        </a>
-      </Typography>
-    </Container>
+    <footer>
+      <div className="container">
+        Devs Learning 2024<span className="separator">|</span>
+        <span>
+          {dictionary.footer.createdBy}{" "}
+          <a href="https://github.com/sergiogregorutti/" target="_blank">
+            @sergiogregorutti
+          </a>
+        </span>
+      </div>
+    </footer>
   );
 }

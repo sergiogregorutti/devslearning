@@ -5,6 +5,10 @@ const { ObjectId } = mongoose.Schema;
 
 const courseSchema = new mongoose.Schema(
   {
+    language: {
+      type: String,
+      enum: ["en", "es"],
+    },
     photo: {
       data: Buffer,
       contentType: String,

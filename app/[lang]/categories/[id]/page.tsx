@@ -1,0 +1,82 @@
+import type { Metadata, ResolvingMetadata } from "next";
+import dbConnect from "../../../../lib/dbConnect";
+import Category from "../../../../models/Category";
+import Course from "../../../../models/Course";
+import Courses from "@/components/categories/Courses";
+import { getDictionary } from "../../dictionaries";
+
+import "./styles.css";
+
+type Props = {
+  params: { lang: string; id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+async function getCategory(id: String) {
+  await dbConnect();
+
+  const category = await Category.findById(id, "name _id").exec();
+
+  return category;
+}
+
+async function getCourses(id: String, lang: String) {
+  await dbConnect();
+
+  const courses = await Course.paginate(
+    { category: id, language: lang },
+    {
+      select: "-photo -category",
+      sort: "-price",
+    }
+  );
+
+  return courses;
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const categoryData = await getCategory(params.id);
+
+  let pageTitle = "";
+
+  switch (params.lang) {
+    case "en":
+      pageTitle = `${categoryData.name} courses | Devs Learning`;
+      break;
+
+    case "es":
+      pageTitle = `Cursos de ${categoryData.name} | Devs Learning`;
+      break;
+  }
+
+  return {
+    title: pageTitle,
+  };
+}
+
+export default async function CategoryPage({
+  params: { lang, id },
+}: {
+  params: { lang: string; id: string };
+}) {
+  const dictionary = await getDictionary(lang);
+  const category = await getCategory(id);
+  const courses = await getCourses(id, lang);
+
+  return (
+    <div className="technology">
+      <div className="container">
+        <h1>{category.name}</h1>
+        <Courses
+          categoryId={JSON.parse(JSON.stringify(category._id))}
+          courses={JSON.parse(JSON.stringify(courses.docs))}
+          dictionary={dictionary}
+          language={lang}
+        />
+      </div>
+    </div>
+  );
+}

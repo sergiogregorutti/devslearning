@@ -1,0 +1,37 @@
+{
+  "header": {
+    "language": {
+      "english": "English",
+      "spanish": "Spanish"
+    }
+  },
+  "footer": {
+    "createdBy": "Created by"
+  },
+  "home": {
+    "welcomeTo": "Welcome to",
+    "titleDescription": "Course directory for developers",
+    "technologiesTitle": "What do you want to learn?"
+  },
+  "categories": {
+    "goBack": "Go back",
+    "language": "Language",
+    "all": "All",
+    "english": "English",
+    "spanish": "Spanish",
+    "sortBy": "Sort by",
+    "priceHighToLow": "Price: High to Low",
+    "priceLowToHigh": "Price: Low to High",
+    "newest": "Newest",
+    "courses": "Courses",
+    "pricing": "Pricing",
+    "pricingFree": "Free",
+    "pricingOneTime": "One Time Payment",
+    "pricingSubscription": "Subscription",
+    "price": "Price",
+    "platform": "Platform",
+    "author": "Author",
+    "year": "Year",
+    "visitCourse": "Visit course"
+  }
+}
