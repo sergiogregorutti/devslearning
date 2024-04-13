@@ -1,3 +1,4 @@
+import { getDictionary } from "@/app/[lang]/dictionaries";
 import { Nunito, Poppins } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
@@ -35,20 +36,22 @@ export const metadata: Metadata = {
 
 import "./global.css";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params: { lang },
 }: Readonly<{
   children: React.ReactNode;
   params: { lang: string };
 }>) {
+  const dictionary = await getDictionary(lang);
+
   return (
     <html lang="en" className={`${nunito.variable} ${poppins.variable}`}>
       <UserProvider>
         <body>
           <Header lang={lang} />
           {children}
-          <Footer lang={lang} />
+          <Footer dictionary={dictionary} />
           <SpeedInsights />
           <Analytics />
           <GoogleAnalytics
