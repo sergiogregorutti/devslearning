@@ -43,8 +43,7 @@ export async function POST(request: Request) {
   const courses = await Course.paginate(findArgs, {
     offset,
     limit,
-    select: "-photo",
-    populate: { path: "category", select: "_id name" },
+    select: "-photo -category",
     sort: `${order}${sortBy}`,
   });
 
