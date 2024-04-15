@@ -1,3 +1,5 @@
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
+import { ThemeProvider } from "@mui/material/styles";
 import { getDictionary } from "@/app/[lang]/dictionaries";
 import { Nunito, Poppins } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -7,6 +9,8 @@ import type { Metadata } from "next";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
+
+import theme from "./theme";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -50,7 +54,9 @@ export default async function RootLayout({
       <UserProvider>
         <body>
           <Header lang={lang} />
-          {children}
+          <AppRouterCacheProvider>
+            <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          </AppRouterCacheProvider>
           <Footer dictionary={dictionary} />
           <SpeedInsights />
           <Analytics />

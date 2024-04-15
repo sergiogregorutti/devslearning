@@ -1,5 +1,10 @@
 "use client";
-import React, { useState, Suspense } from "react";
+import React, { useState } from "react";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Loading from "./loading";
 import CoursesList from "@/components/categories/CoursesList";
 
@@ -112,7 +117,7 @@ export default function Courses({
     });
   };
 
-  const handleLanguageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleLanguageChange = (event: SelectChangeEvent) => {
     const value = event.target.value;
     let newFilters = {};
 
@@ -132,7 +137,7 @@ export default function Courses({
     setLanguage(value);
   };
 
-  const handleSortByChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSortByChange = (event: SelectChangeEvent) => {
     const value = event.target.value;
     const sorting = generateSorting(value);
     loadFilteredResults(myFilters, sorting.sortBy, sorting.order);
@@ -144,87 +149,43 @@ export default function Courses({
       <div className="filter-and-sorting">
         <div>
           <span className="label">{dictionary.categories.sortBy}</span>
-          <div className="inputs">
-            <label className="custom-radio-button" htmlFor="priceHighToLow">
-              {dictionary.categories.priceHighToLow}
-              <input
-                type="radio"
-                id="priceHighToLow"
-                name="sortBy"
-                value="priceHighToLow"
-                onChange={handleSortByChange}
-                checked={sorting.id === "priceHighToLow" ? true : false}
-              />
-              <span className="checkmark"></span>
-            </label>
-
-            <label className="custom-radio-button" htmlFor="priceLowToHigh">
-              {dictionary.categories.priceLowToHigh}
-              <input
-                type="radio"
-                id="priceLowToHigh"
-                name="sortBy"
-                value="priceLowToHigh"
-                onChange={handleSortByChange}
-              />
-              <span className="checkmark"></span>
-            </label>
-
-            <label className="custom-radio-button" htmlFor="newest">
-              {dictionary.categories.newest}
-              <input
-                type="radio"
-                id="newest"
-                name="sortBy"
-                value="newest"
-                onChange={handleSortByChange}
-              />
-              <span className="checkmark"></span>
-            </label>
-          </div>
+          <FormControl
+            sx={{
+              width: {
+                xs: "200px",
+                sm: "200px",
+              },
+            }}
+          >
+            <Select value={sorting.id} onChange={handleSortByChange}>
+              <MenuItem value={"priceHighToLow"}>
+                {dictionary.categories.priceHighToLow}
+              </MenuItem>
+              <MenuItem value={"priceLowToHigh"}>
+                {dictionary.categories.priceLowToHigh}
+              </MenuItem>
+              <MenuItem value={"newest"}>
+                {dictionary.categories.newest}
+              </MenuItem>
+            </Select>
+          </FormControl>
         </div>
         <div>
           <span className="label">{dictionary.categories.language}</span>
-          <div className="inputs">
-            <label className="custom-radio-button" htmlFor="all">
-              {dictionary.categories.all}
-              <input
-                type="radio"
-                id="all"
-                name="language"
-                value="all"
-                onChange={handleLanguageChange}
-                checked={language === "all" ? true : false}
-              />
-              <span className="checkmark"></span>
-            </label>
-
-            <label className="custom-radio-button" htmlFor="en">
-              {dictionary.categories.english}
-              <input
-                type="radio"
-                id="en"
-                name="language"
-                value="en"
-                onChange={handleLanguageChange}
-                checked={language === "en" ? true : false}
-              />
-              <span className="checkmark"></span>
-            </label>
-
-            <label className="custom-radio-button" htmlFor="es">
-              {dictionary.categories.spanish}
-              <input
-                type="radio"
-                id="es"
-                name="language"
-                value="es"
-                onChange={handleLanguageChange}
-                checked={language === "es" ? true : false}
-              />
-              <span className="checkmark"></span>
-            </label>
-          </div>
+          <FormControl
+            sx={{
+              width: {
+                xs: "100%",
+                sm: "200px",
+              },
+            }}
+          >
+            <Select value={language} onChange={handleLanguageChange}>
+              <MenuItem value={"all"}>{dictionary.categories.all}</MenuItem>
+              <MenuItem value={"en"}>{dictionary.categories.english}</MenuItem>
+              <MenuItem value={"es"}>{dictionary.categories.spanish}</MenuItem>
+            </Select>
+          </FormControl>
         </div>
       </div>
       {isLoading ? (
