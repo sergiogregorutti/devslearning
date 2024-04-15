@@ -72,7 +72,7 @@
       & .image {
         position: relative;
 
-        & span {
+        & .label {
           position: absolute;
           top: 0px;
           left: 0px;
@@ -147,6 +147,24 @@
           & h3 {
             margin: 0 0 10px 0;
           }
+        }
+      }
+    }
+
+    &.skeleton {
+      & .item {
+        & .image {
+          & .react-loading-skeleton {
+            position: relative;
+            top: -3px;
+          }
+        }
+
+        & .skeleton-btn {
+          width: 132px;
+          height: 42px;
+          border-radius: 100px;
+          margin-top: 5px;
         }
       }
     }

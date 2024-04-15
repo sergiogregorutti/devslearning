@@ -1,6 +1,7 @@
 "use client";
-import React, { useState } from "react";
-import Link from "next/link";
+import React, { useState, Suspense } from "react";
+import Loading from "./loading";
+import CoursesList from "@/components/categories/CoursesList";
 
 interface Course {
   name: string;
@@ -38,6 +39,7 @@ export default function Courses({
     order: "desc",
   });
   const [filteredResults, setFilteredResults] = useState(courses);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getFilteredCourses = (
     filters = {},
@@ -99,11 +101,13 @@ export default function Courses({
     sortBy: String,
     order: String
   ) => {
+    setIsLoading(true);
     getFilteredCourses(newFilters, sortBy, order).then((data) => {
       if (data.error) {
         console.error("There is an error loading the courses");
       } else {
         setFilteredResults(data.courses);
+        setIsLoading(false);
       }
     });
   };
@@ -133,29 +137,6 @@ export default function Courses({
     const sorting = generateSorting(value);
     loadFilteredResults(myFilters, sorting.sortBy, sorting.order);
     setSorting(sorting);
-  };
-
-  const renderPricing = (value: String) => {
-    switch (value) {
-      case "free":
-        return (
-          <span className="pricing-free">
-            {dictionary.categories.pricingFree}
-          </span>
-        );
-      case "one-time-payment":
-        return (
-          <span className="pricing-one-time">
-            {dictionary.categories.pricingOneTime}
-          </span>
-        );
-      case "subscription":
-        return (
-          <span className="pricing-subscription">
-            {dictionary.categories.pricingSubscription}
-          </span>
-        );
-    }
   };
 
   return (
@@ -246,40 +227,11 @@ export default function Courses({
           </div>
         </div>
       </div>
-      <div className="courses-list">
-        {filteredResults.map((course: any) => (
-          <div className="item" key={course.name}>
-            <div className="image">
-              {renderPricing(course.pricing)}
-              <img src={`/api/course/photo/${course._id}`} alt={course.name} />
-            </div>
-            <div className="content">
-              <h3>{course.name}</h3>
-              <p>{course.description}</p>
-              <div className="details">
-                <span>
-                  <strong>{dictionary.categories.price}:</strong> US$&nbsp;
-                  {course.price}
-                </span>
-                <span>
-                  <strong>{dictionary.categories.platform}:</strong>{" "}
-                  {course.platform}
-                </span>
-                <span>
-                  <strong>{dictionary.categories.author}:</strong>{" "}
-                  {course.author}
-                </span>
-                <span>
-                  <strong>{dictionary.categories.year}:</strong> {course.year}
-                </span>
-              </div>
-              <Link className="btn" href={course.link} target="_blank">
-                {dictionary.categories.visitCourse}
-              </Link>
-            </div>
-          </div>
-        ))}
-      </div>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <CoursesList courses={filteredResults} dictionary={dictionary} />
+      )}
     </div>
   );
 }
