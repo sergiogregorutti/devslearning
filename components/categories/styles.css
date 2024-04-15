@@ -75,7 +75,7 @@
         }
 
         & .details {
-          & span {
+          & .detail {
             margin-right: 15px;
           }
         }

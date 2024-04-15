@@ -42,18 +42,18 @@ export default function CoursesList({
             <h3>{course.name}</h3>
             <p>{course.description}</p>
             <div className="details">
-              <span>
+              <span className="detail">
                 <strong>{dictionary.categories.price}:</strong> US$&nbsp;
                 {course.price}
               </span>
-              <span>
+              <span className="detail">
                 <strong>{dictionary.categories.platform}:</strong>{" "}
                 {course.platform}
               </span>
-              <span>
+              <span className="detail">
                 <strong>{dictionary.categories.author}:</strong> {course.author}
               </span>
-              <span>
+              <span className="detail">
                 <strong>{dictionary.categories.year}:</strong> {course.year}
               </span>
             </div>

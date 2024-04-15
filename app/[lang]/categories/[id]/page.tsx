@@ -68,8 +68,16 @@ export default async function CategoryPage({
 
   return (
     <div className="technology">
+      <div className="heading">
+        <div className="container">
+          <img
+            src={`/assets/technologies/${category._id}.svg`}
+            alt={category.name}
+          />
+          <h1>{category.name}</h1>
+        </div>
+      </div>
       <div className="container">
-        <h1>{category.name}</h1>
         <Courses
           categoryId={JSON.parse(JSON.stringify(category._id))}
           courses={JSON.parse(JSON.stringify(courses.docs))}
