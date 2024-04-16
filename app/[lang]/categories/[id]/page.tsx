@@ -40,20 +40,24 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const categoryData = await getCategory(params.id);
 
-  let pageTitle = "";
+  let pageTitle;
+  let description;
 
   switch (params.lang) {
     case "en":
       pageTitle = `${categoryData.name} courses | Devs Learning`;
+      description = `The best courses to learn ${categoryData.name}`;
       break;
 
     case "es":
       pageTitle = `Cursos de ${categoryData.name} | Devs Learning`;
+      description = `Los mejores cursos para aprender ${categoryData.name}`;
       break;
   }
 
   return {
     title: pageTitle,
+    description,
   };
 }
 

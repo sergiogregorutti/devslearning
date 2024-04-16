@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -8,6 +9,11 @@ import { getLocalizedPathFromPrefix } from "@/lib/language";
 import { getDictionary } from "./dictionaries";
 
 import "./styles.css";
+
+type Props = {
+  params: { lang: string; id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
 async function getCategories() {
   await dbConnect();
@@ -20,6 +26,28 @@ async function getCategories() {
   });
 
   return categories;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  let pageTitle;
+  let description;
+
+  switch (params.lang) {
+    case "en":
+      pageTitle = "Devs Learning | Course directory for developers";
+      description = "Discover the best courses to learn web development";
+      break;
+
+    case "es":
+      pageTitle = "Devs Learning | Directorio de cursos para desarrolladores";
+      description = "Descubre los mejores cursos para aprender desarrollo web";
+      break;
+  }
+
+  return {
+    title: pageTitle,
+    description,
+  };
 }
 
 export default async function Home({
@@ -52,7 +80,9 @@ export default async function Home({
       <div className="welcome">
         <div className="container">
           <div className="col-text">
-            <span className="welcome-to">{dictionary.home.welcomeTo}</span>
+            <span className="welcome-to">
+              {dictionary.home.welcomeTo}&nbsp;
+            </span>
             <span className="title">Devs Learning</span>
             <p>{dictionary.home.titleDescription}</p>
           </div>
