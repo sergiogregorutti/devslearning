@@ -50,7 +50,7 @@ export default async function RootLayout({
   const dictionary = await getDictionary(lang);
 
   return (
-    <html lang="en" className={`${nunito.variable} ${poppins.variable}`}>
+    <html lang={lang} className={`${nunito.variable} ${poppins.variable}`}>
       <UserProvider>
         <body>
           <Header lang={lang} />
