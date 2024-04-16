@@ -1,3 +1,4 @@
+import { headers } from "next/headers";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import Link from "next/link";
@@ -29,8 +30,18 @@ export default async function Home({
   const cookieStore = cookies();
   const languageCookie = cookieStore.get("language");
 
-  if (languageCookie?.value == "es" && lang === "en") {
+  if (languageCookie?.value === "es" && lang === "en") {
     redirect("/es/");
+  } else {
+    const headersList = headers();
+    const acceptLanguage = headersList.get("accept-language");
+    if (
+      lang === "en" &&
+      languageCookie?.value !== "en" &&
+      acceptLanguage?.includes("es")
+    ) {
+      redirect("/es/");
+    }
   }
 
   const dictionary = await getDictionary(lang);
