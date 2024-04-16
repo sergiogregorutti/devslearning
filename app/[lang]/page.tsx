@@ -1,9 +1,10 @@
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import Link from "next/link";
 import dbConnect from "@/lib/dbConnect";
 import Category from "@/models/Category";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import { getDictionary } from "./dictionaries";
-import { getSession } from "@auth0/nextjs-auth0";
 
 import "./styles.css";
 
@@ -25,6 +26,13 @@ export default async function Home({
 }: {
   params: { lang: string };
 }) {
+  const cookieStore = cookies();
+  const languageCookie = cookieStore.get("language");
+
+  if (languageCookie?.value == "es" && lang === "en") {
+    redirect("/es/");
+  }
+
   const dictionary = await getDictionary(lang);
   const categories = await getCategories();
 

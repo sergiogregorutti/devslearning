@@ -25,6 +25,7 @@
     &.active {
       background: #2197f9;
       border-radius: 14px;
+      cursor: default;
     }
 
     &:hover {
