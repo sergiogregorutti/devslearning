@@ -100,7 +100,7 @@ export default function SignUp({
 
         <p>
           {dictionary.signUp.alreadyHaveAccount}{" "}
-          <Link href={getLocalizedPathFromPrefix(lang, `/signin`)}>
+          <Link href={getLocalizedPathFromPrefix(lang, `/auth/signin`)}>
             {dictionary.signUp.signIn}
           </Link>
         </p>

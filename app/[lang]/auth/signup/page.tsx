@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import * as React from "react";
-import { getDictionary } from "../dictionaries";
-import SignInComponent from "@/components/signIn/SignIn";
+import { getDictionary } from "../../dictionaries";
+import SignUpComponent from "@/components/signUp/SignUp";
 
 import "./styles.css";
 
@@ -14,11 +14,11 @@ export async function generateMetadata({
 
   switch (params.lang) {
     case "en":
-      pageTitle = `Devs Learning | Sign In`;
+      pageTitle = `Devs Learning | Sign Up`;
       break;
 
     case "es":
-      pageTitle = `Devs Learning | Ingresar`;
+      pageTitle = `Devs Learning | Registrarse`;
       break;
   }
 
@@ -27,7 +27,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function SignIn({
+export default async function SignUp({
   params: { lang },
 }: {
   params: { lang: string };
@@ -46,10 +46,10 @@ export default async function SignIn({
   */
 
   return (
-    <div className="signin">
+    <div className="signup">
       <div className="container">
-        <h1>{dictionary.signIn.title}</h1>
-        <SignInComponent lang={lang} dictionary={dictionary} />
+        <h1>{dictionary.signUp.title}</h1>
+        <SignUpComponent lang={lang} dictionary={dictionary} />
       </div>
     </div>
   );
