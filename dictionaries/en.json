@@ -1,4 +1,7 @@
 {
+  "common": {
+    "loading": "Loading..."
+  },
   "header": {
     "language": {
       "english": "English",
@@ -12,6 +15,24 @@
     "welcomeTo": "Welcome to",
     "titleDescription": "Course directory for developers",
     "technologiesTitle": "What do you want to learn?"
+  },
+  "signUp": {
+    "title": "Sign Up",
+    "name": "Name",
+    "email": "E-mail",
+    "password": "Password",
+    "createAccount": "Create Account",
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Log In"
+  },
+  "signIn": {
+    "title": "Sign In",
+    "email": "E-mail",
+    "password": "Password",
+    "signIn": "Sign In",
+    "forgotPassword": "Forgot Password?",
+    "doNotHaveAccount": "Don’t have an account?",
+    "signUp": "Sign Up"
   },
   "categories": {
     "goBack": "Go back",

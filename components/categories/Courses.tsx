@@ -148,7 +148,7 @@ export default function Courses({
     <div className="courses">
       <div className="filter-and-sorting">
         <div>
-          <span className="label">{dictionary.categories.sortBy}</span>
+          <label className="form-label">{dictionary.categories.sortBy}</label>
           <FormControl
             sx={{
               width: {
@@ -171,7 +171,7 @@ export default function Courses({
           </FormControl>
         </div>
         <div>
-          <span className="label">{dictionary.categories.language}</span>
+          <label className="form-label">{dictionary.categories.language}</label>
           <FormControl
             sx={{
               width: {

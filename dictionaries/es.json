@@ -1,4 +1,7 @@
 {
+  "common": {
+    "loading": "Cargando..."
+  },
   "header": {
     "language": {
       "english": "Ingles",
@@ -12,6 +15,24 @@
     "welcomeTo": "Bienvenidos a",
     "titleDescription": "Directorio de cursos para desarrolladores",
     "technologiesTitle": "¿Que te gustaría aprender?"
+  },
+  "signUp": {
+    "title": "Registrarse",
+    "name": "Nombre",
+    "email": "E-mail",
+    "password": "Contraseña",
+    "createAccount": "Crear Cuenta",
+    "alreadyHaveAccount": "¿Ya tenes una cuenta?",
+    "signIn": "Ingresar"
+  },
+  "signIn": {
+    "title": "Ingresar",
+    "email": "E-mail",
+    "password": "Contraseña",
+    "signIn": "Ingresar",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "doNotHaveAccount": "¿No tenes una cuenta?",
+    "signUp": "Registrarse"
   },
   "categories": {
     "goBack": "Volver",
