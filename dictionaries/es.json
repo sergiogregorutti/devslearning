@@ -34,6 +34,20 @@
     "doNotHaveAccount": "¿No tenes una cuenta?",
     "signUp": "Registrarse"
   },
+  "activateAccount": {
+    "title": "Activar Cuenta",
+    "activateAccount": "Activar Cuenta"
+  },
+  "forgotPassword": {
+    "title": "Olvide mi Contraseña",
+    "email": "E-mail",
+    "requestResetLink": "Enviar Link para Recuperar Contraseña"
+  },
+  "resetPassword": {
+    "title": "Recuperar Contraseña",
+    "newPassword": "Nueva Contraseña",
+    "resetPassword": "Crear Nueva Contraseña"
+  },
   "categories": {
     "goBack": "Volver",
     "language": "Idioma",

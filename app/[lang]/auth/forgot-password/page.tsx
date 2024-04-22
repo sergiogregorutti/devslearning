@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import * as React from "react";
 import { getDictionary } from "../../dictionaries";
-import SignInComponent from "@/components/signIn/SignIn";
+import ForgotPasswordComponent from "@/components/forgotPassword/ForgotPassword";
 
 import "./styles.css";
 
@@ -14,11 +14,11 @@ export async function generateMetadata({
 
   switch (params.lang) {
     case "en":
-      pageTitle = `Devs Learning | Sign In`;
+      pageTitle = `Devs Learning | Forgot Password`;
       break;
 
     case "es":
-      pageTitle = `Devs Learning | Ingresar`;
+      pageTitle = `Devs Learning | Olvide Mi Contraseña`;
       break;
   }
 
@@ -27,7 +27,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function SignIn({
+export default async function ForgotPassword({
   params: { lang },
 }: {
   params: { lang: string };
@@ -35,10 +35,10 @@ export default async function SignIn({
   const dictionary = await getDictionary(lang);
 
   return (
-    <div className="signin">
+    <div className="forgot-password">
       <div className="container">
-        <h1>{dictionary.signIn.title}</h1>
-        <SignInComponent lang={lang} dictionary={dictionary} />
+        <h1>{dictionary.forgotPassword.title}</h1>
+        <ForgotPasswordComponent lang={lang} dictionary={dictionary} />
       </div>
     </div>
   );

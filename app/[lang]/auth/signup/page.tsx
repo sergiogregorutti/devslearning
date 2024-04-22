@@ -34,17 +34,6 @@ export default async function SignUp({
 }) {
   const dictionary = await getDictionary(lang);
 
-  /*
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
-  */
-
   return (
     <div className="signup">
       <div className="container">
