@@ -1,7 +1,7 @@
 import dbConnect from "../../../../lib/dbConnect";
 const jwt = require("jsonwebtoken");
 import User from "../../../../models/User";
-import { sendEmailWithMailgun } from "../../../../lib/email";
+import { sendEmailWithResend } from "../../../../lib/email";
 
 export async function POST(request: Request) {
   await dbConnect();
@@ -54,7 +54,7 @@ export async function POST(request: Request) {
   `,
     };
 
-    const emailSent = await sendEmailWithMailgun(emailData);
+    const emailSent = await sendEmailWithResend(emailData);
 
     if (emailSent) {
       return Response.json(
