@@ -1,5 +1,6 @@
 "use client";
 import { MouseEvent, useState } from "react";
+import axios from "axios";
 import Link from "next/link";
 import TextField from "@mui/material/TextField";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
@@ -19,6 +20,8 @@ export default function SignUp({
     password: "",
     buttonText: dictionary.signUp.createAccount,
   });
+  const [formLoading, setFormLoading] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const { name, email, password, buttonText } = values;
 
@@ -37,13 +40,17 @@ export default function SignUp({
 
   const clickSubmit = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+    setFormLoading(true);
     setValues({ ...values, buttonText: dictionary.common.loading });
-    /*
-    axios({
-      method: "POST",
-      url: `${process.env.REACT_APP_API}/signup`,
-      data: { name, email, password },
-    })
+
+    const form = new FormData();
+    form.append("lang", lang);
+    form.append("name", name);
+    form.append("email", email);
+    form.append("password", password);
+
+    axios
+      .post("/api/auth/signup", form)
       .then((response) => {
         console.log("Signup success", response);
         setValues({
@@ -53,50 +60,60 @@ export default function SignUp({
           password: "",
           buttonText: "Submitted",
         });
-        toast.success(response.data.message);
-        informParent(response);
+        setFormSubmitted(true);
       })
       .catch((error) => {
         console.log("Signup error", error.response.data);
         setValues({ ...values, buttonText: "Submit" });
-        toast.error(error.response.data.error);
       });
-      */
   };
 
   return (
     <div className="sign-up-container">
       <form className="form">
-        <label className="form-label">{dictionary.signUp.name}</label>
-        <TextField
-          fullWidth
-          onChange={handleChange("name")}
-          type="text"
-          value={name}
-          className="form-input"
-        />
+        {formSubmitted ? (
+          <p className="message">{dictionary.signUp.formSubmitted}</p>
+        ) : (
+          <>
+            <label className="form-label">{dictionary.signUp.name}</label>
+            <TextField
+              fullWidth
+              onChange={handleChange("name")}
+              type="text"
+              value={name}
+              className="form-input"
+              disabled={formLoading}
+            />
 
-        <label className="form-label">{dictionary.signUp.email}</label>
-        <TextField
-          fullWidth
-          onChange={handleChange("email")}
-          type="email"
-          value={email}
-          className="form-input"
-        />
+            <label className="form-label">{dictionary.signUp.email}</label>
+            <TextField
+              fullWidth
+              onChange={handleChange("email")}
+              type="email"
+              value={email}
+              className="form-input"
+              disabled={formLoading}
+            />
 
-        <label className="form-label">{dictionary.signUp.password}</label>
-        <TextField
-          fullWidth
-          onChange={handleChange("password")}
-          type="password"
-          value={password}
-          className="form-input"
-        />
+            <label className="form-label">{dictionary.signUp.password}</label>
+            <TextField
+              fullWidth
+              onChange={handleChange("password")}
+              type="password"
+              value={password}
+              className="form-input"
+              disabled={formLoading}
+            />
 
-        <button onClick={clickSubmit} className="btn btn-big">
-          {buttonText}
-        </button>
+            <button
+              onClick={clickSubmit}
+              className="btn btn-big"
+              disabled={formLoading}
+            >
+              {buttonText}
+            </button>
+          </>
+        )}
 
         <p>
           {dictionary.signUp.alreadyHaveAccount}{" "}

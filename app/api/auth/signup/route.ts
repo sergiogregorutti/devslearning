@@ -8,6 +8,12 @@ export async function POST(request: Request) {
 
   try {
     const formData = await request.formData();
+    let lang = formData.get("lang");
+    if (lang === "en") {
+      lang = "";
+    } else {
+      lang = "/es";
+    }
     const name = formData.get("name");
     const email = formData.get("email");
     const password = formData.get("password");
@@ -35,16 +41,16 @@ export async function POST(request: Request) {
       subject: "ACCOUNT ACTIVATION LINK",
       text: `
             Please use the following link to activate your account
-            http://localhost:3001/auth/activate/${token}
+            ${process.env.DOMAIN}${lang}/auth/activate-account/${token}
             his email may contain sensitive information
-            http://localhost:3001
+            ${process.env.DOMAIN}
         `,
       html: `
       <h1>Please use the following link to activate your account</h1>
-      <p>http://localhost:3001/auth/activate/${token}</p>
+      <p>${process.env.DOMAIN}${lang}/auth/activate-account/${token}</p>
       <hr />
       <p>This email may contain sensitive information</p>
-      <p>http://localhost:3001</p>
+      <p>${process.env.DOMAIN}</p>
   `,
     };
 
@@ -62,8 +68,9 @@ export async function POST(request: Request) {
       );
     }
   } catch (error) {
+    console.log("error", error);
     return Response.json(
-      { success: false },
+      { success: false, error },
       {
         status: 200,
       }

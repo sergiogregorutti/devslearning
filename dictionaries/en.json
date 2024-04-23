@@ -23,7 +23,8 @@
     "password": "Password",
     "createAccount": "Create Account",
     "alreadyHaveAccount": "Already have an account?",
-    "signIn": "Log In"
+    "signIn": "Log In",
+    "formSubmitted": "An E-mail has been sent to your email. Follow the instructions to activate your account."
   },
   "signIn": {
     "title": "Sign In",

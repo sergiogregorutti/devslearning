@@ -6,7 +6,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
-import { UserProvider } from "@auth0/nextjs-auth0/client";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 
@@ -51,20 +50,18 @@ export default async function RootLayout({
 
   return (
     <html lang={lang} className={`${nunito.variable} ${poppins.variable}`}>
-      <UserProvider>
-        <body>
-          <Header lang={lang} />
-          <AppRouterCacheProvider>
-            <ThemeProvider theme={theme}>{children}</ThemeProvider>
-          </AppRouterCacheProvider>
-          <Footer dictionary={dictionary} />
-          <SpeedInsights />
-          <Analytics />
-          <GoogleAnalytics
-            gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ?? ""}
-          />
-        </body>
-      </UserProvider>
+      <body>
+        <Header lang={lang} />
+        <AppRouterCacheProvider>
+          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        </AppRouterCacheProvider>
+        <Footer dictionary={dictionary} />
+        <SpeedInsights />
+        <Analytics />
+        <GoogleAnalytics
+          gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ?? ""}
+        />
+      </body>
     </html>
   );
 }

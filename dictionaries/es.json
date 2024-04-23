@@ -23,7 +23,8 @@
     "password": "Contraseña",
     "createAccount": "Crear Cuenta",
     "alreadyHaveAccount": "¿Ya tenes una cuenta?",
-    "signIn": "Ingresar"
+    "signIn": "Ingresar",
+    "formSubmitted": "Un correo ha sido enviado a tu E-mail. Sigue las instrucciones para activar tu cuenta."
   },
   "signIn": {
     "title": "Ingresar",
