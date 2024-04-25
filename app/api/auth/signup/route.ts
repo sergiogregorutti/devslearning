@@ -32,7 +32,7 @@ export async function POST(request: Request) {
     const token = jwt.sign(
       { name, email, password },
       process.env.JWT_ACCOUNT_ACTIVATION,
-      { expiresIn: "15m" }
+      { expiresIn: "30m" }
     );
 
     const emailData = {

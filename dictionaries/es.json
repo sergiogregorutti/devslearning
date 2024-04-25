@@ -37,7 +37,8 @@
   },
   "activateAccount": {
     "title": "Activar Cuenta",
-    "activateAccount": "Activar Cuenta"
+    "activateAccount": "Activar Cuenta",
+    "accountActivated": "Tu cuenta ha sido activada. Ya puedes ingresar."
   },
   "forgotPassword": {
     "title": "Olvide mi Contraseña",

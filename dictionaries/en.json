@@ -37,7 +37,8 @@
   },
   "activateAccount": {
     "title": "Activate Account",
-    "activateAccount": "Activate Account"
+    "activateAccount": "Activate Account",
+    "accountActivated": "Your account is activated. You can now sign in."
   },
   "forgotPassword": {
     "title": "Forgot Password",

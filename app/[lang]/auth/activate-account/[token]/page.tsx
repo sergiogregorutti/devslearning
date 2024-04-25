@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import * as React from "react";
-import { getDictionary } from "../../dictionaries";
+import { getDictionary } from "../../../dictionaries";
 import ActivateAccountComponent from "@/components/activateAccount/ActivateAccount";
 
 import "./styles.css";
@@ -28,9 +28,9 @@ export async function generateMetadata({
 }
 
 export default async function ActivateAccount({
-  params: { lang },
+  params: { lang, token },
 }: {
-  params: { lang: string };
+  params: { lang: string; token: string };
 }) {
   const dictionary = await getDictionary(lang);
 
@@ -38,7 +38,7 @@ export default async function ActivateAccount({
     <div className="activate-account">
       <div className="container">
         <h1>{dictionary.activateAccount.title}</h1>
-        <ActivateAccountComponent lang={lang} dictionary={dictionary} />
+        <ActivateAccountComponent token={token} dictionary={dictionary} />
       </div>
     </div>
   );

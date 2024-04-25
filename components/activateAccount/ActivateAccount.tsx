@@ -1,66 +1,80 @@
 "use client";
-import { MouseEvent, useState } from "react";
-import Link from "next/link";
-import TextField from "@mui/material/TextField";
-import { getLocalizedPathFromPrefix } from "@/lib/language";
+import { MouseEvent, useState, useEffect } from "react";
+import axios from "axios";
+const jwt = require("jsonwebtoken");
 
 import "./styles.css";
 
+interface Token {
+  name: string;
+}
+
 export default function ActivateAccount({
-  lang,
+  token,
   dictionary,
 }: {
-  lang: string;
+  token: string;
   dictionary: { [key: string]: any };
 }) {
   const [values, setValues] = useState({
     name: "",
-    token: "",
     buttonText: dictionary.activateAccount.activateAccount,
   });
-
-  /*
-  const params = useParams<RouteParams>();
+  const [formLoading, setFormLoading] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   useEffect(() => {
-    const token = params.token;
-
     const { name } = jwt.decode(token) as Token;
-    console.log("name", name);
 
     if (token) {
-      setValues({ ...values, name, token });
+      setValues({ ...values, name });
     }
   }, []);
-  */
 
-  const { name, token, buttonText } = values;
+  const { buttonText } = values;
 
   const clickSubmit = (event: MouseEvent) => {
     event.preventDefault();
-    /*
-    axios({
-      method: "POST",
-      url: `${process.env.REACT_APP_API}/account-activation`,
-      data: { token },
-    })
+    setFormLoading(true);
+    setValues({ ...values, buttonText: dictionary.common.loading });
+
+    const form = new FormData();
+    form.append("token", token);
+
+    axios
+      .post("/api/auth/activate-account", form)
       .then((response) => {
+        setFormSubmitted(true);
         console.log("Account activation success", response);
-        toast.success(response.data.message);
       })
       .catch((error) => {
+        setFormLoading(false);
+        setValues({
+          ...values,
+          buttonText: dictionary.activateAccount.activateAccount,
+        });
         console.log("Account activation error", error.response.data.error);
-        toast.error(error.response.data.error);
       });
-      */
   };
 
   return (
     <div className="activate-account-container">
       <form className="form">
-        <button onClick={clickSubmit} className="btn btn-big">
-          {buttonText}
-        </button>
+        {formSubmitted ? (
+          <p className="message">
+            {dictionary.activateAccount.accountActivated}
+          </p>
+        ) : (
+          <>
+            <button
+              onClick={clickSubmit}
+              className="btn btn-big"
+              disabled={formLoading}
+            >
+              {buttonText}
+            </button>
+          </>
+        )}
       </form>
       <div className="image-container">
         <img alt="Devs Learning" src="/assets/boy2.svg" />
