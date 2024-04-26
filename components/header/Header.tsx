@@ -6,9 +6,10 @@ import { getLocalizedPathFromPrefix } from "@/lib/language";
 
 import "./styles.css";
 
-const Header = async ({ lang }: { lang: string }) => {
+const Header = async ({ lang, user }: { lang: string; user: any }) => {
   // const session = await getSession();
   const dictionary = await getDictionary(lang);
+  const isAuth = user ? user : false;
 
   return (
     <header>

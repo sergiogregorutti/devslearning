@@ -1,3 +1,5 @@
+import { cookies } from "next/headers";
+const jwt = require("jsonwebtoken");
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 import { getDictionary } from "@/app/[lang]/dictionaries";
@@ -46,12 +48,18 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { lang: string };
 }>) {
+  const cookieStore = cookies();
+  const token = cookieStore.get("token");
+  let user = null;
+  if (token) {
+    user = jwt.decode(token.value);
+  }
   const dictionary = await getDictionary(lang);
 
   return (
     <html lang={lang} className={`${nunito.variable} ${poppins.variable}`}>
       <body>
-        <Header lang={lang} />
+        <Header user={user} lang={lang} />
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>{children}</ThemeProvider>
         </AppRouterCacheProvider>

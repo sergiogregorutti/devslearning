@@ -1,8 +1,11 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { MouseEvent, useState } from "react";
+import axios from "axios";
 import Link from "next/link";
 import TextField from "@mui/material/TextField";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
+import { authenticate } from "@/lib/helpers";
 
 import "./styles.css";
 
@@ -13,13 +16,23 @@ export default function SignIn({
   lang: string;
   dictionary: { [key: string]: any };
 }) {
+  const router = useRouter();
   const [values, setValues] = useState({
     email: "",
     password: "",
     buttonText: dictionary.signIn.signIn,
   });
+  const [formLoading, setFormLoading] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const { email, password, buttonText } = values;
+
+  let langRedirection = lang;
+  if (lang === "en") {
+    langRedirection = "/";
+  } else {
+    langRedirection = "/es/";
+  }
 
   const handleChange =
     (name: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,31 +49,34 @@ export default function SignIn({
 
   const clickSubmit = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+    setFormLoading(true);
     setValues({ ...values, buttonText: dictionary.common.loading });
-    /*
-    axios({
-      method: "POST",
-      url: `${process.env.REACT_APP_API}/signup`,
-      data: { name, email, password },
-    })
+
+    const form = new FormData();
+    form.append("email", email);
+    form.append("password", password);
+
+    axios
+      .post("/api/auth/signin", form)
       .then((response) => {
-        console.log("Signup success", response);
-        setValues({
-          ...values,
-          name: "",
-          email: "",
-          password: "",
-          buttonText: "Submitted",
+        console.log("Signin success", response);
+
+        authenticate(response, () => {
+          setValues({
+            ...values,
+            email: "",
+            password: "",
+            buttonText: "Submitted",
+          });
+          router.push(langRedirection);
+          router.refresh();
         });
-        toast.success(response.data.message);
-        informParent(response);
+        setFormSubmitted(true);
       })
       .catch((error) => {
         console.log("Signup error", error.response.data);
         setValues({ ...values, buttonText: "Submit" });
-        toast.error(error.response.data.error);
       });
-      */
   };
 
   return (
@@ -73,6 +89,7 @@ export default function SignIn({
           type="email"
           value={email}
           className="form-input"
+          disabled={formLoading}
         />
 
         <label className="form-label">{dictionary.signIn.password}</label>
@@ -82,9 +99,14 @@ export default function SignIn({
           type="password"
           value={password}
           className="form-input"
+          disabled={formLoading}
         />
 
-        <button onClick={clickSubmit} className="btn btn-big">
+        <button
+          onClick={clickSubmit}
+          className="btn btn-big"
+          disabled={formLoading}
+        >
           {buttonText}
         </button>
 

@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+const jwt = require("jsonwebtoken");
+import { cookies } from "next/headers";
 import {
   allowedLocales,
   defaultInternalPrefix,
@@ -7,6 +9,14 @@ import {
 } from "./lib/language";
 
 export function middleware(request: NextRequest) {
+  const cookieStore = cookies();
+  const token = cookieStore.get("token");
+  let user = null;
+  if (token) {
+    user = jwt.decode(token.value);
+  }
+  console.log("middleware user", user);
+
   if (request.nextUrl.pathname.startsWith("/en/")) {
     return NextResponse.rewrite(new URL("/en/not-found-page", request.url));
   }
