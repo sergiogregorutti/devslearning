@@ -1,4 +1,3 @@
-// import { getSession } from "@auth0/nextjs-auth0";
 import Link from "next/link";
 import LanguageSelector from "@/components/languageSelector/LanguageSelector";
 import { getDictionary } from "@/app/[lang]/dictionaries";

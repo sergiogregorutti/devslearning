@@ -16,6 +16,11 @@
     "titleDescription": "Directorio de cursos para desarrolladores",
     "technologiesTitle": "¿Que te gustaría aprender?"
   },
+  "notFound": {
+    "title": "Error 404",
+    "description": "La página a la que esta intentando acceder no existe.",
+    "link": "Ir al Inicio"
+  },
   "signUp": {
     "title": "Registrarse",
     "name": "Nombre",
