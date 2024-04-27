@@ -12,6 +12,7 @@
   cursor: pointer;
 
   &:hover {
+    text-decoration: none;
     background: #1a73e8;
   }
 

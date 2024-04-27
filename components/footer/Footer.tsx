@@ -18,15 +18,17 @@ export default function Footer({
 
   return (
     <footer>
-      <div className="container">
-        Devs Learning {new Date().getFullYear()}
-        <span className="separator">|</span>
-        <span>
-          {dictionary.footer.createdBy}{" "}
-          <a href="https://github.com/sergiogregorutti/" target="_blank">
-            @sergiogregorutti
-          </a>
-        </span>
+      <div className="footer-content">
+        <div className="container">
+          Devs Learning {new Date().getFullYear()}
+          <span className="separator">|</span>
+          <span>
+            {dictionary.footer.createdBy}{" "}
+            <a href="https://github.com/sergiogregorutti/" target="_blank">
+              @sergiogregorutti
+            </a>
+          </span>
+        </div>
       </div>
     </footer>
   );
