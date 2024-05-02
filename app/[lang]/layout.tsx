@@ -64,11 +64,16 @@ export default async function RootLayout({
           <ThemeProvider theme={theme}>{children}</ThemeProvider>
         </AppRouterCacheProvider>
         <Footer dictionary={dictionary} />
-        <SpeedInsights />
-        <Analytics />
-        <GoogleAnalytics
-          gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ?? ""}
-        />
+
+        {process.env.ENVIRONMENT === "production" ? (
+          <>
+            <SpeedInsights />
+            <Analytics />
+            <GoogleAnalytics
+              gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ?? ""}
+            />
+          </>
+        ) : null}
       </body>
     </html>
   );
