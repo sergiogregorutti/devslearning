@@ -26,4 +26,8 @@
     opacity: 0.6;
     background: #2197f9;
   }
+
+  & + .btn {
+    margin-left: 15px;
+  }
 }
