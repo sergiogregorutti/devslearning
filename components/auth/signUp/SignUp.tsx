@@ -5,8 +5,6 @@ import Link from "next/link";
 import TextField from "@mui/material/TextField";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 
-import "./styles.css";
-
 export default function SignUp({
   lang,
   dictionary,
@@ -69,7 +67,7 @@ export default function SignUp({
   };
 
   return (
-    <div className="sign-up-container">
+    <div className="content-container">
       <form className="form">
         {formSubmitted ? (
           <p className="message">{dictionary.signUp.formSubmitted}</p>

@@ -1,16 +1,10 @@
 "use client";
 import { MouseEvent, useState } from "react";
-import Link from "next/link";
 import TextField from "@mui/material/TextField";
-import { getLocalizedPathFromPrefix } from "@/lib/language";
-
-import "./styles.css";
 
 export default function SignIn({
-  lang,
   dictionary,
 }: {
-  lang: string;
   dictionary: { [key: string]: any };
 }) {
   const [values, setValues] = useState({
@@ -64,7 +58,7 @@ export default function SignIn({
   };
 
   return (
-    <div className="reset-password-container">
+    <div className="content-container">
       <form className="form">
         <label className="form-label">
           {dictionary.resetPassword.newPassword}

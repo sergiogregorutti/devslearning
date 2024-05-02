@@ -7,8 +7,6 @@ import TextField from "@mui/material/TextField";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import { authenticate } from "@/lib/helpers";
 
-import "./styles.css";
-
 export default function SignIn({
   lang,
   dictionary,
@@ -80,7 +78,7 @@ export default function SignIn({
   };
 
   return (
-    <div className="sign-in-container">
+    <div className="content-container">
       <form className="form">
         <label className="form-label">{dictionary.signIn.email}</label>
         <TextField

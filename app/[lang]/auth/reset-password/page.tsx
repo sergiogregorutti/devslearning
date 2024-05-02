@@ -1,9 +1,7 @@
 import { Metadata } from "next";
 import * as React from "react";
 import { getDictionary } from "../../dictionaries";
-import ResetPasswordComponent from "@/components/resetPassword/ResetPassword";
-
-import "./styles.css";
+import ResetPasswordComponent from "@/components/auth/resetPassword/ResetPassword";
 
 export async function generateMetadata({
   params,
@@ -35,7 +33,7 @@ export default async function ResetPassword({
   const dictionary = await getDictionary(lang);
 
   return (
-    <div className="reset-password">
+    <div className="auth-template">
       <div className="container">
         <h1>{dictionary.resetPassword.title}</h1>
         <ResetPasswordComponent lang={lang} dictionary={dictionary} />

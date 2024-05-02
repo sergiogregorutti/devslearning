@@ -3,7 +3,15 @@ const jwt = require("jsonwebtoken");
 import { cookies } from "next/headers";
 import { defaultInternalPrefix } from "./lib/language";
 
-const sections = ["categories"];
+const sections = [
+  "auth/signin",
+  "auth/signup",
+  "auth/forgot-password",
+  "auth/reset-password",
+  "auth/activate-account",
+  "categories",
+  "admin",
+];
 
 const sectionExists = (pathname: string) => {
   let isValidSection = false;
@@ -21,7 +29,8 @@ const sectionExists = (pathname: string) => {
   return isValidSection;
 };
 
-export function middleware(request: NextRequest) {
+const userHasAccess = (pathname: string) => {
+  let userHasAccess = true;
   let isAuth = false;
   let isAdmin = false;
   const cookieStore = cookies();
@@ -36,6 +45,12 @@ export function middleware(request: NextRequest) {
     }
   }
 
+  if (pathname.startsWith("/en/admin/") && !isAdmin) userHasAccess = false;
+
+  return userHasAccess;
+};
+
+export function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith("/es/admin")) {
     return NextResponse.rewrite(new URL("/en/not-found-page", request.url));
   }
@@ -47,9 +62,13 @@ export function middleware(request: NextRequest) {
   // English routes
   if (!request.nextUrl.pathname.startsWith("/es/")) {
     request.nextUrl.pathname = `/${defaultInternalPrefix}${request.nextUrl.pathname}`;
-    console.log("new pathname", request.nextUrl.pathname);
+
     if (sectionExists(request.nextUrl.pathname)) {
-      return NextResponse.rewrite(request.nextUrl);
+      if (!userHasAccess(request.nextUrl.pathname)) {
+        return NextResponse.rewrite(new URL("/en/not-found-page", request.url));
+      } else {
+        return NextResponse.rewrite(request.nextUrl);
+      }
     } else {
       return NextResponse.rewrite(new URL("/en/not-found-page", request.url));
     }

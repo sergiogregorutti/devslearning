@@ -1,9 +1,7 @@
 import { Metadata } from "next";
 import * as React from "react";
 import { getDictionary } from "../../dictionaries";
-import SignInComponent from "@/components/signIn/SignIn";
-
-import "./styles.css";
+import SignInComponent from "@/components/auth/signIn/SignIn";
 
 export async function generateMetadata({
   params,
@@ -35,7 +33,7 @@ export default async function SignIn({
   const dictionary = await getDictionary(lang);
 
   return (
-    <div className="signin">
+    <div className="auth-template">
       <div className="container">
         <h1>{dictionary.signIn.title}</h1>
         <SignInComponent lang={lang} dictionary={dictionary} />

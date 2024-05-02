@@ -3,8 +3,6 @@ import { MouseEvent, useState, useEffect } from "react";
 import axios from "axios";
 const jwt = require("jsonwebtoken");
 
-import "./styles.css";
-
 interface Token {
   name: string;
 }
@@ -58,7 +56,7 @@ export default function ActivateAccount({
   };
 
   return (
-    <div className="activate-account-container">
+    <div className="content-container">
       <form className="form">
         {formSubmitted ? (
           <p className="message">

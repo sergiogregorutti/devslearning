@@ -1,9 +1,7 @@
 import { Metadata } from "next";
 import * as React from "react";
 import { getDictionary } from "../../dictionaries";
-import ForgotPasswordComponent from "@/components/forgotPassword/ForgotPassword";
-
-import "./styles.css";
+import ForgotPasswordComponent from "@/components/auth/forgotPassword/ForgotPassword";
 
 export async function generateMetadata({
   params,
@@ -35,7 +33,7 @@ export default async function ForgotPassword({
   const dictionary = await getDictionary(lang);
 
   return (
-    <div className="forgot-password">
+    <div className="auth-template">
       <div className="container">
         <h1>{dictionary.forgotPassword.title}</h1>
         <ForgotPasswordComponent lang={lang} dictionary={dictionary} />
