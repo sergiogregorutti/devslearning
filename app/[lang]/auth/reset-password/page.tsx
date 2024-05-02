@@ -36,7 +36,7 @@ export default async function ResetPassword({
     <div className="auth-template">
       <div className="container">
         <h1>{dictionary.resetPassword.title}</h1>
-        <ResetPasswordComponent lang={lang} dictionary={dictionary} />
+        <ResetPasswordComponent dictionary={dictionary} />
       </div>
     </div>
   );

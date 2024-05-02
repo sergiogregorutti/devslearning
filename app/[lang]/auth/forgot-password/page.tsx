@@ -36,7 +36,7 @@ export default async function ForgotPassword({
     <div className="auth-template">
       <div className="container">
         <h1>{dictionary.forgotPassword.title}</h1>
-        <ForgotPasswordComponent lang={lang} dictionary={dictionary} />
+        <ForgotPasswordComponent dictionary={dictionary} />
       </div>
     </div>
   );
