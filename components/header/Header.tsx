@@ -1,13 +1,22 @@
+"use client";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import LanguageSelector from "@/components/languageSelector/LanguageSelector";
-import { getDictionary } from "@/app/[lang]/dictionaries";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 
 import "./styles.css";
 
-const Header = async ({ lang, user }: { lang: string; user: any }) => {
-  // const session = await getSession();
-  const dictionary = await getDictionary(lang);
+const Header = ({
+  dictionary,
+  lang,
+  user,
+}: {
+  dictionary: { [key: string]: any };
+  lang: string;
+  user: any;
+}) => {
+  const pathname = usePathname();
+  console.log("pathname", pathname);
   const isAuth = user ? user : false;
 
   return (

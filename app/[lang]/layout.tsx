@@ -8,7 +8,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
-import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 
 import theme from "./theme";
@@ -59,7 +58,6 @@ export default async function RootLayout({
   return (
     <html lang={lang} className={`${nunito.variable} ${poppins.variable}`}>
       <body>
-        <Header user={user} lang={lang} />
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>{children}</ThemeProvider>
         </AppRouterCacheProvider>

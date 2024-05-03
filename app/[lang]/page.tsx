@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { cookies } from "next/headers";
+const jwt = require("jsonwebtoken");
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import dbConnect from "@/lib/dbConnect";
@@ -9,6 +10,7 @@ import { getLocalizedPathFromPrefix } from "@/lib/language";
 import { getDictionary } from "./dictionaries";
 
 import "./styles.css";
+import Header from "@/components/header/Header";
 
 type Props = {
   params: { lang: string; id: string };
@@ -58,6 +60,12 @@ export default async function Home({
   const cookieStore = cookies();
   const languageCookie = cookieStore.get("language");
 
+  const token = cookieStore.get("token");
+  let user = null;
+  if (token) {
+    user = jwt.decode(token.value);
+  }
+
   if (languageCookie?.value === "es" && lang === "en") {
     redirect("/es/");
   } else {
@@ -77,6 +85,7 @@ export default async function Home({
 
   return (
     <>
+      <Header dictionary={dictionary} user={user} lang={lang} />
       <div className="welcome">
         <div className="container">
           <div className="col-text">
