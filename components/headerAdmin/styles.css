@@ -60,14 +60,13 @@ header {
     }
 
     & .mobile-menu {
-      opacity: 0;
+      display: none;
       background: #c3dffa;
       position: fixed;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
@@ -124,7 +123,7 @@ header {
       }
 
       &.open {
-        opacity: 1;
+        display: flex;
       }
     }
 

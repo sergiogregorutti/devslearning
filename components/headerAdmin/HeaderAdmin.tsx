@@ -48,6 +48,9 @@ const HeaderAdmin = ({ lang, user }: { lang: string; user: any }) => {
                 <li className="item">
                   <Link href="/admin/courses">Courses</Link>
                 </li>
+                <li className="item">
+                  <Link href="/">Go to Website</Link>
+                </li>
               </ul>
             </div>
             <img className="mobile-menu-logo" src="/assets/logo_dark.svg" />
