@@ -15,35 +15,6 @@
     grid-template-columns: 1fr;
     align-items: stretch;
 
-    & .navigation {
-      display: none;
-      background: rgba(33, 151, 249, 0.3);
-
-      & .menu {
-        width: 100%;
-        list-style: none;
-        margin: 50px 0 20px 0;
-        padding: 0;
-
-        & .item {
-          border-bottom: 1px solid #000;
-
-          a {
-            display: inline-block;
-            width: calc(100% - 50px);
-            color: #000;
-            text-decoration: none;
-            padding: 10px 25px;
-
-            &:hover {
-              background: #7ebdf2;
-              text-decoration: none;
-            }
-          }
-        }
-      }
-    }
-
     & .content {
       padding: 15px 0;
 

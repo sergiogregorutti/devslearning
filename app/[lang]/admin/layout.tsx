@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 const jwt = require("jsonwebtoken");
-import HeaderAdmin from "@/components/headerAdmin/HeaderAdmin";
+import Header from "@/app/[lang]/admin/components/header/Header";
 
 export default async function Layout({
   children,
@@ -18,7 +18,7 @@ export default async function Layout({
 
   return (
     <>
-      <HeaderAdmin user={user} lang={lang} /> {children}
+      <Header user={user} lang={lang} /> {children}
     </>
   );
 }

@@ -7,7 +7,7 @@ import CloseIcon from "@mui/icons-material/Close";
 
 import "./styles.css";
 
-const HeaderAdmin = ({ lang, user }: { lang: string; user: any }) => {
+const Header = ({ lang, user }: { lang: string; user: any }) => {
   const isAuth = user ? user : false;
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
@@ -61,4 +61,4 @@ const HeaderAdmin = ({ lang, user }: { lang: string; user: any }) => {
   );
 };
 
-export default HeaderAdmin;
+export default Header;

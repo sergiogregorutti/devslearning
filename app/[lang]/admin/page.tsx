@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getDictionary } from "../dictionaries";
+import Navigation from "./components/navigation/Navigation";
 
 import "../../../css/admin-template.css";
 
@@ -30,20 +31,11 @@ export default async function Home({
     <div className="admin-template">
       <div className="container">
         <div className="content-container">
-          <div className="navigation">
-            <ul className="menu">
-              <li className="item">
-                <Link href="/admin/technologies">Tecnologies</Link>
-              </li>
-              <li className="item">
-                <Link href="/admin/courses">Courses</Link>
-              </li>
-            </ul>
-          </div>
+          <Navigation />
           <div className="content">
-            <h1>Admin</h1>
+            <h1>Dashboard</h1>
             <Link className="btn btn-big" href="/admin/technologies">
-              Tecnologies
+              Technologies
             </Link>
             <Link className="btn btn-big" href="/admin/courses">
               Courses
