@@ -54,7 +54,7 @@ export default function Courses({
       sortBy,
       order,
     };
-    return fetch(`/api/courses/by/search`, {
+    return fetch(`/api/courses`, {
       method: "POST",
       headers: {
         Accept: "application/json",
