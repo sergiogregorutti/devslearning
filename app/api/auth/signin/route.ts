@@ -35,7 +35,7 @@ export async function POST(request: Request) {
       { _id: user._id, name: user.name, email: user.email, role: user.role },
       process.env.JWT_SECRET,
       {
-        expiresIn: "7d",
+        expiresIn: "2y",
       }
     );
     const { _id, name, role } = user;

@@ -1,5 +1,4 @@
 "use client";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 import LanguageSelector from "@/components/languageSelector/LanguageSelector";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
@@ -15,8 +14,6 @@ const Header = ({
   lang: string;
   user: any;
 }) => {
-  const pathname = usePathname();
-  console.log("pathname", pathname);
   const isAuth = user ? user : false;
 
   return (

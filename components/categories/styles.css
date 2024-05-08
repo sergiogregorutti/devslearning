@@ -75,6 +75,10 @@
             margin-right: 15px;
           }
         }
+
+        & .btn {
+          margin-top: 10px;
+        }
       }
 
       & + .item {

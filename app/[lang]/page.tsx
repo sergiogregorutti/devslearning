@@ -22,7 +22,7 @@ async function getCategories() {
 
   const result = await Category.find({});
 
-  const categories = result.map((doc) => {
+  const categories = result.map((doc: any) => {
     const category = JSON.parse(JSON.stringify(doc));
     return category;
   });

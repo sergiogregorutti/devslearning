@@ -1,6 +1,5 @@
 .btn {
   display: inline-block;
-  margin-top: 10px;
   color: #fff;
   text-decoration: none;
   border-radius: 100px;
@@ -19,6 +18,16 @@
   &.btn-big {
     font-size: 18px;
     padding: 12px 28px;
+  }
+
+  &.btn-link {
+    padding: 10px 24px;
+    background: none;
+    color: #1a73e8;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &:disabled {

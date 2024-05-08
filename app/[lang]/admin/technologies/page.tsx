@@ -2,11 +2,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Navigation from "../components/navigation/Navigation";
-import dbConnect from "@/lib/dbConnect";
-import Category from "@/models/Category";
 import {
-  Grid,
-  Typography,
   Table,
   TableBody,
   TableCell,
@@ -25,19 +21,30 @@ export default function Technologies() {
 
   const { categories } = values;
 
-  async function getCategories() {}
-
-  const loadCategories = () => {
-    const categories = getCategories();
+  const loadCategories = async () => {
+    const data = {
+      filters: {},
+      sortBy: "_id",
+      order: "desc",
+    };
+    const response = await fetch(`/api/categories/`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const categories = await response.json();
 
     setValues({
       ...values,
-      categories,
+      categories: categories.categories,
     });
   };
 
   const init = () => {
-    // loadCategories();
+    loadCategories();
   };
 
   useEffect(() => {
@@ -102,17 +109,17 @@ export default function Technologies() {
                         </TableCell>
                         <TableCell align="center">
                           <Link
-                            className="btn btn-big"
+                            className="btn btn-link"
                             href={`/admin/technologies/${category._id}`}
                           >
                             Edit
                           </Link>
-                          <Button
-                            className="btn btn-big"
+                          <button
+                            className="btn btn-link"
                             onClick={() => destroy(category._id)}
                           >
                             Delete
-                          </Button>
+                          </button>
                         </TableCell>
                       </TableRow>
                     ))}
