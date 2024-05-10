@@ -1,7 +1,7 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import dbConnect from "../../../../lib/dbConnect";
-import Category from "../../../../models/Category";
-import Course from "../../../../models/Course";
+import dbConnect from "../../../../../lib/dbConnect";
+import Category from "../../../../../models/Category";
+import Course from "../../../../../models/Course";
 import Courses from "@/components/categories/Courses";
 import { getDictionary } from "../../dictionaries";
 

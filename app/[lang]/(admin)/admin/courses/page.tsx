@@ -1,6 +1,6 @@
 import Navigation from "../components/navigation/Navigation";
 
-import "../../../../css/admin-template.css";
+import "../../../../../css/admin-template.css";
 
 export default async function Courses() {
   return (

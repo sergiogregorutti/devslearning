@@ -12,7 +12,7 @@ import {
   Button,
 } from "@mui/material";
 
-import "../../../../css/admin-template.css";
+import "../../../../../css/admin-template.css";
 
 export default function Technologies() {
   const [values, setValues] = useState<any>({

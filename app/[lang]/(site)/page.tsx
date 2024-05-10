@@ -10,7 +10,6 @@ import { getLocalizedPathFromPrefix } from "@/lib/language";
 import { getDictionary } from "./dictionaries";
 
 import "./styles.css";
-import Header from "@/components/header/Header";
 
 type Props = {
   params: { lang: string; id: string };
@@ -85,7 +84,6 @@ export default async function Home({
 
   return (
     <>
-      <Header dictionary={dictionary} user={user} lang={lang} />
       <div className="welcome">
         <div className="container">
           <div className="col-text">
