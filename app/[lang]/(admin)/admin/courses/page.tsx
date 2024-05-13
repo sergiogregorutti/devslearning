@@ -1,4 +1,4 @@
-import Navigation from "../components/navigation/Navigation";
+import Navigation from "../ui/navigation/Navigation";
 
 export default async function Courses() {
   return (

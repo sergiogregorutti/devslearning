@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getDictionary } from "../../(site)/dictionaries";
-import Navigation from "./components/navigation/Navigation";
+import Navigation from "./ui/navigation/Navigation";
 
 type Props = {
   params: { lang: string; id: string };

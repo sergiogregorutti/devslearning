@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Navigation from "../components/navigation/Navigation";
-import Search from "../components/search/Search";
+import Navigation from "../ui/navigation/Navigation";
+import Search from "../ui/search/Search";
 import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
 
