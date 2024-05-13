@@ -27,11 +27,12 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Devs Learning | Course directory for developers",
+  title: "Devs Learning | Admin",
   description: "Course directory for Developers",
 };
 
 import "../../global.css";
+import "../../../../css/admin-template.css";
 
 export default async function RootLayout({
   children,

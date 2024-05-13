@@ -3,8 +3,6 @@ import Link from "next/link";
 import { getDictionary } from "../../(site)/dictionaries";
 import Navigation from "./components/navigation/Navigation";
 
-import "../../../../css/admin-template.css";
-
 type Props = {
   params: { lang: string; id: string };
   searchParams: { [key: string]: string | string[] | undefined };

@@ -2,17 +2,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Navigation from "../components/navigation/Navigation";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Button,
-} from "@mui/material";
-
-import "../../../../../css/admin-template.css";
+import Search from "../components/search/Search";
+import EditIcon from "@mui/icons-material/Edit";
+import ClearIcon from "@mui/icons-material/Clear";
 
 export default function Technologies() {
   const [values, setValues] = useState<any>({
@@ -71,61 +63,59 @@ export default function Technologies() {
           <Navigation />
           <div className="content">
             <h1>Technologies</h1>
-            <Link className="btn btn-big" href="/admin/technologies">
-              Add Technology
-            </Link>
+            <div className="main-actions">
+              <div>
+                <Link className="btn btn-big" href="/admin/technologies">
+                  + Add New
+                </Link>
+              </div>
+              <div className="search-column">
+                <Search placeholder="Search technologies..." />
+              </div>
+            </div>
 
-            <TableContainer>
-              <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Category</TableCell>
-                    <TableCell align="center">Actions</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
+            <div className="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
                   {categories &&
                     categories.map((category: any) => (
-                      <TableRow
-                        key={category.name}
-                        sx={{
-                          "&:last-child td, &:last-child th": { border: 0 },
-                        }}
-                      >
-                        <TableCell
-                          component="th"
-                          scope="row"
-                          sx={{
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                          }}
-                        >
-                          <img
-                            src={`/assets/technologies/${category._id}.svg`}
-                            alt={category.name}
-                          />
-                          {category.name}
-                        </TableCell>
-                        <TableCell align="center">
+                      <tr key={category.name}>
+                        <td>
+                          <span className="image-container">
+                            <img
+                              src={`/assets/technologies/${category._id}.svg`}
+                              alt={category.name}
+                            />
+                          </span>
+                          <span className="name">{category.name}</span>
+                        </td>
+                        <td>
                           <Link
                             className="btn btn-link"
-                            href={`/admin/technologies/${category._id}`}
+                            href={`/admin/technologies/edit/${category._id}`}
                           >
-                            Edit
+                            <EditIcon />
+                            <span className="btn-text">Edit</span>
                           </Link>
                           <button
-                            className="btn btn-link"
+                            className="btn btn-link btn-remove"
                             onClick={() => destroy(category._id)}
                           >
-                            Delete
+                            <ClearIcon />
+                            <span className="btn-text">Remove</span>
                           </button>
-                        </TableCell>
-                      </TableRow>
+                        </td>
+                      </tr>
                     ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,15 @@
+.search-wrapper {
+  position: relative;
+
+  & svg {
+    position: absolute;
+    left: 10px;
+    top: 12px;
+  }
+
+  & input {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 40px;
+  }
+}
