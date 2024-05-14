@@ -18,6 +18,8 @@ const categorySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+categorySchema.index({ name: "text" });
+
 categorySchema.plugin(mongoosePaginate);
 
 export default mongoose.models.Category ||
