@@ -29,9 +29,29 @@ export async function fetchFilteredTechnologies(
     limit: ITEMS_PER_PAGE,
   };
 
-  console.log("options", options);
-
   const technologies = await Category.paginate(finalQuery, options);
 
   return technologies;
+}
+
+export async function fetchTechnologiesPages(query = "") {
+  noStore();
+  await dbConnect();
+
+  let finalQuery = {};
+
+  if (query !== "") {
+    const regexQuery = { $regex: new RegExp(query, "i") };
+    finalQuery = {
+      $or: [{ $text: { $search: query } }, { name: regexQuery }],
+    };
+  }
+
+  const options = {
+    limit: ITEMS_PER_PAGE,
+  };
+
+  const technologies = await Category.paginate(finalQuery, options);
+
+  return technologies.totalPages;
 }

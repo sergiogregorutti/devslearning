@@ -2,8 +2,10 @@ import Link from "next/link";
 import Navigation from "../ui/navigation/Navigation";
 import Search from "../ui/search/Search";
 import Table from "../ui/technologies/table/table";
+import { fetchTechnologiesPages } from "@/lib/data/technologies";
+import Pagination from "../ui/technologies/pagination/pagination";
 
-export default function Technologies({
+export default async function Technologies({
   searchParams,
 }: {
   searchParams?: {
@@ -13,6 +15,7 @@ export default function Technologies({
 }) {
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;
+  const totalPages = await fetchTechnologiesPages(query);
 
   return (
     <div className="admin-template">
@@ -33,6 +36,7 @@ export default function Technologies({
             </div>
 
             <Table query={query} currentPage={currentPage} />
+            <Pagination totalPages={totalPages} />
           </div>
         </div>
       </div>
