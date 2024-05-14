@@ -9,6 +9,7 @@
     padding: 0;
 
     & .item {
+      position: relative;
       border-bottom: 1px solid #000;
 
       a {
@@ -18,10 +19,20 @@
         text-decoration: none;
         padding: 10px 25px;
 
+        & svg {
+          position: absolute;
+          right: 5px;
+          top: 8px;
+        }
+
         &:hover {
           background: #7ebdf2;
           text-decoration: none;
         }
+      }
+
+      &.active {
+        background: #7ebdf2;
       }
     }
   }
