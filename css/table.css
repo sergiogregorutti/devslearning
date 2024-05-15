@@ -56,6 +56,12 @@
             top: -6px;
           }
 
+          &.actions {
+            & form {
+              display: inline-block;
+            }
+          }
+
           & .btn-link {
             padding: 5px 5px;
             line-height: 36px;

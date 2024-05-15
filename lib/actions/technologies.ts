@@ -39,3 +39,8 @@ export async function updateTechnology(id: string, formData: FormData) {
   revalidatePath("/admin/technologies");
   redirect("/admin/technologies");
 }
+
+export async function deleteTechnology(id: string) {
+  await Category.findByIdAndDelete(id);
+  revalidatePath("/admin/technologies");
+}

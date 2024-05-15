@@ -32,7 +32,7 @@ export default async function Table({
                   </span>
                   <span className="name">{category.name}</span>
                 </td>
-                <td>
+                <td className="actions">
                   <UpdateTechnology id={category._id} />
                   <DeleteTechnology id={category._id} />
                 </td>
