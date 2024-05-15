@@ -3,6 +3,10 @@
 @import url("../../css/radio-button.css");
 @import url("../../css/auth-template.css");
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-family: var(--font-nunito);
 }

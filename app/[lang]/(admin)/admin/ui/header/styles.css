@@ -105,7 +105,7 @@ header {
 
           a {
             display: inline-block;
-            width: calc(100% - 50px);
+            width: 100%;
             color: #000;
             text-decoration: none;
             padding: 10px 25px;

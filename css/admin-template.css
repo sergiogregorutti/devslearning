@@ -6,7 +6,7 @@
   & .container {
     padding: 0 15px;
     max-width: 1200px;
-    width: calc(100% - 30px);
+    width: 100%;
   }
 
   .content-container {
@@ -90,10 +90,10 @@
                 & .image-container {
                   display: inline-block;
                   background-color: #2197f9;
-                  padding: 5px 10px;
+                  padding: 5px 5px;
                   margin: 4px 0;
-                  height: 32px;
-                  width: 30px;
+                  height: 42px;
+                  width: 52px;
                   text-align: center;
                   margin-right: 10px;
 
@@ -162,13 +162,14 @@
 
     @media (min-width: 768px) {
       grid-template-columns: 200px auto;
+      column-gap: 50px;
 
       & .navigation {
         display: flex;
       }
 
       & .content {
-        padding: 30px 50px;
+        padding: 30px 0;
       }
     }
   }
