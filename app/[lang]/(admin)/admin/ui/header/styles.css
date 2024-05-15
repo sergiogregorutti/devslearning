@@ -78,7 +78,7 @@ header {
 
       & .close-container {
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
 
         & .btn-close {
           margin-top: 10px;

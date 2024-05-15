@@ -26,3 +26,16 @@ export async function createTechnology(formData: FormData) {
   revalidatePath("/admin/technologies");
   redirect("/admin/technologies");
 }
+
+const UpdateTechnology = FormSchema.omit({ id: true, date: true });
+
+export async function updateTechnology(id: string, formData: FormData) {
+  const { name } = UpdateTechnology.parse({
+    name: formData.get("name"),
+  });
+
+  await Category.findByIdAndUpdate(id, { name });
+
+  revalidatePath("/admin/technologies");
+  redirect("/admin/technologies");
+}

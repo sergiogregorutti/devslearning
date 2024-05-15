@@ -55,3 +55,14 @@ export async function fetchTechnologiesPages(query = "") {
 
   return technologies.totalPages;
 }
+
+export async function fetchTechnologyById(id: string) {
+  await dbConnect();
+
+  const technology = await Category.findById(id);
+
+  return {
+    _id: technology._id.toString(),
+    name: technology.name,
+  };
+}

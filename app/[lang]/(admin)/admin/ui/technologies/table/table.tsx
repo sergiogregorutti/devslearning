@@ -1,7 +1,5 @@
-import Link from "next/link";
 import { fetchFilteredTechnologies } from "@/lib/data/technologies";
-import EditIcon from "@mui/icons-material/Edit";
-import ClearIcon from "@mui/icons-material/Clear";
+import { DeleteTechnology, UpdateTechnology } from "../buttons";
 
 export default async function Table({
   query,
@@ -35,17 +33,8 @@ export default async function Table({
                   <span className="name">{category.name}</span>
                 </td>
                 <td>
-                  <Link
-                    className="btn btn-link"
-                    href={`/admin/technologies/edit/${category._id}`}
-                  >
-                    <EditIcon />
-                    <span className="btn-text">Edit</span>
-                  </Link>
-                  <button className="btn btn-link btn-remove">
-                    <ClearIcon />
-                    <span className="btn-text">Remove</span>
-                  </button>
+                  <UpdateTechnology id={category._id} />
+                  <DeleteTechnology id={category._id} />
                 </td>
               </tr>
             ))}
