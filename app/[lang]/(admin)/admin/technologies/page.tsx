@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Navigation from "../ui/navigation/Navigation";
 import Search from "../ui/search/Search";
 import Table from "../ui/technologies/table/table";
 import { fetchTechnologiesPages } from "@/lib/data/technologies";
@@ -18,28 +17,21 @@ export default async function Technologies({
   const totalPages = await fetchTechnologiesPages(query);
 
   return (
-    <div className="admin-template">
-      <div className="container">
-        <div className="content-container">
-          <Navigation />
-          <div className="content">
-            <h1>Technologies</h1>
-            <div className="main-actions">
-              <div>
-                <Link className="btn btn-big" href="/admin/technologies">
-                  + Add New
-                </Link>
-              </div>
-              <div className="search-column">
-                <Search placeholder="Search technologies..." />
-              </div>
-            </div>
-
-            <Table query={query} currentPage={currentPage} />
-            <Pagination totalPages={totalPages} />
-          </div>
+    <>
+      <h1>Technologies</h1>
+      <div className="main-actions">
+        <div>
+          <Link className="btn btn-big" href="/admin/technologies/create">
+            + Add New
+          </Link>
+        </div>
+        <div className="search-column">
+          <Search placeholder="Search technologies..." />
         </div>
       </div>
-    </div>
+
+      <Table query={query} currentPage={currentPage} />
+      <Pagination totalPages={totalPages} />
+    </>
   );
 }

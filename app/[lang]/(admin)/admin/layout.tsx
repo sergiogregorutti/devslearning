@@ -4,11 +4,9 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 import { getDictionary } from "@/app/[lang]/(site)/dictionaries";
 import { Nunito, Poppins } from "next/font/google";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/react";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import Header from "@/app/[lang]/(admin)/admin/ui/header/Header";
+import Navigation from "./ui/navigation/Navigation";
 import Footer from "@/components/footer/Footer";
 
 import theme from "../../theme";
@@ -54,7 +52,15 @@ export default async function RootLayout({
       <body>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
-            <Header user={user} lang={lang} /> {children}
+            <Header user={user} lang={lang} />
+            <div className="admin-template">
+              <div className="container">
+                <div className="content-container">
+                  <Navigation />
+                  <div className="content">{children}</div>
+                </div>
+              </div>
+            </div>
             <Footer dictionary={dictionary} />
           </ThemeProvider>
         </AppRouterCacheProvider>
