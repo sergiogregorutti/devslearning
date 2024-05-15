@@ -26,7 +26,15 @@
     color: #1a73e8;
 
     &:hover {
-      text-decoration: underline;
+      color: #0b376b;
+    }
+  }
+
+  &.btn-remove {
+    color: #f92121;
+
+    &:hover {
+      color: #c20303;
     }
   }
 
