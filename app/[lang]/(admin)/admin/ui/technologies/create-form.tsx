@@ -12,7 +12,7 @@ export default function Form() {
         <button type="submit" className="btn">
           Create Technology
         </button>
-        <Link href="/admin/technologies" className="btn btn-link">
+        <Link href="/admin/technologies" className="btn btn-cancel">
           Cancel
         </Link>
       </div>

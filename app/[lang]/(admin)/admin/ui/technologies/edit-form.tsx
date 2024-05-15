@@ -27,7 +27,7 @@ export default function EditTechnologyForm({
         <button type="submit" className="btn">
           Save
         </button>
-        <Link href="/admin/technologies" className="btn btn-link">
+        <Link href="/admin/technologies" className="btn btn-cancel">
           Cancel
         </Link>
       </div>

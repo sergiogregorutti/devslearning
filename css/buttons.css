@@ -38,6 +38,15 @@
     }
   }
 
+  &.btn-cancel {
+    background: #eaeaea;
+    color: #545454;
+
+    &:hover {
+      background: #d5d5d5;
+    }
+  }
+
   &:disabled {
     cursor: default;
     opacity: 0.6;
