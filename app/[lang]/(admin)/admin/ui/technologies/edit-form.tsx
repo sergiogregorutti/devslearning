@@ -11,7 +11,11 @@ export default function EditTechnologyForm({
   technology: TechnologyForm;
 }) {
   const updateTechnologyWithId = updateTechnology.bind(null, technology._id);
-  const initialState = { _id: technology._id, message: null, errors: {} };
+  const initialState = {
+    _id: technology._id,
+    errors: { image: [], name: [] },
+    message: "",
+  };
   const [state, dispatch] = useFormState(updateTechnologyWithId, initialState);
 
   return (
@@ -34,6 +38,17 @@ export default function EditTechnologyForm({
             </p>
           ))}
       </div>
+      <label htmlFor="image" className="form-label">
+        Image
+      </label>
+      <input
+        type="file"
+        id="image"
+        name="image"
+        className="form-input"
+        aria-describedby="image-error"
+        defaultValue={technology.image}
+      />
       <div>
         <button type="submit" className="btn">
           Save

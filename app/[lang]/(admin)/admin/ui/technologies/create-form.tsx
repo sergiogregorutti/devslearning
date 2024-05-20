@@ -5,7 +5,10 @@ import { createTechnology } from "@/lib/actions/technologies";
 import { useFormState } from "react-dom";
 
 export default function Form() {
-  const initialState = { message: null, errors: {} };
+  const initialState = {
+    errors: { image: [], name: [] },
+    message: "",
+  };
   const [state, dispatch] = useFormState(createTechnology, initialState);
 
   return (

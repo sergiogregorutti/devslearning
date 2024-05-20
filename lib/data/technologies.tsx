@@ -64,5 +64,6 @@ export async function fetchTechnologyById(id: string) {
   return {
     _id: technology._id.toString(),
     name: technology.name,
+    image: technology.image,
   };
 }
