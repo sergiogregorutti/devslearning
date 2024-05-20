@@ -15,3 +15,8 @@
   width: 100%;
   margin-bottom: 20px !important;
 }
+
+.form-error {
+  color: #f00;
+  margin-top: -15px;
+}

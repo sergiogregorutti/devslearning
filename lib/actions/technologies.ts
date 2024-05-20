@@ -8,18 +8,34 @@ import { redirect } from "next/navigation";
 
 const FormSchema = z.object({
   id: z.string(),
-  name: z.string(),
+  name: z.string().min(1, "Name is required."),
   date: z.string(),
 });
 
 const CreateTechnology = FormSchema.omit({ id: true, date: true });
 
-export async function createTechnology(formData: FormData) {
+export type State = {
+  errors?: {
+    name?: string[];
+  };
+  message?: string | null;
+};
+
+export async function createTechnology(prevState: State, formData: FormData) {
   await dbConnect();
 
-  const { name } = CreateTechnology.parse({
+  const validatedFields = CreateTechnology.safeParse({
     name: formData.get("name"),
   });
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Missing Fields. Failed to Create Technology.",
+    };
+  }
+
+  const { name } = validatedFields.data;
 
   await Category.create({ name });
 
@@ -29,10 +45,25 @@ export async function createTechnology(formData: FormData) {
 
 const UpdateTechnology = FormSchema.omit({ id: true, date: true });
 
-export async function updateTechnology(id: string, formData: FormData) {
-  const { name } = UpdateTechnology.parse({
+export async function updateTechnology(
+  id: string,
+  prevState: State,
+  formData: FormData
+) {
+  await dbConnect();
+
+  const validatedFields = UpdateTechnology.safeParse({
     name: formData.get("name"),
   });
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Missing Fields. Failed to Create Technology.",
+    };
+  }
+
+  const { name } = validatedFields.data;
 
   await Category.findByIdAndUpdate(id, { name });
 

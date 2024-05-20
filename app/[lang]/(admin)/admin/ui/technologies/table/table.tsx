@@ -26,15 +26,15 @@ export default async function Table({
                 <td>
                   <span className="image-container">
                     <img
-                      src={`/assets/technologies/${category._id}.svg`}
+                      src={`/assets/technologies/${category._id.toString()}.svg`}
                       alt={category.name}
                     />
                   </span>
                   <span className="name">{category.name}</span>
                 </td>
                 <td className="actions">
-                  <UpdateTechnology id={category._id} />
-                  <DeleteTechnology id={category._id} />
+                  <UpdateTechnology id={category._id.toString()} />
+                  <DeleteTechnology id={category._id.toString()} />
                 </td>
               </tr>
             ))}
