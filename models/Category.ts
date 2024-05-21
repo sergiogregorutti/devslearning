@@ -14,6 +14,22 @@ const categorySchema = new mongoose.Schema(
       data: Buffer,
       contentType: String,
     },
+    imageWhite: {
+      type: String,
+      trim: true,
+    },
+    imageWhiteFilepath: {
+      type: String,
+      trim: true,
+    },
+    imageLightBlue: {
+      type: String,
+      trim: true,
+    },
+    imageLightBlueFilepath: {
+      type: String,
+      trim: true,
+    },
   },
   { timestamps: true }
 );

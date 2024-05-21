@@ -38,17 +38,52 @@ export default function EditTechnologyForm({
             </p>
           ))}
       </div>
-      <label htmlFor="image" className="form-label">
-        Image
+      <label htmlFor="image-white" className="form-label">
+        Image White
       </label>
+      {technology.imageWhite !== "" && (
+        <div>
+          <img src={technology.imageWhite} width={200} />
+        </div>
+      )}
       <input
         type="file"
-        id="image"
-        name="image"
+        id="image-white"
+        name="image-white"
         className="form-input"
-        aria-describedby="image-error"
-        defaultValue={technology.image}
+        aria-describedby="image-white-error"
       />
+      <div id="image-white-error" aria-live="polite" aria-atomic="true">
+        {state.errors?.imageWhite &&
+          state.errors.imageWhite.map((error: string) => (
+            <p className="form-error" key={error}>
+              {error}
+            </p>
+          ))}
+      </div>
+      <label htmlFor="image-light-blue" className="form-label">
+        Image Light Blue
+      </label>
+      {technology.imageLightBlue !== "" && (
+        <div>
+          <img src={technology.imageLightBlue} width={200} />
+        </div>
+      )}
+      <input
+        type="file"
+        id="image-light-blue"
+        name="image-light-blue"
+        className="form-input"
+        aria-describedby="image-light-blue-error"
+      />
+      <div id="image-light-blue-error" aria-live="polite" aria-atomic="true">
+        {state.errors?.imageLightBlue &&
+          state.errors.imageLightBlue.map((error: string) => (
+            <p className="form-error" key={error}>
+              {error}
+            </p>
+          ))}
+      </div>
       <div>
         <button type="submit" className="btn">
           Save

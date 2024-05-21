@@ -13,15 +13,16 @@ const s3Config = {
   region: process.env.AWS_REGION as string,
   accessKeyId: process.env.AWS_ACCESS_KEY_ID as string,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY as string,
+  contentType: "",
 };
 
 const MAX_UPLOAD_SIZE = 1024 * 1024 * 3; // 3MB
-const ACCEPTED_FILE_TYPES = ["image/png"];
+const ACCEPTED_FILE_TYPES = ["image/png", "image/svg+xml"];
 
 const FormSchema = z.object({
   id: z.string(),
   name: z.string().min(1, "Name is required."),
-  image: z
+  imageWhite: z
     .instanceof(File)
     .optional()
     .refine((file) => {
@@ -29,8 +30,21 @@ const FormSchema = z.object({
     }, "File size must be less than 3MB")
     .refine(
       (file) =>
-        file && (file.size === 0 || ACCEPTED_FILE_TYPES.includes(file.type)),
-      "File must be a PNG"
+        !file ||
+        (file && (file.size === 0 || ACCEPTED_FILE_TYPES.includes(file.type))),
+      "File must be a PNG or SVG"
+    ),
+  imageLightBlue: z
+    .instanceof(File)
+    .optional()
+    .refine((file) => {
+      return !file || file.size <= MAX_UPLOAD_SIZE;
+    }, "File size must be less than 3MB")
+    .refine(
+      (file) =>
+        !file ||
+        (file && (file.size === 0 || ACCEPTED_FILE_TYPES.includes(file.type))),
+      "File must be a PNG or SVG"
     ),
   date: z.string(),
 });
@@ -49,6 +63,8 @@ export async function createTechnology(prevState: State, formData: FormData) {
 
   const validatedFields = CreateTechnology.safeParse({
     name: formData.get("name"),
+    imageWhite: formData.get("image-white"),
+    imageLightBlue: formData.get("image-light-blue"),
   });
 
   if (!validatedFields.success) {
@@ -58,9 +74,69 @@ export async function createTechnology(prevState: State, formData: FormData) {
     };
   }
 
-  const { name } = validatedFields.data;
+  const { name, imageWhite, imageLightBlue } = validatedFields.data;
 
-  await Category.create({ name });
+  const newCategory = await Category.create({
+    name,
+  });
+
+  if (imageWhite && imageWhite.size && imageWhite.size > 0) {
+    try {
+      const s3 = new s3Client({
+        ...s3Config,
+        dirName: `${
+          process.env.ENVIRONMENT === "production"
+            ? ""
+            : process.env.ENVIRONMENT
+        }/technologies/${newCategory._id}/`,
+      });
+      let result;
+      if (imageWhite.type === "image/svg+xml") {
+        result = await s3.uploadFile(
+          Buffer.from(await imageWhite.arrayBuffer()),
+          "imageWhite.svg"
+        );
+      } else {
+        result = await s3.uploadFile(
+          Buffer.from(await imageWhite.arrayBuffer())
+        );
+      }
+
+      await Category.findByIdAndUpdate(newCategory._id.toString(), {
+        imageWhite: result.location,
+        imageWhiteFilepath: result.key,
+      });
+    } catch (e) {}
+  }
+
+  if (imageLightBlue && imageLightBlue.size && imageLightBlue.size > 0) {
+    try {
+      const s3 = new s3Client({
+        ...s3Config,
+        dirName: `${
+          process.env.ENVIRONMENT === "production"
+            ? ""
+            : process.env.ENVIRONMENT
+        }/technologies/${newCategory._id}/`,
+      });
+      let result;
+      if (imageLightBlue.type === "image/svg+xml") {
+        result = await s3.uploadFile(
+          Buffer.from(await imageLightBlue.arrayBuffer()),
+          "imageLightBlue.svg"
+        );
+      } else {
+        result = await s3.uploadFile(
+          Buffer.from(await imageLightBlue.arrayBuffer())
+        );
+      }
+
+      await Category.findByIdAndUpdate(newCategory._id.toString(), {
+        imageLightBlue: result.location,
+        imageLightBlueFilepath: result.key,
+      });
+    } catch (e) {}
+  }
 
   revalidatePath("/admin/technologies");
   redirect("/admin/technologies");
@@ -77,7 +153,8 @@ export async function updateTechnology(
 
   const validatedFields = UpdateTechnology.safeParse({
     name: formData.get("name"),
-    image: formData.get("image"),
+    imageWhite: formData.get("image-white"),
+    imageLightBlue: formData.get("image-light-blue"),
   });
 
   if (!validatedFields.success) {
@@ -87,22 +164,67 @@ export async function updateTechnology(
     };
   }
 
-  const { name, image } = validatedFields.data;
+  const { name, imageWhite, imageLightBlue } = validatedFields.data;
 
-  if (image && image.size && image.size > 0) {
+  await Category.findByIdAndUpdate(id, { name });
+
+  if (imageWhite && imageWhite.size && imageWhite.size > 0) {
     try {
       const s3 = new s3Client({
         ...s3Config,
-        dirName: "test",
+        dirName: `${
+          process.env.ENVIRONMENT === "production"
+            ? ""
+            : process.env.ENVIRONMENT
+        }/technologies/${id}/`,
       });
-      const res = await s3.uploadFile(Buffer.from(await image.arrayBuffer()));
-      console.log("res", res);
-    } catch (e) {
-      console.log("error", e);
-    }
+      let result;
+      if (imageWhite.type === "image/svg+xml") {
+        result = await s3.uploadFile(
+          Buffer.from(await imageWhite.arrayBuffer()),
+          "imageWhite.svg"
+        );
+      } else {
+        result = await s3.uploadFile(
+          Buffer.from(await imageWhite.arrayBuffer())
+        );
+      }
+
+      await Category.findByIdAndUpdate(id, {
+        imageWhite: result.location,
+        imageWhiteFilepath: result.key,
+      });
+    } catch (e) {}
   }
 
-  await Category.findByIdAndUpdate(id, { name });
+  if (imageLightBlue && imageLightBlue.size && imageLightBlue.size > 0) {
+    try {
+      const s3 = new s3Client({
+        ...s3Config,
+        dirName: `${
+          process.env.ENVIRONMENT === "production"
+            ? ""
+            : process.env.ENVIRONMENT
+        }/technologies/${id}/`,
+      });
+      let result;
+      if (imageLightBlue.type === "image/svg+xml") {
+        result = await s3.uploadFile(
+          Buffer.from(await imageLightBlue.arrayBuffer()),
+          "imageLightBlue.svg"
+        );
+      } else {
+        result = await s3.uploadFile(
+          Buffer.from(await imageLightBlue.arrayBuffer())
+        );
+      }
+
+      await Category.findByIdAndUpdate(id, {
+        imageLightBlue: result.location,
+        imageLightBlueFilepath: result.key,
+      });
+    } catch (e) {}
+  }
 
   revalidatePath("/admin/technologies");
   redirect("/admin/technologies");

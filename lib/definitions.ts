@@ -1,5 +1,6 @@
 export type TechnologyForm = {
   _id: string;
   name: string;
-  image: string;
+  imageWhite: string;
+  imageLightBlue: string;
 };
