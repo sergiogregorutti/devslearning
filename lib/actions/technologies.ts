@@ -1,6 +1,9 @@
 "use server";
 
 import { s3Client } from "nodejs-s3-typescript";
+// import { S3Client } from "@aws-sdk/client-s3";
+const S3Client = require("@aws-sdk/client-s3");
+const short = require("short-uuid");
 import dbConnect from "@/lib/dbConnect";
 import Category from "../../models/Category";
 import { z } from "zod";
@@ -13,7 +16,6 @@ const s3Config = {
   region: process.env.AWS_REGION as string,
   accessKeyId: process.env.AWS_ACCESS_KEY_ID as string,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY as string,
-  contentType: "",
 };
 
 const MAX_UPLOAD_SIZE = 1024 * 1024 * 3; // 3MB
@@ -82,6 +84,45 @@ export async function createTechnology(prevState: State, formData: FormData) {
 
   if (imageWhite && imageWhite.size && imageWhite.size > 0) {
     try {
+      const dirName = `${
+        process.env.ENVIRONMENT === "production" ? "" : process.env.ENVIRONMENT
+      }/technologies/${newCategory._id}/`;
+      const fileExtension = imageWhite.name.split(".").pop() || "";
+
+      const client = new S3Client.S3Client({
+        region: process.env.AWS_REGION as string,
+        credentials: {
+          accessKeyId: process.env.AWS_ACCESS_KEY_ID as string,
+          secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY as string,
+        },
+      });
+
+      const params = {
+        Bucket: process.env.AWS_BUCKET_NAME as string,
+        Key: `${dirName}${short.generate()}.${fileExtension}`,
+        Body: Buffer.from(imageWhite),
+        Metadata: {
+          uuid: "14365123651274",
+          tag: "",
+        },
+        ContentType: imageWhite.type,
+      };
+
+      console.log("params", params);
+
+      const command = new S3Client.PutObjectCommand(params);
+      const data = await client.send(command);
+      console.log("data", data);
+      return false;
+    } catch (e) {
+      console.log("error", e);
+      return false;
+    }
+  }
+
+  /*
+  if (imageWhite && imageWhite.size && imageWhite.size > 0) {
+    try {
       const s3 = new s3Client({
         ...s3Config,
         dirName: `${
@@ -90,17 +131,11 @@ export async function createTechnology(prevState: State, formData: FormData) {
             : process.env.ENVIRONMENT
         }/technologies/${newCategory._id}/`,
       });
-      let result;
-      if (imageWhite.type === "image/svg+xml") {
-        result = await s3.uploadFile(
-          Buffer.from(await imageWhite.arrayBuffer()),
-          "imageWhite.svg"
-        );
-      } else {
-        result = await s3.uploadFile(
-          Buffer.from(await imageWhite.arrayBuffer())
-        );
-      }
+      // if (imageWhite.type === "image/svg+xml") {
+      console.log("imageWhite", imageWhite);
+      const result = await s3.uploadFile(
+        Buffer.from(await imageWhite.arrayBuffer())
+      );
 
       await Category.findByIdAndUpdate(newCategory._id.toString(), {
         imageWhite: result.location,
@@ -108,7 +143,7 @@ export async function createTechnology(prevState: State, formData: FormData) {
       });
     } catch (e) {}
   }
-
+  
   if (imageLightBlue && imageLightBlue.size && imageLightBlue.size > 0) {
     try {
       const s3 = new s3Client({
@@ -137,6 +172,7 @@ export async function createTechnology(prevState: State, formData: FormData) {
       });
     } catch (e) {}
   }
+  */
 
   revalidatePath("/admin/technologies");
   redirect("/admin/technologies");
