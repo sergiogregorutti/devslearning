@@ -4,3 +4,9 @@ export type TechnologyForm = {
   imageWhite: string;
   imageLightBlue: string;
 };
+
+export type CourseForm = {
+  _id: string;
+  name: string;
+  image: string;
+};

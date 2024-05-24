@@ -61,6 +61,8 @@ const courseSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+courseSchema.index({ name: "text" });
+
 courseSchema.plugin(mongoosePaginate);
 
 export default mongoose.models.Course || mongoose.model("Course", courseSchema);

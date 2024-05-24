@@ -53,7 +53,7 @@ export default function EditTechnologyForm({
         Image White
       </label>
       {technology.imageWhite !== undefined && technology.imageWhite !== "" && (
-        <div className="technology-img-wrapper white">
+        <div className="img-wrapper white">
           <div className="white-image">
             <img src={technology.imageWhite} />
           </div>
@@ -80,7 +80,7 @@ export default function EditTechnologyForm({
       </label>
       {technology.imageLightBlue !== undefined &&
         technology.imageLightBlue !== "" && (
-          <div className="technology-img-wrapper">
+          <div className="img-wrapper">
             <img src={technology.imageLightBlue} />
           </div>
         )}
