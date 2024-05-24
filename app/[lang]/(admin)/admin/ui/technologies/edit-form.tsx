@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { TechnologyForm } from "@/lib/definitions";
 import Link from "next/link";
 import { updateTechnology } from "@/lib/actions/technologies";
@@ -17,9 +18,18 @@ export default function EditTechnologyForm({
     message: "",
   };
   const [state, dispatch] = useFormState(updateTechnologyWithId, initialState);
+  const [isFormLoading, setIsFormLoading] = useState(false);
+
+  useEffect(() => {
+    setIsFormLoading(false);
+  }, [state]);
+
+  const handleSubmitForm = () => {
+    setIsFormLoading(true);
+  };
 
   return (
-    <form action={dispatch}>
+    <form action={dispatch} onSubmit={handleSubmitForm}>
       <label htmlFor="name" className="form-label">
         Name
       </label>
@@ -29,6 +39,7 @@ export default function EditTechnologyForm({
         className="form-input"
         aria-describedby="name-error"
         defaultValue={technology.name}
+        disabled={isFormLoading}
       />
       <div id="name-error" aria-live="polite" aria-atomic="true">
         {state.errors?.name &&
@@ -54,6 +65,7 @@ export default function EditTechnologyForm({
         name="image-white"
         className="form-input"
         aria-describedby="image-white-error"
+        disabled={isFormLoading}
       />
       <div id="image-white-error" aria-live="polite" aria-atomic="true">
         {state.errors?.imageWhite &&
@@ -78,6 +90,7 @@ export default function EditTechnologyForm({
         name="image-light-blue"
         className="form-input"
         aria-describedby="image-light-blue-error"
+        disabled={isFormLoading}
       />
       <div id="image-light-blue-error" aria-live="polite" aria-atomic="true">
         {state.errors?.imageLightBlue &&
@@ -88,10 +101,13 @@ export default function EditTechnologyForm({
           ))}
       </div>
       <div>
-        <button type="submit" className="btn">
+        <button type="submit" className="btn" disabled={isFormLoading}>
           Save
         </button>
-        <Link href="/admin/technologies" className="btn btn-cancel">
+        <Link
+          href="/admin/technologies"
+          className={`btn btn-cancel${isFormLoading ? " disabled" : ""}`}
+        >
           Cancel
         </Link>
       </div>
