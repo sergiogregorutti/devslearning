@@ -41,9 +41,11 @@ export default function EditTechnologyForm({
       <label htmlFor="image-white" className="form-label">
         Image White
       </label>
-      {technology.imageWhite !== "" && (
-        <div>
-          <img src={technology.imageWhite} width={200} />
+      {technology.imageWhite !== undefined && technology.imageWhite !== "" && (
+        <div className="technology-img-wrapper white">
+          <div className="white-image">
+            <img src={technology.imageWhite} />
+          </div>
         </div>
       )}
       <input
@@ -64,11 +66,12 @@ export default function EditTechnologyForm({
       <label htmlFor="image-light-blue" className="form-label">
         Image Light Blue
       </label>
-      {technology.imageLightBlue !== "" && (
-        <div>
-          <img src={technology.imageLightBlue} width={200} />
-        </div>
-      )}
+      {technology.imageLightBlue !== undefined &&
+        technology.imageLightBlue !== "" && (
+          <div className="technology-img-wrapper">
+            <img src={technology.imageLightBlue} />
+          </div>
+        )}
       <input
         type="file"
         id="image-light-blue"

@@ -61,7 +61,14 @@ export async function fetchTechnologyById(id: string) {
 
   const technology = await Category.findById(id);
 
-  technology._id = technology._id.toString();
-
-  return technology;
+  return {
+    _id: technology._id.toString(),
+    name: technology.name,
+    imageWhite: technology.imageWhite,
+    imageWhiteFilepath: technology.imageWhiteFilepath,
+    imageLightBlue: technology.imageLightBlue,
+    imageLightBlueFilepath: technology.imageLightBlueFilepath,
+    createdAt: technology.createdAt,
+    updatedAt: technology.updatedAt,
+  };
 }

@@ -9,7 +9,7 @@
     width: 100%;
   }
 
-  .content-container {
+  & .content-container {
     height: 100%;
     display: grid;
     grid-template-columns: 1fr;
@@ -49,9 +49,28 @@
         }
       }
 
-      form {
-        input {
+      & form {
+        & input {
           max-width: 500px;
+        }
+
+        & .technology-img-wrapper {
+          margin-bottom: 10px;
+
+          & img {
+            height: 50px;
+          }
+
+          & .white-image {
+            display: inline-block;
+            background-color: #2197f9;
+            padding: 5px 5px;
+            margin: 4px 0;
+            height: 62px;
+            width: 72px;
+            text-align: center;
+            margin-right: 10px;
+          }
         }
       }
     }

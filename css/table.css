@@ -36,24 +36,18 @@
           border: 1px solid #000;
           padding: 0 10px;
 
-          & .image-container {
-            display: inline-block;
-            background-color: #2197f9;
-            padding: 5px 5px;
-            margin: 4px 0;
-            height: 42px;
-            width: 52px;
-            text-align: center;
-            margin-right: 10px;
-
-            & img {
-              height: 30px;
-            }
+          & img {
+            height: 30px;
+            margin: 0 5px;
+            position: relative;
+            top: 10px;
           }
 
           & .name {
-            position: relative;
-            top: -6px;
+            display: inline-block;
+            margin-left: 5px;
+            height: 50px;
+            line-height: 50px;
           }
 
           &.actions {
