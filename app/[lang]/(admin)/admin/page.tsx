@@ -1,0 +1,38 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { getDictionary } from "../../(site)/dictionaries";
+
+type Props = {
+  params: { lang: string; id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const pageTitle = "Devs Learning | Course directory for developers";
+  const description = "Discover the best courses to learn web development";
+
+  return {
+    title: pageTitle,
+    description,
+  };
+}
+
+export default async function Home({
+  params: { lang },
+}: {
+  params: { lang: string };
+}) {
+  const dictionary = await getDictionary(lang);
+
+  return (
+    <>
+      <h1>Dashboard</h1>
+      <Link className="btn btn-big" href="/admin/technologies">
+        Technologies
+      </Link>
+      <Link className="btn btn-big" href="/admin/courses">
+        Courses
+      </Link>
+    </>
+  );
+}

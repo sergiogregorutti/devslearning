@@ -1,0 +1,68 @@
+.btn {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 100px;
+  background: #2197f9;
+  font-size: 16px;
+  padding: 10px 24px;
+  border: none;
+  line-height: 22px;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+    background: #1a73e8;
+  }
+
+  &.btn-big {
+    font-size: 18px;
+    padding: 12px 28px;
+  }
+
+  &.btn-link {
+    padding: 10px 24px;
+    background: none;
+    color: #1a73e8;
+
+    &:hover {
+      color: #0b376b;
+    }
+  }
+
+  &.btn-remove {
+    color: #f92121;
+
+    &:hover {
+      color: #c20303;
+    }
+  }
+
+  &.btn-cancel {
+    background: #eaeaea;
+    color: #545454;
+
+    &:hover {
+      background: #d5d5d5;
+    }
+
+    &.disabled {
+      cursor: default;
+      opacity: 0.6;
+
+      &:hover {
+        background: #eaeaea;
+      }
+    }
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.6;
+    background: #2197f9;
+  }
+
+  & + .btn {
+    margin-left: 15px;
+  }
+}

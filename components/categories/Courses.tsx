@@ -1,7 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
@@ -56,7 +54,7 @@ export default function Courses({
       sortBy,
       order,
     };
-    return fetch(`/api/courses/by/search`, {
+    return fetch(`/api/courses`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -148,7 +146,7 @@ export default function Courses({
     <div className="courses">
       <div className="filter-and-sorting">
         <div>
-          <span className="label">{dictionary.categories.sortBy}</span>
+          <label className="form-label">{dictionary.categories.sortBy}</label>
           <FormControl
             sx={{
               width: {
@@ -171,7 +169,7 @@ export default function Courses({
           </FormControl>
         </div>
         <div>
-          <span className="label">{dictionary.categories.language}</span>
+          <label className="form-label">{dictionary.categories.language}</label>
           <FormControl
             sx={{
               width: {

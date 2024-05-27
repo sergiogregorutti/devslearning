@@ -1,0 +1,160 @@
+header {
+  position: sticky;
+  top: 0;
+  height: 60px;
+  background: #0b376b;
+  display: flex;
+  justify-content: center;
+  z-index: 9999;
+
+  & .container {
+    padding: 0 15px;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & h1 {
+    margin: 0;
+
+    & a {
+      position: relative;
+      display: inline-block;
+      height: 30px;
+      margin: 15px 0;
+
+      & img {
+        position: absolute;
+        height: 30px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      & a {
+        height: 40px;
+        margin: 10px 0;
+
+        & img {
+          height: 40px;
+        }
+      }
+    }
+  }
+
+  & .right {
+    display: flex;
+    align-items: center;
+
+    & .menu-toggle {
+      background: none;
+      border: none;
+
+      & svg {
+        fill: #fff;
+      }
+
+      @media (min-width: 768px) {
+        display: none;
+      }
+    }
+
+    & .mobile-menu {
+      display: none;
+      background: #c3dffa;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.5s ease;
+
+      & .mobile-menu-content {
+        width: 100%;
+      }
+
+      & .close-container {
+        display: flex;
+        justify-content: flex-end;
+
+        & .btn-close {
+          margin-top: 10px;
+          margin-right: 6px;
+          background: none;
+          border: none;
+
+          & svg {
+            fill: #000;
+            font-size: 40px;
+          }
+        }
+      }
+
+      & .menu {
+        width: 100%;
+        list-style: none;
+        margin: 20px 0 20px 0;
+        padding: 0;
+
+        & .item {
+          position: relative;
+          border-bottom: 1px solid #000;
+
+          a {
+            display: inline-block;
+            width: 100%;
+            color: #000;
+            text-decoration: none;
+            padding: 10px 25px;
+
+            & svg {
+              position: absolute;
+              right: 5px;
+              top: 8px;
+            }
+
+            &:hover {
+              background: #7ebdf2;
+              text-decoration: none;
+            }
+          }
+
+          &.active {
+            background: #7ebdf2;
+          }
+        }
+      }
+
+      & .mobile-menu-logo {
+        width: 200px;
+        margin: 30px 0 30px;
+      }
+
+      &.open {
+        display: flex;
+      }
+    }
+
+    & .go-to-website {
+      display: none;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 14px;
+      line-height: 22px;
+      font-size: 16px;
+      font-weight: bold;
+
+      &:hover {
+        background: #2197f9;
+        text-decoration: none;
+      }
+
+      @media (min-width: 768px) {
+        display: inline-block;
+      }
+    }
+  }
+}

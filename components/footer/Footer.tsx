@@ -11,21 +11,24 @@ export default function Footer({
   dictionary: { [key: string]: any };
 }) {
   useEffect(() => {
-    if (!Smartlook.initialized()) {
+    if (process.env.ENVIRONMENT === "production" && !Smartlook.initialized()) {
       Smartlook.init("bf44692fcb061ad2509652dae2260a7ded59bfac");
     }
   }, []);
 
   return (
     <footer>
-      <div className="container">
-        Devs Learning 2024<span className="separator">|</span>
-        <span>
-          {dictionary.footer.createdBy}{" "}
-          <a href="https://github.com/sergiogregorutti/" target="_blank">
-            @sergiogregorutti
-          </a>
-        </span>
+      <div className="footer-content">
+        <div className="container">
+          Devs Learning {new Date().getFullYear()}
+          <span className="separator">|</span>
+          <span>
+            {dictionary.footer.createdBy}{" "}
+            <a href="https://github.com/sergiogregorutti/" target="_blank">
+              @sergiogregorutti
+            </a>
+          </span>
+        </div>
       </div>
     </footer>
   );

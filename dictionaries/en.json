@@ -1,4 +1,7 @@
 {
+  "common": {
+    "loading": "Loading..."
+  },
   "header": {
     "language": {
       "english": "English",
@@ -12,6 +15,45 @@
     "welcomeTo": "Welcome to",
     "titleDescription": "Course directory for developers",
     "technologiesTitle": "What do you want to learn?"
+  },
+  "notFound": {
+    "title": "Error 404",
+    "description": "The page that you are looking for does not exist.",
+    "link": "Go to Homepage"
+  },
+  "signUp": {
+    "title": "Sign Up",
+    "name": "Name",
+    "email": "E-mail",
+    "password": "Password",
+    "createAccount": "Create Account",
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Log In",
+    "formSubmitted": "An E-mail has been sent to your email. Follow the instructions to activate your account."
+  },
+  "signIn": {
+    "title": "Sign In",
+    "email": "E-mail",
+    "password": "Password",
+    "signIn": "Sign In",
+    "forgotPassword": "Forgot Password?",
+    "doNotHaveAccount": "Don’t have an account?",
+    "signUp": "Sign Up"
+  },
+  "activateAccount": {
+    "title": "Activate Account",
+    "activateAccount": "Activate Account",
+    "accountActivated": "Your account is activated. You can now sign in."
+  },
+  "forgotPassword": {
+    "title": "Forgot Password",
+    "email": "E-mail",
+    "requestResetLink": "Request Password Reset Link"
+  },
+  "resetPassword": {
+    "title": "Reset Password",
+    "newPassword": "New Password",
+    "resetPassword": "Create New Password"
   },
   "categories": {
     "goBack": "Go back",

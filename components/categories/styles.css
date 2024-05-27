@@ -3,14 +3,6 @@
     display: grid;
     grid-template-columns: 65% 35%;
 
-    & .label {
-      display: block;
-      font-family: var(--font-poppins) !important;
-      font-size: 16px;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-
     @media (min-width: 768px) {
       grid-template-columns: 230px 230px;
     }
@@ -85,17 +77,7 @@
         }
 
         & .btn {
-          display: inline-block;
           margin-top: 10px;
-          color: #fff;
-          text-decoration: none;
-          border-radius: 100px;
-          background: #2197f9;
-          padding: 10px 24px;
-
-          &:hover {
-            background: #1a73e8;
-          }
         }
       }
 

@@ -1,4 +1,12 @@
+@import url("../../css/buttons.css");
+@import url("../../css/table.css");
+@import url("../../css/forms.css");
 @import url("../../css/radio-button.css");
+@import url("../../css/auth-template.css");
+
+* {
+  box-sizing: border-box;
+}
 
 html {
   font-family: var(--font-nunito);
@@ -6,4 +14,16 @@ html {
 
 body {
   margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: #2197f9;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

@@ -1,4 +1,7 @@
 {
+  "common": {
+    "loading": "Cargando..."
+  },
   "header": {
     "language": {
       "english": "Ingles",
@@ -12,6 +15,45 @@
     "welcomeTo": "Bienvenidos a",
     "titleDescription": "Directorio de cursos para desarrolladores",
     "technologiesTitle": "¿Que te gustaría aprender?"
+  },
+  "notFound": {
+    "title": "Error 404",
+    "description": "La página a la que esta intentando acceder no existe.",
+    "link": "Ir al Inicio"
+  },
+  "signUp": {
+    "title": "Registrarse",
+    "name": "Nombre",
+    "email": "E-mail",
+    "password": "Contraseña",
+    "createAccount": "Crear Cuenta",
+    "alreadyHaveAccount": "¿Ya tenes una cuenta?",
+    "signIn": "Ingresar",
+    "formSubmitted": "Un correo ha sido enviado a tu E-mail. Sigue las instrucciones para activar tu cuenta."
+  },
+  "signIn": {
+    "title": "Ingresar",
+    "email": "E-mail",
+    "password": "Contraseña",
+    "signIn": "Ingresar",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "doNotHaveAccount": "¿No tenes una cuenta?",
+    "signUp": "Registrarse"
+  },
+  "activateAccount": {
+    "title": "Activar Cuenta",
+    "activateAccount": "Activar Cuenta",
+    "accountActivated": "Tu cuenta ha sido activada. Ya puedes ingresar."
+  },
+  "forgotPassword": {
+    "title": "Olvide mi Contraseña",
+    "email": "E-mail",
+    "requestResetLink": "Enviar Link para Recuperar Contraseña"
+  },
+  "resetPassword": {
+    "title": "Recuperar Contraseña",
+    "newPassword": "Nueva Contraseña",
+    "resetPassword": "Crear Nueva Contraseña"
   },
   "categories": {
     "goBack": "Volver",

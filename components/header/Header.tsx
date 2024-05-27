@@ -1,14 +1,20 @@
-// import { getSession } from "@auth0/nextjs-auth0";
+"use client";
 import Link from "next/link";
 import LanguageSelector from "@/components/languageSelector/LanguageSelector";
-import { getDictionary } from "@/app/[lang]/dictionaries";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 
 import "./styles.css";
 
-const Header = async ({ lang }: { lang: string }) => {
-  // const session = await getSession();
-  const dictionary = await getDictionary(lang);
+const Header = ({
+  dictionary,
+  lang,
+  user,
+}: {
+  dictionary: { [key: string]: any };
+  lang: string;
+  user: any;
+}) => {
+  const isAuth = user ? user : false;
 
   return (
     <header>
