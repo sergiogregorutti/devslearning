@@ -2,6 +2,19 @@ import { unstable_noStore as noStore } from "next/cache";
 import dbConnect from "@/lib/dbConnect";
 import Category from "../../models/Category";
 
+export async function fetchTechnologies() {
+  noStore();
+  await dbConnect();
+
+  const options = {
+    sort: "name",
+  };
+
+  const technologies = await Category.find({}, {}, options);
+
+  return technologies;
+}
+
 const ITEMS_PER_PAGE = 4;
 export async function fetchFilteredTechnologies(
   query = "",

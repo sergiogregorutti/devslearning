@@ -24,6 +24,14 @@ const courseSchema = new mongoose.Schema(
       required: true,
       max: 2000,
     },
+    image: {
+      type: String,
+      trim: true,
+    },
+    imageFilepath: {
+      type: String,
+      trim: true,
+    },
     platform: {
       type: String,
       max: 2000,

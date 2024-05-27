@@ -63,8 +63,18 @@ export async function fetchCourseById(id: string) {
 
   return {
     _id: course._id.toString(),
+    technology: course.category,
+    language: course.language,
     name: course.name,
+    description: course.description,
     image: course.image,
+    imageFilepath: course.imageFilepath,
+    platform: course.platform,
+    author: course.author,
+    pricing: course.pricing,
+    price: course.price,
+    year: course.year,
+    link: course.link,
     createdAt: course.createdAt,
     updatedAt: course.updatedAt,
   };

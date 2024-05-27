@@ -12,7 +12,12 @@ const ACCEPTED_FILE_TYPES = ["image/png", "image/svg+xml"];
 
 const FormSchema = z.object({
   id: z.string(),
+  technology: z.string().min(1, "Technology is required."),
+  language: z
+    .string({ message: "Language is required." })
+    .min(1, "Language is required."),
   name: z.string().min(1, "Name is required."),
+  description: z.string().min(1, "Description is required."),
   image: z
     .instanceof(File)
     .optional()
@@ -25,14 +30,31 @@ const FormSchema = z.object({
         (file && (file.size === 0 || ACCEPTED_FILE_TYPES.includes(file.type))),
       "File must be a PNG or SVG"
     ),
-  date: z.string(),
+  platform: z.string().optional(),
+  author: z.string().optional(),
+  pricing: z
+    .string({ message: "Pricing is required." })
+    .min(1, "Pricing is required."),
+  price: z.number(),
+  year: z.number().min(1, "Year is required."),
+  link: z.string().min(1, "Link is required."),
 });
 
-const CreateCourse = FormSchema.omit({ id: true, date: true });
+const CreateCourse = FormSchema.omit({ id: true });
 
 export type State = {
   errors?: {
+    technology?: string[];
+    language?: string[];
     name?: string[];
+    description?: string[];
+    image?: string[];
+    platform?: string[];
+    author?: string[];
+    pricing?: string[];
+    price?: string[];
+    year?: string[];
+    link?: string[];
   };
   message?: string | null;
 };
@@ -41,8 +63,17 @@ export async function createCourse(prevState: State, formData: FormData) {
   await dbConnect();
 
   const validatedFields = CreateCourse.safeParse({
+    technology: formData.get("technology"),
+    language: formData.get("language"),
     name: formData.get("name"),
+    description: formData.get("description"),
     image: formData.get("image"),
+    platform: formData.get("platform"),
+    author: formData.get("author"),
+    pricing: formData.get("pricing"),
+    price: Number(formData.get("price")),
+    year: Number(formData.get("year")),
+    link: formData.get("link"),
   });
 
   if (!validatedFields.success) {
@@ -52,10 +83,31 @@ export async function createCourse(prevState: State, formData: FormData) {
     };
   }
 
-  const { name, image } = validatedFields.data;
+  const {
+    technology,
+    language,
+    name,
+    description,
+    image,
+    platform,
+    author,
+    pricing,
+    price,
+    year,
+    link,
+  } = validatedFields.data;
 
   const newCourse = await Course.create({
+    category: technology,
+    language,
     name,
+    description,
+    platform,
+    author,
+    pricing,
+    price,
+    year,
+    link,
   });
 
   if (image && image.size && image.size > 0) {
@@ -68,10 +120,13 @@ export async function createCourse(prevState: State, formData: FormData) {
 
       const result = await uploadFile(image, path);
 
-      await Course.findByIdAndUpdate(newCourse._id.toString(), {
-        image: result.location,
-        imageFilepath: result.key,
-      });
+      const resultPhoto = await Course.findByIdAndUpdate(
+        newCourse._id.toString(),
+        {
+          image: result.location,
+          imageFilepath: result.key,
+        }
+      );
     } catch (e) {}
   }
 
@@ -79,7 +134,7 @@ export async function createCourse(prevState: State, formData: FormData) {
   redirect("/admin/courses");
 }
 
-const UpdateCourse = FormSchema.omit({ id: true, date: true });
+const UpdateCourse = FormSchema.omit({ id: true });
 
 export async function updateCourse(
   id: string,
@@ -89,8 +144,17 @@ export async function updateCourse(
   await dbConnect();
 
   const validatedFields = UpdateCourse.safeParse({
+    technology: formData.get("technology"),
+    language: formData.get("language"),
     name: formData.get("name"),
+    description: formData.get("description"),
     image: formData.get("image"),
+    platform: formData.get("platform"),
+    author: formData.get("author"),
+    pricing: formData.get("pricing"),
+    price: Number(formData.get("price")),
+    year: Number(formData.get("year")),
+    link: formData.get("link"),
   });
 
   if (!validatedFields.success) {
@@ -100,9 +164,32 @@ export async function updateCourse(
     };
   }
 
-  const { name, image } = validatedFields.data;
+  const {
+    technology,
+    language,
+    name,
+    description,
+    image,
+    platform,
+    author,
+    pricing,
+    price,
+    year,
+    link,
+  } = validatedFields.data;
 
-  await Course.findByIdAndUpdate(id, { name });
+  await Course.findByIdAndUpdate(id, {
+    category: technology,
+    language,
+    name,
+    description,
+    platform,
+    author,
+    pricing,
+    price,
+    year,
+    link,
+  });
 
   if (image && image.size && image.size > 0) {
     try {
