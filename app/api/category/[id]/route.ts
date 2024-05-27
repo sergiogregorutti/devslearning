@@ -1,5 +1,5 @@
 import dbConnect from "../../../../lib/dbConnect";
-import Category from "../../../../models/Category";
+import Technology from "../../../../models/Technology";
 
 export async function GET(
   request: Request,
@@ -9,8 +9,8 @@ export async function GET(
   await dbConnect();
 
   try {
-    const category = await Category.findById(id).exec();
-    return Response.json({ success: true, data: category });
+    const technology = await Technology.findById(id).exec();
+    return Response.json({ success: true, data: technology });
   } catch (error) {
     return Response.json(
       { success: false },

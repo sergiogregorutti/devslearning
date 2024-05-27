@@ -1,5 +1,5 @@
 import dbConnect from "../../../lib/dbConnect";
-import Category from "../../../models/Category";
+import Technology from "../../../models/Technology";
 
 interface FindArgs {
   [key: string]: any;
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
   const { limit, offset } = getPagination(page, size);
   order === "desc" ? (order = "-") : (order = "");
 
-  const categories = await Category.paginate(findArgs, {
+  const technologies = await Technology.paginate(findArgs, {
     offset,
     limit,
     select: "-photo",
@@ -39,9 +39,9 @@ export async function POST(request: Request) {
   });
 
   return Response.json({
-    totalItems: categories.totalDocs,
-    categories: categories.docs,
-    totalPages: categories.totalPages,
-    currentPage: categories.page - 1,
+    totalItems: technologies.totalDocs,
+    technologies: technologies.docs,
+    totalPages: technologies.totalPages,
+    currentPage: technologies.page - 1,
   });
 }

@@ -1,12 +1,12 @@
 import dbConnect from "../../../lib/dbConnect";
-import Category from "../../../models/Category";
+import Technology from "../../../models/Technology";
 
 export async function GET() {
   await dbConnect();
 
   try {
-    const categories = await Category.find({});
-    return Response.json({ success: true, data: categories });
+    const technologies = await Technology.find({});
+    return Response.json({ success: true, data: technologies });
   } catch (error) {
     return Response.json(
       { success: false },

@@ -55,9 +55,9 @@ const courseSchema = new mongoose.Schema(
       type: Number,
       trim: true,
     },
-    category: {
+    technology: {
       type: ObjectId,
-      ref: "Category",
+      ref: "Technology",
     },
     link: {
       type: String,

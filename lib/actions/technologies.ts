@@ -1,7 +1,7 @@
 "use server";
 
 import dbConnect from "@/lib/dbConnect";
-import Category from "../../models/Category";
+import Technology from "../../models/Technology";
 import { uploadFile, deleteFile } from "@/lib/files";
 import { z } from "zod";
 import { revalidatePath } from "next/cache";
@@ -67,7 +67,7 @@ export async function createTechnology(prevState: State, formData: FormData) {
 
   const { name, imageWhite, imageLightBlue } = validatedFields.data;
 
-  const newCategory = await Category.create({
+  const newTechnology = await Technology.create({
     name,
   });
 
@@ -77,11 +77,11 @@ export async function createTechnology(prevState: State, formData: FormData) {
         process.env.ENVIRONMENT === "production"
           ? ""
           : `${process.env.ENVIRONMENT}/`
-      }technologies/${newCategory._id}/`;
+      }technologies/${newTechnology._id}/`;
 
       const result = await uploadFile(imageWhite, path);
 
-      await Category.findByIdAndUpdate(newCategory._id.toString(), {
+      await Technology.findByIdAndUpdate(newTechnology._id.toString(), {
         imageWhite: result.location,
         imageWhiteFilepath: result.key,
       });
@@ -94,11 +94,11 @@ export async function createTechnology(prevState: State, formData: FormData) {
         process.env.ENVIRONMENT === "production"
           ? ""
           : `${process.env.ENVIRONMENT}/`
-      }technologies/${newCategory._id}/`;
+      }technologies/${newTechnology._id}/`;
 
       const result = await uploadFile(imageLightBlue, path);
 
-      await Category.findByIdAndUpdate(newCategory._id.toString(), {
+      await Technology.findByIdAndUpdate(newTechnology._id.toString(), {
         imageLightBlue: result.location,
         imageLightBlueFilepath: result.key,
       });
@@ -133,23 +133,23 @@ export async function updateTechnology(
 
   const { name, imageWhite, imageLightBlue } = validatedFields.data;
 
-  await Category.findByIdAndUpdate(id, { name });
+  await Technology.findByIdAndUpdate(id, { name });
 
-  let category;
+  let technology;
   if (
     (imageWhite && imageWhite.size && imageWhite.size > 0) ||
     (imageLightBlue && imageLightBlue.size && imageLightBlue.size > 0)
   ) {
-    category = await Category.findByIdAndUpdate(id, { name });
+    technology = await Technology.findByIdAndUpdate(id, { name });
   }
 
   if (imageWhite && imageWhite.size && imageWhite.size > 0) {
     try {
       if (
-        category.imageWhiteFilepath !== undefined &&
-        category.imageWhiteFilepath !== ""
+        technology.imageWhiteFilepath !== undefined &&
+        technology.imageWhiteFilepath !== ""
       ) {
-        await deleteFile(category.imageWhiteFilepath);
+        await deleteFile(technology.imageWhiteFilepath);
       }
 
       const path = `${
@@ -160,7 +160,7 @@ export async function updateTechnology(
 
       const result = await uploadFile(imageWhite, path);
 
-      await Category.findByIdAndUpdate(id.toString(), {
+      await Technology.findByIdAndUpdate(id.toString(), {
         imageWhite: result.location,
         imageWhiteFilepath: result.key,
       });
@@ -172,10 +172,10 @@ export async function updateTechnology(
   if (imageLightBlue && imageLightBlue.size && imageLightBlue.size > 0) {
     try {
       if (
-        category.imageWhiteFilepath !== undefined &&
-        category.imageWhiteFilepath !== ""
+        technology.imageWhiteFilepath !== undefined &&
+        technology.imageWhiteFilepath !== ""
       ) {
-        await deleteFile(category.imageLightBlueFilepath);
+        await deleteFile(technology.imageLightBlueFilepath);
       }
 
       const path = `${
@@ -186,7 +186,7 @@ export async function updateTechnology(
 
       const result = await uploadFile(imageLightBlue, path);
 
-      await Category.findByIdAndUpdate(id.toString(), {
+      await Technology.findByIdAndUpdate(id.toString(), {
         imageLightBlue: result.location,
         imageLightBlueFilepath: result.key,
       });
@@ -198,6 +198,6 @@ export async function updateTechnology(
 }
 
 export async function deleteTechnology(id: string) {
-  await Category.findByIdAndDelete(id);
+  await Technology.findByIdAndDelete(id);
   revalidatePath("/admin/technologies");
 }

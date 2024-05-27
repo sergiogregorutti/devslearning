@@ -4,7 +4,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Loading from "./loading";
-import CoursesList from "@/components/categories/CoursesList";
+import CoursesList from "@/components/technologies/CoursesList";
 
 interface Course {
   name: string;
@@ -17,7 +17,7 @@ interface Course {
 }
 
 interface CoursesProps {
-  categoryId: number;
+  technologyId: number;
   courses: Course[];
   dictionary: { [key: string]: any };
   language: String;
@@ -26,13 +26,13 @@ interface CoursesProps {
 import "./styles.css";
 
 export default function Courses({
-  categoryId,
+  technologyId,
   courses,
   dictionary,
   language: defaultLanguage,
 }: CoursesProps) {
   const [myFilters, setMyFilters] = useState<any>({
-    category: categoryId,
+    technology: technologyId,
     language: defaultLanguage,
   });
   const [language, setLanguage] = useState<any>(defaultLanguage);
@@ -121,7 +121,7 @@ export default function Courses({
 
     if (value === "all") {
       newFilters = {
-        category: categoryId,
+        technology: technologyId,
       };
     } else {
       newFilters = {
@@ -146,7 +146,7 @@ export default function Courses({
     <div className="courses">
       <div className="filter-and-sorting">
         <div>
-          <label className="form-label">{dictionary.categories.sortBy}</label>
+          <label className="form-label">{dictionary.technologies.sortBy}</label>
           <FormControl
             sx={{
               width: {
@@ -157,19 +157,21 @@ export default function Courses({
           >
             <Select value={sorting.id} onChange={handleSortByChange}>
               <MenuItem value={"priceHighToLow"}>
-                {dictionary.categories.priceHighToLow}
+                {dictionary.technologies.priceHighToLow}
               </MenuItem>
               <MenuItem value={"priceLowToHigh"}>
-                {dictionary.categories.priceLowToHigh}
+                {dictionary.technologies.priceLowToHigh}
               </MenuItem>
               <MenuItem value={"newest"}>
-                {dictionary.categories.newest}
+                {dictionary.technologies.newest}
               </MenuItem>
             </Select>
           </FormControl>
         </div>
         <div>
-          <label className="form-label">{dictionary.categories.language}</label>
+          <label className="form-label">
+            {dictionary.technologies.language}
+          </label>
           <FormControl
             sx={{
               width: {
@@ -179,9 +181,13 @@ export default function Courses({
             }}
           >
             <Select value={language} onChange={handleLanguageChange}>
-              <MenuItem value={"all"}>{dictionary.categories.all}</MenuItem>
-              <MenuItem value={"en"}>{dictionary.categories.english}</MenuItem>
-              <MenuItem value={"es"}>{dictionary.categories.spanish}</MenuItem>
+              <MenuItem value={"all"}>{dictionary.technologies.all}</MenuItem>
+              <MenuItem value={"en"}>
+                {dictionary.technologies.english}
+              </MenuItem>
+              <MenuItem value={"es"}>
+                {dictionary.technologies.spanish}
+              </MenuItem>
             </Select>
           </FormControl>
         </div>

@@ -9,7 +9,7 @@ const sections = [
   "auth/forgot-password",
   "auth/reset-password",
   "auth/activate-account",
-  "categories",
+  "technologies",
   "admin",
 ];
 

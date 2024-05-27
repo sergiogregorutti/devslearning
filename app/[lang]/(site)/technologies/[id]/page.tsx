@@ -1,8 +1,8 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import dbConnect from "../../../../../lib/dbConnect";
-import Category from "../../../../../models/Category";
+import Technology from "../../../../../models/Technology";
 import Course from "../../../../../models/Course";
-import Courses from "@/components/categories/Courses";
+import Courses from "@/components/technologies/Courses";
 import { getDictionary } from "../../dictionaries";
 
 import "./styles.css";
@@ -12,21 +12,21 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-async function getCategory(id: String) {
+async function getTechnology(id: String) {
   await dbConnect();
 
-  const category = await Category.findById(id, "name _id").exec();
+  const technology = await Technology.findById(id, "name _id").exec();
 
-  return category;
+  return technology;
 }
 
 async function getCourses(id: String, lang: String) {
   await dbConnect();
 
   const courses = await Course.paginate(
-    { category: id, language: lang },
+    { technology: id, language: lang },
     {
-      select: "-photo -category",
+      select: "-photo -technology",
       sort: "-price",
     }
   );
@@ -38,20 +38,20 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const categoryData = await getCategory(params.id);
+  const technologyData = await getTechnology(params.id);
 
   let pageTitle;
   let description;
 
   switch (params.lang) {
     case "en":
-      pageTitle = `${categoryData.name} courses | Devs Learning`;
-      description = `The best courses to learn ${categoryData.name}`;
+      pageTitle = `${technologyData.name} courses | Devs Learning`;
+      description = `The best courses to learn ${technologyData.name}`;
       break;
 
     case "es":
-      pageTitle = `Cursos de ${categoryData.name} | Devs Learning`;
-      description = `Los mejores cursos para aprender ${categoryData.name}`;
+      pageTitle = `Cursos de ${technologyData.name} | Devs Learning`;
+      description = `Los mejores cursos para aprender ${technologyData.name}`;
       break;
   }
 
@@ -61,13 +61,13 @@ export async function generateMetadata(
   };
 }
 
-export default async function CategoryPage({
+export default async function TechnologyPage({
   params: { lang, id },
 }: {
   params: { lang: string; id: string };
 }) {
   const dictionary = await getDictionary(lang);
-  const category = await getCategory(id);
+  const technology = await getTechnology(id);
   const courses = await getCourses(id, lang);
 
   return (
@@ -75,15 +75,15 @@ export default async function CategoryPage({
       <div className="heading">
         <div className="container">
           <img
-            src={`/assets/technologies/${category._id}.svg`}
-            alt={category.name}
+            src={`/assets/technologies/${technology._id}.svg`}
+            alt={technology.name}
           />
-          <h1>{category.name}</h1>
+          <h1>{technology.name}</h1>
         </div>
       </div>
       <div className="container">
         <Courses
-          categoryId={JSON.parse(JSON.stringify(category._id))}
+          technologyId={JSON.parse(JSON.stringify(technology._id))}
           courses={JSON.parse(JSON.stringify(courses.docs))}
           dictionary={dictionary}
           language={lang}

@@ -1,6 +1,6 @@
 import { unstable_noStore as noStore } from "next/cache";
 import dbConnect from "@/lib/dbConnect";
-import Category from "../../models/Category";
+import Technology from "../../models/Technology";
 
 export async function fetchTechnologies() {
   noStore();
@@ -10,7 +10,7 @@ export async function fetchTechnologies() {
     sort: "name",
   };
 
-  const technologies = await Category.find({}, {}, options);
+  const technologies = await Technology.find({}, {}, options);
 
   return technologies;
 }
@@ -42,7 +42,7 @@ export async function fetchFilteredTechnologies(
     limit: ITEMS_PER_PAGE,
   };
 
-  const technologies = await Category.paginate(finalQuery, options);
+  const technologies = await Technology.paginate(finalQuery, options);
 
   return technologies;
 }
@@ -64,7 +64,7 @@ export async function fetchTechnologiesPages(query = "") {
     limit: ITEMS_PER_PAGE,
   };
 
-  const technologies = await Category.paginate(finalQuery, options);
+  const technologies = await Technology.paginate(finalQuery, options);
 
   return technologies.totalPages;
 }
@@ -72,7 +72,7 @@ export async function fetchTechnologiesPages(query = "") {
 export async function fetchTechnologyById(id: string) {
   await dbConnect();
 
-  const technology = await Category.findById(id);
+  const technology = await Technology.findById(id);
 
   return {
     _id: technology._id.toString(),

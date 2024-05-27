@@ -1,5 +1,5 @@
 import dbConnect from "../../../../../lib/dbConnect";
-import Category from "../../../../../models/Category";
+import Technology from "../../../../../models/Technology";
 
 export async function GET(
   request: Request,
@@ -9,10 +9,10 @@ export async function GET(
   await dbConnect();
 
   try {
-    const category = await Category.findById(id).exec();
-    return new Response(category.photo.data, {
+    const technology = await Technology.findById(id).exec();
+    return new Response(technology.photo.data, {
       status: 200,
-      headers: { "Content-Type": category.photo.contentType },
+      headers: { "Content-Type": technology.photo.contentType },
     });
   } catch (error) {
     return Response.json(

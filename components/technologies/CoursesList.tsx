@@ -12,19 +12,19 @@ export default function CoursesList({
       case "free":
         return (
           <span className="label pricing-free">
-            {dictionary.categories.pricingFree}
+            {dictionary.technologies.pricingFree}
           </span>
         );
       case "one-time-payment":
         return (
           <span className="label pricing-one-time">
-            {dictionary.categories.pricingOneTime}
+            {dictionary.technologies.pricingOneTime}
           </span>
         );
       case "subscription":
         return (
           <span className="label pricing-subscription">
-            {dictionary.categories.pricingSubscription}
+            {dictionary.technologies.pricingSubscription}
           </span>
         );
     }
@@ -43,22 +43,23 @@ export default function CoursesList({
             <p>{course.description}</p>
             <div className="details">
               <span className="detail">
-                <strong>{dictionary.categories.price}:</strong> US$&nbsp;
+                <strong>{dictionary.technologies.price}:</strong> US$&nbsp;
                 {course.price}
               </span>
               <span className="detail">
-                <strong>{dictionary.categories.platform}:</strong>{" "}
+                <strong>{dictionary.technologies.platform}:</strong>{" "}
                 {course.platform}
               </span>
               <span className="detail">
-                <strong>{dictionary.categories.author}:</strong> {course.author}
+                <strong>{dictionary.technologies.author}:</strong>{" "}
+                {course.author}
               </span>
               <span className="detail">
-                <strong>{dictionary.categories.year}:</strong> {course.year}
+                <strong>{dictionary.technologies.year}:</strong> {course.year}
               </span>
             </div>
             <Link className="btn" href={course.link} target="_blank">
-              {dictionary.categories.visitCourse}
+              {dictionary.technologies.visitCourse}
             </Link>
           </div>
         </div>

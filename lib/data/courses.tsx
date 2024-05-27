@@ -63,7 +63,7 @@ export async function fetchCourseById(id: string) {
 
   return {
     _id: course._id.toString(),
-    technology: course.category,
+    technology: course.technology.toString(),
     language: course.language,
     name: course.name,
     description: course.description,

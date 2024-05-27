@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import dbConnect from "@/lib/dbConnect";
-import Category from "@/models/Category";
+import Technology from "@/models/Technology";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import { getDictionary } from "./dictionaries";
 
@@ -16,17 +16,17 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-async function getCategories() {
+async function getTechnologies() {
   await dbConnect();
 
-  const result = await Category.find({});
+  const result = await Technology.find({});
 
-  const categories = result.map((doc: any) => {
-    const category = JSON.parse(JSON.stringify(doc));
-    return category;
+  const technologies = result.map((doc: any) => {
+    const technology = JSON.parse(JSON.stringify(doc));
+    return technology;
   });
 
-  return categories;
+  return technologies;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -80,7 +80,7 @@ export default async function Home({
   }
 
   const dictionary = await getDictionary(lang);
-  const categories = await getCategories();
+  const technologies = await getTechnologies();
 
   return (
     <>
@@ -103,20 +103,20 @@ export default async function Home({
         <div className="container">
           <h2>{dictionary.home.technologiesTitle}</h2>
           <div className="technologies-list">
-            {categories.map((category: any) => (
+            {technologies.map((technology: any) => (
               <Link
                 className="item"
-                key={category.name}
+                key={technology.name}
                 href={getLocalizedPathFromPrefix(
                   lang,
-                  `/categories/${category._id}`
+                  `/technologies/${technology._id}`
                 )}
               >
                 <img
-                  src={`/assets/technologies/${category._id}.svg`}
-                  alt={category.name}
+                  src={`/assets/technologies/${technology._id}.svg`}
+                  alt={technology.name}
                 />
-                <span>{category.name}</span>
+                <span>{technology.name}</span>
               </Link>
             ))}
           </div>

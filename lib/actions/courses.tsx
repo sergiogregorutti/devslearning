@@ -98,7 +98,7 @@ export async function createCourse(prevState: State, formData: FormData) {
   } = validatedFields.data;
 
   const newCourse = await Course.create({
-    category: technology,
+    technology: technology,
     language,
     name,
     description,
@@ -179,7 +179,7 @@ export async function updateCourse(
   } = validatedFields.data;
 
   await Course.findByIdAndUpdate(id, {
-    category: technology,
+    technology: technology,
     language,
     name,
     description,
