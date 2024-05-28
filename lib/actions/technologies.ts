@@ -165,7 +165,7 @@ export async function updateTechnology(
         imageWhiteFilepath: result.key,
       });
     } catch (e) {
-      console.log("error", e);
+      console.log("error uploading image", e);
     }
   }
 
@@ -191,7 +191,7 @@ export async function updateTechnology(
         imageLightBlueFilepath: result.key,
       });
     } catch (e) {
-      console.log("error", e);
+      console.log("error uploading image", e);
     }
   }
 
