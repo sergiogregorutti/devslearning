@@ -190,7 +190,9 @@ export async function updateTechnology(
         imageLightBlue: result.location,
         imageLightBlueFilepath: result.key,
       });
-    } catch (e) {}
+    } catch (e) {
+      console.log("error", e);
+    }
   }
 
   revalidatePath("/admin/technologies");
