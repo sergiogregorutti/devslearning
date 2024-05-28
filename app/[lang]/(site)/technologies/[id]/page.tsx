@@ -15,7 +15,10 @@ type Props = {
 async function getTechnology(id: String) {
   await dbConnect();
 
-  const technology = await Technology.findById(id, "name _id").exec();
+  const technology = await Technology.findById(
+    id,
+    "_id  name imageWhite"
+  ).exec();
 
   return technology;
 }
@@ -74,10 +77,7 @@ export default async function TechnologyPage({
     <div className="technology">
       <div className="heading">
         <div className="container">
-          <img
-            src={`/assets/technologies/${technology._id}.svg`}
-            alt={technology.name}
-          />
+          <img src={technology.imageWhite} alt={technology.name} />
           <h1>{technology.name}</h1>
         </div>
       </div>

@@ -112,10 +112,7 @@ export default async function Home({
                   `/technologies/${technology._id}`
                 )}
               >
-                <img
-                  src={`/assets/technologies/${technology._id}.svg`}
-                  alt={technology.name}
-                />
+                <img src={technology.imageWhite} alt={technology.name} />
                 <span>{technology.name}</span>
               </Link>
             ))}
