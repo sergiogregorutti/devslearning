@@ -2,6 +2,7 @@
 import Link from "next/link";
 import LanguageSelector from "@/components/languageSelector/LanguageSelector";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
+import Image from "next/image";
 
 import "./styles.css";
 
@@ -21,7 +22,12 @@ const Header = ({
       <div className="container">
         <h1>
           <Link href={getLocalizedPathFromPrefix(lang, `/`)}>
-            <img src="/assets/logo2024.svg" />
+            <Image
+              src="/assets/logo2024.svg"
+              width={136}
+              height={40}
+              alt="Devs Learning"
+            />
           </Link>
         </h1>
         <LanguageSelector dictionary={dictionary} lang={lang} />

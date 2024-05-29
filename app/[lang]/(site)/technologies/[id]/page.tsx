@@ -4,6 +4,7 @@ import Technology from "../../../../../models/Technology";
 import Course from "../../../../../models/Course";
 import Courses from "@/components/technologies/Courses";
 import { getDictionary } from "../../dictionaries";
+import Image from "next/image";
 
 import "./styles.css";
 
@@ -77,7 +78,12 @@ export default async function TechnologyPage({
     <div className="technology">
       <div className="heading">
         <div className="container">
-          <img src={technology.imageWhite} alt={technology.name} />
+          <Image
+            src={technology.imageWhite}
+            width={70}
+            height={70}
+            alt={technology.name}
+          />
           <h1>{technology.name}</h1>
         </div>
       </div>

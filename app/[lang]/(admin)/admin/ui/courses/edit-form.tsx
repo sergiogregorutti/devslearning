@@ -5,6 +5,7 @@ import { CourseForm } from "@/lib/definitions";
 import Link from "next/link";
 import { updateCourse } from "@/lib/actions/courses";
 import { useFormState } from "react-dom";
+import Image from "next/image";
 
 export default function EditTechnologyForm({
   course,
@@ -141,7 +142,13 @@ export default function EditTechnologyForm({
       </label>
       {course.image !== undefined && course.image !== "" && (
         <div className="img-wrapper">
-          <img src={course.image} className="big" />
+          <Image
+            className="big"
+            src={course.image}
+            width={200}
+            height={120}
+            alt={course.name}
+          />
         </div>
       )}
       <input

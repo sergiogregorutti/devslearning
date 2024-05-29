@@ -6,6 +6,7 @@ import Link from "next/link";
 import TextField from "@mui/material/TextField";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import { authenticate } from "@/lib/helpers";
+import Image from "next/image";
 
 export default function SignIn({
   lang,
@@ -122,7 +123,12 @@ export default function SignIn({
         </p>
       </form>
       <div className="image-container">
-        <img alt="Devs Learning" src="/assets/boy2.svg" />
+        <Image
+          src="/assets/boy2.svg"
+          width={532}
+          height={444}
+          alt="Devs Learning"
+        />
       </div>
     </div>
   );

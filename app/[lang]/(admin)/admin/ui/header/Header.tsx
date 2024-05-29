@@ -7,6 +7,7 @@ import { getLocalizedPathFromPrefix } from "@/lib/language";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import Image from "next/image";
 
 import "./styles.css";
 
@@ -35,7 +36,12 @@ const Header = ({ lang, user }: { lang: string; user: any }) => {
       <div className="container">
         <h1>
           <Link href={getLocalizedPathFromPrefix(lang, `/admin`)}>
-            <img src="/assets/logo2024.svg" />
+            <Image
+              src="/assets/logo2024.svg"
+              width={136}
+              height={40}
+              alt="Devs Learning"
+            />
           </Link>
         </h1>
         <div className="right">
@@ -74,7 +80,13 @@ const Header = ({ lang, user }: { lang: string; user: any }) => {
                 })}
               </ul>
             </div>
-            <img className="mobile-menu-logo" src="/assets/logo_dark.svg" />
+            <Image
+              className="mobile-menu-logo"
+              src="/assets/logo_dark.svg"
+              width={200}
+              height={59}
+              alt="Devs Learning"
+            />
           </div>
         </div>
       </div>

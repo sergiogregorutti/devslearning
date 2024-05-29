@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function CoursesList({
   courses,
@@ -36,7 +37,12 @@ export default function CoursesList({
         <div className="item" key={course.name}>
           <div className="image">
             {renderPricing(course.pricing)}
-            <img src={`/api/course/photo/${course._id}`} alt={course.name} />
+            <Image
+              src={course.image}
+              width={200}
+              height={200}
+              alt={course.name}
+            />
           </div>
           <div className="content">
             <h3>{course.name}</h3>

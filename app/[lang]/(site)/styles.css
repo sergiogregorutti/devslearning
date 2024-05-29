@@ -149,6 +149,7 @@
       padding: 20px;
 
       & img {
+        width: auto;
         height: 50px;
       }
 

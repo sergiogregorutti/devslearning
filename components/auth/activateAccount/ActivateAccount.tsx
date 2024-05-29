@@ -2,6 +2,7 @@
 import { MouseEvent, useState, useEffect } from "react";
 import axios from "axios";
 const jwt = require("jsonwebtoken");
+import Image from "next/image";
 
 interface Token {
   name: string;
@@ -75,7 +76,12 @@ export default function ActivateAccount({
         )}
       </form>
       <div className="image-container">
-        <img alt="Devs Learning" src="/assets/boy2.svg" />
+        <Image
+          src="/assets/boy2.svg"
+          width={532}
+          height={444}
+          alt="Devs Learning"
+        />
       </div>
     </div>
   );

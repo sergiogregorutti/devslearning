@@ -8,6 +8,7 @@ import dbConnect from "@/lib/dbConnect";
 import Technology from "@/models/Technology";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import { getDictionary } from "./dictionaries";
+import Image from "next/image";
 
 import "./styles.css";
 
@@ -94,7 +95,12 @@ export default async function Home({
             <p>{dictionary.home.titleDescription}</p>
           </div>
           <div className="col-image">
-            <img src="/assets/boy.svg" />
+            <Image
+              src="/assets/boy.svg"
+              width={555}
+              height={286}
+              alt="Devs Learning"
+            />
           </div>
         </div>
       </div>
@@ -112,7 +118,12 @@ export default async function Home({
                   `/technologies/${technology._id}`
                 )}
               >
-                <img src={technology.imageWhite} alt={technology.name} />
+                <Image
+                  src={technology.imageWhite}
+                  width={100}
+                  height={100}
+                  alt={technology.name}
+                />
                 <span>{technology.name}</span>
               </Link>
             ))}

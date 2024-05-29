@@ -5,6 +5,7 @@ import { TechnologyForm } from "@/lib/definitions";
 import Link from "next/link";
 import { updateTechnology } from "@/lib/actions/technologies";
 import { useFormState } from "react-dom";
+import Image from "next/image";
 
 export default function EditTechnologyForm({
   technology,
@@ -55,7 +56,12 @@ export default function EditTechnologyForm({
       {technology.imageWhite !== undefined && technology.imageWhite !== "" && (
         <div className="img-wrapper white">
           <div className="white-image">
-            <img src={technology.imageWhite} />
+            <Image
+              src={technology.imageWhite}
+              width={200}
+              height={120}
+              alt={technology.name}
+            />
           </div>
         </div>
       )}
@@ -81,7 +87,12 @@ export default function EditTechnologyForm({
       {technology.imageLightBlue !== undefined &&
         technology.imageLightBlue !== "" && (
           <div className="img-wrapper">
-            <img src={technology.imageLightBlue} />
+            <Image
+              src={technology.imageLightBlue}
+              width={200}
+              height={120}
+              alt={technology.name}
+            />
           </div>
         )}
       <input

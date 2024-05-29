@@ -1,5 +1,6 @@
 import { fetchFilteredTechnologies } from "@/lib/data/technologies";
 import { DeleteTechnology, UpdateTechnology } from "../buttons";
+import Image from "next/image";
 
 export default async function Table({
   query,
@@ -26,8 +27,10 @@ export default async function Table({
                 <td>
                   {technology.imageLightBlue &&
                     technology.imageLightBlue !== "" && (
-                      <img
+                      <Image
                         src={technology.imageLightBlue}
+                        width={25}
+                        height={30}
                         alt={technology.name}
                       />
                     )}

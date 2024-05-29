@@ -4,6 +4,7 @@ import axios from "axios";
 import Link from "next/link";
 import TextField from "@mui/material/TextField";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
+import Image from "next/image";
 
 export default function SignUp({
   lang,
@@ -121,7 +122,12 @@ export default function SignUp({
         </p>
       </form>
       <div className="image-container">
-        <img alt="Devs Learning" src="/assets/girl.svg" />
+        <Image
+          src="/assets/girl.svg"
+          width={532}
+          height={395}
+          alt="Devs Learning"
+        />
       </div>
     </div>
   );

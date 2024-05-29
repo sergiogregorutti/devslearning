@@ -1,6 +1,7 @@
 "use client";
 import { MouseEvent, useState } from "react";
 import TextField from "@mui/material/TextField";
+import Image from "next/image";
 
 export default function SignIn({
   dictionary,
@@ -76,7 +77,12 @@ export default function SignIn({
         </button>
       </form>
       <div className="image-container">
-        <img alt="Devs Learning" src="/assets/boy2.svg" />
+        <Image
+          src="/assets/boy2.svg"
+          width={532}
+          height={444}
+          alt="Devs Learning"
+        />
       </div>
     </div>
   );
