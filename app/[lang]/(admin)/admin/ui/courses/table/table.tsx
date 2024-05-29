@@ -1,5 +1,6 @@
 import { fetchFilteredCourses } from "@/lib/data/courses";
 import { Delete, Update } from "../buttons";
+import Image from "next/image";
 
 export default async function Table({
   query,
@@ -16,6 +17,8 @@ export default async function Table({
         <thead>
           <tr>
             <th>Course</th>
+            <th>Technology</th>
+            <th>Language</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -25,6 +28,20 @@ export default async function Table({
               <tr key={course.name}>
                 <td>
                   <span className="name">{course.name}</span>
+                </td>
+                <td>
+                  <Image
+                    src={course.technology.imageLightBlue}
+                    width={25}
+                    height={30}
+                    alt={course.technology.name}
+                  />
+                  <span className="name">{course.technology.name}</span>
+                </td>
+                <td>
+                  <span className="name">
+                    {course.language === "en" ? "English" : "Spanish"}
+                  </span>
                 </td>
                 <td className="actions">
                   <Update id={course._id.toString()} />

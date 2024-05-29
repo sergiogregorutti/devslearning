@@ -27,6 +27,7 @@ export async function fetchFilteredCourses(
     sort: `${order}${sortBy}`,
     page: currentPage,
     limit: ITEMS_PER_PAGE,
+    populate: "technology",
   };
 
   const courses = await Course.paginate(finalQuery, options);
