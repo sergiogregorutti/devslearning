@@ -3,7 +3,7 @@ const mongoosePaginate = require("mongoose-paginate-v2");
 
 const { ObjectId } = mongoose.Schema;
 
-const courseSchema = new mongoose.Schema(
+const CourseSchema = new mongoose.Schema(
   {
     language: {
       type: String,
@@ -69,8 +69,10 @@ const courseSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-courseSchema.index({ name: "text" });
+CourseSchema.index({ name: "text" });
 
-courseSchema.plugin(mongoosePaginate);
+CourseSchema.plugin(mongoosePaginate);
 
-export default mongoose.models.Course || mongoose.model("Course", courseSchema);
+const MongoModel =
+  mongoose.models.Course || mongoose.model("Course", CourseSchema);
+export default MongoModel;

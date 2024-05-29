@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const mongoosePaginate = require("mongoose-paginate-v2");
 
-const technologySchema = new mongoose.Schema(
+const TechnologySchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -34,9 +34,10 @@ const technologySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-technologySchema.index({ name: "text" });
+TechnologySchema.index({ name: "text" });
 
-technologySchema.plugin(mongoosePaginate);
+TechnologySchema.plugin(mongoosePaginate);
 
-export default mongoose.models.Technology ||
-  mongoose.model("Technology", technologySchema);
+const MongoModel =
+  mongoose.models.Technology || mongoose.model("Technology", TechnologySchema);
+export default MongoModel;

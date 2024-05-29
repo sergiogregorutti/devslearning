@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 const crypto = require("crypto");
 
-const userSchema = new Schema(
+const UserSchema = new Schema(
   {
     name: {
       type: String,
@@ -33,8 +33,7 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-userSchema
-  .virtual("password")
+UserSchema.virtual("password")
   .set(function (this: any, password: any) {
     // create a temporarity variable called _password
     this._password = password;
@@ -47,7 +46,7 @@ userSchema
     return this._password;
   });
 
-userSchema.methods = {
+UserSchema.methods = {
   authenticate: function (plainText: any) {
     return this.encryptPassword(plainText) === this.hashed_password;
   },
@@ -69,4 +68,5 @@ userSchema.methods = {
   },
 };
 
-export default mongoose.models.User || mongoose.model("User", userSchema);
+const MongoModel = mongoose.models.User || mongoose.model("User", UserSchema);
+export default MongoModel;
