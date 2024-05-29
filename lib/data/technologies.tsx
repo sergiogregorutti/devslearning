@@ -15,7 +15,7 @@ export async function fetchTechnologies() {
   return technologies;
 }
 
-const ITEMS_PER_PAGE = 4;
+const ITEMS_PER_PAGE = 10;
 export async function fetchFilteredTechnologies(
   query = "",
   currentPage = 1,
