@@ -38,6 +38,5 @@ TechnologySchema.index({ name: "text" });
 
 TechnologySchema.plugin(mongoosePaginate);
 
-const MongoModel =
-  mongoose.models.Technology || mongoose.model("Technology", TechnologySchema);
-export default MongoModel;
+export default mongoose.models.Technology ||
+  mongoose.model("Technology", TechnologySchema);

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const mongoosePaginate = require("mongoose-paginate-v2");
+import Technology from "./Technology";
 
 const { ObjectId } = mongoose.Schema;
 
@@ -57,7 +58,7 @@ const CourseSchema = new mongoose.Schema(
     },
     technology: {
       type: ObjectId,
-      ref: "Technology",
+      ref: Technology,
     },
     link: {
       type: String,
@@ -73,6 +74,4 @@ CourseSchema.index({ name: "text" });
 
 CourseSchema.plugin(mongoosePaginate);
 
-const MongoModel =
-  mongoose.models.Course || mongoose.model("Course", CourseSchema);
-export default MongoModel;
+export default mongoose.models.Course || mongoose.model("Course", CourseSchema);

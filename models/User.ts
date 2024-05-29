@@ -68,5 +68,4 @@ UserSchema.methods = {
   },
 };
 
-const MongoModel = mongoose.models.User || mongoose.model("User", UserSchema);
-export default MongoModel;
+export default mongoose.models.User || mongoose.model("User", UserSchema);
