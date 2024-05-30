@@ -115,7 +115,7 @@ export default async function Home({
                 key={technology.name}
                 href={getLocalizedPathFromPrefix(
                   lang,
-                  `/technologies/${technology._id}`
+                  `/technologies/${technology.slug}/courses/`
                 )}
               >
                 <Image

@@ -1,24 +1,24 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import dbConnect from "../../../../../lib/dbConnect";
-import Technology from "../../../../../models/Technology";
-import Course from "../../../../../models/Course";
+import dbConnect from "../../../../../../lib/dbConnect";
+import Technology from "../../../../../../models/Technology";
+import Course from "../../../../../../models/Course";
 import Courses from "@/components/technologies/Courses";
-import { getDictionary } from "../../dictionaries";
+import { getDictionary } from "../../../dictionaries";
 import Image from "next/image";
 
 import "./styles.css";
 
 type Props = {
-  params: { lang: string; id: string };
+  params: { lang: string; slug: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-async function getTechnology(id: String) {
+async function getTechnology(slug: String) {
   await dbConnect();
 
-  const technology = await Technology.findById(
-    id,
-    "_id  name imageWhite"
+  const technology = await Technology.findOne(
+    { slug: slug },
+    "_id name imageWhite"
   ).exec();
 
   return technology;
@@ -42,7 +42,7 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const technologyData = await getTechnology(params.id);
+  const technologyData = await getTechnology(params.slug);
 
   let pageTitle;
   let description;
@@ -66,13 +66,13 @@ export async function generateMetadata(
 }
 
 export default async function TechnologyPage({
-  params: { lang, id },
+  params: { lang, slug },
 }: {
-  params: { lang: string; id: string };
+  params: { lang: string; slug: string };
 }) {
   const dictionary = await getDictionary(lang);
-  const technology = await getTechnology(id);
-  const courses = await getCourses(id, lang);
+  const technology = await getTechnology(slug);
+  const courses = await getCourses(technology._id, lang);
 
   return (
     <div className="technology">
@@ -89,7 +89,7 @@ export default async function TechnologyPage({
       </div>
       <div className="container">
         <Courses
-          technologyId={JSON.parse(JSON.stringify(technology._id))}
+          technologyId={technology._id.toString()}
           courses={JSON.parse(JSON.stringify(courses.docs))}
           dictionary={dictionary}
           language={lang}
