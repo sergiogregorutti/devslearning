@@ -12,7 +12,9 @@ const ACCEPTED_FILE_TYPES = ["image/png", "image/svg+xml"];
 
 const FormSchema = z.object({
   id: z.string(),
+  order: z.number().min(1, "Order is required."),
   name: z.string().min(1, "Name is required."),
+  slug: z.string().min(1, "Slug is required."),
   imageWhite: z
     .instanceof(File)
     .optional()
@@ -53,7 +55,9 @@ export async function createTechnology(prevState: State, formData: FormData) {
   await dbConnect();
 
   const validatedFields = CreateTechnology.safeParse({
+    order: Number(formData.get("order")),
     name: formData.get("name"),
+    slug: formData.get("slug"),
     imageWhite: formData.get("image-white"),
     imageLightBlue: formData.get("image-light-blue"),
   });
@@ -65,10 +69,13 @@ export async function createTechnology(prevState: State, formData: FormData) {
     };
   }
 
-  const { name, imageWhite, imageLightBlue } = validatedFields.data;
+  const { order, name, slug, imageWhite, imageLightBlue } =
+    validatedFields.data;
 
   const newTechnology = await Technology.create({
+    order,
     name,
+    slug,
   });
 
   if (imageWhite && imageWhite.size && imageWhite.size > 0) {
@@ -119,7 +126,9 @@ export async function updateTechnology(
   await dbConnect();
 
   const validatedFields = UpdateTechnology.safeParse({
+    order: Number(formData.get("order")),
     name: formData.get("name"),
+    slug: formData.get("slug"),
     imageWhite: formData.get("image-white"),
     imageLightBlue: formData.get("image-light-blue"),
   });
@@ -131,16 +140,17 @@ export async function updateTechnology(
     };
   }
 
-  const { name, imageWhite, imageLightBlue } = validatedFields.data;
+  const { order, name, slug, imageWhite, imageLightBlue } =
+    validatedFields.data;
 
-  await Technology.findByIdAndUpdate(id, { name });
+  await Technology.findByIdAndUpdate(id, { order, name, slug });
 
   let technology;
   if (
     (imageWhite && imageWhite.size && imageWhite.size > 0) ||
     (imageLightBlue && imageLightBlue.size && imageLightBlue.size > 0)
   ) {
-    technology = await Technology.findByIdAndUpdate(id, { name });
+    technology = await Technology.findByIdAndUpdate(id, { order, name, slug });
   }
 
   if (imageWhite && imageWhite.size && imageWhite.size > 0) {

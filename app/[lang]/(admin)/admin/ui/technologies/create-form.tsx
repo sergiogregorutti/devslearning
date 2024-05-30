@@ -23,6 +23,24 @@ export default function Form() {
 
   return (
     <form action={dispatch} onSubmit={handleSubmitForm}>
+      <label htmlFor="order" className="form-label">
+        Order
+      </label>
+      <input
+        id="order"
+        name="order"
+        className="form-input"
+        aria-describedby="order-error"
+        disabled={isFormLoading}
+      />
+      <div id="order-error" aria-live="polite" aria-atomic="true">
+        {state.errors?.order &&
+          state.errors.order.map((error: string) => (
+            <p className="form-error" key={error}>
+              {error}
+            </p>
+          ))}
+      </div>
       <label htmlFor="name" className="form-label">
         Name
       </label>
@@ -36,6 +54,24 @@ export default function Form() {
       <div id="name-error" aria-live="polite" aria-atomic="true">
         {state.errors?.name &&
           state.errors.name.map((error: string) => (
+            <p className="form-error" key={error}>
+              {error}
+            </p>
+          ))}
+      </div>
+      <label htmlFor="slug" className="form-label">
+        Slug
+      </label>
+      <input
+        id="slug"
+        name="slug"
+        className="form-input"
+        aria-describedby="slug-error"
+        disabled={isFormLoading}
+      />
+      <div id="slug-error" aria-live="polite" aria-atomic="true">
+        {state.errors?.slug &&
+          state.errors.slug.map((error: string) => (
             <p className="form-error" key={error}>
               {error}
             </p>

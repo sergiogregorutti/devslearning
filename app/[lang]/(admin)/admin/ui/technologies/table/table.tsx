@@ -16,6 +16,7 @@ export default async function Table({
       <table>
         <thead>
           <tr>
+            <th>Order</th>
             <th>Technology</th>
             <th>Actions</th>
           </tr>
@@ -24,6 +25,9 @@ export default async function Table({
           {technologies.docs &&
             technologies.docs.map((technology: any) => (
               <tr key={technology.name}>
+                <td>
+                  <span className="name">{technology.order}</span>
+                </td>
                 <td>
                   {technology.imageLightBlue &&
                     technology.imageLightBlue !== "" && (

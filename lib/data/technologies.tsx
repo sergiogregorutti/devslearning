@@ -19,7 +19,7 @@ const ITEMS_PER_PAGE = 10;
 export async function fetchFilteredTechnologies(
   query = "",
   currentPage = 1,
-  sortBy = "createdAt",
+  sortBy = "order",
   order = "asc"
 ) {
   noStore();
@@ -76,7 +76,9 @@ export async function fetchTechnologyById(id: string) {
 
   return {
     _id: technology._id.toString(),
+    order: technology.order,
     name: technology.name,
+    slug: technology.slug,
     imageWhite: technology.imageWhite,
     imageWhiteFilepath: technology.imageWhiteFilepath,
     imageLightBlue: technology.imageLightBlue,
