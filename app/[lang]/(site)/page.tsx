@@ -20,7 +20,7 @@ type Props = {
 async function getTechnologies() {
   await dbConnect();
 
-  const result = await Technology.find({});
+  const result = await Technology.find({}).sort("order");
 
   const technologies = result.map((doc: any) => {
     const technology = JSON.parse(JSON.stringify(doc));
