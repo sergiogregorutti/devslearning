@@ -4,7 +4,7 @@ import cookie from "js-cookie";
 export const setCookie = (key: string, value: string) => {
   if (typeof window !== "undefined") {
     cookie.set(key, value, {
-      expires: 1,
+      expires: 365,
     });
   }
 };
