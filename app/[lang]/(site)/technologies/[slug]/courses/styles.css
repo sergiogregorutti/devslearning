@@ -6,6 +6,7 @@
   & .container {
     padding: 0 15px;
     max-width: 1200px;
+    width: 100%;
   }
 
   & .heading {
@@ -43,6 +44,15 @@
           margin-bottom: 20px;
         }
       }
+    }
+  }
+
+  & .filter-and-sorting {
+    display: grid;
+    grid-template-columns: 65% 35%;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 230px 230px;
     }
   }
 }

@@ -1,10 +1,16 @@
+import { Suspense } from "react";
 import type { Metadata, ResolvingMetadata } from "next";
 import dbConnect from "../../../../../../lib/dbConnect";
 import Technology from "../../../../../../models/Technology";
 import Course from "../../../../../../models/Course";
-import Courses from "@/components/technologies/Courses";
 import { getDictionary } from "../../../dictionaries";
 import Image from "next/image";
+import { fetchCoursesPages } from "@/lib/data/courses";
+import Sorting from "../../../ui/courses/sorting/sorting";
+import Language from "../../../ui/courses/language/language";
+import List from "../../../ui/courses/list/list";
+import Loading from "../../../ui/courses/list/loading";
+import Pagination from "../../../ui/courses/pagination/pagination";
 
 import "./styles.css";
 
@@ -67,12 +73,29 @@ export async function generateMetadata(
 
 export default async function TechnologyPage({
   params: { lang, slug },
+  searchParams,
 }: {
   params: { lang: string; slug: string };
+  searchParams?: {
+    page?: string;
+  };
 }) {
   const dictionary = await getDictionary(lang);
   const technology = await getTechnology(slug);
-  const courses = await getCourses(technology._id, lang);
+
+  const params = new URLSearchParams(searchParams);
+  const language = params.get("language") || lang;
+  const sortBy = params.get("sortBy") || "priceHighToLow";
+
+  const queryObject: { technology: string; language?: string } = {
+    technology: technology._id.toString(),
+  };
+  if (language !== "all") {
+    queryObject.language = language;
+  }
+
+  const currentPage = Number(searchParams?.page) || 1;
+  const totalPages = await fetchCoursesPages(queryObject);
 
   return (
     <div className="technology">
@@ -88,12 +111,21 @@ export default async function TechnologyPage({
         </div>
       </div>
       <div className="container">
-        <Courses
-          technologyId={technology._id.toString()}
-          courses={JSON.parse(JSON.stringify(courses.docs))}
-          dictionary={dictionary}
-          language={lang}
-        />
+        <div className="courses">
+          <div className="filter-and-sorting">
+            <Sorting dictionary={dictionary} />
+            <Language lang={lang} dictionary={dictionary} />
+          </div>
+          <Suspense fallback={<Loading />}>
+            <List
+              query={queryObject}
+              sortBy={sortBy}
+              currentPage={currentPage}
+              dictionary={dictionary}
+            />
+          </Suspense>
+          <Pagination totalPages={totalPages} />
+        </div>
       </div>
     </div>
   );

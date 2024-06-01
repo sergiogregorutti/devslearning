@@ -9,7 +9,7 @@ export default async function Table({
   query: string;
   currentPage: number;
 }) {
-  const courses = await fetchFilteredCourses(query, currentPage);
+  const courses = await fetchFilteredCourses({ query }, currentPage);
 
   return (
     <div className="table-container">

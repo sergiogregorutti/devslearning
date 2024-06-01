@@ -2,9 +2,9 @@ import { unstable_noStore as noStore } from "next/cache";
 import dbConnect from "@/lib/dbConnect";
 import Course from "../../models/Course";
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 2;
 export async function fetchFilteredCourses(
-  query = "",
+  query: any = {},
   currentPage = 1,
   sortBy = "createdAt",
   order = "asc"
@@ -16,10 +16,25 @@ export async function fetchFilteredCourses(
 
   let finalQuery = {};
 
-  if (query !== "") {
-    const regexQuery = { $regex: new RegExp(query, "i") };
+  if (query.query !== undefined && query.query !== "") {
+    const regexQuery = { $regex: new RegExp(query.query, "i") };
     finalQuery = {
-      $or: [{ $text: { $search: query } }, { name: regexQuery }],
+      ...finalQuery,
+      $or: [{ $text: { $search: query.query } }, { name: regexQuery }],
+    };
+  }
+
+  if (query.technology) {
+    finalQuery = {
+      ...finalQuery,
+      technology: query.technology,
+    };
+  }
+
+  if (query.language) {
+    finalQuery = {
+      ...finalQuery,
+      language: query.language,
     };
   }
 
@@ -35,16 +50,31 @@ export async function fetchFilteredCourses(
   return courses;
 }
 
-export async function fetchCoursesPages(query = "") {
+export async function fetchCoursesPages(query: any = {}) {
   noStore();
   await dbConnect();
 
   let finalQuery = {};
 
-  if (query !== "") {
-    const regexQuery = { $regex: new RegExp(query, "i") };
+  if (query.query !== undefined && query.query !== "") {
+    const regexQuery = { $regex: new RegExp(query.query, "i") };
     finalQuery = {
-      $or: [{ $text: { $search: query } }, { name: regexQuery }],
+      ...finalQuery,
+      $or: [{ $text: { $search: query.query } }, { name: regexQuery }],
+    };
+  }
+
+  if (query.technology) {
+    finalQuery = {
+      ...finalQuery,
+      technology: query.technology,
+    };
+  }
+
+  if (query.language) {
+    finalQuery = {
+      ...finalQuery,
+      language: query.language,
     };
   }
 
