@@ -36,7 +36,7 @@ async function getCourses(id: String, lang: String) {
   const courses = await Course.paginate(
     { technology: id, language: lang },
     {
-      select: "-photo -technology",
+      select: "-technology",
       sort: "-price",
     }
   );

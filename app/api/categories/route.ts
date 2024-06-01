@@ -34,7 +34,6 @@ export async function POST(request: Request) {
   const technologies = await Technology.paginate(findArgs, {
     offset,
     limit,
-    select: "-photo",
     sort: `${order}${sortBy}`,
   });
 

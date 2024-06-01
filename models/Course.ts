@@ -10,10 +10,6 @@ const CourseSchema = new mongoose.Schema(
       type: String,
       enum: ["en", "es"],
     },
-    photo: {
-      data: Buffer,
-      contentType: String,
-    },
     name: {
       type: String,
       trim: true,

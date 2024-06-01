@@ -120,13 +120,10 @@ export async function createCourse(prevState: State, formData: FormData) {
 
       const result = await uploadFile(image, path);
 
-      const resultPhoto = await Course.findByIdAndUpdate(
-        newCourse._id.toString(),
-        {
-          image: result.location,
-          imageFilepath: result.key,
-        }
-      );
+      await Course.findByIdAndUpdate(newCourse._id.toString(), {
+        image: result.location,
+        imageFilepath: result.key,
+      });
     } catch (e) {}
   }
 

@@ -22,10 +22,6 @@ const TechnologySchema = new mongoose.Schema(
       max: 32,
       unique: true,
     },
-    photo: {
-      data: Buffer,
-      contentType: String,
-    },
     imageWhite: {
       type: String,
       trim: true,
