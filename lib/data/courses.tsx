@@ -2,7 +2,7 @@ import { unstable_noStore as noStore } from "next/cache";
 import dbConnect from "@/lib/dbConnect";
 import Course from "../../models/Course";
 
-const ITEMS_PER_PAGE = 2;
+const ITEMS_PER_PAGE = 10;
 export async function fetchFilteredCourses(
   query: any = {},
   currentPage = 1,
