@@ -94,6 +94,7 @@
       text-align: center;
 
       & img {
+        height: auto;
         width: 75%;
       }
 
