@@ -27,8 +27,29 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://desvlearning.com"),
   title: "Devs Learning | Course directory for developers",
   description: "Course directory for Developers",
+  openGraph: {
+    title: "Devs Learning | Course directory for developers",
+    description: "Course directory for Developers",
+    url: "https://devslearning.com",
+    siteName: "Devs Learning",
+    images: [
+      {
+        url: "https://devslearning.com/assets/opengraph-image.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Devs Learning | Course directory for developers",
+    description: "Course directory for Developers",
+    images: ["https://devslearning.com/assets/opengraph-image.png"],
+  },
   verification: {
     google: "google",
     yandex: "yandex",
