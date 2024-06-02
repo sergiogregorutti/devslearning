@@ -100,6 +100,7 @@ export default async function Home({
               width={555}
               height={286}
               alt="Devs Learning"
+              priority={true}
             />
           </div>
         </div>

@@ -27,6 +27,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://devslearning.com"),
   title: "Devs Learning | Course directory for developers",
   description: "Course directory for Developers",
   verification: {
