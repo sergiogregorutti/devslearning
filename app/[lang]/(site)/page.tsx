@@ -105,7 +105,6 @@ export default async function Home({
           </div>
         </div>
       </div>
-
       <div className="technologies">
         <div className="container">
           <h2>{dictionary.home.technologiesTitle}</h2>
