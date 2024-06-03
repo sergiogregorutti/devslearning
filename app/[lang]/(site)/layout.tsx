@@ -33,7 +33,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Devs Learning | Course directory for developers",
     description: "Course directory for Developers",
-    url: "https://devslearning.com",
     siteName: "Devs Learning",
     images: [
       {

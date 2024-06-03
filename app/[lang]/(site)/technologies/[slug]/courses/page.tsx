@@ -68,6 +68,14 @@ export async function generateMetadata(
   return {
     title: pageTitle,
     description,
+    openGraph: {
+      title: pageTitle,
+      description,
+    },
+    twitter: {
+      title: pageTitle,
+      description,
+    },
   };
 }
 
