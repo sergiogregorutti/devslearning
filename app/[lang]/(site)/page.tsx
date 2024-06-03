@@ -52,10 +52,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: pageTitle,
       description,
+      siteName: "Devs Learning",
+      images: [
+        {
+          url: "https://devslearning.com/assets/opengraph-image.png",
+          width: 1200,
+          height: 630,
+        },
+      ],
+      type: "website",
     },
     twitter: {
+      card: "summary_large_image",
       title: pageTitle,
       description,
+      images: ["https://devslearning.com/assets/opengraph-image.png"],
     },
   };
 }
