@@ -5,7 +5,11 @@ import Link from "next/link";
 import { createTechnology } from "@/lib/actions/technologies";
 import { useFormState } from "react-dom";
 
-export default function Form() {
+export default function Form({
+  technologiesCategories,
+}: {
+  technologiesCategories: any;
+}) {
   const initialState = {
     errors: { image: [], name: [] },
     message: "",
@@ -23,6 +27,31 @@ export default function Form() {
 
   return (
     <form action={dispatch} onSubmit={handleSubmitForm}>
+      <label htmlFor="technology_category" className="form-label">
+        Category
+      </label>
+      <select
+        name="technology_category"
+        id="technology_category"
+        className="form-input"
+        aria-describedby="technology_category-error"
+        disabled={isFormLoading}
+      >
+        <option value="">Select...</option>
+        {technologiesCategories.map((technologyCategory: any) => (
+          <option key={technologyCategory._id} value={technologyCategory._id}>
+            {technologyCategory.name}
+          </option>
+        ))}
+      </select>
+      <div id="technology_category-error" aria-live="polite" aria-atomic="true">
+        {state.errors?.technology_category &&
+          state.errors.technology_category.map((error: string) => (
+            <p className="form-error" key={error}>
+              {error}
+            </p>
+          ))}
+      </div>
       <label htmlFor="order" className="form-label">
         Order
       </label>

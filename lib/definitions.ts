@@ -1,5 +1,6 @@
 export type TechnologyForm = {
   _id: string;
+  technologyCategory: string;
   order: number;
   name: string;
   slug: string;

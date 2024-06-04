@@ -9,8 +9,10 @@ import Image from "next/image";
 
 export default function EditTechnologyForm({
   technology,
+  technologiesCategories,
 }: {
   technology: TechnologyForm;
+  technologiesCategories: any;
 }) {
   const updateTechnologyWithId = updateTechnology.bind(null, technology._id);
   const initialState = {
@@ -31,6 +33,32 @@ export default function EditTechnologyForm({
 
   return (
     <form action={dispatch} onSubmit={handleSubmitForm}>
+      <label htmlFor="technology_category" className="form-label">
+        Category
+      </label>
+      <select
+        name="technology_category"
+        id="technology_category"
+        className="form-input"
+        defaultValue={technology.technologyCategory}
+        aria-describedby="technology-error"
+        disabled={isFormLoading}
+      >
+        <option value="">Select...</option>
+        {technologiesCategories.map((technologyCategory: any) => (
+          <option key={technologyCategory._id} value={technologyCategory._id}>
+            {technologyCategory.name}
+          </option>
+        ))}
+      </select>
+      <div id="technology_category-error" aria-live="polite" aria-atomic="true">
+        {state.errors?.technology_category &&
+          state.errors.technology_category.map((error: string) => (
+            <p className="form-error" key={error}>
+              {error}
+            </p>
+          ))}
+      </div>
       <label htmlFor="order" className="form-label">
         Order
       </label>

@@ -17,7 +17,7 @@ export async function fetchTechnologies() {
 
 const ITEMS_PER_PAGE = 10;
 export async function fetchFilteredTechnologies(
-  query = "",
+  query: any = "",
   currentPage = 1,
   sortBy = "order",
   order = "asc"
@@ -36,10 +36,18 @@ export async function fetchFilteredTechnologies(
     };
   }
 
+  if (query.technologyCategory) {
+    finalQuery = {
+      ...finalQuery,
+      technologyCategory: query.technologyCategory,
+    };
+  }
+
   const options = {
     sort: `${order}${sortBy}`,
     page: currentPage,
     limit: ITEMS_PER_PAGE,
+    populate: "technologyCategory",
   };
 
   const technologies = await Technology.paginate(finalQuery, options);
@@ -47,7 +55,7 @@ export async function fetchFilteredTechnologies(
   return technologies;
 }
 
-export async function fetchTechnologiesPages(query = "") {
+export async function fetchTechnologiesPages(query: any = "") {
   noStore();
   await dbConnect();
 
@@ -57,6 +65,13 @@ export async function fetchTechnologiesPages(query = "") {
     const regexQuery = { $regex: new RegExp(query, "i") };
     finalQuery = {
       $or: [{ $text: { $search: query } }, { name: regexQuery }],
+    };
+  }
+
+  if (query.technologyCategory) {
+    finalQuery = {
+      ...finalQuery,
+      technologyCategory: query.technologyCategory,
     };
   }
 
@@ -77,6 +92,7 @@ export async function fetchTechnologyById(id: string) {
   return {
     _id: technology._id.toString(),
     order: technology.order,
+    technologyCategory: technology.technologyCategory?.toString(),
     name: technology.name,
     slug: technology.slug,
     imageWhite: technology.imageWhite,

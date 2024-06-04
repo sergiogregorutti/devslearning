@@ -1,11 +1,14 @@
 import Form from "@/app/[lang]/(admin)/admin/ui/technologies/create-form";
+import { fetchTechnologiesCategories } from "@/lib/data/technologiesCategories";
 
 export default async function Page() {
+  const technologiesCategories = await fetchTechnologiesCategories();
+
   return (
     <>
       <h1>Technologies</h1>
       <h2>Create</h2>
-      <Form />
+      <Form technologiesCategories={technologiesCategories} />
     </>
   );
 }

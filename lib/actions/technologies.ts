@@ -12,6 +12,7 @@ const ACCEPTED_FILE_TYPES = ["image/png", "image/svg+xml"];
 
 const FormSchema = z.object({
   id: z.string(),
+  technology_category: z.string().min(1, "Technology Category is required."),
   order: z.number().min(1, "Order is required."),
   name: z.string().min(1, "Name is required."),
   slug: z.string().min(1, "Slug is required."),
@@ -46,6 +47,7 @@ const CreateTechnology = FormSchema.omit({ id: true, date: true });
 
 export type State = {
   errors?: {
+    technology_category?: string[];
     name?: string[];
   };
   message?: string | null;
@@ -55,6 +57,7 @@ export async function createTechnology(prevState: State, formData: FormData) {
   await dbConnect();
 
   const validatedFields = CreateTechnology.safeParse({
+    technology_category: formData.get("technology_category"),
     order: Number(formData.get("order")),
     name: formData.get("name"),
     slug: formData.get("slug"),
@@ -69,10 +72,11 @@ export async function createTechnology(prevState: State, formData: FormData) {
     };
   }
 
-  const { order, name, slug, imageWhite, imageLightBlue } =
+  const { technology_category, order, name, slug, imageWhite, imageLightBlue } =
     validatedFields.data;
 
   const newTechnology = await Technology.create({
+    technologyCategory: technology_category,
     order,
     name,
     slug,
@@ -126,6 +130,7 @@ export async function updateTechnology(
   await dbConnect();
 
   const validatedFields = UpdateTechnology.safeParse({
+    technology_category: formData.get("technology_category"),
     order: Number(formData.get("order")),
     name: formData.get("name"),
     slug: formData.get("slug"),
@@ -140,10 +145,15 @@ export async function updateTechnology(
     };
   }
 
-  const { order, name, slug, imageWhite, imageLightBlue } =
+  const { technology_category, order, name, slug, imageWhite, imageLightBlue } =
     validatedFields.data;
 
-  await Technology.findByIdAndUpdate(id, { order, name, slug });
+  await Technology.findByIdAndUpdate(id, {
+    technologyCategory: technology_category,
+    order,
+    name,
+    slug,
+  });
 
   let technology;
   if (

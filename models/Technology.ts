@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 const mongoosePaginate = require("mongoose-paginate-v2");
+import TechnologyCategory from "./TechnologyCategory";
+
+const { ObjectId } = mongoose.Schema;
 
 const TechnologySchema = new mongoose.Schema(
   {
@@ -7,6 +10,10 @@ const TechnologySchema = new mongoose.Schema(
       type: Number,
       trim: true,
       default: 0,
+    },
+    technologyCategory: {
+      type: ObjectId,
+      ref: TechnologyCategory,
     },
     name: {
       type: String,
