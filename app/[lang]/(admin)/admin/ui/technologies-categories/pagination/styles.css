@@ -1,0 +1,32 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+
+  & .arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+
+    &.disabled {
+      color: #ccc;
+    }
+
+    &.right {
+      margin-left: 4px;
+    }
+  }
+
+  & .page-numbers {
+    display: flex;
+
+    & a,
+    & div {
+      display: inline-block;
+      padding: 5px 10px;
+    }
+  }
+}

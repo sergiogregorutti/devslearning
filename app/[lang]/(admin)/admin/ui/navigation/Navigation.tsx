@@ -12,6 +12,10 @@ const Navigation = ({}: {}) => {
   const links = [
     { name: "Dashboard", href: "/admin/" },
     {
+      name: "Technologies Categories",
+      href: "/admin/technologies-categories/",
+    },
+    {
       name: "Technologies",
       href: "/admin/technologies/",
     },

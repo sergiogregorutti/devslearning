@@ -7,6 +7,13 @@ export type TechnologyForm = {
   imageLightBlue: string;
 };
 
+export type TechnologyCategoryForm = {
+  _id: string;
+  order: number;
+  name: string;
+  name_es: string;
+};
+
 export type CourseForm = {
   _id: string;
   technology: string;

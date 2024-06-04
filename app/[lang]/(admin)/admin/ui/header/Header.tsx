@@ -23,6 +23,11 @@ const Header = ({ lang, user }: { lang: string; user: any }) => {
   const links = [
     { name: "Dashboard", href: "/admin/", arrow: true },
     {
+      name: "Technologies Categories",
+      href: "/admin/technologies-categories/",
+      arrow: true,
+    },
+    {
       name: "Technologies",
       href: "/admin/technologies/",
       arrow: true,
