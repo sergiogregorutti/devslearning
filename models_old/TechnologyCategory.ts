@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const mongoosePaginate = require("mongoose-paginate-v2");
 
+const { ObjectId } = mongoose.Schema;
+
 const TechnologyCategorySchema = new mongoose.Schema(
   {
     order: {
@@ -22,6 +24,7 @@ const TechnologyCategorySchema = new mongoose.Schema(
       max: 32,
       unique: true,
     },
+    technologies: [{ type: ObjectId, ref: "Technology" }],
   },
   { timestamps: true }
 );

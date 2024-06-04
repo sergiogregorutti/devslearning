@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import dbConnect from "@/lib/dbConnect";
-import Technology from "@/models/Technology";
+import { Technology, TechnologyCategory } from "@/lib/models";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import { getDictionary } from "./dictionaries";
 import Image from "next/image";
@@ -19,6 +19,17 @@ type Props = {
 
 async function getTechnologies() {
   await dbConnect();
+
+  const category = await TechnologyCategory.findById(
+    "665e5759435d0a70764e52be"
+  ).populate({
+    path: "technologies",
+    select: "order name",
+    match: {},
+    options: { sort: { order: 1 } },
+  });
+  console.log("category", category);
+  console.log("technologies", category.technologies);
 
   const result = await Technology.find({}).sort("order");
 
