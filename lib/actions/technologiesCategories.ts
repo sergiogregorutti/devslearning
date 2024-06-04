@@ -2,7 +2,6 @@
 
 import dbConnect from "@/lib/dbConnect";
 import TechnologyCategory from "../../models/TechnologyCategory";
-import { uploadFile, deleteFile } from "@/lib/files";
 import { z } from "zod";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";

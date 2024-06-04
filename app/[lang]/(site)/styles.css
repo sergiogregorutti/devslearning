@@ -134,6 +134,23 @@
     }
   }
 
+  & .category {
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.12);
+
+    & + .category {
+      margin-top: 20px;
+    }
+
+    h2 {
+      margin: -5px 0 15px 0;
+      line-height: 40px;
+      color: #868687;
+    }
+  }
+
   & .technologies-list {
     display: grid;
     grid-template-columns: 1fr 1fr;

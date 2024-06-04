@@ -83,3 +83,18 @@ export async function fetchTechnologyCategoryById(id: string) {
     updatedAt: category.updatedAt,
   };
 }
+
+export async function fetchCategoriesWithTechnologies() {
+  await dbConnect();
+
+  const categories = await TechnologyCategory.find()
+    .populate({
+      path: "technologies",
+      select: "order name slug imageWhite",
+      match: {},
+      options: { sort: { order: 1 } },
+    })
+    .sort("order");
+
+  return categories;
+}

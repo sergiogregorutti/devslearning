@@ -14,7 +14,7 @@
   "home": {
     "welcomeTo": "Welcome to",
     "titleDescription": "Course directory for developers",
-    "technologiesTitle": "What do you want to learn?"
+    "technologiesTitle": "Which technology do you want to learn?"
   },
   "notFound": {
     "title": "Error 404",

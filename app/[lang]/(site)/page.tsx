@@ -9,6 +9,7 @@ import Technology from "@/models/Technology";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import { getDictionary } from "./dictionaries";
 import Image from "next/image";
+import { fetchCategoriesWithTechnologies } from "@/lib/data/technologiesCategories";
 
 import "./styles.css";
 
@@ -16,19 +17,6 @@ type Props = {
   params: { lang: string; id: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
-
-async function getTechnologies() {
-  await dbConnect();
-
-  const result = await Technology.find({}).sort("order");
-
-  const technologies = result.map((doc: any) => {
-    const technology = JSON.parse(JSON.stringify(doc));
-    return technology;
-  });
-
-  return technologies;
-}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   let pageTitle;
@@ -100,7 +88,7 @@ export default async function Home({
   }
 
   const dictionary = await getDictionary(lang);
-  const technologies = await getTechnologies();
+  const categories = await fetchCategoriesWithTechnologies();
 
   return (
     <>
@@ -127,26 +115,31 @@ export default async function Home({
       <div className="technologies">
         <div className="container">
           <h2>{dictionary.home.technologiesTitle}</h2>
-          <div className="technologies-list">
-            {technologies.map((technology: any) => (
-              <Link
-                className="item"
-                key={technology.name}
-                href={getLocalizedPathFromPrefix(
-                  lang,
-                  `/technologies/${technology.slug}/courses/`
-                )}
-              >
-                <Image
-                  src={technology.imageWhite}
-                  width={100}
-                  height={100}
-                  alt={technology.name}
-                />
-                <span>{technology.name}</span>
-              </Link>
-            ))}
-          </div>
+          {categories.map((category: any) => (
+            <div className="category" key={category._id}>
+              <h2>{lang === "en" ? category.name : category.name_es}</h2>
+              <div className="technologies-list">
+                {category.technologies.map((technology: any) => (
+                  <Link
+                    className="item"
+                    key={technology.name}
+                    href={getLocalizedPathFromPrefix(
+                      lang,
+                      `/technologies/${technology.slug}/courses/`
+                    )}
+                  >
+                    <Image
+                      src={technology.imageWhite}
+                      width={100}
+                      height={100}
+                      alt={technology.name}
+                    />
+                    <span>{technology.name}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </>

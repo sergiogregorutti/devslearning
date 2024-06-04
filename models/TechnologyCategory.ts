@@ -26,6 +26,12 @@ const TechnologyCategorySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+TechnologyCategorySchema.virtual("technologies", {
+  ref: "Technology",
+  localField: "_id",
+  foreignField: "technologyCategory",
+});
+
 TechnologyCategorySchema.index({ name: "text" });
 
 TechnologyCategorySchema.plugin(mongoosePaginate);
