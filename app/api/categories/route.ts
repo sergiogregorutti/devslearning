@@ -1,5 +1,5 @@
 import dbConnect from "../../../lib/dbConnect";
-import Technology from "../../../models/Technology";
+import { Technology } from "@/lib/models";
 
 interface FindArgs {
   [key: string]: any;

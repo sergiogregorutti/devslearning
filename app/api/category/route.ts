@@ -1,5 +1,5 @@
 import dbConnect from "../../../lib/dbConnect";
-import Technology from "../../../models/Technology";
+import { Technology } from "@/lib/models";
 
 export async function GET() {
   await dbConnect();

@@ -1,6 +1,6 @@
 import dbConnect from "../../../../lib/dbConnect";
 const jwt = require("jsonwebtoken");
-import User from "../../../../models/User";
+import { User } from "@/lib/models";
 import { sendEmailWithResend } from "../../../../lib/email";
 
 export async function POST(request: Request) {

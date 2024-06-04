@@ -1,7 +1,7 @@
 "use server";
 
 import dbConnect from "@/lib/dbConnect";
-import TechnologyCategory from "../../models/TechnologyCategory";
+import { TechnologyCategory } from "@/lib/models";
 import { z } from "zod";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";

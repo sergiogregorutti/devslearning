@@ -1,7 +1,7 @@
 "use server";
 
 import dbConnect from "@/lib/dbConnect";
-import Course from "../../models/Course";
+import { Course } from "@/lib/models";
 import { uploadFile, deleteFile } from "@/lib/files";
 import { z } from "zod";
 import { revalidatePath } from "next/cache";

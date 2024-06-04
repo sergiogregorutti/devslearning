@@ -1,6 +1,6 @@
 import { unstable_noStore as noStore } from "next/cache";
 import dbConnect from "@/lib/dbConnect";
-import Technology from "../../models/Technology";
+import { Technology } from "@/lib/models";
 
 export async function fetchTechnologies() {
   noStore();

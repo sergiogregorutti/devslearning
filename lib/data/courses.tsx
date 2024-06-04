@@ -1,6 +1,6 @@
 import { unstable_noStore as noStore } from "next/cache";
 import dbConnect from "@/lib/dbConnect";
-import Course from "../../models/Course";
+import { Course } from "@/lib/models";
 
 const ITEMS_PER_PAGE = 10;
 export async function fetchFilteredCourses(

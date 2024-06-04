@@ -1,8 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata, ResolvingMetadata } from "next";
 import dbConnect from "../../../../../../lib/dbConnect";
-import Technology from "../../../../../../models/Technology";
-import Course from "../../../../../../models/Course";
+import { Technology, Course } from "@/lib/models";
 import { getDictionary } from "../../../dictionaries";
 import Image from "next/image";
 import { fetchCoursesPages } from "@/lib/data/courses";

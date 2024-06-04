@@ -4,8 +4,6 @@ import { cookies } from "next/headers";
 const jwt = require("jsonwebtoken");
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import dbConnect from "@/lib/dbConnect";
-import Technology from "@/models/Technology";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import { getDictionary } from "./dictionaries";
 import Image from "next/image";
