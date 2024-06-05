@@ -131,6 +131,7 @@ export default async function Home({
                       width={100}
                       height={100}
                       alt={technology.name}
+                      priority={true}
                     />
                     <span>{technology.name}</span>
                   </Link>
