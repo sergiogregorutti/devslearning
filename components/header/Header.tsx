@@ -23,7 +23,7 @@ const Header = ({
         <h1>
           <Link href={getLocalizedPathFromPrefix(lang, `/`)}>
             <Image
-              src="/assets/logo2024.svg"
+              src="/assets/logo.svg"
               width={136}
               height={40}
               alt="Devs Learning"
