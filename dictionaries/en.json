@@ -12,8 +12,10 @@
     "createdBy": "Created by"
   },
   "home": {
-    "welcomeTo": "Welcome to",
-    "titleDescription": "Course directory for developers",
+    "title": "It's your time to",
+    "title2": "start learning!",
+    "subtitle": "Course directory for developers",
+    "info": "Browse between 56 courses in 8 technologies",
     "technologiesTitle": "Which technology do you want to learn?"
   },
   "notFound": {

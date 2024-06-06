@@ -11,8 +11,8 @@
     grid-template-columns: 1fr;
 
     @media (min-width: 768px) {
-      padding: 40px 15px;
-      grid-template-columns: 1fr 1fr;
+      padding: 20px 15px;
+      grid-template-columns: 55% 45%;
     }
 
     & .col-text {
@@ -21,22 +21,14 @@
       justify-content: center;
       order: 2;
 
-      & .welcome-to {
+      & .title,
+      .title2 {
         display: block;
         font-size: 30px;
         line-height: 30px;
         font-weight: 700;
         color: #0b376b;
-        margin-bottom: 5px;
-        text-align: center;
-      }
-
-      & .title {
-        display: block;
-        font-size: 30px;
-        line-height: 30px;
-        font-weight: 700;
-        color: #0b376b;
+        margin-bottom: 0;
         text-align: center;
       }
 
@@ -51,21 +43,20 @@
       @media (min-width: 768px) {
         order: 1;
 
-        & .welcome-to {
+        & .title,
+        .title2 {
           font-size: 50px;
           line-height: 45px;
           text-align: left;
-          margin-bottom: 15px;
-        }
+          margin-bottom: 5px;
 
-        & .title {
-          font-size: 50px;
-          line-height: 45px;
-          text-align: left;
+          &.es {
+            font-size: 44px;
+          }
         }
 
         & p {
-          margin: 10px 0 0 0;
+          margin: 5px 0 0 0;
           font-size: 20px;
           text-align: left;
         }
@@ -73,14 +64,15 @@
     }
 
     @media (min-width: 1024px) {
-      & .welcome-to {
+      & .title,
+      .title2 {
         font-size: 65px !important;
         line-height: 50px !important;
-      }
+        margin-bottom: 15px;
 
-      & .title {
-        font-size: 65px !important;
-        line-height: 50px !important;
+        &.es {
+          font-size: 58px !important;
+        }
       }
 
       & p {
@@ -103,8 +95,41 @@
         text-align: left;
 
         & img {
+          position: relative;
+          top: -20px;
           width: 100%;
         }
+      }
+    }
+  }
+}
+
+.info-banner {
+  background: #2197f9;
+  display: flex;
+  justify-content: center;
+
+  & .container {
+    padding: 10px 15px;
+    width: 100%;
+    max-width: 1200px;
+
+    @media (min-width: 768px) {
+      padding: 20px 15px;
+    }
+
+    span {
+      display: block;
+      text-align: center;
+      font-size: 16px;
+      color: #fff;
+
+      @media (min-width: 768px) {
+        font-size: 22px;
+      }
+
+      @media (min-width: 1200px) {
+        font-size: 26px;
       }
     }
   }
@@ -122,15 +147,14 @@
 
   & h2 {
     color: #2197f9;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 700;
     line-height: 32px;
     text-align: center;
 
     @media (min-width: 768px) {
-      font-size: 40px;
+      font-size: 44px;
       line-height: 65px;
-      text-align: left;
     }
   }
 
@@ -145,6 +169,7 @@
     }
 
     h2 {
+      text-align: left;
       margin: -5px 0 15px 0;
       line-height: 40px;
       color: #868687;

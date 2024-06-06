@@ -12,8 +12,10 @@
     "createdBy": "Creado por"
   },
   "home": {
-    "welcomeTo": "Bienvenidos a",
-    "titleDescription": "Directorio de cursos para desarrolladores",
+    "title": "Es tu hora de",
+    "title2": "empezar a aprender!",
+    "subtitle": "Directorio de cursos para desarrolladores",
+    "info": "Navega entre 56 cursos en 8 tecnologías",
     "technologiesTitle": "¿Qué tecnología te gustaría aprender?"
   },
   "notFound": {

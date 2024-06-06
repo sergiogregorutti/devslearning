@@ -93,11 +93,9 @@ export default async function Home({
       <div className="welcome">
         <div className="container">
           <div className="col-text">
-            <span className="welcome-to">
-              {dictionary.home.welcomeTo}&nbsp;
-            </span>
-            <span className="title">Devs Learning</span>
-            <p>{dictionary.home.titleDescription}</p>
+            <span className={`title ${lang}`}>{dictionary.home.title}</span>
+            <span className={`title2 ${lang}`}>{dictionary.home.title2}</span>
+            <p>{dictionary.home.subtitle}</p>
           </div>
           <div className="col-image">
             <Image
@@ -108,6 +106,11 @@ export default async function Home({
               priority={true}
             />
           </div>
+        </div>
+      </div>
+      <div className="info-banner">
+        <div className="container">
+          <span>{dictionary.home.info}</span>
         </div>
       </div>
       <div className="technologies">
