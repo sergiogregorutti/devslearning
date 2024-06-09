@@ -27,3 +27,7 @@ a {
     text-decoration: underline;
   }
 }
+
+.mb-15 {
+  margin-bottom: 15px;
+}

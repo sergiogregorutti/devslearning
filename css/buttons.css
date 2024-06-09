@@ -20,6 +20,11 @@
     padding: 12px 28px;
   }
 
+  &.btn-small {
+    font-size: 14 px;
+    padding: 6px 20px;
+  }
+
   &.btn-link {
     padding: 10px 24px;
     background: none;

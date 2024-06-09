@@ -33,6 +33,11 @@ export default function EditTechnologyForm({
 
   return (
     <form action={dispatch} onSubmit={handleSubmitForm}>
+      <div>
+        <a href={course.link} target="_blank" className="btn btn-small mb-15">
+          Visit Course
+        </a>
+      </div>
       <label htmlFor="technology" className="form-label">
         Technology
       </label>
