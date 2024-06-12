@@ -11,7 +11,7 @@ export default function Footer({
   dictionary: { [key: string]: any };
 }) {
   useEffect(() => {
-    if (process.env.ENVIRONMENT === "production" && !Smartlook.initialized()) {
+    if (!Smartlook.initialized()) {
       Smartlook.init("bf44692fcb061ad2509652dae2260a7ded59bfac");
     }
   }, []);
