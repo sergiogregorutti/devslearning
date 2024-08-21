@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import * as React from "react";
 import { getDictionary } from "../../dictionaries";
-import ResetPasswordComponent from "@/components/auth/resetPassword/ResetPassword";
+import ResetPasswordComponent from "@/ui/site/auth/resetPassword/ResetPassword";
 
 export async function generateMetadata({
   params,

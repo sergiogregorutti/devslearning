@@ -8,8 +8,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
-import Header from "@/components/header/Header";
-import Footer from "@/components/footer/Footer";
+import Header from "@/ui/site/header/Header";
+import Footer from "@/ui/common/footer/Footer";
 
 import theme from "../theme";
 

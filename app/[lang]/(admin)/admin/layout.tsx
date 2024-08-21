@@ -7,7 +7,7 @@ import { Nunito, Poppins } from "next/font/google";
 import type { Metadata } from "next";
 import Header from "@/ui/admin/header/Header";
 import Navigation from "../../../../ui/admin/navigation/Navigation";
-import Footer from "@/components/footer/Footer";
+import Footer from "@/ui/common/footer/Footer";
 
 import theme from "../../theme";
 

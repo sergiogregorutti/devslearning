@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import LanguageSelector from "@/components/languageSelector/LanguageSelector";
+import LanguageSelector from "@/ui/site/languageSelector/LanguageSelector";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import Image from "next/image";
 

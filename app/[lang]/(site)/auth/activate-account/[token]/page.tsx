@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import * as React from "react";
 import { getDictionary } from "../../../dictionaries";
-import ActivateAccountComponent from "@/components/auth/activateAccount/ActivateAccount";
+import ActivateAccountComponent from "@/ui/site/auth/activateAccount/ActivateAccount";
 
 export async function generateMetadata({
   params,

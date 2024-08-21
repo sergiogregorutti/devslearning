@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import * as React from "react";
 import { getDictionary } from "../../dictionaries";
-import SignUpComponent from "@/components/auth/signUp/SignUp";
+import SignUpComponent from "@/ui/site/auth/signUp/SignUp";
 
 export async function generateMetadata({
   params,

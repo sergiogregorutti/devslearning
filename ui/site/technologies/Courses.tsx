@@ -4,7 +4,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Loading from "./loading";
-import CoursesList from "@/components/technologies/CoursesList";
+import CoursesList from "@/ui/site/technologies/CoursesList";
 
 interface Course {
   name: string;
