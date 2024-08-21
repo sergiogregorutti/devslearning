@@ -1,4 +1,4 @@
-import Form from "@/app/[lang]/(admin)/admin/ui/courses/create-form";
+import Form from "@/app/ui/admin/courses/create-form";
 import { fetchTechnologies } from "@/lib/data/technologies";
 
 export default async function Page() {

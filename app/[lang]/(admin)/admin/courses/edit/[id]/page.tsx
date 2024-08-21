@@ -1,4 +1,4 @@
-import Form from "@/app/[lang]/(admin)/admin/ui/courses/edit-form";
+import Form from "@/app/ui/admin/courses/edit-form";
 import { fetchCourseById } from "@/lib/data/courses";
 import { fetchTechnologies } from "@/lib/data/technologies";
 

@@ -5,8 +5,8 @@ import { ThemeProvider } from "@mui/material/styles";
 import { getDictionary } from "@/app/[lang]/(site)/dictionaries";
 import { Nunito, Poppins } from "next/font/google";
 import type { Metadata } from "next";
-import Header from "@/app/[lang]/(admin)/admin/ui/header/Header";
-import Navigation from "./ui/navigation/Navigation";
+import Header from "@/app/ui/admin/header/Header";
+import Navigation from "../../../ui/admin/navigation/Navigation";
 import Footer from "@/components/footer/Footer";
 
 import theme from "../../theme";

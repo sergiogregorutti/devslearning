@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Search from "../ui/search/Search";
-import Table from "../ui/technologies/table/table";
+import Search from "../../../../ui/admin/search/Search";
+import Table from "../../../../ui/admin/technologies/table/table";
 import { fetchTechnologiesPages } from "@/lib/data/technologies";
-import Pagination from "../ui/technologies/pagination/pagination";
+import Pagination from "../../../../ui/admin/technologies/pagination/pagination";
 
 export default async function Technologies({
   searchParams,
