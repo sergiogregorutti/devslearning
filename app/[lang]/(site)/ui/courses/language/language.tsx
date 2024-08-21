@@ -27,7 +27,7 @@ export default function Language({
   };
 
   return (
-    <div>
+    <div className="item">
       <label className="form-label">{dictionary.technologies.language}</label>
       <FormControl
         sx={{

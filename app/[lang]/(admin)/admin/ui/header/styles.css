@@ -27,6 +27,7 @@ header {
       & img {
         position: absolute;
         height: 30px;
+        width: auto;
       }
     }
 

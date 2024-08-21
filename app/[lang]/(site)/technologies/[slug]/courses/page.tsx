@@ -129,20 +129,24 @@ export default async function TechnologyPage({
         </div>
       </div>
       <div className="container">
-        <div className="courses">
-          <div className="filter-and-sorting">
-            <Sorting dictionary={dictionary} />
-            <Language lang={lang} dictionary={dictionary} />
+        <div className="content-wrapper">
+          <div className="left-colum">
+            <div className="filter-and-sorting">
+              <Sorting dictionary={dictionary} />
+              <Language lang={lang} dictionary={dictionary} />
+            </div>
           </div>
-          <Suspense fallback={<Loading />}>
-            <List
-              query={queryObject}
-              sortBy={sortBy}
-              currentPage={currentPage}
-              dictionary={dictionary}
-            />
-          </Suspense>
-          <Pagination totalPages={totalPages} />
+          <div className="content">
+            <Suspense fallback={<Loading />}>
+              <List
+                query={queryObject}
+                sortBy={sortBy}
+                currentPage={currentPage}
+                dictionary={dictionary}
+              />
+            </Suspense>
+            <Pagination totalPages={totalPages} />
+          </div>
         </div>
       </div>
     </div>

@@ -25,7 +25,7 @@ export default function Sorting({
   };
 
   return (
-    <div>
+    <div className="item">
       <label className="form-label">{dictionary.technologies.sortBy}</label>
       <FormControl
         sx={{
