@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Search from "../../../../ui/admin/search/Search";
-import Table from "../../../../ui/admin/courses/table/table";
+import Search from "../../../../../ui/admin/search/Search";
+import Table from "../../../../../ui/admin/courses/table/table";
 import { fetchCoursesPages } from "@/lib/data/courses";
-import Pagination from "../../../../ui/admin/courses/pagination/pagination";
+import Pagination from "../../../../../ui/admin/courses/pagination/pagination";
 
 export default async function Courses({
   searchParams,

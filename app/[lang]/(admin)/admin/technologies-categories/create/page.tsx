@@ -1,4 +1,4 @@
-import Form from "@/app/ui/admin/technologies-categories/create-form";
+import Form from "@/ui/admin/technologies-categories/create-form";
 
 export default async function Page() {
   return (

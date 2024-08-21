@@ -5,11 +5,11 @@ import { Technology, Course } from "@/lib/models";
 import { getDictionary } from "../../../dictionaries";
 import Image from "next/image";
 import { fetchCoursesPages } from "@/lib/data/courses";
-import Sorting from "../../../../../ui/site/courses/sorting/sorting";
-import Language from "../../../../../ui/site/courses/language/language";
-import List from "../../../../../ui/site/courses/list/list";
-import Loading from "../../../../../ui/site/courses/list/loading";
-import Pagination from "../../../../../ui/site/courses/pagination/pagination";
+import Sorting from "../../../../../../ui/site/courses/sorting/sorting";
+import Language from "../../../../../../ui/site/courses/language/language";
+import List from "../../../../../../ui/site/courses/list/list";
+import Loading from "../../../../../../ui/site/courses/list/loading";
+import Pagination from "../../../../../../ui/site/courses/pagination/pagination";
 
 import "./styles.css";
 
