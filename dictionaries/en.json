@@ -16,7 +16,8 @@
     "title2": "start learning!",
     "subtitle": "Course directory for developers",
     "info": "Browse between 56 courses in 8 technologies",
-    "technologiesTitle": "Which technology do you want to learn?"
+    "technologiesTitle": "Which technology do you want to learn?",
+    "courses": "courses"
   },
   "notFound": {
     "title": "Error 404",

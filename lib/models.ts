@@ -144,10 +144,16 @@ const TechnologySchema = new mongoose.Schema(
     imageLightBlueFilepath: {
       type: String,
       trim: true,
-    },
+    }
   },
   { timestamps: true }
 );
+
+TechnologySchema.virtual("courses", {
+  ref: "Course",
+  localField: "_id",
+  foreignField: "technology",
+});
 
 TechnologySchema.index({ name: "text" });
 

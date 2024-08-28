@@ -3,11 +3,10 @@ import { headers } from "next/headers";
 import { cookies } from "next/headers";
 const jwt = require("jsonwebtoken");
 import { redirect } from "next/navigation";
-import Link from "next/link";
-import { getLocalizedPathFromPrefix } from "@/lib/language";
 import { getDictionary } from "./dictionaries";
 import Image from "next/image";
 import { fetchCategoriesWithTechnologies } from "@/lib/data/technologiesCategories";
+import Technologies from "@/ui/site/home/technologies";
 
 import "./styles.css";
 
@@ -113,37 +112,7 @@ export default async function Home({
           <span>{dictionary.home.info}</span>
         </div>
       </div>
-      <div className="technologies">
-        <div className="container">
-          <h2>{dictionary.home.technologiesTitle}</h2>
-          {categories.map((category: any) => (
-            <div className="category" key={category._id}>
-              <h2>{lang === "en" ? category.name : category.name_es}</h2>
-              <div className="technologies-list">
-                {category.technologies.map((technology: any) => (
-                  <Link
-                    className="item"
-                    key={technology.name}
-                    href={getLocalizedPathFromPrefix(
-                      lang,
-                      `/technologies/${technology.slug}/courses/`
-                    )}
-                  >
-                    <Image
-                      src={technology.imageWhite}
-                      width={100}
-                      height={100}
-                      alt={technology.name}
-                      priority={true}
-                    />
-                    <span>{technology.name}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      <Technologies dictionary={dictionary} lang={lang} categories={categories} />
     </>
   );
 }

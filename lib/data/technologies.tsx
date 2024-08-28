@@ -1,6 +1,7 @@
 import { unstable_noStore as noStore } from "next/cache";
 import dbConnect from "@/lib/dbConnect";
 import { Technology } from "@/lib/models";
+import { ITechnology, ITechnologyCoursesCount } from "@/interfaces/course";
 
 export async function fetchTechnologies() {
   noStore();
@@ -102,4 +103,36 @@ export async function fetchTechnologyById(id: string) {
     createdAt: technology.createdAt,
     updatedAt: technology.updatedAt,
   };
+}
+
+export async function fetchTechnologiesCoursesCount() {
+  await dbConnect();
+
+  const response: ITechnologyCoursesCount = {};
+
+  const technologies: ITechnology[] = await Technology.find().populate({
+    path: "courses",
+    select: "name, language",
+    match: {},
+    options: { sort: { order: 1 } },
+  });
+
+  technologies.map(technology => {
+    let totalEnglishCourses = 0, totalSpanishCourses = 0;
+
+    technology.courses?.map(course => {
+      switch (course.language) {
+        case 'en':
+          totalEnglishCourses++;
+          break;
+        case 'es':
+          totalSpanishCourses++;
+          break;
+      }
+    });
+
+    response[technology._id] = { total: Number(technology.courses?.length), en: totalEnglishCourses, es: totalSpanishCourses };
+  });
+
+  return response;
 }

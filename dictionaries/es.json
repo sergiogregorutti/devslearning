@@ -16,7 +16,8 @@
     "title2": "empezar a aprender!",
     "subtitle": "Directorio de cursos para desarrolladores",
     "info": "Navega entre 56 cursos en 8 tecnologías",
-    "technologiesTitle": "¿Qué tecnología te gustaría aprender?"
+    "technologiesTitle": "¿Qué tecnología te gustaría aprender?",
+    "courses": "cursos"
   },
   "notFound": {
     "title": "Error 404",

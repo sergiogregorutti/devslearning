@@ -1,6 +1,7 @@
 import { unstable_noStore as noStore } from "next/cache";
 import dbConnect from "@/lib/dbConnect";
 import { TechnologyCategory } from "@/lib/models";
+import { ITechnologyCategory, ITechnology, ICourse } from "@/interfaces/course";
 
 export async function fetchTechnologiesCategories() {
   noStore();
@@ -87,7 +88,9 @@ export async function fetchTechnologyCategoryById(id: string) {
 export async function fetchCategoriesWithTechnologies() {
   await dbConnect();
 
-  const categories = await TechnologyCategory.find()
+  const response: ITechnologyCategory[] = [];
+
+  const categories: ITechnologyCategory[] = await TechnologyCategory.find()
     .populate({
       path: "technologies",
       select: "order name slug imageWhite",
@@ -96,5 +99,26 @@ export async function fetchCategoriesWithTechnologies() {
     })
     .sort("order");
 
-  return categories;
+  categories.map(category => {
+    const technologies: ITechnology[] = [];
+
+    category.technologies.map(technology => {
+      technologies.push({
+        _id: technology._id.toString(),
+        name: technology.name,
+        imageWhite: technology.imageWhite,
+        order: technology.order,
+        slug: technology.slug,
+      })
+    });
+
+    response.push({
+      _id: category._id.toString(),
+      name: category.name,
+      name_es: category.name_es,
+      technologies: technologies
+    })
+  });
+
+  return response;
 }
