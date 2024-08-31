@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import Image from "next/image";
 import Link from "next/link";
+import Counter from "@/ui/common/Counter";
 import { ITechnologyCoursesCount } from "@/interfaces/course";
 
 import "./styles.css";
@@ -55,7 +56,7 @@ export default function TechnologiesList({
                     priority={true}
                   />
                   <span>{technology.name}</span>
-                  <span className="small">{courses[technology._id]?.total ? `${courses[technology._id]?.total} ${dictionary.home.courses}` : dictionary.common.loading}</span>
+                  <span className="small">{courses[technology._id]?.total ? <Counter initialValue={0} targetValue={courses[technology._id]?.total} /> : 0} {dictionary.home.courses}</span>
                 </Link>
               ))}
             </div>

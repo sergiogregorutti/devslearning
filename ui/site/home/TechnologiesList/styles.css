@@ -59,7 +59,7 @@
         height: 50px;
       }
 
-      & span {
+      & > span {
         display: inline-block;
         margin-top: 10px;
         font-size: 20px;
@@ -68,6 +68,10 @@
         &.small {
           font-size: 16px;
           margin-top: 2px;
+
+          & span {
+            font-size: 16px;
+          }
         }
       }
 
