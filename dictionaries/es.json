@@ -15,7 +15,11 @@
     "title": "Es tu hora de",
     "title2": "empezar a aprender!",
     "subtitle": "Directorio de cursos para desarrolladores",
-    "info": "Navega entre 56 cursos en 8 tecnologías",
+    "info": {
+      "browseBetween": "Navega entre",
+      "coursesIn": "cursos en",
+      "technologies": "tecnologías"
+    },
     "technologiesTitle": "¿Qué tecnología te gustaría aprender?",
     "courses": "cursos"
   },

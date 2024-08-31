@@ -6,7 +6,8 @@ import { redirect } from "next/navigation";
 import { getDictionary } from "./dictionaries";
 import Image from "next/image";
 import { fetchCategoriesWithTechnologies } from "@/lib/data/technologiesCategories";
-import Technologies from "@/ui/site/home/technologies";
+import InfoBanner from "@/ui/site/home/InfoBanner";
+import Technologies from "@/ui/site/home/Technologies";
 
 import "./styles.css";
 
@@ -107,11 +108,7 @@ export default async function Home({
           </div>
         </div>
       </div>
-      <div className="info-banner">
-        <div className="container">
-          <span>{dictionary.home.info}</span>
-        </div>
-      </div>
+      <InfoBanner dictionary={dictionary} />
       <Technologies dictionary={dictionary} lang={lang} categories={categories} />
     </>
   );

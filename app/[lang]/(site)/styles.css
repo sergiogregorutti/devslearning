@@ -103,34 +103,3 @@
     }
   }
 }
-
-.info-banner {
-  background: #2197f9;
-  display: flex;
-  justify-content: center;
-
-  & .container {
-    padding: 10px 15px;
-    width: 100%;
-    max-width: 1200px;
-
-    @media (min-width: 768px) {
-      padding: 20px 15px;
-    }
-
-    span {
-      display: block;
-      text-align: center;
-      font-size: 16px;
-      color: #fff;
-
-      @media (min-width: 768px) {
-        font-size: 22px;
-      }
-
-      @media (min-width: 1200px) {
-        font-size: 26px;
-      }
-    }
-  }
-}

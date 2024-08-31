@@ -2,6 +2,19 @@ import { unstable_noStore as noStore } from "next/cache";
 import dbConnect from "@/lib/dbConnect";
 import { Course } from "@/lib/models";
 
+export async function fetchCourses() {
+  noStore();
+  await dbConnect();
+
+  const options = {
+    sort: "name",
+  };
+
+  const courses = await Course.find({}, {}, options);
+
+  return courses;
+}
+
 const ITEMS_PER_PAGE = 10;
 export async function fetchFilteredCourses(
   query: any = {},
