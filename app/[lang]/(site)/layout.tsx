@@ -11,8 +11,6 @@ import type { Metadata } from "next";
 import Header from "@/ui/site/header/Header";
 import Footer from "@/ui/common/footer/Footer";
 
-import theme from "../theme";
-
 const nunito = Nunito({
   subsets: ["latin"],
   variable: "--font-nunito",

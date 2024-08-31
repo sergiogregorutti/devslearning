@@ -7,8 +7,6 @@ import Header from "@/ui/admin/header/Header";
 import Navigation from "../../../../ui/admin/navigation/Navigation";
 import Footer from "@/ui/common/footer/Footer";
 
-import theme from "../../theme";
-
 const nunito = Nunito({
   subsets: ["latin"],
   variable: "--font-nunito",
