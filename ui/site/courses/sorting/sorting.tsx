@@ -1,9 +1,9 @@
 "use client";
 
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
-import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { SingleValue } from 'react-select';
+import Select from "@/ui/common/Select";
 
 export default function Sorting({
   dictionary,
@@ -16,11 +16,17 @@ export default function Sorting({
   const { replace } = useRouter();
   const sortBy = params.get("sortBy") || "priceHighToLow";
 
-  const handleChange = (event: SelectChangeEvent) => {
-    const value = event.target.value;
+  const options = [
+    { value: 'priceHighToLow', label: dictionary.technologies.priceHighToLow },
+    { value: 'priceLowToHigh', label: dictionary.technologies.priceLowToHigh },
+    { value: 'newest', label: dictionary.technologies.newest }
+  ];
+
+  const handleChange = (newValue: SingleValue<{ value: string; label: any; }>) => {
+    const value = newValue?.value;
     const params = new URLSearchParams(searchParams);
     params.set("page", "1");
-    params.set("sortBy", value);
+    params.set("sortBy", value || "priceHighToLow");
     replace(`${pathname}?${params.toString()}`);
   };
 
@@ -35,15 +41,7 @@ export default function Sorting({
           },
         }}
       >
-        <Select value={sortBy} onChange={handleChange}>
-          <MenuItem value={"priceHighToLow"}>
-            {dictionary.technologies.priceHighToLow}
-          </MenuItem>
-          <MenuItem value={"priceLowToHigh"}>
-            {dictionary.technologies.priceLowToHigh}
-          </MenuItem>
-          <MenuItem value={"newest"}>{dictionary.technologies.newest}</MenuItem>
-        </Select>
+        <Select options={options} value={options.find((option) => option.value === sortBy)} handleChange={handleChange} />
       </FormControl>
     </div>
   );

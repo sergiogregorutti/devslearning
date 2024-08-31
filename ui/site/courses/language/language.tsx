@@ -1,9 +1,9 @@
 "use client";
 
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
-import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { SingleValue } from 'react-select';
+import Select from "@/ui/common/Select";
 
 export default function Language({
   lang,
@@ -18,11 +18,17 @@ export default function Language({
   const { replace } = useRouter();
   const language = params.get("language") || lang;
 
-  const handleChange = (event: SelectChangeEvent) => {
-    const value = event.target.value;
+  const options = [
+    { value: 'all', label: dictionary.technologies.all },
+    { value: 'en', label: dictionary.technologies.english },
+    { value: 'es', label: dictionary.technologies.spanish }
+  ];
+
+  const handleChange = (newValue: SingleValue<{ value: string; label: any; }>) => {
+    const value = newValue?.value;
     const params = new URLSearchParams(searchParams);
     params.set("page", "1");
-    params.set("language", value);
+    params.set("language", value || 'en');
     replace(`${pathname}?${params.toString()}`);
   };
 
@@ -37,11 +43,7 @@ export default function Language({
           },
         }}
       >
-        <Select value={language} onChange={handleChange}>
-          <MenuItem value={"all"}>{dictionary.technologies.all}</MenuItem>
-          <MenuItem value={"en"}>{dictionary.technologies.english}</MenuItem>
-          <MenuItem value={"es"}>{dictionary.technologies.spanish}</MenuItem>
-        </Select>
+        <Select options={options} value={options.find((option) => option.value === language)} handleChange={handleChange} />
       </FormControl>
     </div>
   );

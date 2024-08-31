@@ -37,6 +37,7 @@
     "react-dom": "^18",
     "react-images-uploading": "^3.1.7",
     "react-loading-skeleton": "^3.4.0",
+    "react-select": "^5.8.0",
     "resend": "^3.2.0",
     "short-uuid": "^5.2.0",
     "smartlook-client": "^9.0.0",
