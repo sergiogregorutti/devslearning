@@ -8,6 +8,9 @@ import "./styles.css";
 const Counter = ({
   initialValue,
   targetValue,
+}: {
+  initialValue: number,
+  targetValue: number,
 }) => {
   const [count, setCount] = useState(initialValue);
   const duration = 1500;
