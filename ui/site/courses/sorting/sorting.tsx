@@ -1,7 +1,6 @@
 "use client";
 
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
-import FormControl from "@mui/material/FormControl";
 import { SingleValue } from 'react-select';
 import Select from "@/ui/common/Select";
 
@@ -33,16 +32,9 @@ export default function Sorting({
   return (
     <div className="item">
       <label className="form-label">{dictionary.technologies.sortBy}</label>
-      <FormControl
-        sx={{
-          width: {
-            xs: "200px",
-            sm: "200px",
-          },
-        }}
-      >
+      <div className="form-control">
         <Select options={options} value={options.find((option) => option.value === sortBy)} handleChange={handleChange} />
-      </FormControl>
+      </div>
     </div>
   );
 }

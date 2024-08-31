@@ -53,6 +53,7 @@ header {
 
       & svg {
         fill: #fff;
+        font-size: 20px;
       }
 
       @media (min-width: 768px) {
@@ -89,7 +90,7 @@ header {
 
           & svg {
             fill: #000;
-            font-size: 40px;
+            font-size: 36px;
           }
         }
       }
@@ -113,8 +114,8 @@ header {
 
             & svg {
               position: absolute;
-              right: 5px;
-              top: 8px;
+              right: 6px;
+              top: 12px;
             }
 
             &:hover {

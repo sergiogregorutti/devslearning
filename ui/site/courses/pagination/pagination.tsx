@@ -4,8 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { generatePagination } from "@/lib/helpers";
 import { usePathname, useSearchParams } from "next/navigation";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 
 import "./styles.css";
 
@@ -107,9 +106,9 @@ function PaginationArrow({
 
   const icon =
     direction === "left" ? (
-      <ArrowBackIosIcon className="arrow-left" />
+      <FaAngleLeft className="arrow-left" />
     ) : (
-      <ArrowForwardIosIcon className="arrow-right" />
+      <FaAngleRight className="arrow-right" />
     );
 
   return isDisabled ? (

@@ -4,9 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
-import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import { FaBars, FaXmark, FaCaretRight } from "react-icons/fa6";
 import Image from "next/image";
 
 import "./styles.css";
@@ -57,14 +55,14 @@ const Header = ({ lang, user }: { lang: string; user: any }) => {
             Go to Website
           </Link>
           <button className="menu-toggle" onClick={toggleMobileMenu}>
-            <MenuIcon />
+            <FaBars />
           </button>
 
           <div className={`mobile-menu ${showMobileMenu ? "open" : ""}`}>
             <div className="mobile-menu-content">
               <div className="close-container">
                 <button className="btn-close" onClick={toggleMobileMenu}>
-                  <CloseIcon />
+                  <FaXmark />
                 </button>
               </div>
               <ul className="menu">
@@ -78,7 +76,7 @@ const Header = ({ lang, user }: { lang: string; user: any }) => {
                       onClick={toggleMobileMenu}
                     >
                       <Link href={link.href}>
-                        {link.name} {link.arrow ? <ArrowRightIcon /> : null}
+                        {link.name} {link.arrow ? <FaCaretRight /> : null}
                       </Link>
                     </li>
                   );

@@ -79,12 +79,8 @@ export default async function RootLayout({
   return (
     <html lang={lang} className={`${nunito.variable} ${poppins.variable}`}>
       <body>
-        <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            <Header dictionary={dictionary} user={user} lang={lang} />
-            {children}
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+        <Header dictionary={dictionary} user={user} lang={lang} />
+        {children}
         <Footer dictionary={dictionary} />
 
         {process.env.ENVIRONMENT === "production" ? (

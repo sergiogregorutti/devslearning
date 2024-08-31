@@ -1,7 +1,6 @@
 "use client";
 
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
-import FormControl from "@mui/material/FormControl";
 import { SingleValue } from 'react-select';
 import Select from "@/ui/common/Select";
 
@@ -35,16 +34,9 @@ export default function Language({
   return (
     <div className="item">
       <label className="form-label">{dictionary.technologies.language}</label>
-      <FormControl
-        sx={{
-          width: {
-            xs: "100%",
-            sm: "200px",
-          },
-        }}
-      >
+      <div className="form-control">
         <Select options={options} value={options.find((option) => option.value === language)} handleChange={handleChange} />
-      </FormControl>
+      </div>
     </div>
   );
 }

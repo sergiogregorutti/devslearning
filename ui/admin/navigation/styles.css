@@ -21,8 +21,8 @@
 
         & svg {
           position: absolute;
-          right: 5px;
-          top: 8px;
+          right: 6px;
+          top: 12px;
         }
 
         &:hover {

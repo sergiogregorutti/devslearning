@@ -1,6 +1,5 @@
 "use client";
 import { MouseEvent, useState } from "react";
-import TextField from "@mui/material/TextField";
 import Image from "next/image";
 
 export default function SignIn({
@@ -62,13 +61,7 @@ export default function SignIn({
     <div className="content-container">
       <form className="form">
         <label className="form-label">{dictionary.forgotPassword.email}</label>
-        <TextField
-          fullWidth
-          onChange={handleChange("email")}
-          type="email"
-          value={email}
-          className="form-input"
-        />
+        <input type="email" className="form-input" onChange={handleChange("email")} value={email} />
 
         <button onClick={clickSubmit} className="btn btn-big">
           {buttonText}

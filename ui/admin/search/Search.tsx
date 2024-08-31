@@ -2,8 +2,7 @@
 
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
-import TextField from "@mui/material/TextField";
-import SearchIcon from "@mui/icons-material/Search";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 
 import "./styles.css";
 
@@ -25,15 +24,10 @@ export default function Search({ placeholder }: { placeholder: string }) {
 
   return (
     <div className="search-wrapper">
-      <SearchIcon />
-      <TextField
-        onChange={(e) => {
+      <FaMagnifyingGlass />
+      <input type="email" className="form-input" onChange={(e) => {
           handleSearch(e.target.value);
-        }}
-        type="email"
-        defaultValue={searchParams.get("query")?.toString()}
-        className="form-input"
-      />
+        }} defaultValue={searchParams.get("query")?.toString()} />
     </div>
   );
 }

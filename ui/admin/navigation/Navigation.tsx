@@ -2,7 +2,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import clsx from "clsx";
-import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import { FaCaretRight } from "react-icons/fa6";
 
 import "./styles.css";
 
@@ -34,7 +34,7 @@ const Navigation = ({}: {}) => {
               })}
             >
               <Link href={link.href}>
-                {link.name} <ArrowRightIcon />
+                {link.name} <FaCaretRight />
               </Link>
             </li>
           );

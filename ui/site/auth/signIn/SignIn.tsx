@@ -3,7 +3,6 @@ import { useRouter } from "next/navigation";
 import { MouseEvent, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
-import TextField from "@mui/material/TextField";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import { authenticate } from "@/lib/helpers";
 import Image from "next/image";
@@ -82,24 +81,10 @@ export default function SignIn({
     <div className="content-container">
       <form className="form">
         <label className="form-label">{dictionary.signIn.email}</label>
-        <TextField
-          fullWidth
-          onChange={handleChange("email")}
-          type="email"
-          value={email}
-          className="form-input"
-          disabled={formLoading}
-        />
+        <input type="email" className="form-input" onChange={handleChange("email")} value={email} disabled={formLoading} />
 
         <label className="form-label">{dictionary.signIn.password}</label>
-        <TextField
-          fullWidth
-          onChange={handleChange("password")}
-          type="password"
-          value={password}
-          className="form-input"
-          disabled={formLoading}
-        />
+        <input type="password" className="form-input" onChange={handleChange("password")} value={password} disabled={formLoading} />
 
         <button
           onClick={clickSubmit}

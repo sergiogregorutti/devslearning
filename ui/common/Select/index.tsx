@@ -18,11 +18,11 @@ export default function Select ({
       }),
       control: (baseStyles) => ({
         ...baseStyles,
-        border: '2px solid #000',
+        border: '1px solid #000',
         boxShadow: 'none',
         ":hover": {
           cursor: 'pointer',
-          border: '2px solid #000',
+          border: '1px solid #000',
         },
       }),
       valueContainer: (baseStyles) => ({

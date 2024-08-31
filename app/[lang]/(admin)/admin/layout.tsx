@@ -1,7 +1,5 @@
 import { cookies } from "next/headers";
 const jwt = require("jsonwebtoken");
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
-import { ThemeProvider } from "@mui/material/styles";
 import { getDictionary } from "@/app/[lang]/(site)/dictionaries";
 import { Nunito, Poppins } from "next/font/google";
 import type { Metadata } from "next";
@@ -50,20 +48,16 @@ export default async function RootLayout({
   return (
     <html lang={lang} className={`${nunito.variable} ${poppins.variable}`}>
       <body>
-        <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            <Header user={user} lang={lang} />
-            <div className="admin-template">
-              <div className="container">
-                <div className="content-container">
-                  <Navigation />
-                  <div className="content">{children}</div>
-                </div>
-              </div>
+        <Header user={user} lang={lang} />
+        <div className="admin-template">
+          <div className="container">
+            <div className="content-container">
+              <Navigation />
+              <div className="content">{children}</div>
             </div>
-            <Footer dictionary={dictionary} />
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+          </div>
+        </div>
+        <Footer dictionary={dictionary} />
       </body>
     </html>
   );

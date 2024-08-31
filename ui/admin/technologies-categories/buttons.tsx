@@ -1,7 +1,6 @@
 import { deleteTechnologyCategory } from "@/lib/actions/technologiesCategories";
 import Link from "next/link";
-import EditIcon from "@mui/icons-material/Edit";
-import ClearIcon from "@mui/icons-material/Clear";
+import { FaPenToSquare, FaXmark } from "react-icons/fa6";
 
 export function UpdateTechnologyCategory({ id }: { id: string }) {
   return (
@@ -9,7 +8,7 @@ export function UpdateTechnologyCategory({ id }: { id: string }) {
       className="btn btn-link"
       href={`/admin/technologies-categories/edit/${id}`}
     >
-      <EditIcon />
+      <FaPenToSquare />
       <span className="btn-text">Edit</span>
     </Link>
   );
@@ -24,7 +23,7 @@ export function DeleteTechnologyCategory({ id }: { id: string }) {
   return (
     <form action={deleteTechnologyCategoryWithId}>
       <button className="btn btn-link btn-remove">
-        <ClearIcon />
+        <FaXmark />
         <span className="btn-text">Remove</span>
       </button>
     </form>
