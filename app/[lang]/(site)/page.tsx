@@ -7,7 +7,7 @@ import { getDictionary } from "./dictionaries";
 import Image from "next/image";
 import { fetchCategoriesWithTechnologies } from "@/lib/data/technologiesCategories";
 import InfoBanner from "@/ui/site/home/InfoBanner";
-import Technologies from "@/ui/site/home/Technologies";
+import TechnologiesList from "@/ui/site/home/TechnologiesList";
 
 import "./styles.css";
 
@@ -109,7 +109,7 @@ export default async function Home({
         </div>
       </div>
       <InfoBanner dictionary={dictionary} />
-      <Technologies dictionary={dictionary} lang={lang} categories={categories} />
+      <TechnologiesList dictionary={dictionary} lang={lang} categories={categories} />
     </>
   );
 }

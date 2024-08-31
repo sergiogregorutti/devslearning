@@ -4,12 +4,10 @@ import { getLocalizedPathFromPrefix } from "@/lib/language";
 import Image from "next/image";
 import Link from "next/link";
 import { ITechnologyCoursesCount } from "@/interfaces/course";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 
 import "./styles.css";
 
-export default function Technologies({
+export default function TechnologiesList({
   dictionary,
   lang,
   categories,
