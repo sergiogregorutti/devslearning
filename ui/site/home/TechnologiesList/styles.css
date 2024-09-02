@@ -54,7 +54,7 @@
       text-decoration: none;
       padding: 20px;
 
-      & img {
+      & img, & svg {
         width: auto;
         height: 50px;
       }
