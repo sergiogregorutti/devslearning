@@ -17,7 +17,7 @@
     margin-bottom: 20px;
     position: sticky;
     top: 60px;
-    z-index: 1;
+    z-index: 9999;
 
     & .container {
       display: flex;
@@ -62,21 +62,24 @@
       flex-direction: column;
       column-gap: 20px;
       row-gap: 20px;
+
+      & .left-column-content {
+        position: sticky;
+        top: 217px;
+      }
     }
   }
 
-  & .filter-and-sorting {
+  & .filters {
     display: grid;
-    position: sticky;
-    top: 217px;
     grid-template-columns: 1fr 1fr;
     column-gap: 15px;
+    margin-top: 15px;
 
     @media (min-width: 768px) {
       grid-template-columns: 1fr;
-      margin-top: 15px;
 
-      & .item + .item {
+      & .item+.item {
         margin-top: 10px;
       }
     }

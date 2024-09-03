@@ -7,6 +7,7 @@ import Image from "next/image";
 import { fetchCoursesPages } from "@/lib/data/courses";
 import Sorting from "@/ui/site/courses/sorting/sorting";
 import Language from "@/ui/site/courses/language/language";
+import Pricing from "@/ui/site/courses/Pricing";
 import List from "@/ui/site/courses/list/list";
 import Loading from "@/ui/site/courses/list/loading";
 import Pagination from "@/ui/site/courses/pagination/pagination";
@@ -102,14 +103,18 @@ export default async function TechnologyPage({
   const technology = await getTechnology(slug);
 
   const params = new URLSearchParams(searchParams);
-  const language = params.get("language") || lang;
+  const language = params.get("language");
+  const pricing = params.get("pricing");
   const sortBy = params.get("sortBy") || "priceHighToLow";
 
-  const queryObject: { technology: string; language?: string } = {
+  const queryObject: { technology: string; language?: string; pricing?: string } = {
     technology: technology._id.toString(),
   };
-  if (language !== "all") {
+  if (language) {
     queryObject.language = language;
+  }
+  if (pricing) {
+    queryObject.pricing = pricing;
   }
 
   const currentPage = Number(searchParams?.page) || 1;
@@ -130,10 +135,13 @@ export default async function TechnologyPage({
       </div>
       <div className="container">
         <div className="content-wrapper">
-          <div className="left-colum">
-            <div className="filter-and-sorting">
+          <div className="left-column">
+            <div className="left-column-content">
               <Sorting dictionary={dictionary} />
-              <Language lang={lang} dictionary={dictionary} />
+              <div className="filters">
+                <Language dictionary={dictionary} />
+                <Pricing dictionary={dictionary} />
+              </div>
             </div>
           </div>
           <div className="content">

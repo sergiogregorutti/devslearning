@@ -51,7 +51,7 @@ export default function Form({ technologies }: { technologies: any }) {
       <label htmlFor="language" className="form-label">
         Language
       </label>
-      <div className="checkbox-wrapper">
+      <div className="radio-button-wrapper">
         <label htmlFor="en">
           English
           <input
@@ -180,7 +180,7 @@ export default function Form({ technologies }: { technologies: any }) {
       <label htmlFor="pricing" className="form-label">
         Pricing
       </label>
-      <div className="checkbox-wrapper">
+      <div className="radio-button-wrapper">
         <label htmlFor="free">
           Free
           <input

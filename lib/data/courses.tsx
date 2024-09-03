@@ -45,10 +45,25 @@ export async function fetchFilteredCourses(
   }
 
   if (query.language) {
-    finalQuery = {
-      ...finalQuery,
-      language: query.language,
-    };
+    const languagesArray = decodeURIComponent(query.language).split(',').map(lang => lang.trim());
+
+    if (languagesArray && languagesArray.length > 0) {
+      finalQuery = {
+        ...finalQuery,
+        language: { $in: languagesArray },
+      };
+    }
+  }
+
+  if (query.pricing) {
+    const pricingArray = decodeURIComponent(query.pricing).split(',').map(lang => lang.trim());
+
+    if (pricingArray && pricingArray.length > 0) {
+      finalQuery = {
+        ...finalQuery,
+        pricing: { $in: pricingArray },
+      };
+    }
   }
 
   const options = {
@@ -85,10 +100,25 @@ export async function fetchCoursesPages(query: any = {}) {
   }
 
   if (query.language) {
-    finalQuery = {
-      ...finalQuery,
-      language: query.language,
-    };
+    const languagesArray = decodeURIComponent(query.language).split(',').map(lang => lang.trim());
+
+    if (languagesArray && languagesArray.length > 0) {
+      finalQuery = {
+        ...finalQuery,
+        language: { $in: languagesArray },
+      };
+    }
+  }
+
+  if (query.pricing) {
+    const pricingArray = decodeURIComponent(query.pricing).split(',').map(lang => lang.trim());
+
+    if (pricingArray && pricingArray.length > 0) {
+      finalQuery = {
+        ...finalQuery,
+        pricing: { $in: pricingArray },
+      };
+    }
   }
 
   const options = {

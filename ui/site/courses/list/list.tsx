@@ -30,6 +30,7 @@ export default async function List({
       order = "desc";
       break;
   }
+
   const courses = await fetchFilteredCourses(
     query,
     currentPage,
