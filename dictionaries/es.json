@@ -73,6 +73,7 @@
     "priceLowToHigh": "Precio Más Bajo",
     "newest": "Más Nuevos",
     "courses": "Cursos",
+    "coursesLowercase": "cursos",
     "pricing": "Tipo de Precio",
     "pricingPaid": "Pago",
     "pricingFree": "Gratis",
@@ -82,6 +83,7 @@
     "platform": "Plataforma",
     "author": "Autor",
     "year": "Año",
-    "visitCourse": "Visitar curso"
+    "visitCourse": "Visitar curso",
+    "noResults": "No se encuentran cursos para su búsqueda. Pruebe con otros filtros."
   }
 }

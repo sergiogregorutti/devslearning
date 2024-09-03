@@ -3,8 +3,8 @@ import type { Metadata, ResolvingMetadata } from "next";
 import dbConnect from "@/lib/dbConnect";
 import { Technology, Course } from "@/lib/models";
 import { getDictionary } from "../../../dictionaries";
-import Image from "next/image";
-import { fetchCoursesPages } from "@/lib/data/courses";
+import { fetchFilteredCourses } from "@/lib/data/courses";
+import Heading from "@/ui/site/courses/Heading";
 import Sorting from "@/ui/site/courses/sorting/sorting";
 import Language from "@/ui/site/courses/language/language";
 import Pricing from "@/ui/site/courses/Pricing";
@@ -27,21 +27,11 @@ async function getTechnology(slug: String) {
     "_id name imageWhite"
   ).exec();
 
-  return technology;
-}
-
-async function getCourses(id: String, lang: String) {
-  await dbConnect();
-
-  const courses = await Course.paginate(
-    { technology: id, language: lang },
-    {
-      select: "-technology",
-      sort: "-price",
-    }
-  );
-
-  return courses;
+  return {
+    _id: technology._id.toString(),
+    name: technology.name,
+    imageWhite: technology.imageWhite,
+  };
 }
 
 export async function generateMetadata(
@@ -118,25 +108,16 @@ export default async function TechnologyPage({
   }
 
   const currentPage = Number(searchParams?.page) || 1;
-  const totalPages = await fetchCoursesPages(queryObject);
+  const courses = await fetchFilteredCourses(queryObject);
 
   return (
     <div className="technology">
-      <div className="heading">
-        <div className="container">
-          <Image
-            src={technology.imageWhite}
-            width={70}
-            height={70}
-            alt={technology.name}
-          />
-          <h1>{technology.name}</h1>
-        </div>
-      </div>
+      <Heading technology={technology} />
       <div className="container">
         <div className="content-wrapper">
           <div className="left-column">
             <div className="left-column-content">
+              <span className="courses-count">{courses.totalDocs} {dictionary.technologies.coursesLowercase}</span>
               <Sorting dictionary={dictionary} />
               <div className="filters">
                 <Language dictionary={dictionary} />
@@ -153,7 +134,8 @@ export default async function TechnologyPage({
                 dictionary={dictionary}
               />
             </Suspense>
-            <Pagination totalPages={totalPages} />
+            {courses.totalDocs > 0 && <Pagination totalPages={courses.totalPages} />}
+            {courses.totalDocs === 0 && <p className="no-results">{dictionary.technologies.noResults}</p>}
           </div>
         </div>
       </div>
