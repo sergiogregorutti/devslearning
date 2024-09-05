@@ -3,8 +3,10 @@
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
 export default function Language({
+  stats,
   dictionary,
 }: {
+  stats: any
   dictionary: { [key: string]: any };
 }) {
   const searchParams = useSearchParams();
@@ -40,12 +42,12 @@ export default function Language({
     <div className="item">
       <label className="form-label">{dictionary.technologies.language}</label>
       <label className="ckeckbox-wrapper">
-        {dictionary.technologies.english}
+        {dictionary.technologies.english} {stats.englishCourses !== undefined ? `(${stats.englishCourses})` : null}
         <input type="checkbox" id="languageEn" onChange={handleChange} defaultChecked={language?.includes('en') ? true : false} />
         <span className="checkmark"></span>
       </label>
       <label className="ckeckbox-wrapper">
-        {dictionary.technologies.spanish}
+        {dictionary.technologies.spanish} {stats.spanishCourses !== undefined ? `(${stats.spanishCourses})` : null}
         <input type="checkbox" id="languageEs" onChange={handleChange} defaultChecked={language?.includes('es') ? true : false} />
         <span className="checkmark"></span>
       </label>

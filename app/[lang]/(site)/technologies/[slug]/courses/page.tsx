@@ -7,6 +7,7 @@ import { fetchFilteredCourses } from "@/lib/data/courses";
 import Heading from "@/ui/site/courses/Heading";
 import Sorting from "@/ui/site/courses/sorting/sorting";
 import Language from "@/ui/site/courses/language/language";
+import Filters from "@/ui/site/courses/Filters";
 import Pricing from "@/ui/site/courses/Pricing";
 import List from "@/ui/site/courses/list/list";
 import Loading from "@/ui/site/courses/list/loading";
@@ -93,8 +94,8 @@ export default async function TechnologyPage({
   const technology = await getTechnology(slug);
 
   const params = new URLSearchParams(searchParams);
-  const language = params.get("language");
-  const pricing = params.get("pricing");
+  const language = params.get("language") || '';
+  const pricing = params.get("pricing") || '';
   const sortBy = params.get("sortBy") || "priceHighToLow";
 
   const queryObject: { technology: string; language?: string; pricing?: string } = {
@@ -119,10 +120,7 @@ export default async function TechnologyPage({
             <div className="left-column-content">
               <span className="courses-count">{courses.totalDocs} {dictionary.technologies.coursesLowercase}</span>
               <Sorting dictionary={dictionary} />
-              <div className="filters">
-                <Language dictionary={dictionary} />
-                <Pricing dictionary={dictionary} />
-              </div>
+              <Filters technologyId={technology._id} language={language} pricing={pricing} dictionary={dictionary} />
             </div>
           </div>
           <div className="content">

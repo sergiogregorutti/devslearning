@@ -86,6 +86,7 @@ export async function fetchTechnologiesPages(query: any = "") {
 }
 
 export async function fetchTechnologyById(id: string) {
+  noStore();
   await dbConnect();
 
   const technology = await Technology.findById(id);
@@ -106,6 +107,7 @@ export async function fetchTechnologyById(id: string) {
 }
 
 export async function fetchTechnologiesCoursesCount() {
+  noStore();
   await dbConnect();
 
   const response: ITechnologyCoursesCount = {};
@@ -135,4 +137,57 @@ export async function fetchTechnologiesCoursesCount() {
   });
 
   return response;
+}
+
+export async function fetchTechnologyStats(technologyId: string, language: string, pricing: string) {
+  noStore();
+  await dbConnect();
+
+  const languagesArray = decodeURIComponent(language).split(',').map(lang => lang.trim()).filter(Boolean);
+  const pricingArray = decodeURIComponent(pricing).split(',').map(lang => lang.trim()).filter(Boolean);
+
+  const technology: ITechnology = await Technology.findById(technologyId).populate({
+    path: "courses",
+    select: "name language pricing",
+    match: {},
+    options: { sort: { order: 1 } },
+  });
+
+  let englishCourses = 0, spanishCourses = 0, paidCourses = 0, subscriptionCourses = 0, freeCourses = 0;
+
+  technology.courses?.map(course => {
+    switch (course.language) {
+      case 'en':
+        if (pricingArray.length && !pricingArray.includes(course.pricing)) break;
+        englishCourses++;
+        break;
+      case 'es':
+        if (pricingArray.length && !pricingArray.includes(course.pricing)) break;
+        spanishCourses++;
+        break;
+    }
+
+    switch (course.pricing) {
+      case 'one-time-payment':
+        if (languagesArray.length && !languagesArray.includes(course.language)) break;
+        paidCourses++;
+        break;
+      case 'subscription':
+        if (languagesArray.length && !languagesArray.includes(course.language)) break;
+        subscriptionCourses++;
+        break;
+      case 'free':
+        if (languagesArray.length && !languagesArray.includes(course.language)) break;
+        freeCourses++;
+        break;
+    }
+  });
+
+  return {
+    englishCourses,
+    spanishCourses,
+    paidCourses,
+    subscriptionCourses,
+    freeCourses
+  };
 }

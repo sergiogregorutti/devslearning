@@ -3,8 +3,10 @@
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
 export default function Pricing({
+  stats,
   dictionary,
 }: {
+  stats: any
   dictionary: { [key: string]: any };
 }) {
   const searchParams = useSearchParams();
@@ -39,17 +41,17 @@ export default function Pricing({
     <div className="item">
       <label className="form-label">{dictionary.technologies.price}</label>
       <label className="ckeckbox-wrapper">
-        {dictionary.technologies.pricingPaid}
+        {dictionary.technologies.pricingPaid} {stats.paidCourses !== undefined ? `(${stats.paidCourses})` : null}
         <input type="checkbox" id="pricingOneTimePayment" onChange={handleChange} defaultChecked={pricing?.includes('one-time-payment') ? true : false} />
         <span className="checkmark"></span>
       </label>
       <label className="ckeckbox-wrapper">
-        {dictionary.technologies.pricingSubscription}
+        {dictionary.technologies.pricingSubscription} {stats.subscriptionCourses !== undefined ? `(${stats.subscriptionCourses})` : null}
         <input type="checkbox" id="pricingSubscription" onChange={handleChange} defaultChecked={pricing?.includes('subscription') ? true : false} />
         <span className="checkmark"></span>
       </label>
       <label className="ckeckbox-wrapper">
-        {dictionary.technologies.pricingFree}
+        {dictionary.technologies.pricingFree} {stats.freeCourses !== undefined ? `(${stats.freeCourses})` : null}
         <input type="checkbox" id="pricingFree" onChange={handleChange} defaultChecked={pricing?.includes('free') ? true : false} />
         <span className="checkmark"></span>
       </label>
