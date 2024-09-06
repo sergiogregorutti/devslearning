@@ -25,6 +25,7 @@ export default function Heading({
         />
         <h1>{technology.name}</h1>
       </div>
+      <div className="separator"></div>
     </div>
   );
 }

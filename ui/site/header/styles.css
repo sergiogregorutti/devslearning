@@ -22,11 +22,11 @@ header {
       position: relative;
       display: inline-block;
       height: 30px;
-      margin: 15px 0;
+      margin: 10px 0;
 
       & img {
         position: absolute;
-        height: 30px;
+        height: 40px;
         width: auto;
       }
     }

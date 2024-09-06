@@ -1,11 +1,17 @@
 .heading {
   display: flex;
+  flex-direction: column;
   width: 100%;
-  justify-content: center;
-  background: #fff;
+  align-items: center;
+  background: #f8f8f8;
   position: sticky;
   top: 60px;
   z-index: 9999;
+  margin-bottom: 15px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+  }
 
   & .container {
     display: flex;
@@ -28,18 +34,30 @@
 
     & h1 {
       color: #0b376b;
+      font-family: var(--font-poppins);
       font-size: 35px;
-      font-weight: 700;
+      font-weight: 600;
       margin-left: 20px;
-      margin-top: 15px;
-      margin-bottom: 15px;
+      margin-top: 10px;
+      margin-bottom: 10px;
 
       @media (min-width: 768px) {
         font-size: 60px;
         margin-left: 20px;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
       }
+    }
+  }
+
+  & .separator {
+    display: none;
+    height: 30px;
+    width: 100%;
+    background: #fff;
+
+    @media (min-width: 768px) {
+      display: block;
     }
   }
 }

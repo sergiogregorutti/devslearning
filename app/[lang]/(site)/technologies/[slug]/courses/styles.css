@@ -12,8 +12,7 @@
   & .content-wrapper {
     @media (min-width: 768px) {
       display: grid;
-      grid-template-columns: 200px auto;
-      column-gap: 20px;
+      grid-template-columns: 220px auto;
     }
 
     & .left-column {
@@ -22,20 +21,37 @@
       column-gap: 20px;
       row-gap: 20px;
 
+      @media (min-width: 768px) {
+        padding-right: 30px;
+      }
+
       & .left-column-content {
         position: sticky;
-        top: 182px;
+        top: 200px;
 
         .courses-count {
           display: inline-block;
           margin-bottom: 5px;
-          font-size: 22px;
+          font-family: var(--font-poppins);
+          font-size: 20px;
           font-weight: bold;
 
           @media (min-width: 768px) {
             margin-bottom: 10px;
           }
         }
+      }
+    }
+
+    &>.content {
+      border-top: 1px solid #000;
+      margin-top: 10px;
+
+      @media (min-width: 768px) {
+        border-top: none;
+        margin-top: 0;
+        padding-left: 30px;
+        border-left: 1px solid #000;
       }
     }
   }
