@@ -119,65 +119,102 @@ export async function fetchTechnologiesCoursesCount() {
     options: { sort: { order: 1 } },
   });
 
-  technologies.map(technology => {
-    let totalEnglishCourses = 0, totalSpanishCourses = 0;
+  technologies.map((technology) => {
+    let totalEnglishCourses = 0,
+      totalSpanishCourses = 0;
 
-    technology.courses?.map(course => {
+    technology.courses?.map((course) => {
       switch (course.language) {
-        case 'en':
+        case "en":
           totalEnglishCourses++;
           break;
-        case 'es':
+        case "es":
           totalSpanishCourses++;
           break;
       }
     });
 
-    response[technology._id] = { total: Number(technology.courses?.length), en: totalEnglishCourses, es: totalSpanishCourses };
+    response[technology._id] = {
+      total: Number(technology.courses?.length),
+      en: totalEnglishCourses,
+      es: totalSpanishCourses,
+    };
   });
 
   return response;
 }
 
-export async function fetchTechnologyStats(technologyId: string, language: string, pricing: string) {
+export async function fetchTechnologyStats(
+  technologyId: string,
+  language: string,
+  pricing: string
+) {
   noStore();
   await dbConnect();
 
-  const languagesArray = decodeURIComponent(language).split(',').map(lang => lang.trim()).filter(Boolean);
-  const pricingArray = decodeURIComponent(pricing).split(',').map(lang => lang.trim()).filter(Boolean);
+  const languagesArray = decodeURIComponent(language)
+    .split(",")
+    .map((lang) => lang.trim())
+    .filter(Boolean);
 
-  const technology: ITechnology = await Technology.findById(technologyId).populate({
+  const pricingArray = decodeURIComponent(pricing)
+    .split(",")
+    .map((lang) => lang.trim())
+    .filter(Boolean);
+
+  let pricingNewArray: string[] = [];
+  pricingArray.forEach((pricing) => {
+    if (pricing === "paid") {
+      pricingNewArray.push("one-time-payment");
+      pricingNewArray.push("subscription");
+    }
+    if (pricing === "free") {
+      pricingNewArray.push("free");
+    }
+  });
+
+  const technology: ITechnology = await Technology.findById(
+    technologyId
+  ).populate({
     path: "courses",
     select: "name language pricing",
     match: {},
     options: { sort: { order: 1 } },
   });
 
-  let englishCourses = 0, spanishCourses = 0, paidCourses = 0, subscriptionCourses = 0, freeCourses = 0;
+  let englishCourses = 0,
+    spanishCourses = 0,
+    paidCourses = 0,
+    freeCourses = 0;
 
-  technology.courses?.map(course => {
+  technology.courses?.map((course) => {
     switch (course.language) {
-      case 'en':
-        if (pricingArray.length && !pricingArray.includes(course.pricing)) break;
+      case "en":
+        if (pricingNewArray.length && !pricingNewArray.includes(course.pricing))
+          break;
         englishCourses++;
         break;
-      case 'es':
-        if (pricingArray.length && !pricingArray.includes(course.pricing)) break;
+      case "es":
+        if (pricingNewArray.length && !pricingNewArray.includes(course.pricing))
+          break;
         spanishCourses++;
         break;
     }
 
     switch (course.pricing) {
-      case 'one-time-payment':
-        if (languagesArray.length && !languagesArray.includes(course.language)) break;
+      case "one-time-payment":
+        if (languagesArray.length && !languagesArray.includes(course.language))
+          break;
         paidCourses++;
         break;
-      case 'subscription':
-        if (languagesArray.length && !languagesArray.includes(course.language)) break;
-        subscriptionCourses++;
+      case "subscription":
+        if (languagesArray.length && !languagesArray.includes(course.language))
+          break;
+        paidCourses++;
         break;
-      case 'free':
-        if (languagesArray.length && !languagesArray.includes(course.language)) break;
+      case "free":
+        if (languagesArray.length && !languagesArray.includes(course.language))
+          break;
         freeCourses++;
         break;
     }
@@ -187,7 +224,6 @@ export async function fetchTechnologyStats(technologyId: string, language: strin
     englishCourses,
     spanishCourses,
     paidCourses,
-    subscriptionCourses,
-    freeCourses
+    freeCourses,
   };
 }

@@ -45,7 +45,9 @@ export async function fetchFilteredCourses(
   }
 
   if (query.language) {
-    const languagesArray = decodeURIComponent(query.language).split(',').map(lang => lang.trim());
+    const languagesArray = decodeURIComponent(query.language)
+      .split(",")
+      .map((lang) => lang.trim());
 
     if (languagesArray && languagesArray.length > 0) {
       finalQuery = {
@@ -56,12 +58,25 @@ export async function fetchFilteredCourses(
   }
 
   if (query.pricing) {
-    const pricingArray = decodeURIComponent(query.pricing).split(',').map(lang => lang.trim());
+    const pricingArray = decodeURIComponent(query.pricing)
+      .split(",")
+      .map((lang) => lang.trim());
 
-    if (pricingArray && pricingArray.length > 0) {
+    let pricingNewArray: string[] = [];
+    pricingArray.forEach((pricing) => {
+      if (pricing === "paid") {
+        pricingNewArray.push("one-time-payment");
+        pricingNewArray.push("subscription");
+      }
+      if (pricing === "free") {
+        pricingNewArray.push("free");
+      }
+    });
+
+    if (pricingNewArray && pricingNewArray.length > 0) {
       finalQuery = {
         ...finalQuery,
-        pricing: { $in: pricingArray },
+        pricing: { $in: pricingNewArray },
       };
     }
   }
@@ -100,7 +115,9 @@ export async function fetchCoursesPages(query: any = {}) {
   }
 
   if (query.language) {
-    const languagesArray = decodeURIComponent(query.language).split(',').map(lang => lang.trim());
+    const languagesArray = decodeURIComponent(query.language)
+      .split(",")
+      .map((lang) => lang.trim());
 
     if (languagesArray && languagesArray.length > 0) {
       finalQuery = {
@@ -111,12 +128,25 @@ export async function fetchCoursesPages(query: any = {}) {
   }
 
   if (query.pricing) {
-    const pricingArray = decodeURIComponent(query.pricing).split(',').map(lang => lang.trim());
+    const pricingArray = decodeURIComponent(query.pricing)
+      .split(",")
+      .map((lang) => lang.trim());
 
-    if (pricingArray && pricingArray.length > 0) {
+    let pricingNewArray: string[] = [];
+    pricingArray.forEach((pricing) => {
+      if (pricing === "paid") {
+        pricingNewArray.push("one-time-payment");
+        pricingNewArray.push("subscription");
+      }
+      if (pricing === "free") {
+        pricingNewArray.push("free");
+      }
+    });
+
+    if (pricingNewArray && pricingNewArray.length > 0) {
       finalQuery = {
         ...finalQuery,
-        pricing: { $in: pricingArray },
+        pricing: { $in: pricingNewArray },
       };
     }
   }
