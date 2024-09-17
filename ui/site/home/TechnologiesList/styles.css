@@ -51,7 +51,7 @@
 
     & .item {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       background: #2197f9;
       border-radius: 5px;
       text-decoration: none;
@@ -59,12 +59,18 @@
 
       @media (min-width: 768px) {
         flex-direction: column;
+        align-items: flex-start;
       }
 
       & img,
       & svg {
-        width: auto;
-        height: 50px;
+        width: 50px;
+        height: auto;
+
+        @media (min-width: 768px) {
+          width: auto;
+          height: 50px;
+        }
       }
 
       & .content {
