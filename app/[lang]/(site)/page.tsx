@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 import { redirect } from "next/navigation";
 import { getDictionary } from "./dictionaries";
 import Image from "next/image";
-import { fetchCategoriesWithTechnologies } from "@/lib/data/technologiesCategories";
+import { fetchTechnologies } from "@/lib/data/technologies";
 import InfoBanner from "@/ui/site/home/InfoBanner";
 import TechnologiesList from "@/ui/site/home/TechnologiesList";
 
@@ -86,7 +86,7 @@ export default async function Home({
   }
 
   const dictionary = await getDictionary(lang);
-  const categories = await fetchCategoriesWithTechnologies();
+  const technologies = await fetchTechnologies();
 
   return (
     <>
@@ -109,7 +109,11 @@ export default async function Home({
         </div>
       </div>
       <InfoBanner dictionary={dictionary} />
-      <TechnologiesList dictionary={dictionary} lang={lang} categories={categories} />
+      <TechnologiesList
+        dictionary={dictionary}
+        lang={lang}
+        technologies={technologies}
+      />
     </>
   );
 }

@@ -2,6 +2,10 @@
   display: flex;
   justify-content: center;
 
+  @media (min-width: 768px) {
+    margin-bottom: 20px;
+  }
+
   & .container {
     padding: 0 15px;
     width: 100%;
@@ -41,36 +45,53 @@
 
   & .technologies-list {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     column-gap: 20px;
     row-gap: 20px;
 
     & .item {
       display: flex;
-      flex-direction: column;
       align-items: flex-start;
       background: #2197f9;
       border-radius: 5px;
       text-decoration: none;
       padding: 20px;
 
-      & img, & svg {
+      @media (min-width: 768px) {
+        flex-direction: column;
+      }
+
+      & img,
+      & svg {
         width: auto;
         height: 50px;
       }
 
-      & > span {
-        display: inline-block;
-        margin-top: 10px;
-        font-size: 20px;
-        color: #fff;
+      & .content {
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px;
 
-        &.small {
-          font-size: 16px;
-          margin-top: 2px;
+        @media (min-width: 768px) {
+          margin-left: 0;
+        }
 
-          & span {
+        & > span {
+          display: inline-block;
+          font-size: 20px;
+          color: #fff;
+
+          @media (min-width: 768px) {
+            margin-top: 10px;
+          }
+
+          &.small {
             font-size: 16px;
+            margin-top: 2px;
+
+            & span {
+              font-size: 16px;
+            }
           }
         }
       }
@@ -81,6 +102,8 @@
     }
 
     @media (min-width: 768px) {
+      column-gap: 70px;
+      row-gap: 70px;
       grid-template-columns: 1fr 1fr 1fr 1fr;
 
       & .technologies-list {

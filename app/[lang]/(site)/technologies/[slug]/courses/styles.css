@@ -27,7 +27,7 @@
 
       & .left-column-content {
         position: sticky;
-        top: 200px;
+        top: 180px;
 
         .courses-count {
           display: inline-block;
@@ -46,7 +46,7 @@
       }
     }
 
-    &>.content {
+    & > .content {
       border-top: 1px solid #000;
       margin-top: 10px;
 
@@ -54,7 +54,6 @@
         border-top: none;
         margin-top: 0;
         padding-left: 30px;
-        border-left: 1px solid #000;
       }
     }
   }
@@ -68,7 +67,7 @@
     @media (min-width: 768px) {
       grid-template-columns: 1fr;
 
-      & .item+.item {
+      & .item + .item {
         margin-top: 10px;
       }
     }

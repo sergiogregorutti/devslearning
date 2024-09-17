@@ -8,7 +8,7 @@ export async function fetchTechnologies() {
   await dbConnect();
 
   const options = {
-    sort: "name",
+    sort: "order",
   };
 
   const technologies = await Technology.find({}, {}, options);

@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 100%;
   align-items: center;
-  background: #f8f8f8;
+  background: #fff;
   position: sticky;
   top: 60px;
   z-index: 9999;
@@ -52,7 +52,7 @@
 
   & .separator {
     display: none;
-    height: 30px;
+    height: 10px;
     width: 100%;
     background: #fff;
 
