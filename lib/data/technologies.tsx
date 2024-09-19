@@ -13,7 +13,15 @@ export async function fetchTechnologies() {
 
   const technologies = await Technology.find({}, {}, options);
 
-  return technologies;
+  const simplifiedTechnologies = technologies.map((technology: any) => {
+    return {
+      ...technology.toObject(),
+      _id: technology._id.toString(),
+      technologyCategory: technology.technologyCategory.toString(),
+    };
+  });
+
+  return simplifiedTechnologies;
 }
 
 const ITEMS_PER_PAGE = 10;
