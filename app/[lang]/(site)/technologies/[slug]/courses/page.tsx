@@ -6,9 +6,7 @@ import { getDictionary } from "../../../dictionaries";
 import { fetchFilteredCourses } from "@/lib/data/courses";
 import Heading from "@/ui/site/courses/Heading";
 import Sorting from "@/ui/site/courses/sorting/sorting";
-import Language from "@/ui/site/courses/language/language";
 import Filters from "@/ui/site/courses/Filters";
-import Pricing from "@/ui/site/courses/Pricing";
 import List from "@/ui/site/courses/list/list";
 import Loading from "@/ui/site/courses/list/loading";
 import Pagination from "@/ui/site/courses/pagination/pagination";
@@ -94,11 +92,15 @@ export default async function TechnologyPage({
   const technology = await getTechnology(slug);
 
   const params = new URLSearchParams(searchParams);
-  const language = params.get("language") || '';
-  const pricing = params.get("pricing") || '';
-  const sortBy = params.get("sortBy") || "priceHighToLow";
+  const language = params.get("language") || "";
+  const pricing = params.get("pricing") || "";
+  const sortBy = params.get("sortBy") || "newest";
 
-  const queryObject: { technology: string; language?: string; pricing?: string } = {
+  const queryObject: {
+    technology: string;
+    language?: string;
+    pricing?: string;
+  } = {
     technology: technology._id.toString(),
   };
   if (language) {
@@ -116,14 +118,20 @@ export default async function TechnologyPage({
       <Heading technology={technology} />
       <div className="container">
         <div className="content-wrapper">
-          <div className="left-column">
-            <div className="left-column-content">
-              <span className="courses-count">{courses.totalDocs} {dictionary.technologies.coursesLowercase}</span>
-              <Sorting dictionary={dictionary} />
-              <Filters technologyId={technology._id} language={language} pricing={pricing} dictionary={dictionary} />
-            </div>
+          <div className="order-and-filters">
+            <Sorting dictionary={dictionary} />
+            <Filters
+              technologyId={technology._id}
+              language={language}
+              pricing={pricing}
+              dictionary={dictionary}
+            />
           </div>
-          <div className="content">
+          <p className="courses-count">
+            {dictionary.technologies.showing} {courses.totalDocs}{" "}
+            {dictionary.technologies.coursesLowercase}:
+          </p>
+          <div className="courses">
             <Suspense fallback={<Loading />}>
               <List
                 query={queryObject}
@@ -132,8 +140,12 @@ export default async function TechnologyPage({
                 dictionary={dictionary}
               />
             </Suspense>
-            {courses.totalDocs > 0 && <Pagination totalPages={courses.totalPages} />}
-            {courses.totalDocs === 0 && <p className="no-results">{dictionary.technologies.noResults}</p>}
+            {courses.totalPages > 1 && (
+              <Pagination totalPages={courses.totalPages} />
+            )}
+            {courses.totalDocs === 0 && (
+              <p className="no-results">{dictionary.technologies.noResults}</p>
+            )}
           </div>
         </div>
       </div>

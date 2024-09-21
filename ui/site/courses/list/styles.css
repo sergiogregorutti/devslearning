@@ -17,28 +17,8 @@
       & .image {
         position: relative;
 
-        & .label {
-          position: absolute;
-          top: 0px;
-          left: 0px;
-          padding: 4px 10px;
-          color: #fff;
-          font-size: 14px;
-
-          &.pricing-free {
-            background: #03e40c;
-          }
-
-          &.pricing-one-time {
-            background: #0b376b;
-          }
-
-          &.pricing-subscription {
-            background: #9747ff;
-          }
-        }
-
         & img {
+          border: 1px solid #000;
           width: 100%;
           height: auto;
         }
@@ -71,6 +51,35 @@
           display: flex;
           flex-wrap: wrap;
 
+          & .pricing-wrapper {
+            display: flex;
+            align-items: center;
+
+            & .pricing {
+              display: inline-block;
+              margin-right: 18px;
+              height: 24px;
+              padding: 4px 10px;
+              color: #fff;
+              font-size: 12px;
+              line-height: 16px;
+              border-radius: 5px;
+
+              &.pricing-free {
+                background: #03e40c;
+                margin-right: 13px;
+              }
+
+              &.pricing-one-time {
+                background: #0b376b;
+              }
+
+              &.pricing-subscription {
+                background: #9747ff;
+              }
+            }
+          }
+
           & .detail {
             display: flex;
             align-items: center;
@@ -95,6 +104,7 @@
             &.price {
               & .attribute {
                 width: 22px;
+                margin-right: 4px;
 
                 & svg {
                   position: relative;

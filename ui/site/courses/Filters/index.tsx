@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Language from "@/ui/site/courses/language/language";
 import Pricing from "@/ui/site/courses/Pricing";
 
+import "./styles.css";
 
 export default function Filters({
   dictionary,
@@ -21,10 +22,12 @@ export default function Filters({
   useEffect(() => {
     async function fetchCourses() {
       try {
-        const response = await fetch(`/api/technologies/${technologyId}/stats?language=${language}&pricing=${pricing}`);
+        const response = await fetch(
+          `/api/technologies/${technologyId}/stats?language=${language}&pricing=${pricing}`
+        );
         const data = await response.json();
         setStats(data);
-      } catch (e) { }
+      } catch (e) {}
     }
 
     fetchCourses();

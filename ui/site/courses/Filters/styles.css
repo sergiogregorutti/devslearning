@@ -1,0 +1,32 @@
+.filters {
+  display: flex;
+
+  & .item {
+    & .options {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+
+      @media (min-width: 768px) {
+        flex-direction: row;
+      }
+
+      & label {
+        margin-bottom: 0;
+
+        & + label {
+          margin-top: 10px;
+
+          @media (min-width: 768px) {
+            margin-top: 0;
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+
+    & + .item {
+      margin-left: 40px;
+    }
+  }
+}

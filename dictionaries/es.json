@@ -63,6 +63,7 @@
     "resetPassword": "Crear Nueva Contraseña"
   },
   "technologies": {
+    "showing": "Mostrando",
     "goBack": "Volver",
     "language": "Idioma",
     "all": "Todos",

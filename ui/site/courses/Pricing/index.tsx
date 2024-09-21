@@ -38,28 +38,30 @@ export default function Pricing({
   return (
     <div className="item">
       <label className="form-label">{dictionary.technologies.price}</label>
-      <label className="ckeckbox-wrapper">
-        {dictionary.technologies.pricingPaid}{" "}
-        {stats.paidCourses !== undefined ? `(${stats.paidCourses})` : null}
-        <input
-          type="checkbox"
-          id="pricingPaid"
-          onChange={handleChange}
-          defaultChecked={pricing?.includes("paid") ? true : false}
-        />
-        <span className="checkmark"></span>
-      </label>
-      <label className="ckeckbox-wrapper">
-        {dictionary.technologies.pricingFree}{" "}
-        {stats.freeCourses !== undefined ? `(${stats.freeCourses})` : null}
-        <input
-          type="checkbox"
-          id="pricingFree"
-          onChange={handleChange}
-          defaultChecked={pricing?.includes("free") ? true : false}
-        />
-        <span className="checkmark"></span>
-      </label>
+      <div className="options">
+        <label className="ckeckbox-wrapper">
+          {dictionary.technologies.pricingPaid}{" "}
+          {stats.paidCourses !== undefined ? `(${stats.paidCourses})` : null}
+          <input
+            type="checkbox"
+            id="pricingPaid"
+            onChange={handleChange}
+            defaultChecked={pricing?.includes("paid") ? true : false}
+          />
+          <span className="checkmark"></span>
+        </label>
+        <label className="ckeckbox-wrapper">
+          {dictionary.technologies.pricingFree}{" "}
+          {stats.freeCourses !== undefined ? `(${stats.freeCourses})` : null}
+          <input
+            type="checkbox"
+            id="pricingFree"
+            onChange={handleChange}
+            defaultChecked={pricing?.includes("free") ? true : false}
+          />
+          <span className="checkmark"></span>
+        </label>
+      </div>
     </div>
   );
 }

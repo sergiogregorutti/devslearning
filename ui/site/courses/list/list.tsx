@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { fetchFilteredCourses } from "@/lib/data/courses";
 import {
-  FaDollarSign,
+  FaMoneyBillWave,
   FaLaptopCode,
   FaUser,
   FaCalendarDays,
@@ -50,19 +50,19 @@ export default async function List({
     switch (value) {
       case "free":
         return (
-          <span className="label pricing-free">
+          <span className="pricing pricing-free">
             {dictionary.technologies.pricingFree}
           </span>
         );
       case "one-time-payment":
         return (
-          <span className="label pricing-one-time">
+          <span className="pricing pricing-one-time">
             {dictionary.technologies.pricingOneTime}
           </span>
         );
       case "subscription":
         return (
-          <span className="label pricing-subscription">
+          <span className="pricing pricing-subscription">
             {dictionary.technologies.pricingSubscription}
           </span>
         );
@@ -80,7 +80,6 @@ export default async function List({
         >
           <div className="item">
             <div className="image">
-              {renderPricing(course.pricing)}
               <Image
                 src={course.image}
                 width={200}
@@ -94,17 +93,22 @@ export default async function List({
               </h3>
               <p>{course.description}</p>
               <div className="details">
-                <span
-                  className="detail price"
-                  title={dictionary.technologies.price}
-                >
-                  <span className="attribute">
-                    <FaDollarSign />
-                  </span>{" "}
-                  {course.price > 0
-                    ? `US$ ${course.price}`
-                    : dictionary.technologies.pricingFree}
-                </span>
+                <div className="pricing-wrapper">
+                  {renderPricing(course.pricing)}
+                </div>
+                {course.price > 0 && (
+                  <span
+                    className="detail price"
+                    title={dictionary.technologies.price}
+                  >
+                    <span className="attribute">
+                      <FaMoneyBillWave />
+                    </span>{" "}
+                    {course.price > 0
+                      ? `US$ ${course.price}`
+                      : dictionary.technologies.pricingFree}
+                  </span>
+                )}
                 <span
                   className="detail platform"
                   title={dictionary.technologies.platform}
