@@ -4,11 +4,6 @@
   width: 100%;
   align-items: center;
   background: #fff;
-  margin-bottom: 15px;
-
-  @media (min-width: 768px) {
-    margin-bottom: 0;
-  }
 
   & .container {
     display: flex;
@@ -32,13 +27,13 @@
     & h1 {
       color: #0b376b;
       font-family: var(--font-poppins);
-      font-size: 35px;
+      font-size: 40px;
       font-weight: 600;
-      margin: 10px 0;
+      margin: 20px 0;
 
       @media (min-width: 768px) {
         font-size: 60px;
-        margin: 25px 0;
+        margin: 35px 0;
       }
     }
   }
