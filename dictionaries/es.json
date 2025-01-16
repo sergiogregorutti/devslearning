@@ -25,7 +25,7 @@
   },
   "notFound": {
     "title": "Error 404",
-    "description": "La página a la que esta intentando acceder no existe.",
+    "description": "La página a la que está intentando acceder no existe.",
     "link": "Ir al Inicio"
   },
   "signUp": {
@@ -34,7 +34,7 @@
     "email": "E-mail",
     "password": "Contraseña",
     "createAccount": "Crear Cuenta",
-    "alreadyHaveAccount": "¿Ya tenes una cuenta?",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
     "signIn": "Ingresar",
     "formSubmitted": "Un correo ha sido enviado a tu E-mail. Sigue las instrucciones para activar tu cuenta."
   },
@@ -44,7 +44,7 @@
     "password": "Contraseña",
     "signIn": "Ingresar",
     "forgotPassword": "¿Olvidaste tu contraseña?",
-    "doNotHaveAccount": "¿No tenes una cuenta?",
+    "doNotHaveAccount": "¿No tienes una cuenta?",
     "signUp": "Registrarse"
   },
   "activateAccount": {
@@ -53,7 +53,7 @@
     "accountActivated": "Tu cuenta ha sido activada. Ya puedes ingresar."
   },
   "forgotPassword": {
-    "title": "Olvide mi Contraseña",
+    "title": "Olvidé mi Contraseña",
     "email": "E-mail",
     "requestResetLink": "Enviar Link para Recuperar Contraseña"
   },

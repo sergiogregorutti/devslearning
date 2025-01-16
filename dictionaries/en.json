@@ -63,8 +63,8 @@
     "resetPassword": "Create New Password"
   },
   "technologies": {
-    "goBack": "Go back",
     "showing": "Showing",
+    "goBack": "Go back",
     "language": "Language",
     "all": "All",
     "english": "English",
