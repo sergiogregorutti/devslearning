@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
 import { defaultInternalPrefix } from "./lib/language";
 
-const sections = [
+const sections = new Set([
   "auth/signin",
   "auth/signup",
   "auth/forgot-password",
@@ -11,77 +11,57 @@ const sections = [
   "auth/activate-account",
   "technologies",
   "admin",
-];
+]);
 
-const sectionExists = (pathname: string) => {
-  let isValidSection = false;
-  sections.forEach((section) => {
-    if (
-      pathname === "/en/" ||
-      pathname === "/es/" ||
-      pathname.startsWith(`/en/${section}/`) ||
-      pathname.startsWith(`/es/${section}/`)
-    ) {
-      isValidSection = true;
-    }
-  });
-
-  return isValidSection;
+const sectionExists = (pathname: string): boolean => {
+  return (
+    pathname === "/en/" ||
+    pathname === "/es/" ||
+    [...sections].some(
+      (section) =>
+        pathname.startsWith(`/en/${section}/`) ||
+        pathname.startsWith(`/es/${section}/`)
+    )
+  );
 };
 
-const userHasAccess = (pathname: string) => {
-  let userHasAccess = true;
-  let isAuth = false;
-  let isAdmin = false;
-  const cookieStore = cookies();
-  const token = cookieStore.get("token");
-  let user = null;
-  if (token) {
-    isAuth = true;
-    user = jwt.decode(token.value);
+const userHasAccess = (pathname: string): boolean => {
+  const token = cookies().get("token")?.value;
+  const user = token ? (jwt.decode(token) as { role?: string }) : null;
+  const isAdmin = user?.role === "admin";
 
-    if (user.role === "admin") {
-      isAdmin = true;
-    }
-  }
-
-  if (pathname.startsWith("/en/admin/") && !isAdmin) userHasAccess = false;
-
-  return userHasAccess;
+  return !(pathname.startsWith("/en/admin/") && !isAdmin);
 };
 
 export function middleware(request: NextRequest) {
-  if (request.nextUrl.pathname.startsWith("/es/admin")) {
-    return NextResponse.rewrite(new URL("/en/not-found-page", request.url));
+  const { pathname, searchParams } = request.nextUrl;
+  const url = new URL(request.url);
+
+  // Redirect restricted admin access
+  if (pathname.startsWith("/es/admin") || pathname.startsWith("/en/")) {
+    return NextResponse.rewrite(new URL("/en/not-found-page", url));
   }
 
-  if (request.nextUrl.pathname.startsWith("/en/")) {
-    return NextResponse.rewrite(new URL("/en/not-found-page", request.url));
-  }
+  // Handle default language prefix (English)
+  if (!pathname.startsWith("/es/")) {
+    request.nextUrl.pathname = `/${defaultInternalPrefix}${pathname}`;
 
-  // English routes
-  if (!request.nextUrl.pathname.startsWith("/es/")) {
-    request.nextUrl.pathname = `/${defaultInternalPrefix}${request.nextUrl.pathname}`;
-
-    if (sectionExists(request.nextUrl.pathname)) {
-      if (!userHasAccess(request.nextUrl.pathname)) {
-        return NextResponse.rewrite(new URL("/en/not-found-page", request.url));
-      } else {
-        return NextResponse.rewrite(request.nextUrl);
-      }
-    } else {
-      return NextResponse.rewrite(new URL("/en/not-found-page", request.url));
+    if (
+      !sectionExists(request.nextUrl.pathname) ||
+      !userHasAccess(request.nextUrl.pathname)
+    ) {
+      return NextResponse.rewrite(new URL("/en/not-found-page", url));
     }
+
+    return NextResponse.rewrite(request.nextUrl);
   }
 
-  if (sectionExists(request.nextUrl.pathname)) {
-    return NextResponse.next();
-  } else {
-    return NextResponse.rewrite(new URL("/es/not-found-page", request.url));
-  }
+  // Handle Spanish routes
+  return sectionExists(pathname)
+    ? NextResponse.next()
+    : NextResponse.rewrite(new URL("/es/not-found-page", url));
 }
 
 export const config = {
-  // do not localize next.js paths
   matcher: ["/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js).*)"],
 };
