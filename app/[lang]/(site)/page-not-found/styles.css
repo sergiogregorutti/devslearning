@@ -1,0 +1,22 @@
+.page-not-found {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  & .container {
+    padding: 0 15px;
+    max-width: 1200px;
+    width: 100%;
+
+    & h1 {
+      color: #0b376b;
+      font-size: 36px;
+      margin: 20px 0 20px 0;
+
+      @media (min-width: 768px) {
+        font-size: 50px;
+        margin: 32px 0 32px 0;
+      }
+    }
+  }
+}

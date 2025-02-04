@@ -39,7 +39,7 @@ export function middleware(request: NextRequest) {
 
   // Redirect restricted admin access
   if (pathname.startsWith("/es/admin") || pathname.startsWith("/en/")) {
-    return NextResponse.rewrite(new URL("/en/not-found-page", url));
+    return NextResponse.rewrite(new URL("/en/page-not-found", url));
   }
 
   // Handle default language prefix (English)
@@ -50,7 +50,7 @@ export function middleware(request: NextRequest) {
       !sectionExists(request.nextUrl.pathname) ||
       !userHasAccess(request.nextUrl.pathname)
     ) {
-      return NextResponse.rewrite(new URL("/en/not-found-page", url));
+      return NextResponse.rewrite(new URL("/en/page-not-found", url));
     }
 
     return NextResponse.rewrite(request.nextUrl);
@@ -59,7 +59,7 @@ export function middleware(request: NextRequest) {
   // Handle Spanish routes
   return sectionExists(pathname)
     ? NextResponse.next()
-    : NextResponse.rewrite(new URL("/es/not-found-page", url));
+    : NextResponse.rewrite(new URL("/es/page-not-found", url));
 }
 
 export const config = {

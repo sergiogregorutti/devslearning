@@ -1,4 +1,4 @@
-# 🚀 Devs Learning
+# Devs Learning
 
 **Devs Learning** is a web programming course directory that gathers and organizes high-quality resources to make learning new technologies easier. Our goal is to help developers of all levels find the best free and paid courses, in both English and Spanish, all in one place.
 
