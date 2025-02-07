@@ -2,7 +2,6 @@
   display: block;
   font-family: var(--font-poppins) !important;
   font-size: 16px;
-  font-weight: bold;
   margin-bottom: 8px;
 }
 
@@ -106,8 +105,9 @@
     left: 0;
     height: 20px;
     width: 20px;
-    border: 1px solid #2197f9;
+    border: 1px solid #000;
     background: #fff;
+    border-radius: 5px;
 
     &:after {
       content: "";

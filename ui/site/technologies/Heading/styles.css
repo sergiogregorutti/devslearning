@@ -9,6 +9,8 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    padding: 0 15px;
+    max-width: 1200px;
 
     & img,
     & svg {

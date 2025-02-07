@@ -115,7 +115,7 @@ export default async function TechnologyPage({
 
   return (
     <div className="technology">
-      <Heading technology={technology} />
+      <Heading dictionary={dictionary} lang={lang} technology={technology} />
       <div className="container">
         <div className="content-wrapper">
           <div className="order-and-filters">
@@ -128,8 +128,7 @@ export default async function TechnologyPage({
             />
           </div>
           <p className="courses-count">
-            {dictionary.technologies.showing} {courses.totalDocs}{" "}
-            {dictionary.technologies.coursesLowercase}:
+            {courses.totalDocs} {dictionary.technologies.coursesLowercase}
           </p>
           <div className="courses">
             <Suspense fallback={<Loading />}>

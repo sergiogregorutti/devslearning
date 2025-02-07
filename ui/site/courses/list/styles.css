@@ -18,9 +18,10 @@
         position: relative;
 
         & img {
-          border: 1px solid #000;
+          border: 1px solid #0b376b;
           width: 100%;
           height: auto;
+          border-radius: 15px;
         }
       }
 
@@ -29,6 +30,7 @@
           font-size: 24px;
           line-height: 24px;
           margin: 10px 0 10px 0;
+          color: #1f97f9;
 
           & svg {
             position: relative;
@@ -139,16 +141,16 @@
     }
 
     & + .item-link {
-      margin-top: 60px;
+      margin-top: 25px;
+      padding-top: 30px;
+      border-top: 1px solid #ccc;
     }
 
     &:hover {
       text-decoration: none;
 
-      & h3 {
-        & svg {
-          color: #2197f9 !important;
-        }
+      & .item .content h3 {
+        color: #1a73e8;
       }
     }
   }

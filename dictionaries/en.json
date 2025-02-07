@@ -63,6 +63,7 @@
     "resetPassword": "Create New Password"
   },
   "technologies": {
+    "technologies": "Technologies",
     "showing": "Showing",
     "goBack": "Go back",
     "language": "Language",
