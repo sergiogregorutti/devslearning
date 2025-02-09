@@ -4,7 +4,7 @@ import Link from "next/link";
 import LanguageSelector from "@/ui/site/languageSelector/LanguageSelector";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import Image from "next/image";
-import { FaBars, FaXmark, FaCaretRight } from "react-icons/fa6";
+import { FaBars, FaXmark } from "react-icons/fa6";
 
 import "./styles.css";
 
