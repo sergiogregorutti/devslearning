@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { setCookie } from "@/lib/helpers";
 
 interface LanguageSelectorProps {
+  mobile?: boolean;
   dictionary: { [key: string]: any };
   lang: string;
 }
@@ -11,6 +12,7 @@ interface LanguageSelectorProps {
 import "./styles.css";
 
 export default function LanguageSelector({
+  mobile = false,
   dictionary,
   lang,
 }: LanguageSelectorProps) {
@@ -28,7 +30,7 @@ export default function LanguageSelector({
   };
 
   return (
-    <div className="language-selector">
+    <div className={`language-selector${mobile === true ? " mobile" : ""}`}>
       <a
         href="/"
         className={lang === "en" ? "active" : ""}

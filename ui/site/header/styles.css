@@ -15,29 +15,178 @@ header {
     justify-content: space-between;
   }
 
-  & h1 {
-    margin: 0;
+  & .left {
+    display: flex;
 
-    & a {
-      position: relative;
-      display: inline-block;
-      height: 30px;
-      margin: 10px 0;
+    & h1 {
+      margin: 0;
 
-      & img {
-        position: absolute;
-        height: 40px;
-        width: auto;
-      }
-    }
-
-    @media (min-width: 768px) {
       & a {
-        height: 40px;
+        position: relative;
+        display: inline-block;
+        height: 30px;
         margin: 10px 0;
 
         & img {
+          position: absolute;
           height: 40px;
+          width: auto;
+        }
+      }
+
+      @media (min-width: 768px) {
+        & a {
+          width: 136px;
+          height: 40px;
+          margin: 10px 0;
+
+          & img {
+            height: 40px;
+          }
+        }
+      }
+    }
+
+    & .menu {
+      display: none;
+      list-style-type: none;
+      margin: 0 0 0 35px;
+      padding: 0;
+      align-items: center;
+
+      @media (min-width: 768px) {
+        display: flex;
+      }
+
+      & li {
+        & a {
+          padding: 10px;
+          color: #fff;
+
+          &:hover {
+            color: #2197f9;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+
+  & .right {
+    display: flex;
+    align-items: center;
+
+    > .language-selector {
+      display: none;
+
+      @media (min-width: 768px) {
+        display: block;
+      }
+    }
+
+    & .menu-toggle {
+      background: none;
+      border: none;
+
+      & svg {
+        fill: #fff;
+        font-size: 20px;
+      }
+
+      @media (min-width: 768px) {
+        display: none;
+      }
+    }
+
+    & .mobile-menu {
+      display: none;
+      background: #fff;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.5s ease;
+
+      & .mobile-menu-content {
+        width: 100%;
+        position: relative;
+
+        & .mobile-menu-content-wrapper {
+          padding: 20px 15px;
+        }
+      }
+
+      & .close-container {
+        position: absolute;
+        top: 0;
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+
+        & .btn-close {
+          margin-top: 10px;
+          margin-right: 6px;
+          background: none;
+          border: none;
+
+          & svg {
+            fill: #000;
+            font-size: 36px;
+          }
+        }
+      }
+
+      & .menu {
+        width: 100%;
+        list-style: none;
+        padding: 0;
+
+        & .item {
+          position: relative;
+
+          a {
+            display: inline-block;
+            width: 100%;
+            color: #000;
+            text-decoration: none;
+            padding: 10px 0;
+
+            & svg {
+              position: absolute;
+              right: 6px;
+              top: 12px;
+            }
+          }
+
+          &.active {
+            background: #7ebdf2;
+          }
+        }
+      }
+
+      & .mobile-menu-logo {
+        display: inline-block;
+        width: 136px;
+        height: 40px;
+      }
+
+      &.open {
+        display: flex;
+      }
+
+      & .language-selector-wrapper {
+        width: 100%;
+        padding: 0 15px;
+
+        h3 {
+          font-weight: normal;
+          font-size: 16px;
+          color: #ccc;
+          margin-bottom: 5px;
         }
       }
     }

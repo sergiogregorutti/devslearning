@@ -6,6 +6,10 @@
     "language": {
       "english": "EN",
       "spanish": "ES"
+    },
+    "navigation": {
+      "technologies": "Tecnologías",
+      "language": "Idioma"
     }
   },
   "footer": {

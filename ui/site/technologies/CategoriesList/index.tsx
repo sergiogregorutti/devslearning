@@ -37,7 +37,7 @@ export default function TechnologiesList({
         <div className="categories-list">
           {categories.map((category: any) => (
             <div key={category.id} className="category">
-              <h2>{category.name}</h2>
+              <h2>{lang === "en" ? category.name : category.name_es}</h2>
               <div className="technologies-list">
                 {category.technologies.map((technology: any) => (
                   <Link
