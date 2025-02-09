@@ -3,7 +3,7 @@ import dbConnect from "@/lib/dbConnect";
 import { Technology } from "@/lib/models";
 import { ITechnology, ITechnologyCoursesCount } from "@/interfaces/course";
 
-export async function fetchTechnologies() {
+export async function fetchTechnologies(limit = 0) {
   noStore();
   await dbConnect();
 
@@ -11,7 +11,13 @@ export async function fetchTechnologies() {
     sort: "order",
   };
 
-  const technologies = await Technology.find({}, {}, options);
+  let query = Technology.find({}, {}, options);
+
+  if (limit > 0) {
+    query = query.limit(limit);
+  }
+
+  const technologies = await query.exec();
 
   const simplifiedTechnologies = technologies.map((technology: any) => {
     return {

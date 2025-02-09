@@ -16,16 +16,17 @@
     "createdBy": "Creado por"
   },
   "home": {
-    "title": "Es tu hora de",
-    "title2": "empezar a aprender!",
-    "subtitle": "Directorio de cursos para desarrolladores",
-    "browseTechnologies": "Explorar Tecnologías",
+    "title": "Tu Centro de Aprendizaje",
+    "title2": "para Desarrolladores",
+    "subtitle": "Un directorio curado con los mejores cursos de programación—gratuitos y pagos.",
+    "browseTechnologies": "Comienza a Explorar",
     "info": {
       "browseBetween": "Navega entre",
       "coursesIn": "cursos en",
       "technologies": "tecnologías"
     },
     "technologiesTitle": "¿Qué tecnología te gustaría aprender?",
+    "seeAllTechnologies": "Ver Todas Las Tecnologías",
     "courses": "cursos"
   },
   "notFound": {

@@ -16,16 +16,17 @@
     "createdBy": "Created by"
   },
   "home": {
-    "title": "It's your time to",
-    "title2": "start learning!",
-    "subtitle": "Course directory for developers",
-    "browseTechnologies": "Browse Technologies",
+    "title": "Your Developer",
+    "title2": "Learning Hub",
+    "subtitle": "A curated directory of the best programming courses—free and paid.",
+    "browseTechnologies": "Start Exploring",
     "info": {
       "browseBetween": "Browse between",
       "coursesIn": "courses in",
       "technologies": "technologies"
     },
     "technologiesTitle": "Which technology do you want to learn?",
+    "seeAllTechnologies": "See All Technologies",
     "courses": "courses"
   },
   "notFound": {

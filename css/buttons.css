@@ -35,6 +35,14 @@
     }
   }
 
+  &.btn-primary {
+    background: #0b376b;
+
+    &:hover {
+      background: #03254c;
+    }
+  }
+
   &.btn-remove {
     color: #f92121;
 

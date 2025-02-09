@@ -88,7 +88,7 @@ export default async function Home({
   }
 
   const dictionary = await getDictionary(lang);
-  const technologies = await fetchTechnologies();
+  const technologies = await fetchTechnologies(4);
 
   return (
     <>

@@ -69,6 +69,12 @@ export default function TechnologiesList({
             </Link>
           ))}
         </div>
+        <Link
+          className="btn btn-big btn-primary"
+          href={getLocalizedPathFromPrefix(lang, `/technologies`)}
+        >
+          {dictionary.home.seeAllTechnologies}
+        </Link>
       </div>
     </div>
   );
