@@ -1,6 +1,10 @@
 {
   "common": {
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "navigation": {
+      "home": "Home",
+      "technologies": "Technologies"
+    }
   },
   "header": {
     "language": {
@@ -27,7 +31,11 @@
     },
     "technologiesTitle": "Which technology do you want to learn?",
     "seeAllTechnologies": "See All Technologies",
-    "courses": "courses"
+    "courses": "courses",
+    "freeContent": {
+      "title": "Start Learning for Free!",
+      "description": "At Devs Learning, we believe that knowledge should be accessible to everyone. That's why every technology includes free courses—so you can start learning today without spending a dime. Whether you're taking your first steps or leveling up your skills, you'll always find great free resources to kickstart your journey!"
+    }
   },
   "notFound": {
     "title": "Error 404",

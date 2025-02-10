@@ -10,6 +10,7 @@ import { fetchTechnologies } from "@/lib/data/technologies";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import InfoBanner from "@/ui/site/home/InfoBanner";
 import TechnologiesList from "@/ui/site/home/TechnologiesList";
+import FreeContent from "@/ui/site/home/FreeContent";
 
 import "./styles.css";
 
@@ -122,6 +123,7 @@ export default async function Home({
         lang={lang}
         technologies={technologies}
       />
+      <FreeContent dictionary={dictionary} />
     </>
   );
 }

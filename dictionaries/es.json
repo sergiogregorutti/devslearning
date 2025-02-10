@@ -1,6 +1,10 @@
 {
   "common": {
-    "loading": "Cargando..."
+    "loading": "Cargando...",
+    "navigation": {
+      "home": "Inicio",
+      "technologies": "Tecnologías"
+    }
   },
   "header": {
     "language": {
@@ -27,7 +31,11 @@
     },
     "technologiesTitle": "¿Qué tecnología te gustaría aprender?",
     "seeAllTechnologies": "Ver Todas Las Tecnologías",
-    "courses": "cursos"
+    "courses": "cursos",
+    "freeContent": {
+      "title": "¡Empezá a Aprender Gratis!",
+      "description": "En Devs Learning creemos que el conocimiento debe ser accesible para todos. Por eso, en cada tecnología vas a encontrar cursos gratuitos garantizados, para que puedas comenzar a estudiar hoy mismo sin gastar un solo peso. Ya sea que estés dando tus primeros pasos o quieras mejorar tus habilidades, siempre habrá recursos gratis para impulsarte en tu camino."
+    }
   },
   "notFound": {
     "title": "Error 404",

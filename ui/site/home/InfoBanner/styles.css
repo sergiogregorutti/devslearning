@@ -1,5 +1,5 @@
 .info-banner {
-  background: #2197f9;
+  background: #add7ff;
   display: flex;
   justify-content: center;
 
@@ -16,7 +16,7 @@
     span {
       display: inline-block;
       font-size: 16px;
-      color: #fff;
+      color: #676767;
 
       @media (min-width: 768px) {
         font-size: 22px;

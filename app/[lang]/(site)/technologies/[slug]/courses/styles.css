@@ -35,6 +35,7 @@
 
     & > .courses {
       margin-top: 10px;
+      padding-bottom: 20px;
 
       @media (min-width: 768px) {
         border-top: none;

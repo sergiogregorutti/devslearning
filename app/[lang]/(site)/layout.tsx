@@ -79,7 +79,7 @@ export default async function RootLayout({
       <body>
         <Header dictionary={dictionary} user={user} lang={lang} />
         {children}
-        <Footer dictionary={dictionary} />
+        <Footer lang={lang} dictionary={dictionary} />
 
         {process.env.ENVIRONMENT === "production" ? (
           <>

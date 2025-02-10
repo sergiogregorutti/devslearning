@@ -1,5 +1,8 @@
 "use client";
+
 import React, { useEffect } from "react";
+import Link from "next/link";
+import { getLocalizedPathFromPrefix } from "@/lib/language";
 
 import Smartlook from "smartlook-client";
 
@@ -7,8 +10,10 @@ import "./styles.css";
 
 export default function Footer({
   dictionary,
+  lang,
 }: {
   dictionary: { [key: string]: any };
+  lang: string;
 }) {
   useEffect(() => {
     if (!Smartlook.initialized()) {
@@ -20,14 +25,25 @@ export default function Footer({
     <footer>
       <div className="footer-content">
         <div className="container">
-          Devs Learning {new Date().getFullYear()}
-          <span className="separator">|</span>
-          <span>
-            {dictionary.footer.createdBy}{" "}
-            <a href="https://github.com/sergiogregorutti/" target="_blank">
-              @sergiogregorutti
-            </a>
-          </span>
+          <ul className="navigation">
+            <li className="item">
+              <Link
+                className="item"
+                href={getLocalizedPathFromPrefix(lang, `/`)}
+              >
+                {dictionary.common.navigation.home}
+              </Link>
+            </li>
+            <li className="item">
+              <Link
+                className="item"
+                href={getLocalizedPathFromPrefix(lang, `/technologies/`)}
+              >
+                {dictionary.common.navigation.technologies}
+              </Link>
+            </li>
+          </ul>
+          <p>© {new Date().getFullYear()} Devs Learning</p>
         </div>
       </div>
     </footer>
