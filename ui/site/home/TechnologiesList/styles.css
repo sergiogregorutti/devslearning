@@ -1,7 +1,7 @@
 .technologies {
   display: flex;
   justify-content: center;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 
   @media (min-width: 768px) {
     margin-bottom: 20px;
