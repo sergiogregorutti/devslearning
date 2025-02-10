@@ -55,7 +55,7 @@ export default async function RootLayout({
             </div>
           </div>
         </div>
-        <Footer dictionary={dictionary} />
+        <Footer lang={lang} dictionary={dictionary} />
       </body>
     </html>
   );
