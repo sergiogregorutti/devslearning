@@ -92,6 +92,7 @@ export default async function List({
                 {course.name} <FaUpRightFromSquare />
               </h3>
               <p>{course.description}</p>
+              {/* course.long_description && (<div dangerouslySetInnerHTML={{ __html: course.long_description }} />) */}
               <div className="details">
                 <div className="pricing-wrapper">
                   {renderPricing(course.pricing)}

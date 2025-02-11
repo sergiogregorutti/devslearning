@@ -17,6 +17,7 @@ export default function Form({ technologies }: { technologies: any }) {
   const [state, dispatch] = useFormState(createCourse, initialState);
   const [isFormLoading, setIsFormLoading] = useState(false);
   const [longDescriptionContent, setLongDescriptionContent] = useState("");
+  const [longDescriptionEsContent, setLongDescriptionEsContent] = useState("");
 
   const quillModules = {
     toolbar: [
@@ -47,8 +48,12 @@ export default function Form({ technologies }: { technologies: any }) {
     "code-block",
   ];
 
-  const handleEditorChange = (newContent: any) => {
+  const handleLongDescriptionChange = (newContent: any) => {
     setLongDescriptionContent(newContent);
+  };
+
+  const handleLongDescriptionEsChange = (newContent: any) => {
+    setLongDescriptionEsContent(newContent);
   };
 
   useEffect(() => {
@@ -61,6 +66,7 @@ export default function Form({ technologies }: { technologies: any }) {
 
     const formData = new FormData(event.currentTarget);
     formData.append("long_description", longDescriptionContent);
+    formData.append("long_description_es", longDescriptionEsContent);
 
     dispatch(formData);
   };
@@ -171,11 +177,21 @@ export default function Form({ technologies }: { technologies: any }) {
       </label>
       <QuillEditor
         value={longDescriptionContent}
-        onChange={handleEditorChange}
+        onChange={handleLongDescriptionChange}
         modules={quillModules}
         formats={quillFormats}
       />
       <input type="hidden" name="long_description" value={longDescriptionContent} />
+      <label htmlFor="description" className="form-label">
+        Long Description (ES)
+      </label>
+      <QuillEditor
+        value={longDescriptionEsContent}
+        onChange={handleLongDescriptionEsChange}
+        modules={quillModules}
+        formats={quillFormats}
+      />
+      <input type="hidden" name="long_description_es" value={longDescriptionEsContent} />
       <label htmlFor="image" className="form-label">
         Image
       </label>

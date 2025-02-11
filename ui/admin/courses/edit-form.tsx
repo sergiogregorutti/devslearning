@@ -27,6 +27,7 @@ export default function EditTechnologyForm({
   const [state, dispatch] = useFormState(updateCourseWithId, initialState);
   const [isFormLoading, setIsFormLoading] = useState(false);
   const [longDescriptionContent, setLongDescriptionContent] = useState(course.long_description);
+  const [longDescriptionEsContent, setLongDescriptionEsContent] = useState(course.long_description_es);
 
   const quillModules = {
     toolbar: [
@@ -57,8 +58,12 @@ export default function EditTechnologyForm({
     "code-block",
   ];
 
-  const handleEditorChange = (newContent: any) => {
+  const handleLongDescriptionChange = (newContent: any) => {
     setLongDescriptionContent(newContent);
+  };
+
+  const handleLongDescriptionEsChange = (newContent: any) => {
+    setLongDescriptionEsContent(newContent);
   };
 
   useEffect(() => {
@@ -71,6 +76,7 @@ export default function EditTechnologyForm({
 
     const formData = new FormData(event.currentTarget);
     formData.append("long_description", longDescriptionContent);
+    formData.append("long_description_es", longDescriptionEsContent);
 
     dispatch(formData);
   };
@@ -192,11 +198,22 @@ export default function EditTechnologyForm({
       <QuillEditor
         value={longDescriptionContent}
         defaultValue={longDescriptionContent}
-        onChange={handleEditorChange}
+        onChange={handleLongDescriptionChange}
         modules={quillModules}
         formats={quillFormats}
       />
       <input type="hidden" name="long_description" value={longDescriptionContent} defaultValue={longDescriptionContent} />
+      <label htmlFor="description" className="form-label">
+        Long Description (ES)
+      </label>
+      <QuillEditor
+        value={longDescriptionEsContent}
+        defaultValue={longDescriptionEsContent}
+        onChange={handleLongDescriptionEsChange}
+        modules={quillModules}
+        formats={quillFormats}
+      />
+      <input type="hidden" name="long_description_es" value={longDescriptionEsContent} defaultValue={longDescriptionEsContent} />
       <label htmlFor="image" className="form-label">
         Image
       </label>

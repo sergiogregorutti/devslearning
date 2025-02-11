@@ -179,6 +179,9 @@ const CourseSchema = new mongoose.Schema(
     long_description: {
       type: String,
     },
+    long_description_es: {
+      type: String,
+    },
     image: {
       type: String,
       trim: true,

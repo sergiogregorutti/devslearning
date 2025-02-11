@@ -22,6 +22,7 @@ export type CourseForm = {
   name: string;
   description: string;
   long_description: string;
+  long_description_es: string;
   image: string;
   platform: string;
   author: string;
