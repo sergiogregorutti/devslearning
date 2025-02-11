@@ -171,6 +171,7 @@ export async function fetchCourseById(id: string) {
     language: course.language,
     name: course.name,
     description: course.description,
+    long_description: course.long_description,
     image: course.image,
     imageFilepath: course.imageFilepath,
     platform: course.platform,

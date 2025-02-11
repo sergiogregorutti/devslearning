@@ -4,6 +4,10 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { createCourse } from "@/lib/actions/courses";
 import { useFormState } from "react-dom";
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css";
+
+const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
 
 export default function Form({ technologies }: { technologies: any }) {
   const initialState = {
@@ -12,13 +16,53 @@ export default function Form({ technologies }: { technologies: any }) {
   };
   const [state, dispatch] = useFormState(createCourse, initialState);
   const [isFormLoading, setIsFormLoading] = useState(false);
+  const [longDescriptionContent, setLongDescriptionContent] = useState("");
+
+  const quillModules = {
+    toolbar: [
+      [{ header: [1, 2, 3, false] }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link", "image"],
+      [{ align: [] }],
+      [{ color: [] }],
+      ["code-block"],
+      ["clean"],
+    ],
+  };
+
+  const quillFormats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "link",
+    "image",
+    "align",
+    "color",
+    "code-block",
+  ];
+
+  const handleEditorChange = (newContent: any) => {
+    setLongDescriptionContent(newContent);
+  };
 
   useEffect(() => {
     setIsFormLoading(false);
   }, [state]);
 
-  const handleSubmitForm = () => {
+  const handleSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setIsFormLoading(true);
+
+    const formData = new FormData(event.currentTarget);
+    formData.append("long_description", longDescriptionContent);
+
+    dispatch(formData);
   };
 
   return (
@@ -122,6 +166,16 @@ export default function Form({ technologies }: { technologies: any }) {
             </p>
           ))}
       </div>
+      <label htmlFor="description" className="form-label">
+        Long Description
+      </label>
+      <QuillEditor
+        value={longDescriptionContent}
+        onChange={handleEditorChange}
+        modules={quillModules}
+        formats={quillFormats}
+      />
+      <input type="hidden" name="long_description" value={longDescriptionContent} />
       <label htmlFor="image" className="form-label">
         Image
       </label>
