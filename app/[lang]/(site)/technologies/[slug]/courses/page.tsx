@@ -137,6 +137,7 @@ export default async function TechnologyPage({
                 sortBy={sortBy}
                 currentPage={currentPage}
                 dictionary={dictionary}
+                lang={lang}
               />
             </Suspense>
             {courses.totalPages > 1 && (

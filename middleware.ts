@@ -10,6 +10,7 @@ const sections = new Set([
   "auth/reset-password",
   "auth/activate-account",
   "technologies",
+  "courses",
   "admin",
 ]);
 

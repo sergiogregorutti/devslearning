@@ -1,6 +1,7 @@
 {
   "common": {
     "loading": "Cargando...",
+    "goBack": "Volver",
     "navigation": {
       "home": "Inicio",
       "technologies": "Tecnologías"
@@ -99,7 +100,7 @@
     "platform": "Plataforma",
     "author": "Autor",
     "year": "Año",
-    "visitCourse": "Visitar curso",
+    "visitCourse": "Visitar Curso",
     "noResults": "No se encuentran cursos para su búsqueda. Pruebe con otros filtros."
   }
 }

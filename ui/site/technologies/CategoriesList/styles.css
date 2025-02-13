@@ -2,6 +2,7 @@
   & .categories-list {
     display: grid;
     grid-template-columns: 1fr;
+    margin-top: 15px;
 
     @media (min-width: 768px) {
       grid-template-columns: 1fr;
@@ -13,7 +14,7 @@
       & h2 {
         color: #0b376b;
         font-weight: bold;
-        font-size: 28px;
+        font-size: 22px;
         margin-top: 0;
         margin-bottom: 20px;
 

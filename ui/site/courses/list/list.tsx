@@ -1,3 +1,4 @@
+import { getLocalizedPathFromPrefix } from "@/lib/language";
 import Link from "next/link";
 import Image from "next/image";
 import { fetchFilteredCourses } from "@/lib/data/courses";
@@ -17,11 +18,13 @@ export default async function List({
   sortBy,
   currentPage,
   dictionary,
+  lang,
 }: {
   query: any;
   sortBy: string;
   currentPage: number;
   dictionary: { [key: string]: any };
+  lang: string;
 }) {
   let sortByValue, order;
   switch (sortBy) {
@@ -73,8 +76,7 @@ export default async function List({
     <div className="courses-list">
       {courses.docs.map((course: any) => (
         <Link
-          href={course.link}
-          target="_blank"
+          href={getLocalizedPathFromPrefix(lang, `/courses/${course.id}/`)}
           key={course.name}
           className="item-link"
         >
@@ -92,7 +94,6 @@ export default async function List({
                 {course.name} <FaUpRightFromSquare />
               </h3>
               <p>{course.description}</p>
-              {/* course.long_description && (<div dangerouslySetInnerHTML={{ __html: course.long_description }} />) */}
               <div className="details">
                 <div className="pricing-wrapper">
                   {renderPricing(course.pricing)}
