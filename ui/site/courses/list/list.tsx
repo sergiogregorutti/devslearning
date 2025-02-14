@@ -2,14 +2,6 @@ import { getLocalizedPathFromPrefix } from "@/lib/language";
 import Link from "next/link";
 import Image from "next/image";
 import { fetchFilteredCourses } from "@/lib/data/courses";
-import {
-  FaMoneyBillWave,
-  FaLaptopCode,
-  FaUser,
-  FaCalendarDays,
-  FaGlobe,
-  FaUpRightFromSquare,
-} from "react-icons/fa6";
 
 import "./styles.css";
 
@@ -52,23 +44,11 @@ export default async function List({
   const renderPricing = (value: String) => {
     switch (value) {
       case "free":
-        return (
-          <span className="pricing pricing-free">
-            {dictionary.technologies.pricingFree}
-          </span>
-        );
+        return dictionary.technologies.pricingFree;
       case "one-time-payment":
-        return (
-          <span className="pricing pricing-one-time">
-            {dictionary.technologies.pricingOneTime}
-          </span>
-        );
+        return ` (${dictionary.technologies.pricingOneTime})`;
       case "subscription":
-        return (
-          <span className="pricing pricing-subscription">
-            {dictionary.technologies.pricingSubscription}
-          </span>
-        );
+        return ` (${dictionary.technologies.pricingSubscription})`;
     }
   };
 
@@ -90,68 +70,36 @@ export default async function List({
               />
             </div>
             <div className="content">
-              <h3>
-                {course.name} <FaUpRightFromSquare />
-              </h3>
+              <h3>{course.name}</h3>
               <p>{course.description}</p>
               <div className="details">
-                <div className="pricing-wrapper">
+                <div className="details-item">
+                  <span>{dictionary.technologies.price}:</span>
+                  {course.price > 0 ? `US$ ${course.price}` : ""}
                   {renderPricing(course.pricing)}
                 </div>
-                {course.price > 0 && (
-                  <span
-                    className="detail price"
-                    title={dictionary.technologies.price}
-                  >
-                    <span className="attribute">
-                      <FaMoneyBillWave />
-                    </span>{" "}
-                    {course.price > 0
-                      ? `US$ ${course.price}`
-                      : dictionary.technologies.pricingFree}
-                  </span>
-                )}
-                <span
-                  className="detail platform"
-                  title={dictionary.technologies.platform}
-                >
-                  <span className="attribute">
-                    <FaLaptopCode />
-                  </span>{" "}
-                  {course.platform}
-                </span>
-                {course.author !== "" ? (
-                  <span
-                    className="detail author"
-                    title={dictionary.technologies.author}
-                  >
-                    <span className="attribute">
-                      <FaUser />
-                    </span>{" "}
-                    {course.author}
-                  </span>
-                ) : null}
-                <span
-                  className="detail year"
-                  title={dictionary.technologies.year}
-                >
-                  <span className="attribute">
-                    <FaCalendarDays />
-                  </span>{" "}
+                <div className="details-item">
+                  <span>{dictionary.technologies.platform}:</span>
+                  {course.platform || "---"}
+                </div>
+                <div className="details-item">
+                  <span>{dictionary.technologies.author}:</span>
+                  {course.author || "---"}
+                </div>
+                <div className="details-item">
+                  <span>{dictionary.technologies.year}:</span>
                   {course.year}
-                </span>
-                <span
-                  className="detail language"
-                  title={dictionary.technologies.language}
-                >
-                  <span className="attribute">
-                    <FaGlobe />
-                  </span>{" "}
+                </div>
+                <div className="details-item">
+                  <span>{dictionary.technologies.language}:</span>
                   {course.language === "en"
                     ? dictionary.technologies.english
                     : dictionary.technologies.spanish}
-                </span>
+                </div>
               </div>
+              <button className="btn btn-big">
+                {dictionary.technologies.viewMore}
+              </button>
             </div>
           </div>
         </Link>

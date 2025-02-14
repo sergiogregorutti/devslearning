@@ -30,15 +30,7 @@
           font-size: 24px;
           line-height: 24px;
           margin: 10px 0 10px 0;
-          color: #1f97f9;
-
-          & svg {
-            position: relative;
-            font-size: 16px;
-            top: 0px;
-            color: #ccc;
-            margin-left: 3px;
-          }
+          color: #000;
         }
 
         & p {
@@ -52,74 +44,20 @@
         & .details {
           display: flex;
           flex-wrap: wrap;
+          column-gap: 15px;
 
-          & .pricing-wrapper {
-            display: flex;
-            align-items: center;
-
-            & .pricing {
-              display: inline-block;
-              margin-right: 18px;
-              height: 24px;
-              padding: 4px 10px;
-              color: #fff;
-              font-size: 12px;
-              line-height: 16px;
-              border-radius: 5px;
-
-              &.pricing-free {
-                background: #03e40c;
-                margin-right: 13px;
-              }
-
-              &.pricing-one-time {
-                background: #0b376b;
-              }
-
-              &.pricing-subscription {
-                background: #9747ff;
-              }
-            }
+          @media (min-width: 768px) {
+            row-gap: 10px;
           }
 
-          & .detail {
-            display: flex;
-            align-items: center;
-            margin-right: 15px;
-            color: #636363;
+          & .details-item {
+            color: #8b8b8b;
+            font-size: 16px;
 
-            & .attribute {
+            & span {
+              font-weight: bold;
               display: inline-block;
-              width: 30px;
-              height: 30px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              margin-right: 1px;
-
-              & svg {
-                fill: #666;
-                font-size: 20px;
-              }
-            }
-
-            &.price {
-              & .attribute {
-                width: 22px;
-                margin-right: 4px;
-
-                & svg {
-                  position: relative;
-                  top: -1px;
-                }
-              }
-            }
-
-            &.year {
-              & svg {
-                position: relative;
-                top: -2px;
-              }
+              margin-right: 5px;
             }
           }
         }
@@ -148,10 +86,6 @@
 
     &:hover {
       text-decoration: none;
-
-      & .item .content h3 {
-        color: #1a73e8;
-      }
     }
   }
 
