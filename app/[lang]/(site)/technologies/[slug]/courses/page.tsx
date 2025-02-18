@@ -100,7 +100,7 @@ export default async function TechnologyPage({
   const { lang, slug } = await params;
   const {
     page = 1,
-    language = "en",
+    language = "",
     pricing = "",
     sortBy = "newest",
   } = (await searchParams) || {};

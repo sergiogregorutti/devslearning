@@ -40,7 +40,10 @@ async function getCourse(id: String) {
   };
 }
 
-export async function generateMetadata(props: Props, parent: ResolvingMetadata): Promise<Metadata> {
+export async function generateMetadata(
+  props: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
   const params = await props.params;
   const courseData = await getCourse(params.id);
 
@@ -84,20 +87,15 @@ export async function generateMetadata(props: Props, parent: ResolvingMetadata):
   };
 }
 
-export default async function CoursePage(
-  props: {
-    params: Promise<{ lang: string; id: string }>;
-    searchParams?: Promise<{
-      page?: string;
-    }>;
-  }
-) {
+export default async function CoursePage(props: {
+  params: Promise<{ lang: string; id: string }>;
+  searchParams?: Promise<{
+    page?: string;
+  }>;
+}) {
   const params = await props.params;
 
-  const {
-    lang,
-    id
-  } = params;
+  const { lang, id } = params;
 
   const dictionary = await getDictionary(lang);
   const course = await getCourse(id);

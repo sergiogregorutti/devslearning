@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { SingleValue } from "react-select";
 import Select from "@/ui/common/Select";
@@ -31,15 +32,23 @@ export default function Sorting({
     replace(`${pathname}?${params.toString()}`);
   };
 
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <div className="item">
       <label className="form-label">{dictionary.technologies.sortBy}</label>
       <div className="form-control">
-        <Select
-          options={options}
-          value={options.find((option) => option.value === sortBy)}
-          handleChange={handleChange}
-        />
+        {isClient ? (
+          <Select
+            options={options}
+            value={options.find((option) => option.value === sortBy)}
+            handleChange={handleChange}
+          />
+        ) : null}
       </div>
     </div>
   );
