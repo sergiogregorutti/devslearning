@@ -28,7 +28,6 @@ header {
         margin: 10px 0;
 
         & img {
-          position: absolute;
           height: 40px;
           width: auto;
         }
@@ -125,7 +124,7 @@ header {
 
         & .btn-close {
           margin-top: 10px;
-          margin-right: 6px;
+          margin-right: 10px;
           background: none;
           border: none;
 
@@ -140,6 +139,7 @@ header {
         width: 100%;
         list-style: none;
         padding: 0;
+        margin-top: 20px;
 
         & .item {
           position: relative;

@@ -25,7 +25,6 @@ header {
       margin: 15px 0;
 
       & img {
-        position: absolute;
         height: 30px;
         width: auto;
       }
@@ -84,7 +83,7 @@ header {
 
         & .btn-close {
           margin-top: 10px;
-          margin-right: 6px;
+          margin-right: 10px;
           background: none;
           border: none;
 
