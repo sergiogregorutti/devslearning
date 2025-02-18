@@ -3,11 +3,12 @@ import * as React from "react";
 import { getDictionary } from "../../../dictionaries";
 import ActivateAccountComponent from "@/ui/site/auth/activateAccount/ActivateAccount";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { lang: string };
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ lang: string }>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   let pageTitle;
 
   switch (params.lang) {
@@ -25,11 +26,18 @@ export async function generateMetadata({
   };
 }
 
-export default async function ActivateAccount({
-  params: { lang, token },
-}: {
-  params: { lang: string; token: string };
-}) {
+export default async function ActivateAccount(
+  props: {
+    params: Promise<{ lang: string; token: string }>;
+  }
+) {
+  const params = await props.params;
+
+  const {
+    lang,
+    token
+  } = params;
+
   const dictionary = await getDictionary(lang);
 
   return (

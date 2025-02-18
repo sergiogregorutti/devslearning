@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useActionState } from "react";
 import { TechnologyCategoryForm } from "@/lib/definitions";
 import Link from "next/link";
 import { updateTechnologyCategory } from "@/lib/actions/technologiesCategories";
-import { useFormState } from "react-dom";
 import Image from "next/image";
 
 export default function EditTechnologyCategoryForm({
@@ -21,7 +20,7 @@ export default function EditTechnologyCategoryForm({
     errors: { name: [] },
     message: "",
   };
-  const [state, dispatch] = useFormState(
+  const [state, dispatch] = useActionState(
     updateTechnologyCategoryWithId,
     initialState
   );

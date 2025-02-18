@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useActionState } from "react";
 import Link from "next/link";
 import { createTechnology } from "@/lib/actions/technologies";
-import { useFormState } from "react-dom";
 
 export default function Form({
   technologiesCategories,
@@ -14,7 +13,7 @@ export default function Form({
     errors: { image: [], name: [] },
     message: "",
   };
-  const [state, dispatch] = useFormState(createTechnology, initialState);
+  const [state, dispatch] = useActionState(createTechnology, initialState);
   const [isFormLoading, setIsFormLoading] = useState(false);
 
   useEffect(() => {

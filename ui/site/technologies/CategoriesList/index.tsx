@@ -31,12 +31,14 @@ export default function TechnologiesList({
     fetchCourses();
   }, []);
 
+  console.log("categories", categories);
+
   return (
     <div className="categories">
       <div className="container">
         <div className="categories-list">
           {categories.map((category: any) => (
-            <div key={category.id} className="category">
+            <div key={category._id} className="category">
               <h2>{lang === "en" ? category.name : category.name_es}</h2>
               <div className="technologies-list">
                 {category.technologies.map((technology: any) => (

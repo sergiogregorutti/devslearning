@@ -26,15 +26,20 @@ const sectionExists = (pathname: string): boolean => {
   );
 };
 
-const userHasAccess = (pathname: string): boolean => {
-  const token = cookies().get("token")?.value;
-  const user = token ? (jwt.decode(token) as { role?: string }) : null;
-  const isAdmin = user?.role === "admin";
+const userHasAccess = async (pathname: string): Promise<boolean> => {
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token")?.value;
 
-  return !(pathname.startsWith("/en/admin/") && !isAdmin);
+  const user = token ? (jwt.decode(token) as { role?: string }) : null;
+
+  if (pathname.startsWith("/admin") && user?.role !== "admin") {
+    return false;
+  }
+
+  return true;
 };
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl;
   const url = new URL(request.url);
 
@@ -47,10 +52,9 @@ export function middleware(request: NextRequest) {
   if (!pathname.startsWith("/es/")) {
     request.nextUrl.pathname = `/${defaultInternalPrefix}${pathname}`;
 
-    if (
-      !sectionExists(request.nextUrl.pathname) ||
-      !userHasAccess(request.nextUrl.pathname)
-    ) {
+    const hasAccess = await userHasAccess(request.nextUrl.pathname);
+
+    if (!sectionExists(request.nextUrl.pathname) || !hasAccess) {
       return NextResponse.rewrite(new URL("/en/page-not-found", url));
     }
 

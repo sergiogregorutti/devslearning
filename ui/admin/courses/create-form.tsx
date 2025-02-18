@@ -1,20 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useActionState } from "react";
 import Link from "next/link";
 import { createCourse } from "@/lib/actions/courses";
-import { useFormState } from "react-dom";
-import dynamic from "next/dynamic";
-import "react-quill/dist/quill.snow.css";
-
-const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
+import ReactQuill from "react-quill-new";
+import "react-quill-new/dist/quill.snow.css";
 
 export default function Form({ technologies }: { technologies: any }) {
   const initialState = {
     errors: { technology: [], name: [], image: [] },
     message: "",
   };
-  const [state, dispatch] = useFormState(createCourse, initialState);
+  const [state, dispatch] = useActionState(createCourse, initialState);
   const [isFormLoading, setIsFormLoading] = useState(false);
   const [longDescriptionContent, setLongDescriptionContent] = useState("");
   const [longDescriptionEsContent, setLongDescriptionEsContent] = useState("");
@@ -175,23 +172,31 @@ export default function Form({ technologies }: { technologies: any }) {
       <label htmlFor="description" className="form-label">
         Long Description
       </label>
-      <QuillEditor
+      <ReactQuill
         value={longDescriptionContent}
         onChange={handleLongDescriptionChange}
         modules={quillModules}
         formats={quillFormats}
       />
-      <input type="hidden" name="long_description" value={longDescriptionContent} />
+      <input
+        type="hidden"
+        name="long_description"
+        value={longDescriptionContent}
+      />
       <label htmlFor="description" className="form-label">
         Long Description (ES)
       </label>
-      <QuillEditor
+      <ReactQuill
         value={longDescriptionEsContent}
         onChange={handleLongDescriptionEsChange}
         modules={quillModules}
         formats={quillFormats}
       />
-      <input type="hidden" name="long_description_es" value={longDescriptionEsContent} />
+      <input
+        type="hidden"
+        name="long_description_es"
+        value={longDescriptionEsContent}
+      />
       <label htmlFor="image" className="form-label">
         Image
       </label>

@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useActionState } from "react";
 import { TechnologyForm } from "@/lib/definitions";
 import Link from "next/link";
 import { updateTechnology } from "@/lib/actions/technologies";
-import { useFormState } from "react-dom";
 import Image from "next/image";
 
 export default function EditTechnologyForm({
@@ -20,7 +19,7 @@ export default function EditTechnologyForm({
     errors: { image: [], name: [] },
     message: "",
   };
-  const [state, dispatch] = useFormState(updateTechnologyWithId, initialState);
+  const [state, dispatch] = useActionState(updateTechnologyWithId, initialState);
   const [isFormLoading, setIsFormLoading] = useState(false);
 
   useEffect(() => {

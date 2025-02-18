@@ -4,14 +4,15 @@ import Table from "../../../../../ui/admin/technologies/table/table";
 import { fetchTechnologiesPages } from "@/lib/data/technologies";
 import Pagination from "../../../../../ui/admin/technologies/pagination/pagination";
 
-export default async function Technologies({
-  searchParams,
-}: {
-  searchParams?: {
-    query?: string;
-    page?: string;
-  };
-}) {
+export default async function Technologies(
+  props: {
+    searchParams?: Promise<{
+      query?: string;
+      page?: string;
+    }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;
   const totalPages = await fetchTechnologiesPages(query);
