@@ -31,18 +31,14 @@ import "../../../../css/admin-template.css";
 export default async function RootLayout(
   props: Readonly<{
     children: React.ReactNode;
-    params: { lang: string };
+    params: Promise<any>;
   }>
 ) {
   const params = await props.params;
 
-  const {
-    lang
-  } = params;
+  const { lang } = params;
 
-  const {
-    children
-  } = props;
+  const { children } = props;
 
   const cookieStore = await cookies();
   const token = cookieStore.get("token");

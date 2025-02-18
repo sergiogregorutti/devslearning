@@ -14,8 +14,13 @@ import Pagination from "@/ui/site/courses/pagination/pagination";
 import "./styles.css";
 
 type Props = {
-  params: { lang: string; slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ lang: string; slug: string }>;
+  searchParams?: Promise<{
+    page?: string;
+    language?: string;
+    pricing?: string;
+    sortBy?: string;
+  }>;
 };
 
 async function getTechnology(slug: String) {
@@ -84,16 +89,21 @@ export default async function TechnologyPage({
   params,
   searchParams,
 }: {
-  params: { lang: string; slug: string };
-  searchParams?: {
+  params: Promise<{ lang: string; slug: string }>;
+  searchParams?: Promise<{
     page?: string;
     language?: string;
     pricing?: string;
     sortBy?: string;
-  };
+  }>;
 }) {
   const { lang, slug } = await params;
-  const { page, language, pricing, sortBy } = (await searchParams) || {};
+  const {
+    page = 1,
+    language = "en",
+    pricing = "",
+    sortBy = "newest",
+  } = (await searchParams) || {};
   const dictionary = await getDictionary(lang);
   const technology = await getTechnology(slug);
 
