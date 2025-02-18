@@ -3,8 +3,8 @@ import Link from "next/link";
 import { getDictionary } from "../../(site)/dictionaries";
 
 type Props = {
-  params: { lang: string; id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ lang: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -17,11 +17,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function Home({
-  params: { lang },
-}: {
-  params: { lang: string };
+export default async function Home(props: {
+  params: Promise<{ lang: string }>;
 }) {
+  const params = await props.params;
+
+  const { lang } = params;
+
   const dictionary = await getDictionary(lang);
 
   return (

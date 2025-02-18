@@ -4,14 +4,15 @@ import Table from "../../../../../ui/admin/courses/table/table";
 import { fetchCoursesPages } from "@/lib/data/courses";
 import Pagination from "../../../../../ui/admin/courses/pagination/pagination";
 
-export default async function Courses({
-  searchParams,
-}: {
-  searchParams?: {
-    query?: string;
-    page?: string;
-  };
-}) {
+export default async function Courses(
+  props: {
+    searchParams?: Promise<{
+      query?: string;
+      page?: string;
+    }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;
   const totalPages = await fetchCoursesPages({ query });

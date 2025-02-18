@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata, ResolvingMetadata } from "next";
 import dbConnect from "@/lib/dbConnect";
-import { Technology, Course } from "@/lib/models";
+import { Technology } from "@/lib/models";
 import { getDictionary } from "../../../dictionaries";
 import { fetchFilteredCourses } from "@/lib/data/courses";
 import Heading from "@/ui/site/courses/Heading";
@@ -14,8 +14,13 @@ import Pagination from "@/ui/site/courses/pagination/pagination";
 import "./styles.css";
 
 type Props = {
-  params: { lang: string; slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ lang: string; slug: string }>;
+  searchParams?: Promise<{
+    page?: string;
+    language?: string;
+    pricing?: string;
+    sortBy?: string;
+  }>;
 };
 
 async function getTechnology(slug: String) {
@@ -37,12 +42,13 @@ export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const technologyData = await getTechnology(params.slug);
+  const { lang, slug } = await params;
+  const technologyData = await getTechnology(slug);
 
   let pageTitle;
   let description;
 
-  switch (params.lang) {
+  switch (lang) {
     case "en":
       pageTitle = `${technologyData.name} courses | Devs Learning`;
       description = `The best courses to learn ${technologyData.name}`;
@@ -80,21 +86,26 @@ export async function generateMetadata(
 }
 
 export default async function TechnologyPage({
-  params: { lang, slug },
+  params,
   searchParams,
 }: {
-  params: { lang: string; slug: string };
-  searchParams?: {
+  params: Promise<{ lang: string; slug: string }>;
+  searchParams?: Promise<{
     page?: string;
-  };
+    language?: string;
+    pricing?: string;
+    sortBy?: string;
+  }>;
 }) {
+  const { lang, slug } = await params;
+  const {
+    page = 1,
+    language = "",
+    pricing = "",
+    sortBy = "newest",
+  } = (await searchParams) || {};
   const dictionary = await getDictionary(lang);
   const technology = await getTechnology(slug);
-
-  const params = new URLSearchParams(searchParams);
-  const language = params.get("language") || "";
-  const pricing = params.get("pricing") || "";
-  const sortBy = params.get("sortBy") || "newest";
 
   const queryObject: {
     technology: string;
@@ -110,7 +121,7 @@ export default async function TechnologyPage({
     queryObject.pricing = pricing;
   }
 
-  const currentPage = Number(searchParams?.page) || 1;
+  const currentPage = Number(page) || 1;
   const courses = await fetchFilteredCourses(queryObject);
 
   return (

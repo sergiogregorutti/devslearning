@@ -8,8 +8,8 @@ import Heading from "@/ui/site/course/Heading";
 import CourseDetail from "@/ui/site/course/CourseDetail";
 
 type Props = {
-  params: { lang: string; id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ lang: string; id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 async function getCourse(id: String) {
@@ -41,9 +41,10 @@ async function getCourse(id: String) {
 }
 
 export async function generateMetadata(
-  { params }: Props,
+  props: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
+  const params = await props.params;
   const courseData = await getCourse(params.id);
 
   let pageTitle;
@@ -86,19 +87,20 @@ export async function generateMetadata(
   };
 }
 
-export default async function CoursePage({
-  params: { lang, id },
-  searchParams,
-}: {
-  params: { lang: string; id: string };
-  searchParams?: {
+export default async function CoursePage(props: {
+  params: Promise<{ lang: string; id: string }>;
+  searchParams?: Promise<{
     page?: string;
-  };
+  }>;
 }) {
+  const params = await props.params;
+
+  const { lang, id } = params;
+
   const dictionary = await getDictionary(lang);
   const course = await getCourse(id);
 
-  const headersList = headers();
+  const headersList = await headers();
   const referer = headersList.get("referer");
 
   return (

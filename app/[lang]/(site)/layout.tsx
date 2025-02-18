@@ -1,7 +1,5 @@
 import { cookies } from "next/headers";
 const jwt = require("jsonwebtoken");
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
-import { ThemeProvider } from "@mui/material/styles";
 import { getDictionary } from "@/app/[lang]/(site)/dictionaries";
 import { Nunito, Poppins } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -59,14 +57,19 @@ export const metadata: Metadata = {
 
 import "../global.css";
 
-export default async function RootLayout({
-  children,
-  params: { lang },
-}: Readonly<{
-  children: React.ReactNode;
-  params: { lang: string };
-}>) {
-  const cookieStore = cookies();
+export default async function RootLayout(
+  props: Readonly<{
+    children: React.ReactNode;
+    params: Promise<any>;
+  }>
+) {
+  const params = await props.params;
+
+  const { lang } = params;
+
+  const { children } = props;
+
+  const cookieStore = await cookies();
   const token = cookieStore.get("token");
   let user = null;
   if (token) {

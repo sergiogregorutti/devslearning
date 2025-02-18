@@ -1,16 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useActionState } from "react";
 import Link from "next/link";
 import { createTechnologyCategory } from "@/lib/actions/technologiesCategories";
-import { useFormState } from "react-dom";
 
 export default function Form() {
   const initialState = {
     errors: { name: [] },
     message: "",
   };
-  const [state, dispatch] = useFormState(
+  const [state, dispatch] = useActionState(
     createTechnologyCategory,
     initialState
   );

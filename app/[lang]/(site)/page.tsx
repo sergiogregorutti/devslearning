@@ -15,11 +15,12 @@ import FreeContent from "@/ui/site/home/FreeContent";
 import "./styles.css";
 
 type Props = {
-  params: { lang: string; id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ lang: string; id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params;
   let pageTitle;
   let description;
 
@@ -60,12 +61,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function Home({
-  params: { lang },
-}: {
-  params: { lang: string };
+export default async function Home(props: {
+  params: Promise<{ lang: string }>;
 }) {
-  const cookieStore = cookies();
+  const params = await props.params;
+
+  const { lang } = params;
+
+  const cookieStore = await cookies();
   const languageCookie = cookieStore.get("language");
 
   const token = cookieStore.get("token");
@@ -77,7 +80,7 @@ export default async function Home({
   if (languageCookie?.value === "es" && lang === "en") {
     redirect("/es/");
   } else {
-    const headersList = headers();
+    const headersList = await headers();
     const acceptLanguage = headersList.get("accept-language");
     if (
       lang === "en" &&

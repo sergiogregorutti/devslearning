@@ -4,6 +4,7 @@
 @import url("../../css/forms.css");
 @import url("../../css/radio-button.css");
 @import url("../../css/auth-template.css");
+@import "tailwindcss";
 
 * {
   box-sizing: border-box;
@@ -27,6 +28,15 @@ a {
   &:hover {
     text-decoration: underline;
   }
+}
+
+img {
+  display: inline-block;
+}
+
+svg {
+  display: inline-block;
+  vertical-align: unset;
 }
 
 .mb-15 {

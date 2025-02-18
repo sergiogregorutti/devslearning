@@ -28,14 +28,19 @@ export const metadata: Metadata = {
 import "../../global.css";
 import "../../../../css/admin-template.css";
 
-export default async function RootLayout({
-  children,
-  params: { lang },
-}: Readonly<{
-  children: React.ReactNode;
-  params: { lang: string };
-}>) {
-  const cookieStore = cookies();
+export default async function RootLayout(
+  props: Readonly<{
+    children: React.ReactNode;
+    params: Promise<any>;
+  }>
+) {
+  const params = await props.params;
+
+  const { lang } = params;
+
+  const { children } = props;
+
+  const cookieStore = await cookies();
   const token = cookieStore.get("token");
   let user = null;
   if (token) {

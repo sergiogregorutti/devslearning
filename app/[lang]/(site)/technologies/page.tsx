@@ -7,11 +7,12 @@ import CategoriesList from "@/ui/site/technologies/CategoriesList";
 import "./styles.css";
 
 type Props = {
-  params: { lang: string; id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ lang: string; id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params;
   let pageTitle;
   let description;
 
@@ -53,11 +54,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function Technologies({
-  params: { lang },
-}: {
-  params: { lang: string };
-}) {
+export default async function Technologies(
+  props: {
+    params: Promise<{ lang: string }>;
+  }
+) {
+  const params = await props.params;
+
+  const {
+    lang
+  } = params;
+
   const dictionary = await getDictionary(lang);
   const categories = await fetchCategoriesWithTechnologies();
 

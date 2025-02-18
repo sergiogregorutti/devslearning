@@ -1,15 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useActionState } from "react";
 import { CourseForm } from "@/lib/definitions";
 import Link from "next/link";
 import { updateCourse } from "@/lib/actions/courses";
-import { useFormState } from "react-dom";
 import Image from "next/image";
-import dynamic from "next/dynamic";
-import "react-quill/dist/quill.snow.css";
-
-const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
+import ReactQuill from "react-quill-new";
+import "react-quill-new/dist/quill.snow.css";
 
 export default function EditTechnologyForm({
   course,
@@ -24,10 +21,14 @@ export default function EditTechnologyForm({
     errors: { technology: [], name: [], image: [] },
     message: "",
   };
-  const [state, dispatch] = useFormState(updateCourseWithId, initialState);
+  const [state, dispatch] = useActionState(updateCourseWithId, initialState);
   const [isFormLoading, setIsFormLoading] = useState(false);
-  const [longDescriptionContent, setLongDescriptionContent] = useState(course.long_description);
-  const [longDescriptionEsContent, setLongDescriptionEsContent] = useState(course.long_description_es);
+  const [longDescriptionContent, setLongDescriptionContent] = useState(
+    course.long_description
+  );
+  const [longDescriptionEsContent, setLongDescriptionEsContent] = useState(
+    course.long_description_es
+  );
 
   const quillModules = {
     toolbar: [
@@ -195,25 +196,35 @@ export default function EditTechnologyForm({
       <label htmlFor="description" className="form-label">
         Long Description
       </label>
-      <QuillEditor
+      <ReactQuill
         value={longDescriptionContent}
         defaultValue={longDescriptionContent}
         onChange={handleLongDescriptionChange}
         modules={quillModules}
         formats={quillFormats}
       />
-      <input type="hidden" name="long_description" value={longDescriptionContent} defaultValue={longDescriptionContent} />
+      <input
+        type="hidden"
+        name="long_description"
+        value={longDescriptionContent}
+        defaultValue={longDescriptionContent}
+      />
       <label htmlFor="description" className="form-label">
         Long Description (ES)
       </label>
-      <QuillEditor
+      <ReactQuill
         value={longDescriptionEsContent}
         defaultValue={longDescriptionEsContent}
         onChange={handleLongDescriptionEsChange}
         modules={quillModules}
         formats={quillFormats}
       />
-      <input type="hidden" name="long_description_es" value={longDescriptionEsContent} defaultValue={longDescriptionEsContent} />
+      <input
+        type="hidden"
+        name="long_description_es"
+        value={longDescriptionEsContent}
+        defaultValue={longDescriptionEsContent}
+      />
       <label htmlFor="image" className="form-label">
         Image
       </label>

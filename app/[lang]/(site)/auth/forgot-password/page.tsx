@@ -3,11 +3,12 @@ import * as React from "react";
 import { getDictionary } from "../../dictionaries";
 import ForgotPasswordComponent from "@/ui/site/auth/forgotPassword/ForgotPassword";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { lang: string };
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ lang: string }>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   let pageTitle;
 
   switch (params.lang) {
@@ -25,11 +26,17 @@ export async function generateMetadata({
   };
 }
 
-export default async function ForgotPassword({
-  params: { lang },
-}: {
-  params: { lang: string };
-}) {
+export default async function ForgotPassword(
+  props: {
+    params: Promise<{ lang: string }>;
+  }
+) {
+  const params = await props.params;
+
+  const {
+    lang
+  } = params;
+
   const dictionary = await getDictionary(lang);
 
   return (
