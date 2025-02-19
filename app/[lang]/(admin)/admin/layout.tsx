@@ -50,7 +50,7 @@ export default async function RootLayout(
 
   return (
     <html lang={lang} className={`${nunito.variable} ${poppins.variable}`}>
-      <body>
+      <body suppressHydrationWarning>
         <Header user={user} lang={lang} />
         <div className="admin-template">
           <div className="container">
