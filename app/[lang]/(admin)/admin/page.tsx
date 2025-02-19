@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getDictionary } from "../../(site)/dictionaries";
+import Button from "@/components/ui/Button";
 
 type Props = {
   params: Promise<{ lang: string }>;
@@ -29,12 +30,10 @@ export default async function Home(props: {
   return (
     <>
       <h1>Dashboard</h1>
-      <Link className="btn btn-big" href="/admin/technologies">
-        Technologies
-      </Link>
-      <Link className="btn btn-big" href="/admin/courses">
-        Courses
-      </Link>
+      <div className="buttons-container">
+        <Button label="Technologies" href="/admin/technologies" />
+        <Button label="Courses" href="/admin/courses" />
+      </div>
     </>
   );
 }

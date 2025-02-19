@@ -95,4 +95,9 @@
       }
     }
   }
+
+  .buttons-container {
+    display: flex;
+    gap: 15px;
+  }
 }

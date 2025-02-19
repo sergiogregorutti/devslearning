@@ -3,15 +3,14 @@ import Search from "../../../../../ui/admin/search/Search";
 import Table from "../../../../../ui/admin/technologies-categories/table/table";
 import { fetchTechnologiesCategoriesPages } from "@/lib/data/technologiesCategories";
 import Pagination from "../../../../../ui/admin/technologies/pagination/pagination";
+import Button from "@/components/ui/Button";
 
-export default async function Technologies(
-  props: {
-    searchParams?: Promise<{
-      query?: string;
-      page?: string;
-    }>;
-  }
-) {
+export default async function Technologies(props: {
+  searchParams?: Promise<{
+    query?: string;
+    page?: string;
+  }>;
+}) {
   const searchParams = await props.searchParams;
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;
@@ -22,12 +21,10 @@ export default async function Technologies(
       <h1>Technologies Categories</h1>
       <div className="main-actions">
         <div>
-          <Link
-            className="btn btn-big"
+          <Button
+            label="+ Add New"
             href="/admin/technologies-categories/create"
-          >
-            + Add New
-          </Link>
+          />
         </div>
         <div className="search-column">
           <Search placeholder="Search technologies categories..." />

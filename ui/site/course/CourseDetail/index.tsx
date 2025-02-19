@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { FaUpRightFromSquare } from "react-icons/fa6";
+import Button from "@/components/ui/Button";
 
 import "./styles.css";
 
@@ -30,10 +31,12 @@ export default function Heading({
       <div className="container">
         <div className="cta-and-details">
           <div className="cta-container">
-            <Link className="btn btn-big" href={course.link} target="_blank">
-              {dictionary.technologies.visitCourse}
-              <FaUpRightFromSquare />
-            </Link>
+            <Button
+              label={dictionary.technologies.visitCourse}
+              href={course.link}
+              linkTarget="_blank"
+              icon={<FaUpRightFromSquare />}
+            />
           </div>
           <div className="details">
             <div className="item">

@@ -1,6 +1,7 @@
 "use client";
 import { MouseEvent, useState } from "react";
 import Image from "next/image";
+import Button from "@/components/ui/Button";
 
 export default function SignIn({
   dictionary,
@@ -61,11 +62,14 @@ export default function SignIn({
     <div className="content-container">
       <form className="form">
         <label className="form-label">{dictionary.forgotPassword.email}</label>
-        <input type="email" className="form-input" onChange={handleChange("email")} value={email} />
+        <input
+          type="email"
+          className="form-input"
+          onChange={handleChange("email")}
+          value={email}
+        />
 
-        <button onClick={clickSubmit} className="btn btn-big">
-          {buttonText}
-        </button>
+        <Button label={buttonText} onClick={clickSubmit} />
       </form>
       <div className="image-container">
         <Image

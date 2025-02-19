@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import Image from "next/image";
 import Link from "next/link";
+import Button from "@/components/ui/Button";
 import Counter from "@/ui/common/Counter";
 import { ITechnologyCoursesCount } from "@/interfaces/course";
 
@@ -69,12 +70,11 @@ export default function TechnologiesList({
             </Link>
           ))}
         </div>
-        <Link
-          className="btn btn-big btn-primary"
+        <Button
+          label={dictionary.home.seeAllTechnologies}
           href={getLocalizedPathFromPrefix(lang, `/technologies`)}
-        >
-          {dictionary.home.seeAllTechnologies}
-        </Link>
+          variant="darkBlue"
+        />
       </div>
     </div>
   );

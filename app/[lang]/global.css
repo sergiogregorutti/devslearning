@@ -4,7 +4,15 @@
 @import url("../../css/forms.css");
 @import url("../../css/radio-button.css");
 @import url("../../css/auth-template.css");
+
+/* Tailwind */
 @import "tailwindcss";
+@theme {
+  --color-blue-500: #2197f9;
+  --color-blue-600: #1a73e8;
+  --color-blue-800: #0b376b;
+  --color-blue-900: #03254c;
+}
 
 * {
   box-sizing: border-box;
@@ -19,15 +27,6 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-a {
-  color: #2197f9;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
 img {

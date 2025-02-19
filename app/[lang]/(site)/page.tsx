@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { headers } from "next/headers";
 import { cookies } from "next/headers";
 const jwt = require("jsonwebtoken");
@@ -11,6 +10,7 @@ import { getLocalizedPathFromPrefix } from "@/lib/language";
 import InfoBanner from "@/ui/site/home/InfoBanner";
 import TechnologiesList from "@/ui/site/home/TechnologiesList";
 import FreeContent from "@/ui/site/home/FreeContent";
+import Button from "@/components/ui/Button";
 
 import "./styles.css";
 
@@ -102,12 +102,10 @@ export default async function Home(props: {
             <span className={`title ${lang}`}>{dictionary.home.title}</span>
             <span className={`title2 ${lang}`}>{dictionary.home.title2}</span>
             <p>{dictionary.home.subtitle}</p>
-            <Link
-              className="btn btn-big welcome-cta"
+            <Button
+              label={dictionary.home.browseTechnologies}
               href={getLocalizedPathFromPrefix(lang, `/technologies`)}
-            >
-              {dictionary.home.browseTechnologies}
-            </Link>
+            />
           </div>
           <div className="col-image">
             <Image

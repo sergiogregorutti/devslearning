@@ -4,6 +4,7 @@ import axios from "axios";
 import Link from "next/link";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import Image from "next/image";
+import Button from "@/components/ui/Button";
 
 export default function SignUp({
   lang,
@@ -74,21 +75,37 @@ export default function SignUp({
         ) : (
           <>
             <label className="form-label">{dictionary.signUp.name}</label>
-            <input type="text" className="form-input" onChange={handleChange("name")} value={name} disabled={formLoading} />
+            <input
+              type="text"
+              className="form-input"
+              onChange={handleChange("name")}
+              value={name}
+              disabled={formLoading}
+            />
 
             <label className="form-label">{dictionary.signUp.email}</label>
-            <input type="email" className="form-input" onChange={handleChange("email")} value={email} disabled={formLoading} />
+            <input
+              type="email"
+              className="form-input"
+              onChange={handleChange("email")}
+              value={email}
+              disabled={formLoading}
+            />
 
             <label className="form-label">{dictionary.signUp.password}</label>
-            <input type="password" className="form-input" onChange={handleChange("password")} value={password} disabled={formLoading} />
-
-            <button
-              onClick={clickSubmit}
-              className="btn btn-big"
+            <input
+              type="password"
+              className="form-input"
+              onChange={handleChange("password")}
+              value={password}
               disabled={formLoading}
-            >
-              {buttonText}
-            </button>
+            />
+
+            <Button
+              label={buttonText}
+              onClick={clickSubmit}
+              disabled={formLoading}
+            />
           </>
         )}
 

@@ -3,15 +3,14 @@ import Search from "../../../../../ui/admin/search/Search";
 import Table from "../../../../../ui/admin/courses/table/table";
 import { fetchCoursesPages } from "@/lib/data/courses";
 import Pagination from "../../../../../ui/admin/courses/pagination/pagination";
+import Button from "@/components/ui/Button";
 
-export default async function Courses(
-  props: {
-    searchParams?: Promise<{
-      query?: string;
-      page?: string;
-    }>;
-  }
-) {
+export default async function Courses(props: {
+  searchParams?: Promise<{
+    query?: string;
+    page?: string;
+  }>;
+}) {
   const searchParams = await props.searchParams;
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;
@@ -22,9 +21,7 @@ export default async function Courses(
       <h1>Courses</h1>
       <div className="main-actions">
         <div>
-          <Link className="btn btn-big" href="/admin/courses/create">
-            + Add New
-          </Link>
+          <Button label="+ Add New" href="/admin/courses/create" />
         </div>
         <div className="search-column">
           <Search placeholder="Search courses..." />

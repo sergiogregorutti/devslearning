@@ -6,6 +6,7 @@ import Link from "next/link";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import { authenticate } from "@/lib/helpers";
 import Image from "next/image";
+import Button from "@/components/ui/Button";
 
 export default function SignIn({
   lang,
@@ -81,18 +82,28 @@ export default function SignIn({
     <div className="content-container">
       <form className="form">
         <label className="form-label">{dictionary.signIn.email}</label>
-        <input type="email" className="form-input" onChange={handleChange("email")} value={email} disabled={formLoading} />
+        <input
+          type="email"
+          className="form-input"
+          onChange={handleChange("email")}
+          value={email}
+          disabled={formLoading}
+        />
 
         <label className="form-label">{dictionary.signIn.password}</label>
-        <input type="password" className="form-input" onChange={handleChange("password")} value={password} disabled={formLoading} />
-
-        <button
-          onClick={clickSubmit}
-          className="btn btn-big"
+        <input
+          type="password"
+          className="form-input"
+          onChange={handleChange("password")}
+          value={password}
           disabled={formLoading}
-        >
-          {buttonText}
-        </button>
+        />
+
+        <Button
+          label={buttonText}
+          onClick={clickSubmit}
+          disabled={formLoading}
+        />
 
         <p>
           <Link href={getLocalizedPathFromPrefix(lang, `/forgot-password`)}>

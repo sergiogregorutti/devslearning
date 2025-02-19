@@ -29,4 +29,13 @@
       padding: 5px 10px;
     }
   }
+
+  a {
+    color: #2197f9;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

@@ -3,6 +3,7 @@ import { MouseEvent, useState, useEffect } from "react";
 import axios from "axios";
 const jwt = require("jsonwebtoken");
 import Image from "next/image";
+import Button from "@/components/ui/Button";
 
 interface Token {
   name: string;
@@ -65,13 +66,11 @@ export default function ActivateAccount({
           </p>
         ) : (
           <>
-            <button
+            <Button
+              label={buttonText}
               onClick={clickSubmit}
-              className="btn btn-big"
               disabled={formLoading}
-            >
-              {buttonText}
-            </button>
+            />
           </>
         )}
       </form>

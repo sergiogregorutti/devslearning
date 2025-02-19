@@ -2,6 +2,7 @@ import { getLocalizedPathFromPrefix } from "@/lib/language";
 import Link from "next/link";
 import Image from "next/image";
 import { fetchFilteredCourses } from "@/lib/data/courses";
+import Button from "@/components/ui/Button";
 
 import "./styles.css";
 
@@ -97,9 +98,7 @@ export default async function List({
                     : dictionary.technologies.spanish}
                 </div>
               </div>
-              <button className="btn btn-big">
-                {dictionary.technologies.viewMore}
-              </button>
+              <Button label={dictionary.technologies.viewMore} />
             </div>
           </div>
         </Link>
