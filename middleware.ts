@@ -40,8 +40,13 @@ const userHasAccess = async (pathname: string): Promise<boolean> => {
 };
 
 export async function middleware(request: NextRequest) {
-  const { pathname, searchParams } = request.nextUrl;
+  const { pathname } = request.nextUrl;
   const url = new URL(request.url);
+
+  // Sitemap
+  if (pathname.startsWith("/sitemap.xml")) {
+    return NextResponse.next();
+  }
 
   // Redirect restricted admin access
   if (pathname.startsWith("/es/admin") || pathname.startsWith("/en/")) {
