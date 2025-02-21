@@ -54,23 +54,19 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   };
 }
 
-export default async function Technologies(
-  props: {
-    params: Promise<{ lang: string }>;
-  }
-) {
+export default async function Technologies(props: {
+  params: Promise<{ lang: string }>;
+}) {
   const params = await props.params;
 
-  const {
-    lang
-  } = params;
+  const { lang } = params;
 
   const dictionary = await getDictionary(lang);
   const categories = await fetchCategoriesWithTechnologies();
 
   return (
     <div className="technology-page">
-      <Heading dictionary={dictionary} lang={lang} />
+      <Heading dictionary={dictionary} />
       <div className="container">
         <CategoriesList
           dictionary={dictionary}
