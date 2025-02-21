@@ -5,8 +5,7 @@ import { Technology } from "@/lib/models";
 import { getDictionary } from "../../../dictionaries";
 import { fetchFilteredCourses } from "@/lib/data/courses";
 import Heading from "@/ui/site/courses/Heading";
-import Sorting from "@/ui/site/courses/sorting/sorting";
-import Filters from "@/ui/site/courses/Filters";
+import SortingAndFilters from "@/ui/site/courses/SortingAndFilters";
 import List from "@/ui/site/courses/list/list";
 import Loading from "@/ui/site/courses/list/loading";
 import Pagination from "@/ui/site/courses/pagination/pagination";
@@ -129,15 +128,12 @@ export default async function TechnologyPage({
       <Heading dictionary={dictionary} lang={lang} technology={technology} />
       <div className="container">
         <div className="content-wrapper">
-          <div className="order-and-filters">
-            <Sorting dictionary={dictionary} />
-            <Filters
-              technologyId={technology._id}
-              language={language}
-              pricing={pricing}
-              dictionary={dictionary}
-            />
-          </div>
+          <SortingAndFilters
+            technologyId={technology._id}
+            language={language}
+            pricing={pricing}
+            dictionary={dictionary}
+          />
           <p className="courses-count">
             {courses.totalDocs} {dictionary.technologies.coursesLowercase}
           </p>
