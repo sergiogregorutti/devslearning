@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Image from "next/image";
 import { FaUpRightFromSquare } from "react-icons/fa6";
 import Button from "@/components/ui/Button";
 
@@ -20,51 +20,61 @@ export default function Heading({
       case "free":
         return dictionary.technologies.pricingFree;
       case "one-time-payment":
-        return ` (${dictionary.technologies.pricingOneTime})`;
+        // return ` (${dictionary.technologies.pricingOneTime})`;
+        return "";
       case "subscription":
-        return ` (${dictionary.technologies.pricingSubscription})`;
+        // return ` (${dictionary.technologies.pricingSubscription})`;
+        return "";
     }
   };
 
   return (
     <div className="course-detail">
       <div className="container">
-        <div className="cta-and-details">
-          <div className="cta-container">
-            <Button
-              label={dictionary.technologies.visitCourse}
-              href={course.link}
-              linkTarget="_blank"
-              icon={<FaUpRightFromSquare />}
-            />
+        <p className="description">
+          {lang === "en" ? course.description : course.description_es}
+        </p>
+        <Button
+          label={dictionary.technologies.visitCourse}
+          href={course.link}
+          linkTarget="_blank"
+          icon={<FaUpRightFromSquare />}
+          className="cta"
+        />
+
+        <div className="details">
+          <div className="item">
+            <span>{dictionary.technologies.price}:</span>
+            {course.price > 0 ? `US$ ${course.price}` : ""}
+            {renderPricing(course.pricing)}
           </div>
-          <div className="details">
-            <div className="item">
-              <span>{dictionary.technologies.price}:</span>
-              {course.price > 0 ? `US$ ${course.price}` : ""}
-              {renderPricing(course.pricing)}
-            </div>
-            <div className="item">
-              <span>{dictionary.technologies.platform}:</span>
-              {course.platform || "---"}
-            </div>
-            <div className="item">
-              <span>{dictionary.technologies.author}:</span>
-              {course.author || "---"}
-            </div>
-            <div className="item">
-              <span>{dictionary.technologies.year}:</span>
-              {course.year}
-            </div>
-            <div className="item">
-              <span>{dictionary.technologies.language}:</span>
-              {course.language === "en"
-                ? dictionary.technologies.english
-                : dictionary.technologies.spanish}
-            </div>
+          <div className="item">
+            <span>{dictionary.technologies.platform}:</span>
+            {course.platform || "---"}
+          </div>
+          <div className="item">
+            <span>{dictionary.technologies.author}:</span>
+            {course.author || "---"}
+          </div>
+          <div className="item">
+            <span>{dictionary.technologies.year}:</span>
+            {course.year}
+          </div>
+          <div className="item">
+            <span>{dictionary.technologies.language}:</span>
+            {course.language === "en"
+              ? dictionary.technologies.english
+              : dictionary.technologies.spanish}
           </div>
         </div>
-
+        <div className="image-container">
+          <Image
+            src={course.image}
+            width={200}
+            height={200}
+            alt={course.name}
+          />
+        </div>
         <div className="description">
           {course.long_description && (
             <div
@@ -77,6 +87,14 @@ export default function Heading({
             />
           )}
         </div>
+
+        <Button
+          label={dictionary.technologies.visitCourse}
+          href={course.link}
+          linkTarget="_blank"
+          icon={<FaUpRightFromSquare />}
+          className="cta"
+        />
       </div>
     </div>
   );

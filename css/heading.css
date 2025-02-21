@@ -8,10 +8,6 @@
 
   @media (min-width: 768px) {
     margin-top: 80px;
-
-    &.with-image {
-      margin-top: 60px;
-    }
   }
 
   & .container {
@@ -50,7 +46,7 @@
         @media (min-width: 768px) {
           width: 200px;
           margin-bottom: 0;
-          margin-right: 15px;
+          margin-right: 30px;
           position: relative;
           top: -4px;
         }
@@ -62,11 +58,12 @@
       font-size: 30px;
       line-height: 30px;
       font-weight: bold;
-      margin: 0;
+      margin: 0 0 15px;
 
       @media (min-width: 768px) {
         font-size: 60px;
         line-height: 58px;
+        margin-bottom: 30px;
       }
     }
 
@@ -76,7 +73,7 @@
       flex-wrap: wrap;
       list-style-type: none;
       padding: 0;
-      margin-top: 15px;
+      margin-bottom: 5px;
 
       & .breadcrumb-item {
         margin-right: 5px;
@@ -108,7 +105,7 @@
           &.back {
             padding-right: 8px;
             margin-right: 5px;
-            border-right: 2px solid #ccc;
+            border-right: 1px solid #ccc;
           }
         }
 
@@ -119,6 +116,22 @@
 
         &:hover .home path {
           fill: #1a73e8;
+        }
+
+        & .separator {
+          display: inline-block;
+          margin-left: 5px;
+          margin-right: 8px;
+          color: #ccc;
+        }
+
+        a {
+          color: #2197f9;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
     }

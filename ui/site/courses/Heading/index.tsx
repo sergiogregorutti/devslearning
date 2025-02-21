@@ -16,22 +16,9 @@ export default function Heading({
   return (
     <div className="heading">
       <div className="container">
-        <div className="title-container">
-          <h1>{technology.name}</h1>
-        </div>
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <Link
-                className="item"
-                key={technology.name}
-                href={getLocalizedPathFromPrefix(lang, `/`)}
-              >
-                <FaHouse className="home" />
-              </Link>
-            </li>
-            <li className="breadcrumb-item">
-              <FaChevronRight className="arrow" />
               <Link
                 className="item"
                 key={technology.name}
@@ -41,11 +28,13 @@ export default function Heading({
               </Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
-              <FaChevronRight className="arrow" />
-              {technology.name}
+              <span className="separator">/</span>
             </li>
           </ol>
         </nav>
+        <div className="title-container">
+          <h1>{technology.name}</h1>
+        </div>
       </div>
     </div>
   );

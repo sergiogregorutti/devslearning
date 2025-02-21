@@ -41,7 +41,7 @@ export default function Sorting({
   return (
     <div className="item">
       <label className="form-label">{dictionary.technologies.sortBy}</label>
-      <div className="form-control">
+      <div className="form-control sorting-select">
         {isClient ? (
           <Select
             options={options}
