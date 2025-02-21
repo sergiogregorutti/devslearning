@@ -40,7 +40,10 @@ const Header = ({
           </h1>
           <ul className="menu">
             <li>
-              <Link href={getLocalizedPathFromPrefix(lang, `/technologies`)}>
+              <Link
+                href={getLocalizedPathFromPrefix(lang, `/technologies`)}
+                className="text-white text-lg py-[9px] px-[28px] hover:bg-blue-600 rounded-full focus:outline-none"
+              >
                 {dictionary.header.navigation.technologies}
               </Link>
             </li>

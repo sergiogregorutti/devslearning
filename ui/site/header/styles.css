@@ -52,18 +52,6 @@ header {
       margin: 0 0 0 35px;
       padding: 0;
       align-items: center;
-
-      & li {
-        & a {
-          padding: 10px;
-          color: #fff;
-
-          &:hover {
-            color: #2197f9;
-            text-decoration: none;
-          }
-        }
-      }
     }
   }
 
