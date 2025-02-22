@@ -42,7 +42,7 @@ const Header = ({
             <li>
               <Link
                 href={getLocalizedPathFromPrefix(lang, `/technologies`)}
-                className="text-white text-lg py-[9px] px-[28px] hover:bg-blue-600 rounded-full focus:outline-none"
+                className="text-white text-lg py-[5px] px-[20px] hover:bg-blue-600 rounded-full focus:outline-none"
               >
                 {dictionary.header.navigation.technologies}
               </Link>
