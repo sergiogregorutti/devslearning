@@ -12,12 +12,18 @@
   }
 
   & .description {
-    margin: 0 0 15px;
+    margin: 0 0 20px;
     font-size: 18px;
-    line-height: 30px;
+    line-height: 20px;
 
     @media (min-width: 768px) {
+      margin: 0 0 30px;
+      line-height: 24px;
+    }
+
+    @media (min-width: 1200px) {
       margin: 0 0 40px;
+      line-height: 28px;
     }
   }
 

@@ -2,32 +2,28 @@
   & .categories-list {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 40px 20px;
+    gap: 20px 20px;
 
     @media (min-width: 768px) {
       grid-template-columns: 1fr 1fr;
-      gap: 40px 20px;
+      gap: 40px 30px;
     }
 
     @media (min-width: 1024px) {
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 40px 20px;
     }
 
     @media (min-width: 1300px) {
       grid-template-columns: 1fr 1fr 1fr 1fr;
-      gap: 40px 20px;
     }
 
     & > .category {
-      margin-bottom: 50px;
-
       & h2 {
         color: #2197f9;
         font-weight: bold;
         font-size: 22px;
         margin-top: 0;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
 
         @media (min-width: 768px) {
           font-size: 28px;
@@ -37,9 +33,15 @@
 
       & .technologies-list {
         display: grid;
-        grid-template-columns: 1fr;
-        column-gap: 20px;
-        row-gap: 20px;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 15px;
+        row-gap: 15px;
+
+        @media (min-width: 768px) {
+          grid-template-columns: 1fr;
+          column-gap: 20px;
+          row-gap: 20px;
+        }
 
         & .item {
           display: flex;
@@ -54,6 +56,10 @@
           & svg {
             width: 40px;
             height: auto;
+
+            @media (min-width: 768px) {
+              width: 44px;
+            }
           }
 
           & .content {
@@ -67,12 +73,24 @@
               font-size: 18px;
               color: #fff;
 
+              @media (min-width: 768px) {
+                font-size: 20px;
+              }
+
               &.small {
                 font-size: 14px;
                 margin-top: 2px;
 
+                @media (min-width: 768px) {
+                  font-size: 16px;
+                }
+
                 & span {
                   font-size: 14px;
+
+                  @media (min-width: 768px) {
+                    font-size: 16px;
+                  }
                 }
               }
             }

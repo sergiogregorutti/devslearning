@@ -95,6 +95,8 @@
     }
 
     & .col-image {
+      display: flex;
+      justify-content: center;
       padding: 15px;
       order: 1;
       text-align: center;
