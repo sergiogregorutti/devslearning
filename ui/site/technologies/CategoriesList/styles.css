@@ -1,4 +1,6 @@
 .categories {
+  width: 100%;
+
   & .categories-list {
     display: grid;
     grid-template-columns: 1fr;
@@ -10,11 +12,11 @@
     }
 
     @media (min-width: 1024px) {
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
     }
 
     @media (min-width: 1300px) {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
     }
 
     & > .category {

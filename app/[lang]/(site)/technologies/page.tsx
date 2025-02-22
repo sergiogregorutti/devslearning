@@ -3,6 +3,7 @@ import { getDictionary } from "../dictionaries";
 import Heading from "@/ui/site/technologies/Heading";
 import { fetchCategoriesWithTechnologies } from "@/lib/data/technologiesCategories";
 import CategoriesList from "@/ui/site/technologies/CategoriesList";
+import Image from "next/image";
 
 import "./styles.css";
 
@@ -68,11 +69,22 @@ export default async function Technologies(props: {
     <div className="technology-page">
       <Heading dictionary={dictionary} />
       <div className="container">
-        <CategoriesList
-          dictionary={dictionary}
-          lang={lang}
-          categories={categories}
-        />
+        <div className="col-content">
+          <CategoriesList
+            dictionary={dictionary}
+            lang={lang}
+            categories={categories}
+          />
+        </div>
+        <div className="col-image">
+          <Image
+            src="/assets/man_working.svg"
+            width={420}
+            height={308}
+            alt="Devs Learning"
+            priority={true}
+          />
+        </div>
       </div>
     </div>
   );
