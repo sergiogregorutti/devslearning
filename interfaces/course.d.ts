@@ -1,4 +1,4 @@
-export type Language = 'en' | 'es';
+export type Language = "en" | "es";
 
 export interface ITechnologyCategory {
   _id: string;
@@ -18,6 +18,8 @@ export interface ITechnology {
   order: number;
   name: string;
   slug: string;
+  imageColor?: string;
+  imageColorFilepath?: string;
   imageLightBlue?: string;
   imageLightBlueFilepath?: string;
   imageWhite?: string;

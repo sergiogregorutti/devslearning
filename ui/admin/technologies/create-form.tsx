@@ -3,6 +3,8 @@
 import { useEffect, useState, useActionState } from "react";
 import Link from "next/link";
 import { createTechnology } from "@/lib/actions/technologies";
+import ReactQuill from "react-quill-new";
+import "react-quill-new/dist/quill.snow.css";
 
 export default function Form({
   technologiesCategories,
@@ -15,13 +17,59 @@ export default function Form({
   };
   const [state, dispatch] = useActionState(createTechnology, initialState);
   const [isFormLoading, setIsFormLoading] = useState(false);
+  const [longDescriptionContent, setLongDescriptionContent] = useState("");
+  const [longDescriptionEsContent, setLongDescriptionEsContent] = useState("");
+
+  const quillModules = {
+    toolbar: [
+      [{ header: [1, 2, 3, false] }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link", "image"],
+      [{ align: [] }],
+      [{ color: [] }],
+      ["code-block"],
+      ["clean"],
+    ],
+  };
+
+  const quillFormats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "link",
+    "image",
+    "align",
+    "color",
+    "code-block",
+  ];
+
+  const handleLongDescriptionChange = (newContent: any) => {
+    setLongDescriptionContent(newContent);
+  };
+
+  const handleLongDescriptionEsChange = (newContent: any) => {
+    setLongDescriptionEsContent(newContent);
+  };
 
   useEffect(() => {
     setIsFormLoading(false);
   }, [state]);
 
-  const handleSubmitForm = () => {
+  const handleSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setIsFormLoading(true);
+
+    const formData = new FormData(event.currentTarget);
+    formData.append("long_description", longDescriptionContent);
+    formData.append("long_description_es", longDescriptionEsContent);
+
+    dispatch(formData);
   };
 
   return (
@@ -100,6 +148,75 @@ export default function Form({
       <div id="slug-error" aria-live="polite" aria-atomic="true">
         {state.errors?.slug &&
           state.errors.slug.map((error: string) => (
+            <p className="form-error" key={error}>
+              {error}
+            </p>
+          ))}
+      </div>
+      <label htmlFor="description" className="form-label">
+        Description
+      </label>
+      <textarea
+        id="description"
+        name="description"
+        rows={4}
+        className="form-input"
+        aria-describedby="name-error"
+        disabled={isFormLoading}
+      ></textarea>
+      <label htmlFor="description_es" className="form-label">
+        Description (ES)
+      </label>
+      <textarea
+        id="description_es"
+        name="description_es"
+        rows={4}
+        className="form-input"
+        aria-describedby="name-error"
+        disabled={isFormLoading}
+      ></textarea>
+      <label htmlFor="description" className="form-label">
+        Long Description
+      </label>
+      <ReactQuill
+        value={longDescriptionContent}
+        onChange={handleLongDescriptionChange}
+        modules={quillModules}
+        formats={quillFormats}
+      />
+      <input
+        type="hidden"
+        name="long_description"
+        value={longDescriptionContent}
+      />
+      <label htmlFor="description" className="form-label">
+        Long Description (ES)
+      </label>
+      <ReactQuill
+        value={longDescriptionEsContent}
+        onChange={handleLongDescriptionEsChange}
+        modules={quillModules}
+        formats={quillFormats}
+      />
+      <input
+        type="hidden"
+        name="long_description_es"
+        value={longDescriptionEsContent}
+      />
+      <label htmlFor="image-color" className="form-label">
+        Image Color
+      </label>
+      <input
+        type="file"
+        id="image-color"
+        name="image-color"
+        className="form-input"
+        aria-describedby="image-color-error"
+        disabled={isFormLoading}
+      />
+      <div id="image-color-error" aria-live="polite" aria-atomic="true">
+        {state.errors?.imageColor &&
+          state.errors.imageColor.map((error: string) => (
             <p className="form-error" key={error}>
               {error}
             </p>

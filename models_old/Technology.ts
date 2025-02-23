@@ -29,6 +29,14 @@ const TechnologySchema = new mongoose.Schema(
       max: 32,
       unique: true,
     },
+    imageColor: {
+      type: String,
+      trim: true,
+    },
+    imageColorFilepath: {
+      type: String,
+      trim: true,
+    },
     imageWhite: {
       type: String,
       trim: true,

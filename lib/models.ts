@@ -129,6 +129,30 @@ const TechnologySchema = new mongoose.Schema(
       max: 32,
       unique: true,
     },
+    description: {
+      type: String,
+      required: true,
+      max: 2000,
+    },
+    description_es: {
+      type: String,
+      required: true,
+      max: 2000,
+    },
+    long_description: {
+      type: String,
+    },
+    long_description_es: {
+      type: String,
+    },
+    imageColor: {
+      type: String,
+      trim: true,
+    },
+    imageColorFilepath: {
+      type: String,
+      trim: true,
+    },
     imageWhite: {
       type: String,
       trim: true,
@@ -144,7 +168,7 @@ const TechnologySchema = new mongoose.Schema(
     imageLightBlueFilepath: {
       type: String,
       trim: true,
-    }
+    },
   },
   { timestamps: true }
 );

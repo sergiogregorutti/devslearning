@@ -15,7 +15,23 @@ const FormSchema = z.object({
   technology_category: z.string().min(1, "Technology Category is required."),
   order: z.number().min(1, "Order is required."),
   name: z.string().min(1, "Name is required."),
+  description: z.string().optional(),
+  description_es: z.string().optional(),
+  long_description: z.string().optional(),
+  long_description_es: z.string().optional(),
   slug: z.string().min(1, "Slug is required."),
+  imageColor: z
+    .instanceof(File)
+    .optional()
+    .refine((file) => {
+      return !file || file.size <= MAX_UPLOAD_SIZE;
+    }, "File size must be less than 3MB")
+    .refine(
+      (file) =>
+        !file ||
+        (file && (file.size === 0 || ACCEPTED_FILE_TYPES.includes(file.type))),
+      "File must be a PNG or SVG"
+    ),
   imageWhite: z
     .instanceof(File)
     .optional()
@@ -61,6 +77,11 @@ export async function createTechnology(prevState: State, formData: FormData) {
     order: Number(formData.get("order")),
     name: formData.get("name"),
     slug: formData.get("slug"),
+    description: formData.get("description"),
+    description_es: formData.get("description_es"),
+    long_description: formData.get("long_description"),
+    long_description_es: formData.get("long_description_es"),
+    imageColor: formData.get("image-color"),
     imageWhite: formData.get("image-white"),
     imageLightBlue: formData.get("image-light-blue"),
   });
@@ -72,15 +93,47 @@ export async function createTechnology(prevState: State, formData: FormData) {
     };
   }
 
-  const { technology_category, order, name, slug, imageWhite, imageLightBlue } =
-    validatedFields.data;
+  const {
+    technology_category,
+    order,
+    name,
+    slug,
+    description,
+    description_es,
+    long_description,
+    long_description_es,
+    imageColor,
+    imageWhite,
+    imageLightBlue,
+  } = validatedFields.data;
 
   const newTechnology = await Technology.create({
     technologyCategory: technology_category,
     order,
     name,
     slug,
+    description,
+    description_es,
+    long_description,
+    long_description_es,
   });
+
+  if (imageColor && imageColor.size && imageColor.size > 0) {
+    try {
+      const path = `${
+        process.env.ENVIRONMENT === "production"
+          ? ""
+          : `${process.env.ENVIRONMENT}/`
+      }technologies/${newTechnology._id}/`;
+
+      const result = await uploadFile(imageColor, path);
+
+      await Technology.findByIdAndUpdate(newTechnology._id.toString(), {
+        imageColor: result.location,
+        imageColorFilepath: result.key,
+      });
+    } catch (e) {}
+  }
 
   if (imageWhite && imageWhite.size && imageWhite.size > 0) {
     try {
@@ -134,6 +187,11 @@ export async function updateTechnology(
     order: Number(formData.get("order")),
     name: formData.get("name"),
     slug: formData.get("slug"),
+    description: formData.get("description"),
+    description_es: formData.get("description_es"),
+    long_description: formData.get("long_description"),
+    long_description_es: formData.get("long_description_es"),
+    imageColor: formData.get("image-color"),
     imageWhite: formData.get("image-white"),
     imageLightBlue: formData.get("image-light-blue"),
   });
@@ -145,22 +203,64 @@ export async function updateTechnology(
     };
   }
 
-  const { technology_category, order, name, slug, imageWhite, imageLightBlue } =
-    validatedFields.data;
+  const {
+    technology_category,
+    order,
+    name,
+    slug,
+    description,
+    description_es,
+    long_description,
+    long_description_es,
+    imageColor,
+    imageWhite,
+    imageLightBlue,
+  } = validatedFields.data;
 
   await Technology.findByIdAndUpdate(id, {
     technologyCategory: technology_category,
     order,
     name,
     slug,
+    description,
+    description_es,
+    long_description,
+    long_description_es,
   });
 
   let technology;
   if (
+    (imageColor && imageColor.size && imageColor.size > 0) ||
     (imageWhite && imageWhite.size && imageWhite.size > 0) ||
     (imageLightBlue && imageLightBlue.size && imageLightBlue.size > 0)
   ) {
     technology = await Technology.findByIdAndUpdate(id, { order, name, slug });
+  }
+
+  if (imageColor && imageColor.size && imageColor.size > 0) {
+    try {
+      if (
+        technology.imageColorFilepath !== undefined &&
+        technology.imageColorFilepath !== ""
+      ) {
+        await deleteFile(technology.imageColorFilepath);
+      }
+
+      const path = `${
+        process.env.ENVIRONMENT === "production"
+          ? ""
+          : `${process.env.ENVIRONMENT}/`
+      }technologies/${id}/`;
+
+      const result = await uploadFile(imageColor, path);
+
+      await Technology.findByIdAndUpdate(id.toString(), {
+        imageColor: result.location,
+        imageColorFilepath: result.key,
+      });
+    } catch (e) {
+      console.log("error uploading image", e);
+    }
   }
 
   if (imageWhite && imageWhite.size && imageWhite.size > 0) {

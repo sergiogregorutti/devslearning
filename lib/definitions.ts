@@ -4,6 +4,11 @@ export type TechnologyForm = {
   order: number;
   name: string;
   slug: string;
+  description: string;
+  description_es: string;
+  long_description: string;
+  long_description_es: string;
+  imageColor: string;
   imageWhite: string;
   imageLightBlue: string;
 };

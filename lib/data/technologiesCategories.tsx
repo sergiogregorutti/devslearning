@@ -13,7 +13,12 @@ export async function fetchTechnologiesCategories() {
 
   const technologies = await TechnologyCategory.find({}, {}, options);
 
-  return technologies;
+  const modifiedTechnologies = technologies.map((technology: any) => ({
+    ...technology.toObject(),
+    _id: technology._id.toString(),
+  }));
+
+  return modifiedTechnologies;
 }
 
 const ITEMS_PER_PAGE = 10;
@@ -99,25 +104,25 @@ export async function fetchCategoriesWithTechnologies() {
     })
     .sort("order");
 
-  categories.map(category => {
+  categories.map((category) => {
     const technologies: ITechnology[] = [];
 
-    category.technologies.map(technology => {
+    category.technologies.map((technology) => {
       technologies.push({
         _id: technology._id.toString(),
         name: technology.name,
         imageWhite: technology.imageWhite,
         order: technology.order,
         slug: technology.slug,
-      })
+      });
     });
 
     response.push({
       _id: category._id.toString(),
       name: category.name,
       name_es: category.name_es,
-      technologies: technologies
-    })
+      technologies: technologies,
+    });
   });
 
   return response;
