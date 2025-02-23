@@ -52,6 +52,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 0.7,
     },
+    {
+      url: "https://www.devslearning.com/about",
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.7,
+    },
+    {
+      url: "https://www.devslearning.com/es/about",
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.7,
+    },
     ...technologyRoutesEn.map((url: string) => ({
       url,
       lastModified: new Date(),

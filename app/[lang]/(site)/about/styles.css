@@ -98,6 +98,8 @@
         font-size: 26px;
         color: #0b376b;
         margin-top: 15px;
+        margin-bottom: 10px;
+        line-height: 26px;
       }
 
       & .position {
