@@ -11,6 +11,7 @@ const sections = new Set([
   "auth/activate-account",
   "technologies",
   "courses",
+  "about",
   "admin",
 ]);
 

@@ -42,6 +42,14 @@ export default function Footer({
                 {dictionary.common.navigation.technologies}
               </Link>
             </li>
+            <li className="item">
+              <Link
+                className="item"
+                href={getLocalizedPathFromPrefix(lang, `/about/`)}
+              >
+                {dictionary.common.navigation.about}
+              </Link>
+            </li>
           </ul>
           <p>© {new Date().getFullYear()} Devs Learning</p>
         </div>

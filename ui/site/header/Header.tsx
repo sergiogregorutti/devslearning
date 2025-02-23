@@ -47,6 +47,14 @@ const Header = ({
                 {dictionary.header.navigation.technologies}
               </Link>
             </li>
+            <li>
+              <Link
+                href={getLocalizedPathFromPrefix(lang, `/about`)}
+                className="text-white text-lg py-[5px] px-[20px] hover:bg-blue-600 rounded-full focus:outline-none"
+              >
+                {dictionary.header.navigation.about}
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="right">
@@ -79,6 +87,11 @@ const Header = ({
                       href={getLocalizedPathFromPrefix(lang, `/technologies`)}
                     >
                       {dictionary.header.navigation.technologies}
+                    </Link>
+                  </li>
+                  <li className="item" onClick={toggleMobileMenu}>
+                    <Link href={getLocalizedPathFromPrefix(lang, `/about`)}>
+                      {dictionary.header.navigation.about}
                     </Link>
                   </li>
                 </ul>

@@ -4,7 +4,9 @@
     "goBack": "Go Back",
     "navigation": {
       "home": "Home",
-      "technologies": "Technologies"
+      "technologies": "Technologies",
+      "courses": "Courses",
+      "about": "About"
     }
   },
   "header": {
@@ -14,6 +16,8 @@
     },
     "navigation": {
       "technologies": "Technologies",
+      "courses": "Courses",
+      "about": "About",
       "language": "Language"
     }
   },
@@ -103,5 +107,21 @@
     "visitCourse": "Visit Course",
     "viewMore": "View More",
     "noResults": "No courses found for your search. Please try other filters."
+  },
+  "about": {
+    "title": "About",
+    "mission": "Mission",
+    "mission_description": "Our mission is to provide a reliable and accessible directory of programming courses, offering developers the opportunity to learn, grow, and continuously update their technical skills. We aim to provide access to quality resources and help individuals enhance their professional potential in the digital world.",
+    "vision": "Vision",
+    "vision_description": "Our vision is to become the leading platform for learning programming, supporting developers of all skill levels on their path to professional success. We strive to be the go-to reference for accessing quality courses while staying up-to-date with the latest technologies and market trends.",
+    "team": "Team",
+    "team_members": {
+      "sergio": {
+        "position": "Full-stack Developer"
+      },
+      "florencia": {
+        "position": "Graphic Designer, Illustrator and UX-UI Designer"
+      }
+    }
   }
 }

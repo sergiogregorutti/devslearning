@@ -4,7 +4,9 @@
     "goBack": "Volver",
     "navigation": {
       "home": "Inicio",
-      "technologies": "Tecnologías"
+      "technologies": "Tecnologías",
+      "courses": "Cursos",
+      "about": "Acerca De"
     }
   },
   "header": {
@@ -14,6 +16,8 @@
     },
     "navigation": {
       "technologies": "Tecnologías",
+      "courses": "Cursos",
+      "about": "Acerca De",
       "language": "Idioma"
     }
   },
@@ -103,5 +107,21 @@
     "visitCourse": "Visitar Curso",
     "viewMore": "Ver Más",
     "noResults": "No se encuentran cursos para su búsqueda. Pruebe con otros filtros."
+  },
+  "about": {
+    "title": "Acerca De",
+    "mission": "Misión",
+    "mission_description": "Nuestra misión es ofrecer un directorio confiable y accesible de cursos de programación, brindando a los desarrolladores la oportunidad de aprender, crecer y actualizar sus habilidades tecnológicas de manera continua. Queremos facilitar el acceso a recursos de calidad y ayudar a las personas a mejorar su potencial profesional en el mundo digital.",
+    "vision": "Visión",
+    "vision_description": "Nuestra visión es convertirnos en la plataforma líder para aprender programación, apoyando a desarrolladores de todas las habilidades y niveles en su camino hacia el éxito profesional. Buscamos ser el punto de referencia para acceder a cursos de calidad, manteniéndonos al día con las últimas tecnologías y tendencias del mercado.",
+    "team": "Equipo",
+    "team_members": {
+      "sergio": {
+        "position": "Desarrollador Full-stack"
+      },
+      "florencia": {
+        "position": "Diseñadora Gráfica, Ilustradora y Diseñadora UX-UI"
+      }
+    }
   }
 }
