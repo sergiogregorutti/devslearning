@@ -66,7 +66,7 @@ export default async function Technologies(props: {
   const categories = await fetchCategoriesWithTechnologies();
 
   return (
-    <div className="technology-page">
+    <div className="courses-page">
       <Heading dictionary={dictionary} />
       <div className="container">
         <div className="col-content">

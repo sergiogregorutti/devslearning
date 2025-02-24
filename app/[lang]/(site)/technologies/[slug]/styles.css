@@ -35,16 +35,17 @@
   & .col-image {
     display: flex;
     align-items: start;
-    justify-content: center;
+    justify-content: flex-start;
     order: 0;
 
     @media (min-width: 768px) {
       order: 2;
+      justify-content: center;
     }
 
     & img {
       height: auto;
-      width: 75%;
+      width: 65%;
       position: sticky;
       top: 100px;
       margin: 20px 0 30px;
