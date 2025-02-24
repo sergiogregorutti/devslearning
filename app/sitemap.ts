@@ -12,18 +12,24 @@ interface ICourse {
 
 const technologies: ITechnology[] = await fetchTechnologies();
 const technologyRoutesEn: any = technologies.map(
-  (tech) => `https://www.devslearning.com/technologies/${tech.slug}/courses`
+  (tech) => `https://www.devslearning.com/technologies/${tech.slug}`
 );
 const technologyRoutesEs: any = technologies.map(
+  (tech) => `https://www.devslearning.com/es/technologies/${tech.slug}`
+);
+const technologyCoursesRoutesEn: any = technologies.map(
+  (tech) => `https://www.devslearning.com/technologies/${tech.slug}/courses`
+);
+const technologyCoursesRoutesEs: any = technologies.map(
   (tech) => `https://www.devslearning.com/es/technologies/${tech.slug}/courses`
 );
 
 const courses: ICourse[] = await fetchCourses();
 const coursesRoutesEn: any = courses.map(
-  (course) => `https://www.devslearning.com/courses/${course._id}/`
+  (course) => `https://www.devslearning.com/courses/${course._id}`
 );
 const coursesRoutesEs: any = courses.map(
-  (course) => `https://www.devslearning.com/es/courses/${course._id}/`
+  (course) => `https://www.devslearning.com/es/courses/${course._id}`
 );
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -71,6 +77,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     })),
     ...technologyRoutesEs.map((url: string) => ({
+      url,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.8,
+    })),
+    ...technologyCoursesRoutesEn.map((url: string) => ({
+      url,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.8,
+    })),
+    ...technologyCoursesRoutesEs.map((url: string) => ({
       url,
       lastModified: new Date(),
       changeFrequency: "daily",
