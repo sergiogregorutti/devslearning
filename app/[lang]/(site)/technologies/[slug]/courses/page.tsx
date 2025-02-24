@@ -27,12 +27,13 @@ async function getTechnology(slug: String) {
 
   const technology = await Technology.findOne(
     { slug: slug },
-    "_id name imageWhite"
+    "_id name slug imageWhite"
   ).exec();
 
   return {
     _id: technology._id.toString(),
     name: technology.name,
+    slug: technology.slug,
     imageWhite: technology.imageWhite,
   };
 }

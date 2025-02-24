@@ -1,7 +1,6 @@
 "use client";
 
 import { getLocalizedPathFromPrefix } from "@/lib/language";
-import { FaHouse, FaChevronRight } from "react-icons/fa6";
 import Link from "next/link";
 
 export default function Heading({
@@ -21,23 +20,9 @@ export default function Heading({
             <li className="breadcrumb-item">
               <Link
                 className="item"
-                key={technology.name}
-                href={getLocalizedPathFromPrefix(lang, `/courses/`)}
+                href={getLocalizedPathFromPrefix(lang, `/technologies/`)}
               >
-                {dictionary.common.navigation.courses}
-              </Link>
-            </li>
-            <li className="breadcrumb-item">
-              <span className="separator">/</span>
-              <Link
-                className="item"
-                key={technology.name}
-                href={getLocalizedPathFromPrefix(
-                  lang,
-                  `/technologies/${technology.slug}`
-                )}
-              >
-                {technology.name}
+                {dictionary.technologies.technologies}
               </Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
@@ -46,11 +31,7 @@ export default function Heading({
           </ol>
         </nav>
         <div className="title-container">
-          <h1>
-            {lang === "en"
-              ? `${technology.name} Courses`
-              : `Cursos de ${technology.name}`}
-          </h1>
+          <h1>{technology.name}</h1>
         </div>
       </div>
     </div>

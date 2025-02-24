@@ -34,9 +34,9 @@ export default function Heading({
             <li className="breadcrumb-item">
               <Link
                 className="item"
-                href={getLocalizedPathFromPrefix(lang, `/technologies/`)}
+                href={getLocalizedPathFromPrefix(lang, `/courses/`)}
               >
-                {dictionary.technologies.technologies}
+                {dictionary.common.navigation.courses}
               </Link>
             </li>
             <li className="breadcrumb-item active" aria-current="page">

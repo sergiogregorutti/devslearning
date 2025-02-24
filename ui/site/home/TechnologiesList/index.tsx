@@ -43,7 +43,7 @@ export default function TechnologiesList({
               key={technology.name}
               href={getLocalizedPathFromPrefix(
                 lang,
-                `/technologies/${technology.slug}/courses/`
+                `/technologies/${technology.slug}/`
               )}
             >
               <Image

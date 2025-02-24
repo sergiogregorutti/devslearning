@@ -17,6 +17,22 @@ export default function TechnologiesList({
   lang: string;
   categories: any;
 }) {
+  const [courses, setCourses] = useState<ITechnologyCoursesCount>({});
+
+  useEffect(() => {
+    async function fetchCourses() {
+      try {
+        const response = await fetch("/api/technologies/courses-count");
+        const data = await response.json();
+        setCourses(data);
+      } catch (e) {}
+    }
+
+    fetchCourses();
+  }, []);
+
+  console.log("categories", categories);
+
   return (
     <div className="categories">
       <div className="container">
@@ -31,7 +47,7 @@ export default function TechnologiesList({
                     key={technology.name}
                     href={getLocalizedPathFromPrefix(
                       lang,
-                      `/technologies/${technology.slug}/`
+                      `/technologies/${technology.slug}/courses/`
                     )}
                   >
                     <Image
@@ -43,6 +59,17 @@ export default function TechnologiesList({
                     />
                     <div className="content">
                       <span>{technology.name}</span>
+                      <span className="small">
+                        {courses[technology._id]?.total ? (
+                          <Counter
+                            initialValue={0}
+                            targetValue={courses[technology._id]?.total}
+                          />
+                        ) : (
+                          0
+                        )}{" "}
+                        {dictionary.home.courses}
+                      </span>
                     </div>
                   </Link>
                 ))}

@@ -45,6 +45,14 @@ export default function Footer({
             <li className="item">
               <Link
                 className="item"
+                href={getLocalizedPathFromPrefix(lang, `/courses/`)}
+              >
+                {dictionary.common.navigation.courses}
+              </Link>
+            </li>
+            <li className="item">
+              <Link
+                className="item"
                 href={getLocalizedPathFromPrefix(lang, `/about/`)}
               >
                 {dictionary.common.navigation.about}
