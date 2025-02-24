@@ -39,7 +39,7 @@ export default function TechnologiesList({
         <div className="technologies-list">
           {technologies.map((technology: any) => (
             <Link
-              className="item"
+              className="item transition-all duration-500"
               key={technology.name}
               href={getLocalizedPathFromPrefix(
                 lang,

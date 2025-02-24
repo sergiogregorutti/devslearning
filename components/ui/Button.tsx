@@ -28,7 +28,8 @@ export default function Button({
   icon,
   iconRotate = false,
 }: ButtonProps) {
-  const baseStyles = "rounded-full cursor-pointer focus:outline-none ";
+  const baseStyles =
+    "rounded-full transition-all duration-500 cursor-pointer focus:outline-none ";
 
   // Size
   const defaultSizeStyles = "text-lg py-[9px] px-[28px] ";
