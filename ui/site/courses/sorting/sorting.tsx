@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { SingleValue } from "react-select";
-import Select from "@/ui/common/Select";
+import Select from "@/components/ui/Select";
 
 export default function Sorting({
   dictionary,
