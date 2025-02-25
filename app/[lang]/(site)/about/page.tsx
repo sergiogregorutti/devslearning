@@ -154,7 +154,7 @@ export default async function Technologies(props: {
           </div>
           <div className="col-image">
             <Image
-              src="/assets/logo_dark.svg"
+              src="/assets/logo_vertical.svg"
               width={129}
               height={38}
               alt="Devs Learning"

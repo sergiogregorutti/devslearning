@@ -31,10 +31,8 @@ export default function TechnologiesList({
     fetchCourses();
   }, []);
 
-  console.log("categories", categories);
-
   return (
-    <div className="categories">
+    <div className="courses-page-categories">
       <div className="container">
         <div className="categories-list">
           {categories.map((category: any) => (

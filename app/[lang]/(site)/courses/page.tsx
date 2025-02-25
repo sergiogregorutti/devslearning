@@ -71,7 +71,7 @@ export default async function Technologies(props: {
       <PageHeader
         title={dictionary.courses.title}
         description={dictionary.courses.description}
-        image="/assets/man_sitting_with_a_laptop.svg"
+        image="/assets/boy2.svg"
       />
       <Container>
         <CategoriesList

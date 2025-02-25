@@ -25,7 +25,7 @@ export default function PageHeader({
             height={308}
             alt={title}
             priority={true}
-            className="w-full mb-6 sm:mb-0 sm:order-2 max-h-[300px]"
+            className="w-full mb-6 sm:mb-0 sm:order-2 max-h-[200px] sm:max-h-[300px]"
           />
         )}
         <div className="sm:order-1">

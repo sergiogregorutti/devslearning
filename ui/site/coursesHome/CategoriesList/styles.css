@@ -1,4 +1,4 @@
-.categories {
+.courses-page-categories {
   width: 100%;
 
   & .categories-list {
@@ -16,7 +16,7 @@
     }
 
     @media (min-width: 1300px) {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
     }
 
     & > .category {
@@ -35,7 +35,7 @@
 
       & .technologies-list {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         column-gap: 15px;
         row-gap: 15px;
 
