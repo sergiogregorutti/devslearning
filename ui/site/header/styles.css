@@ -95,7 +95,7 @@ header {
   }
 
   & .mobile-menu {
-    display: flex;
+    display: none;
     background: #fff;
     position: fixed;
     left: 0;
@@ -139,9 +139,10 @@ header {
     & .close-container {
       position: absolute;
       top: 0;
+      right: 0;
       display: flex;
       justify-content: flex-end;
-      width: 100%;
+      width: 60px;
 
       & .btn-close {
         margin-top: 10px;
@@ -197,6 +198,7 @@ header {
     }
 
     &.open {
+      display: flex;
       opacity: 1;
     }
 
