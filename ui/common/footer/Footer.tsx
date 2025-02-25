@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
+import Container from "@/components/layout/Container";
 
 import Smartlook from "smartlook-client";
 
@@ -23,8 +24,8 @@ export default function Footer({
 
   return (
     <footer>
-      <div className="footer-content">
-        <div className="container">
+      <Container>
+        <div className="content">
           <ul className="navigation">
             <li className="item">
               <Link
@@ -61,7 +62,7 @@ export default function Footer({
           </ul>
           <p>© {new Date().getFullYear()} Devs Learning</p>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

@@ -1,17 +1,13 @@
-.welcome {
-  background: rgba(33, 151, 249, 0.2);
-  display: flex;
-  justify-content: center;
-
-  & .container {
-    padding: 10px 15px 30px;
-    width: 100%;
-    max-width: 1200px;
+.hero-section {
+  & .content {
+    padding-top: 10px;
+    padding-bottom: 30px;
     display: grid;
     grid-template-columns: 1fr;
 
     @media (min-width: 768px) {
-      padding: 50px 15px;
+      padding-top: 50px;
+      padding-bottom: 50px;
       grid-template-columns: 55% 45%;
     }
 

@@ -1,16 +1,10 @@
 .info-banner {
-  background: #2197f9;
-  display: flex;
-  justify-content: center;
-
-  & .container {
-    padding: 10px 15px;
-    width: 100%;
-    max-width: 1200px;
+  & .content {
+    padding: 10px 0;
     text-align: center;
 
     @media (min-width: 768px) {
-      padding: 20px 15px;
+      padding: 20px 0;
     }
 
     span {

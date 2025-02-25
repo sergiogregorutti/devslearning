@@ -6,6 +6,7 @@ import Link from "next/link";
 import Button from "@/components/ui/Button";
 import Counter from "@/ui/common/Counter";
 import { ITechnologyCoursesCount } from "@/interfaces/course";
+import Container from "@/components/layout/Container";
 
 import "./styles.css";
 
@@ -33,49 +34,51 @@ export default function TechnologiesList({
   }, []);
 
   return (
-    <div className="technologies">
-      <div className="container">
-        <h2>{dictionary.home.technologiesTitle}</h2>
-        <div className="technologies-list">
-          {technologies.map((technology: any) => (
-            <Link
-              className="item transition-all duration-500"
-              key={technology.name}
-              href={getLocalizedPathFromPrefix(
-                lang,
-                `/technologies/${technology.slug}/`
-              )}
-            >
-              <Image
-                src={technology.imageWhite}
-                width={100}
-                height={100}
-                alt={technology.name}
-                priority={true}
-              />
-              <div className="content">
-                <span>{technology.name}</span>
-                <span className="small">
-                  {courses[technology._id]?.total ? (
-                    <Counter
-                      initialValue={0}
-                      targetValue={courses[technology._id]?.total}
-                    />
-                  ) : (
-                    0
-                  )}{" "}
-                  {dictionary.home.courses}
-                </span>
-              </div>
-            </Link>
-          ))}
+    <div className="featured-technologies">
+      <Container>
+        <div className="content">
+          <h2>{dictionary.home.technologiesTitle}</h2>
+          <div className="technologies-list">
+            {technologies.map((technology: any) => (
+              <Link
+                className="item transition-all duration-500"
+                key={technology.name}
+                href={getLocalizedPathFromPrefix(
+                  lang,
+                  `/technologies/${technology.slug}/`
+                )}
+              >
+                <Image
+                  src={technology.imageWhite}
+                  width={100}
+                  height={100}
+                  alt={technology.name}
+                  priority={true}
+                />
+                <div className="item-content">
+                  <span>{technology.name}</span>
+                  <span className="small">
+                    {courses[technology._id]?.total ? (
+                      <Counter
+                        initialValue={0}
+                        targetValue={courses[technology._id]?.total}
+                      />
+                    ) : (
+                      0
+                    )}{" "}
+                    {dictionary.home.courses}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <Button
+            label={dictionary.home.seeAllTechnologies}
+            href={getLocalizedPathFromPrefix(lang, `/technologies`)}
+            variant="darkBlue"
+          />
         </div>
-        <Button
-          label={dictionary.home.seeAllTechnologies}
-          href={getLocalizedPathFromPrefix(lang, `/technologies`)}
-          variant="darkBlue"
-        />
-      </div>
+      </Container>
     </div>
   );
 }

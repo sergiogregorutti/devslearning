@@ -1,16 +1,11 @@
-.technologies {
-  display: flex;
-  justify-content: center;
+.featured-technologies {
   padding-bottom: 30px;
 
   @media (min-width: 768px) {
     margin-bottom: 20px;
   }
 
-  & .container {
-    padding: 0 15px;
-    width: 100%;
-    max-width: 1200px;
+  & .content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -97,7 +92,7 @@
         }
       }
 
-      & .content {
+      & .item-content {
         display: flex;
         flex-direction: column;
         margin-left: 20px;

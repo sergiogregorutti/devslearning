@@ -11,6 +11,7 @@ import InfoBanner from "@/ui/site/home/InfoBanner";
 import TechnologiesList from "@/ui/site/home/TechnologiesList";
 import FreeContent from "@/ui/site/home/FreeContent";
 import Button from "@/components/ui/Button";
+import Container from "@/components/layout/Container";
 
 import "./styles.css";
 
@@ -96,27 +97,29 @@ export default async function Home(props: {
 
   return (
     <>
-      <div className="welcome">
-        <div className="container">
-          <div className="col-text">
-            <span className={`title ${lang}`}>{dictionary.home.title}</span>
-            <span className={`title2 ${lang}`}>{dictionary.home.title2}</span>
-            <p>{dictionary.home.subtitle}</p>
-            <Button
-              label={dictionary.home.browseTechnologies}
-              href={getLocalizedPathFromPrefix(lang, `/technologies`)}
-            />
+      <div className="hero-section bg-blue-300">
+        <Container>
+          <div className="content">
+            <div className="col-text">
+              <span className={`title ${lang}`}>{dictionary.home.title}</span>
+              <span className={`title2 ${lang}`}>{dictionary.home.title2}</span>
+              <p>{dictionary.home.subtitle}</p>
+              <Button
+                label={dictionary.home.browseTechnologies}
+                href={getLocalizedPathFromPrefix(lang, `/technologies`)}
+              />
+            </div>
+            <div className="col-image">
+              <Image
+                src="/assets/boy.svg"
+                width={555}
+                height={286}
+                alt="Devs Learning"
+                priority={true}
+              />
+            </div>
           </div>
-          <div className="col-image">
-            <Image
-              src="/assets/boy.svg"
-              width={555}
-              height={286}
-              alt="Devs Learning"
-              priority={true}
-            />
-          </div>
-        </div>
+        </Container>
       </div>
       <InfoBanner dictionary={dictionary} />
       <TechnologiesList
