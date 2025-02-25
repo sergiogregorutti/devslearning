@@ -95,7 +95,10 @@ header {
   }
 
   & .mobile-menu {
-    display: none;
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0s 0.5s;
     background: #fff;
     position: fixed;
     left: 0;
@@ -105,8 +108,12 @@ header {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    transition: opacity 0.5s;
-    opacity: 0;
+
+    &.open {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.5s ease, visibility 0s;
+    }
 
     @media (min-width: 768px) {
       display: none;
@@ -176,7 +183,7 @@ header {
           color: #000;
           text-decoration: none;
           padding: 10px 0;
-          font-size: 20px;
+          font-size: 24px;
 
           & svg {
             position: absolute;
@@ -197,18 +204,13 @@ header {
       height: 40px;
     }
 
-    &.open {
-      display: flex;
-      opacity: 1;
-    }
-
     & .language-selector-wrapper {
       width: 100%;
-      padding: 0 15px;
+      padding: 0 20px;
 
       h3 {
         font-weight: normal;
-        font-size: 18px;
+        font-size: 22px;
         color: #ccc;
         margin-bottom: 5px;
       }

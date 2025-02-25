@@ -4,7 +4,7 @@ import Link from "next/link";
 import LanguageSelector from "@/ui/site/languageSelector/LanguageSelector";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import Image from "next/image";
-import { FaBars, FaXmark } from "react-icons/fa6";
+import { FaBars } from "react-icons/fa6";
 import Container from "@/components/layout/Container";
 
 import "./styles.css";
@@ -114,6 +114,11 @@ const Header = ({
                 </Link>
               </div>
               <ul className="menu">
+                <li className="item" onClick={toggleMobileMenu}>
+                  <Link href={getLocalizedPathFromPrefix(lang, `/`)}>
+                    {dictionary.header.navigation.home}
+                  </Link>
+                </li>
                 <li className="item" onClick={toggleMobileMenu}>
                   <Link
                     href={getLocalizedPathFromPrefix(lang, `/technologies`)}
