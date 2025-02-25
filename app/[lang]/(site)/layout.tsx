@@ -7,7 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import Header from "@/ui/site/header/Header";
-import Footer from "@/ui/common/footer/Footer";
+import Footer from "@/components/layout/Footer";
 
 const nunito = Nunito({
   subsets: ["latin"],
