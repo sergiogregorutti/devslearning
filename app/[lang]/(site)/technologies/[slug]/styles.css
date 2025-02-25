@@ -1,13 +1,5 @@
 .technology-page {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  & > .container {
-    padding: 0 15px;
-    max-width: 1200px;
-    width: 100%;
-    margin-bottom: 30px;
+  & .content {
     display: grid;
     grid-template-columns: 1fr;
 

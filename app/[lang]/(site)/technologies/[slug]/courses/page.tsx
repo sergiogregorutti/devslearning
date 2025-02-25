@@ -4,7 +4,8 @@ import dbConnect from "@/lib/dbConnect";
 import { Technology } from "@/lib/models";
 import { getDictionary } from "../../../dictionaries";
 import { fetchFilteredCourses } from "@/lib/data/courses";
-import Heading from "@/ui/site/courses/Heading";
+import Container from "@/components/layout/Container";
+import PageHeader from "@/ui/site/courses/PageHeader";
 import SortingAndFilters from "@/ui/site/courses/SortingAndFilters";
 import List from "@/ui/site/courses/list/list";
 import Loading from "@/ui/site/courses/list/loading";
@@ -126,8 +127,8 @@ export default async function TechnologyPage({
 
   return (
     <div className="technology">
-      <Heading dictionary={dictionary} lang={lang} technology={technology} />
-      <div className="container">
+      <PageHeader dictionary={dictionary} lang={lang} technology={technology} />
+      <Container>
         <div className="content-wrapper">
           <SortingAndFilters
             technologyId={technology._id}
@@ -156,7 +157,7 @@ export default async function TechnologyPage({
             )}
           </div>
         </div>
-      </div>
+      </Container>
     </div>
   );
 }

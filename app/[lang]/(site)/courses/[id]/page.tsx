@@ -4,7 +4,7 @@ import dbConnect from "@/lib/dbConnect";
 import { Course } from "@/lib/models";
 import { Technology } from "@/lib/models";
 import { getDictionary } from "../../dictionaries";
-import Heading from "@/ui/site/course/Heading";
+import PageHeader from "@/ui/site/course/PageHeader";
 import CourseDetail from "@/ui/site/course/CourseDetail";
 
 type Props = {
@@ -105,7 +105,7 @@ export default async function CoursePage(props: {
 
   return (
     <div className="course-page">
-      <Heading
+      <PageHeader
         dictionary={dictionary}
         lang={lang}
         course={course}

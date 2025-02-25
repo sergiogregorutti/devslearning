@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { getDictionary } from "../dictionaries";
-import Heading from "@/ui/site/coursesHome/Heading";
 import { fetchCategoriesWithTechnologies } from "@/lib/data/technologiesCategories";
+import PageHeader from "@/components/layout/PageHeader";
 import CategoriesList from "@/ui/site/coursesHome/CategoriesList";
 import Image from "next/image";
+import Container from "@/components/layout/Container";
 
 import "./styles.css";
 
@@ -67,25 +68,18 @@ export default async function Technologies(props: {
 
   return (
     <div className="courses-page">
-      <Heading dictionary={dictionary} />
-      <div className="container">
-        <div className="col-content">
-          <CategoriesList
-            dictionary={dictionary}
-            lang={lang}
-            categories={categories}
-          />
-        </div>
-        <div className="col-image">
-          <Image
-            src="/assets/man_working.svg"
-            width={420}
-            height={308}
-            alt="Devs Learning"
-            priority={true}
-          />
-        </div>
-      </div>
+      <PageHeader
+        title={dictionary.courses.title}
+        description={dictionary.courses.description}
+        image="/assets/man_sitting_with_a_laptop.svg"
+      />
+      <Container>
+        <CategoriesList
+          dictionary={dictionary}
+          lang={lang}
+          categories={categories}
+        />
+      </Container>
     </div>
   );
 }

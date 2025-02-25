@@ -3,10 +3,11 @@
 import Image from "next/image";
 import { FaUpRightFromSquare } from "react-icons/fa6";
 import Button from "@/components/ui/Button";
+import Container from "@/components/layout/Container";
 
 import "./styles.css";
 
-export default function Heading({
+export default function CourseDetail({
   course,
   lang,
   dictionary,
@@ -30,72 +31,74 @@ export default function Heading({
 
   return (
     <div className="course-detail">
-      <div className="container">
-        <p className="description">
-          {lang === "en" ? course.description : course.description_es}
-        </p>
-        <Button
-          label={dictionary.technologies.visitCourse}
-          href={course.link}
-          linkTarget="_blank"
-          icon={<FaUpRightFromSquare />}
-          className="cta"
-        />
+      <Container>
+        <div className="content">
+          <p className="description">
+            {lang === "en" ? course.description : course.description_es}
+          </p>
+          <Button
+            label={dictionary.technologies.visitCourse}
+            href={course.link}
+            linkTarget="_blank"
+            icon={<FaUpRightFromSquare />}
+            className="cta"
+          />
 
-        <div className="details">
-          <div className="item">
-            <span>{dictionary.technologies.price}:</span>
-            {course.price > 0 ? `US$ ${course.price}` : ""}
-            {renderPricing(course.pricing)}
+          <div className="details">
+            <div className="item">
+              <span>{dictionary.technologies.price}:</span>
+              {course.price > 0 ? `US$ ${course.price}` : ""}
+              {renderPricing(course.pricing)}
+            </div>
+            <div className="item">
+              <span>{dictionary.technologies.platform}:</span>
+              {course.platform || "---"}
+            </div>
+            <div className="item">
+              <span>{dictionary.technologies.author}:</span>
+              {course.author || "---"}
+            </div>
+            <div className="item">
+              <span>{dictionary.technologies.year}:</span>
+              {course.year}
+            </div>
+            <div className="item">
+              <span>{dictionary.technologies.language}:</span>
+              {course.language === "en"
+                ? dictionary.technologies.english
+                : dictionary.technologies.spanish}
+            </div>
           </div>
-          <div className="item">
-            <span>{dictionary.technologies.platform}:</span>
-            {course.platform || "---"}
+          <div className="image-container">
+            <Image
+              src={course.image}
+              width={200}
+              height={200}
+              alt={course.name}
+            />
           </div>
-          <div className="item">
-            <span>{dictionary.technologies.author}:</span>
-            {course.author || "---"}
+          <div className="description">
+            {course.long_description && (
+              <div
+                dangerouslySetInnerHTML={{
+                  __html:
+                    lang === "en"
+                      ? course.long_description
+                      : course.long_description_es,
+                }}
+              />
+            )}
           </div>
-          <div className="item">
-            <span>{dictionary.technologies.year}:</span>
-            {course.year}
-          </div>
-          <div className="item">
-            <span>{dictionary.technologies.language}:</span>
-            {course.language === "en"
-              ? dictionary.technologies.english
-              : dictionary.technologies.spanish}
-          </div>
-        </div>
-        <div className="image-container">
-          <Image
-            src={course.image}
-            width={200}
-            height={200}
-            alt={course.name}
+
+          <Button
+            label={dictionary.technologies.visitCourse}
+            href={course.link}
+            linkTarget="_blank"
+            icon={<FaUpRightFromSquare />}
+            className="cta"
           />
         </div>
-        <div className="description">
-          {course.long_description && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html:
-                  lang === "en"
-                    ? course.long_description
-                    : course.long_description_es,
-              }}
-            />
-          )}
-        </div>
-
-        <Button
-          label={dictionary.technologies.visitCourse}
-          href={course.link}
-          linkTarget="_blank"
-          icon={<FaUpRightFromSquare />}
-          className="cta"
-        />
-      </div>
+      </Container>
     </div>
   );
 }

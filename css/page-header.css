@@ -1,25 +1,7 @@
-.heading {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-  background: #fff;
-  margin-top: 15px;
-
-  @media (min-width: 768px) {
-    margin-top: 20px;
-  }
-
-  @media (min-width: 1200px) {
-    margin-top: 80px;
-  }
-
-  & .container {
+.page-header {
+  & .page-header-content {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    padding: 0 15px;
-    max-width: 1200px;
 
     & .title-container {
       display: flex;
@@ -59,8 +41,8 @@
 
     & h1 {
       color: #0b376b;
-      font-size: 30px;
-      line-height: 30px;
+      font-size: 43px;
+      line-height: 43px;
       font-weight: bold;
       margin: 0 0 15px;
 

@@ -21,7 +21,7 @@ export default function Footer({
   }, []);
 
   return (
-    <footer className="mt-auto pt-4">
+    <footer className="mt-auto pt-10">
       <Container>
         <div className="flex flex-col text-center text-base">
           <ul className="flex justify-center space-x-5 border-b border-gray-300 pb-4">

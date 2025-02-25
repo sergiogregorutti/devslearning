@@ -1,4 +1,4 @@
-@import url("../../css/heading.css");
+@import url("../../css/page-header.css");
 @import url("../../css/buttons.css");
 @import url("../../css/table.css");
 @import url("../../css/forms.css");
@@ -30,6 +30,11 @@ body {
   flex-direction: column;
 }
 
+p {
+  font-family: var(--font-poppins);
+  font-size: 16px;
+  line-height: 30px;
+}
 img {
   display: inline-block;
 }

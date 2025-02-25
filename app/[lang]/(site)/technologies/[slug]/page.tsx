@@ -3,9 +3,10 @@ import dbConnect from "@/lib/dbConnect";
 import { Technology } from "@/lib/models";
 import { getDictionary } from "../../dictionaries";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
-import Heading from "@/ui/site/technology/Heading";
+import PageHeader from "@/ui/site/technology/PageHeader";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
+import Container from "@/components/layout/Container";
 
 import "./styles.css";
 
@@ -83,54 +84,56 @@ export default async function TechnologyPage({
 
   return (
     <div className="technology-page">
-      <Heading dictionary={dictionary} lang={lang} technology={technology} />
-      <div className="container">
-        <div className="col-content">
-          <div
-            className="long-description"
-            dangerouslySetInnerHTML={{
-              __html:
-                lang === "en"
-                  ? technology.long_description
-                  : technology.long_description_es,
-            }}
-          ></div>
-          {lang === "en" ? (
-            <>
-              <h2>Do you want to learn {technology.name}?</h2>
-              <Button
-                label={`View ${technology.name} Courses`}
-                href={getLocalizedPathFromPrefix(
-                  lang,
-                  `/technologies/${technology.slug}/courses/`
-                )}
-                className="mt-2"
-              />
-            </>
-          ) : (
-            <>
-              <h2>¿Querés aprender {technology.name}?</h2>
-              <Button
-                label={`Ver Cursos de ${technology.name}`}
-                href={getLocalizedPathFromPrefix(
-                  lang,
-                  `/technologies/${technology.slug}/courses/`
-                )}
-                className="mt-2"
-              />
-            </>
-          )}
+      <PageHeader dictionary={dictionary} lang={lang} technology={technology} />
+      <Container>
+        <div className="content">
+          <div className="col-content">
+            <div
+              className="long-description"
+              dangerouslySetInnerHTML={{
+                __html:
+                  lang === "en"
+                    ? technology.long_description
+                    : technology.long_description_es,
+              }}
+            ></div>
+            {lang === "en" ? (
+              <>
+                <h2>Do you want to learn {technology.name}?</h2>
+                <Button
+                  label={`View ${technology.name} Courses`}
+                  href={getLocalizedPathFromPrefix(
+                    lang,
+                    `/technologies/${technology.slug}/courses/`
+                  )}
+                  className="mt-2"
+                />
+              </>
+            ) : (
+              <>
+                <h2>¿Querés aprender {technology.name}?</h2>
+                <Button
+                  label={`Ver Cursos de ${technology.name}`}
+                  href={getLocalizedPathFromPrefix(
+                    lang,
+                    `/technologies/${technology.slug}/courses/`
+                  )}
+                  className="mt-2"
+                />
+              </>
+            )}
+          </div>
+          <div className="col-image">
+            <Image
+              src={technology.imageColor}
+              width={129}
+              height={38}
+              alt="Devs Learning"
+              priority={true}
+            />
+          </div>
         </div>
-        <div className="col-image">
-          <Image
-            src={technology.imageColor}
-            width={129}
-            height={38}
-            alt="Devs Learning"
-            priority={true}
-          />
-        </div>
-      </div>
+      </Container>
     </div>
   );
 }

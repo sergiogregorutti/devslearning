@@ -35,7 +35,7 @@
       "coursesIn": "cursos en",
       "technologies": "tecnologías"
     },
-    "technologiesTitle": "Tecnologías Más Solicitadas",
+    "technologiesTitle": "Aprende Las Tecnologías Más Solicitadas",
     "seeAllTechnologies": "Ver Todas Las Tecnologías",
     "courses": "cursos",
     "freeContent": {
@@ -83,6 +83,8 @@
     "resetPassword": "Crear Nueva Contraseña"
   },
   "technologies": {
+    "title": "Tecnologías",
+    "description": "Explora las tecnologías más demandadas en Devs Learning. Cada tecnología incluye información detallada sobre su propósito, aplicaciones y recursos de aprendizaje para ayudarte a dominarla.",
     "technologies": "Tecnologías",
     "showing": "Mostrando",
     "goBack": "Volver",
@@ -108,6 +110,10 @@
     "visitCourse": "Visitar Curso",
     "viewMore": "Ver Más",
     "noResults": "No se encuentran cursos para su búsqueda. Pruebe con otros filtros."
+  },
+  "courses": {
+    "title": "Cursos",
+    "description": "Explora los mejores cursos de programación en Devs Learning. Hemos seleccionado cuidadosamente los cursos más destacados, tanto gratuitos como pagos, en inglés y español, para que puedas aprender las tecnologías más demandadas, mejorar tus habilidades y avanzar en tu carrera como desarrollador."
   },
   "about": {
     "title": "Acerca De",
