@@ -8,7 +8,7 @@ import Image from "next/image";
 import { fetchTechnologies } from "@/lib/data/technologies";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import InfoBanner from "@/ui/site/home/InfoBanner";
-import TechnologiesList from "@/ui/site/home/TechnologiesList";
+import TechnologiesList from "@/ui/site/home/FeaturedTechnologies";
 import FreeContent from "@/ui/site/home/FreeContent";
 import Button from "@/components/ui/Button";
 import Container from "@/components/layout/Container";

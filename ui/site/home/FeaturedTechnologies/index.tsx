@@ -10,7 +10,7 @@ import Container from "@/components/layout/Container";
 
 import "./styles.css";
 
-export default function TechnologiesList({
+export default function FeaturedTechnologies({
   dictionary,
   lang,
   technologies,

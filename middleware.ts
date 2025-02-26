@@ -44,8 +44,11 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const url = new URL(request.url);
 
-  // Sitemap
-  if (pathname.startsWith("/sitemap.xml")) {
+  // Sitemap and Robots
+  if (
+    pathname.startsWith("/sitemap.xml") ||
+    pathname.startsWith("/robots.txt")
+  ) {
     return NextResponse.next();
   }
 

@@ -74,7 +74,7 @@
       background: #2197f9;
       border-radius: 15px;
       text-decoration: none;
-      padding: 20px;
+      padding: 15px 20px;
 
       @media (min-width: 768px) {
         flex-direction: column;

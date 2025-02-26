@@ -4,7 +4,7 @@
   & .categories-list {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 20px 20px;
+    gap: 20px;
 
     @media (min-width: 768px) {
       grid-template-columns: 1fr 1fr;
@@ -21,15 +21,14 @@
 
     & > .category {
       & h2 {
-        color: #2197f9;
+        color: #0b376b;
         font-weight: bold;
-        font-size: 22px;
-        margin-top: 0;
-        margin-bottom: 10px;
+        font-size: 23px;
+        line-height: 65px;
+        margin: 0;
 
         @media (min-width: 768px) {
           font-size: 28px;
-          margin-bottom: 20px;
         }
       }
 
@@ -52,15 +51,15 @@
           background: #2197f9;
           border-radius: 15px;
           text-decoration: none;
-          padding: 15px;
+          padding: 15px 20px;
 
           & img,
           & svg {
-            width: 40px;
+            width: 50px;
             height: auto;
 
             @media (min-width: 768px) {
-              width: 44px;
+              width: 50px;
             }
           }
 
@@ -72,15 +71,11 @@
 
             & > span {
               display: inline-block;
-              font-size: 18px;
+              font-size: 22px;
               color: #fff;
 
-              @media (min-width: 768px) {
-                font-size: 20px;
-              }
-
               &.small {
-                font-size: 14px;
+                font-size: 16px;
                 margin-top: 2px;
 
                 @media (min-width: 768px) {
@@ -88,7 +83,7 @@
                 }
 
                 & span {
-                  font-size: 14px;
+                  font-size: 16px;
 
                   @media (min-width: 768px) {
                     font-size: 16px;

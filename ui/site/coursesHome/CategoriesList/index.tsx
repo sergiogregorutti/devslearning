@@ -41,7 +41,7 @@ export default function TechnologiesList({
               <div className="technologies-list">
                 {category.technologies.map((technology: any) => (
                   <Link
-                    className="item transition-all duration-500"
+                    className="technology-card transition-all duration-500"
                     key={technology.name}
                     href={getLocalizedPathFromPrefix(
                       lang,
@@ -55,7 +55,7 @@ export default function TechnologiesList({
                       alt={technology.name}
                       priority={true}
                     />
-                    <div className="content">
+                    <div className="technology-card-content">
                       <span>{technology.name}</span>
                       <span className="small">
                         {courses[technology._id]?.total ? (
