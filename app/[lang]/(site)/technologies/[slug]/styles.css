@@ -21,6 +21,11 @@
 
     & .long-description {
       margin-bottom: 30px;
+
+      p {
+        font-size: 16px;
+        line-height: 30px;
+      }
     }
   }
 
