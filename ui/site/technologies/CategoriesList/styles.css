@@ -42,61 +42,6 @@
           column-gap: 20px;
           row-gap: 20px;
         }
-
-        & .item {
-          display: flex;
-          align-items: center;
-          background: #2197f9;
-          border-radius: 15px;
-          text-decoration: none;
-          padding: 25px 30px;
-
-          & img,
-          & svg {
-            width: 70px;
-            min-height: 80px;
-            height: auto;
-
-            @media (min-width: 768px) {
-              width: 75px;
-              min-height: 90px;
-            }
-          }
-
-          & .content {
-            display: flex;
-            flex-direction: column;
-            margin-left: 30px;
-            text-align: right;
-
-            & > span {
-              display: inline-block;
-              font-size: 22px;
-              color: #fff;
-
-              &.small {
-                font-size: 14px;
-                margin-top: 2px;
-
-                @media (min-width: 768px) {
-                  font-size: 16px;
-                }
-
-                & span {
-                  font-size: 14px;
-
-                  @media (min-width: 768px) {
-                    font-size: 16px;
-                  }
-                }
-              }
-            }
-          }
-
-          &:hover {
-            background: #1a73e8;
-          }
-        }
       }
     }
   }
