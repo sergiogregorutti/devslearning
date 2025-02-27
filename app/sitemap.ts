@@ -11,25 +11,16 @@ interface ICourse {
 }
 
 const technologies: ITechnology[] = await fetchTechnologies();
-const technologyRoutesEn: any = technologies.map(
-  (tech) => `https://www.devslearning.com/technologies/${tech.slug}`
+const courses: ICourse[] = await fetchCourses();
+
+const technologiesRoutes: any = technologies.map(
+  (tech) => `https://www.devslearning.com/technologies/${tech.slug}/`
 );
-const technologyRoutesEs: any = technologies.map(
-  (tech) => `https://www.devslearning.com/es/technologies/${tech.slug}`
-);
-const technologyCoursesRoutesEn: any = technologies.map(
+const technologiesCoursesRoutes: any = technologies.map(
   (tech) => `https://www.devslearning.com/technologies/${tech.slug}/courses`
 );
-const technologyCoursesRoutesEs: any = technologies.map(
-  (tech) => `https://www.devslearning.com/es/technologies/${tech.slug}/courses`
-);
-
-const courses: ICourse[] = await fetchCourses();
-const coursesRoutesEn: any = courses.map(
-  (course) => `https://www.devslearning.com/courses/${course._id}`
-);
-const coursesRoutesEs: any = courses.map(
-  (course) => `https://www.devslearning.com/es/courses/${course._id}`
+const coursesRoutes: any = courses.map(
+  (course) => `https://www.devslearning.com/courses/${course._id}/`
 );
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -78,36 +69,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       },
     },
-    ...technologies.map((technology: any) => ({
-      url: `https://www.devslearning.com/technologies/${technology.slug}`,
+    ...technologiesRoutes.map((url: string) => ({
+      url,
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.8,
       alternates: {
         languages: {
-          es: `https://www.devslearning.com/es/technologies/${technology.slug}`,
+          es: url.replace("devslearning.com", "devslearning.com/es"),
         },
       },
     })),
-    ...technologies.map((technology: any) => ({
-      url: `https://www.devslearning.com/technologies/${technology.slug}/courses`,
+    ...technologiesCoursesRoutes.map((url: string) => ({
+      url,
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.8,
       alternates: {
         languages: {
-          es: `https://www.devslearning.com/es/technologies/${technology.slug}/courses`,
+          es: url.replace("devslearning.com", "devslearning.com/es"),
         },
       },
     })),
-    ...courses.map((course: any) => ({
-      url: `https://www.devslearning.com/courses/${course._id}`,
+    ...coursesRoutes.map((url: string) => ({
+      url,
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.8,
       alternates: {
         languages: {
-          es: `https://www.devslearning.com/es/courses/${course._id}`,
+          es: url.replace("devslearning.com", "devslearning.com/es"),
         },
       },
     })),
