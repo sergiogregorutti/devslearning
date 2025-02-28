@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 import Link from "next/link";
@@ -12,6 +14,7 @@ interface PageHeaderProps {
   imagePositionMobile?: "top" | "bottom";
   imageMobileHidden?: boolean;
   breadcrumb?: any;
+  previousPage?: any;
 }
 
 export default function PageHeader({
@@ -21,11 +24,10 @@ export default function PageHeader({
   imagePositionMobile = "top",
   imageMobileHidden = false,
   breadcrumb = null,
+  previousPage = null,
 }: PageHeaderProps) {
   let imagePositionMobileClasses = "";
   let titlePositionMobileClasses = "";
-
-  console.log("imagePositionMobile", imagePositionMobile);
 
   switch (imagePositionMobile) {
     case "top":
@@ -37,6 +39,11 @@ export default function PageHeader({
       titlePositionMobileClasses = "order-1";
       break;
   }
+
+  const handleGoBack = () => {
+    window.history.back();
+  };
+
   return (
     <section className="mt-12 sm:mt-18 lg:mt-22 mb-6 lg:mb-10">
       <Container>
@@ -49,7 +56,7 @@ export default function PageHeader({
         >
           {image && (
             <div
-              className={`md:flex md:justify-center ${imagePositionMobileClasses} ${
+              className={`md:flex md:justify-center md:items-center ${imagePositionMobileClasses} ${
                 imageMobileHidden ? "hidden" : ""
               }`}
             >
@@ -59,7 +66,7 @@ export default function PageHeader({
                 height={308}
                 alt={title}
                 priority={true}
-                className="w-[50%] md:w-[80%] md:max-h-[200px]"
+                className="h-fit w-[50%] md:w-[80%] md:max-h-[200px]"
               />
             </div>
           )}
@@ -67,11 +74,26 @@ export default function PageHeader({
             {breadcrumb && (
               <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
+                  {previousPage && (
+                    <li className="breadcrumb-item">
+                      <a onClick={handleGoBack} className="item back">
+                        {previousPage.name}
+                      </a>
+                    </li>
+                  )}
                   <li className="breadcrumb-item">
                     <Link className="item" href={breadcrumb[0].link}>
                       {breadcrumb[0].name}
                     </Link>
                   </li>
+                  {breadcrumb[1] && (
+                    <li className="breadcrumb-item">
+                      <span className="separator">/</span>
+                      <Link className="item" href={breadcrumb[1].link}>
+                        {breadcrumb[1].name}
+                      </Link>
+                    </li>
+                  )}
                   <li className="breadcrumb-item active" aria-current="page">
                     <span className="separator">/</span>
                   </li>

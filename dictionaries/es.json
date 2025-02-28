@@ -115,6 +115,14 @@
     "title": "Cursos",
     "description": "Explora los mejores cursos de programación en Devs Learning. Hemos seleccionado cuidadosamente los cursos más destacados, tanto gratuitos como pagos, en inglés y español, para que puedas aprender las tecnologías más demandadas, mejorar tus habilidades y avanzar en tu carrera como desarrollador."
   },
+  "technologyCourses": {
+    "showFilters": "Mostrar Ordenamiento y Filtros",
+    "hideFilters": "Ocultar Ordenamiento y Filtros"
+  },
+  "courseDetail": {
+    "information": "Información",
+    "description": "Descripción"
+  },
   "about": {
     "title": "Acerca De",
     "mission": "Misión",

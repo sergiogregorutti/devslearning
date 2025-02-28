@@ -33,17 +33,7 @@ export default function CourseDetail({
     <div className="course-detail">
       <Container>
         <div className="content">
-          <p className="description">
-            {lang === "en" ? course.description : course.description_es}
-          </p>
-          <Button
-            label={dictionary.technologies.visitCourse}
-            href={course.link}
-            linkTarget="_blank"
-            icon={<FaUpRightFromSquare />}
-            className="cta"
-          />
-
+          <h2>{dictionary.courseDetail.information}</h2>
           <div className="details">
             <div className="item">
               <span>{dictionary.technologies.price}:</span>
@@ -69,14 +59,8 @@ export default function CourseDetail({
                 : dictionary.technologies.spanish}
             </div>
           </div>
-          <div className="image-container">
-            <Image
-              src={course.image}
-              width={200}
-              height={200}
-              alt={course.name}
-            />
-          </div>
+
+          <h2>{dictionary.courseDetail.description}</h2>
           <div className="description">
             {course.long_description && (
               <div

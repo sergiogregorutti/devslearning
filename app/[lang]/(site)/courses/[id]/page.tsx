@@ -4,7 +4,8 @@ import dbConnect from "@/lib/dbConnect";
 import { Course } from "@/lib/models";
 import { Technology } from "@/lib/models";
 import { getDictionary } from "../../dictionaries";
-import PageHeader from "@/ui/site/course/PageHeader";
+import { getLocalizedPathFromPrefix } from "@/lib/language";
+import PageHeader from "@/components/layout/PageHeader";
 import CourseDetail from "@/ui/site/course/CourseDetail";
 
 type Props = {
@@ -106,10 +107,24 @@ export default async function CoursePage(props: {
   return (
     <div className="course-page">
       <PageHeader
-        dictionary={dictionary}
-        lang={lang}
-        course={course}
-        referer={referer}
+        title={course.name}
+        description={course.description}
+        image={course.image}
+        imagePositionMobile="bottom"
+        breadcrumb={[
+          {
+            name: dictionary.common.navigation.courses,
+            link: getLocalizedPathFromPrefix(lang, `/courses/`),
+          },
+          {
+            name: course.technologyName,
+            link: getLocalizedPathFromPrefix(
+              lang,
+              `/technologies/${course.technologySlug}/courses/`
+            ),
+          },
+        ]}
+        previousPage={{ referer, name: dictionary.common.goBack }}
       />
       <CourseDetail dictionary={dictionary} lang={lang} course={course} />
     </div>

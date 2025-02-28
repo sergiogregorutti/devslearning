@@ -29,7 +29,9 @@ export default function SortingAndFilters({
     <div className="order-and-filters-container">
       <Button
         label={
-          isVisible ? "Hide Sorting and Filters" : "Show Sorting and Filters"
+          isVisible
+            ? dictionary.technologyCourses.hideFilters
+            : dictionary.technologyCourses.showFilters
         }
         variant="outline"
         size="small"
