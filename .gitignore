@@ -37,3 +37,10 @@ next-env.d.ts
 
 # environment variables
 .env
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
