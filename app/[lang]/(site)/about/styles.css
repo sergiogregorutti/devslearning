@@ -38,19 +38,6 @@
     }
   }
 
-  & h2 {
-    font-size: 23px;
-    line-height: 65px;
-    font-weight: bold;
-    color: #2197f9;
-    text-align: left;
-    width: 100%;
-
-    @media (min-width: 768px) {
-      font-size: 40px;
-    }
-  }
-
   & p.text {
     line-height: 30px;
     margin-bottom: 30px;
@@ -60,9 +47,10 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 30px 40px;
+    margin-top: 25px;
 
     @media (min-width: 1024px) {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
     & .card {

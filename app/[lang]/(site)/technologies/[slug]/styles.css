@@ -54,28 +54,18 @@
     }
   }
 
-  & h2 {
-    font-size: 28px;
-    line-height: 28px;
-    font-weight: bold;
-    color: #2197f9;
-    text-align: left;
-    width: 100%;
-    margin-bottom: 10px;
-
-    @media (min-width: 768px) {
-      font-size: 40px;
-      line-height: 40px;
-    }
-  }
-
-  & p {
-    font-size: 20px;
-  }
-
   & p.text {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 30px;
     margin-bottom: 30px;
+  }
+
+  & .long-description {
+    margin-bottom: 30px;
+
+    p {
+      font-size: 16px;
+      line-height: 30px;
+    }
   }
 }

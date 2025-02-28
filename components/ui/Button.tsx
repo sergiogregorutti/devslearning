@@ -29,7 +29,7 @@ export default function Button({
   iconRotate = false,
 }: ButtonProps) {
   const baseStyles =
-    "rounded-full transition-all duration-500 cursor-pointer focus:outline-none ";
+    "rounded-full transition-all duration-500 cursor-pointer focus:outline-none inline-block ";
 
   // Size
   const defaultSizeStyles = "text-lg py-[9px] px-[28px] ";

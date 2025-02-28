@@ -3,7 +3,9 @@ import dbConnect from "@/lib/dbConnect";
 import { Technology } from "@/lib/models";
 import { getDictionary } from "../../dictionaries";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
-import PageHeader from "@/ui/site/technology/PageHeader";
+//import PageHeader from "@/ui/site/technology/PageHeader";
+import Link from "next/link";
+import PageHeader from "@/components/layout/PageHeader";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 import Container from "@/components/layout/Container";
@@ -84,55 +86,60 @@ export default async function TechnologyPage({
 
   return (
     <div className="technology-page">
-      <PageHeader dictionary={dictionary} lang={lang} technology={technology} />
+      <PageHeader
+        title={technology.name}
+        description={
+          lang === "en" ? technology.description : technology.description_es
+        }
+        image={technology.imageColor}
+        imagePositionMobile={"bottom"}
+        breadcrumb={[
+          {
+            name: dictionary.technologies.technologies,
+            link: getLocalizedPathFromPrefix(lang, `/technologies/`),
+          },
+        ]}
+      />
       <Container>
-        <div className="content">
-          <div className="col-content">
-            <div
-              className="long-description"
-              dangerouslySetInnerHTML={{
-                __html:
-                  lang === "en"
-                    ? technology.long_description
-                    : technology.long_description_es,
-              }}
-            ></div>
-            {lang === "en" ? (
-              <>
-                <h2>Do you want to learn {technology.name}?</h2>
-                <Button
-                  label={`View ${technology.name} Courses`}
-                  href={getLocalizedPathFromPrefix(
-                    lang,
-                    `/technologies/${technology.slug}/courses/`
-                  )}
-                  className="mt-2"
-                />
-              </>
-            ) : (
-              <>
-                <h2>¿Querés aprender {technology.name}?</h2>
-                <Button
-                  label={`Ver Cursos de ${technology.name}`}
-                  href={getLocalizedPathFromPrefix(
-                    lang,
-                    `/technologies/${technology.slug}/courses/`
-                  )}
-                  className="mt-2"
-                />
-              </>
-            )}
-          </div>
-          <div className="col-image">
-            <Image
-              src={technology.imageColor}
-              width={129}
-              height={38}
-              alt="Devs Learning"
-              priority={true}
+        <div
+          className="long-description"
+          dangerouslySetInnerHTML={{
+            __html:
+              lang === "en"
+                ? technology.long_description
+                : technology.long_description_es,
+          }}
+        ></div>
+        {lang === "en" ? (
+          <>
+            <h2>Do you want to learn {technology.name}?</h2>
+            <p>
+              We got you covered! We have carefully curated the most popular{" "}
+              {technology.name} courses, both free and paid. So you can start
+              learning it right away!
+            </p>
+            <Button
+              label={`View ${technology.name} Courses`}
+              href={getLocalizedPathFromPrefix(
+                lang,
+                `/technologies/${technology.slug}/courses/`
+              )}
+              className="mt-3"
             />
-          </div>
-        </div>
+          </>
+        ) : (
+          <>
+            <h2>¿Querés aprender {technology.name}?</h2>
+            <Button
+              label={`Ver Cursos de ${technology.name}`}
+              href={getLocalizedPathFromPrefix(
+                lang,
+                `/technologies/${technology.slug}/courses/`
+              )}
+              className="mt-2"
+            />
+          </>
+        )}
       </Container>
     </div>
   );

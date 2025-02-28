@@ -4,6 +4,7 @@
 @import url("../../css/table.css");
 @import url("../../css/forms.css");
 @import url("../../css/radio-button.css");
+@import url("../../css/breadcrumb.css");
 @import url("../../css/auth-template.css");
 
 /* Tailwind */
@@ -33,6 +34,20 @@ body {
 
 p {
   font-family: var(--font-poppins);
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 28px;
+  color: #2197f9;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 10px;
+
+  @media (min-width: 768px) {
+    font-size: 32px;
+    line-height: 32px;
+  }
 }
 
 img {
