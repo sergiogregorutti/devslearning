@@ -10,6 +10,7 @@ interface PageHeaderProps {
   description?: string;
   image?: string;
   imagePositionMobile?: "top" | "bottom";
+  imageMobileHidden?: boolean;
   breadcrumb?: any;
 }
 
@@ -18,6 +19,7 @@ export default function PageHeader({
   description,
   image,
   imagePositionMobile = "top",
+  imageMobileHidden = false,
   breadcrumb = null,
 }: PageHeaderProps) {
   let imagePositionMobileClasses = "";
@@ -47,7 +49,9 @@ export default function PageHeader({
         >
           {image && (
             <div
-              className={`md:flex md:justify-center ${imagePositionMobileClasses}`}
+              className={`md:flex md:justify-center ${imagePositionMobileClasses} ${
+                imageMobileHidden ? "hidden" : ""
+              }`}
             >
               <Image
                 src={image}

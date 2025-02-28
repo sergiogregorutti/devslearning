@@ -3,10 +3,7 @@ import dbConnect from "@/lib/dbConnect";
 import { Technology } from "@/lib/models";
 import { getDictionary } from "../../dictionaries";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
-//import PageHeader from "@/ui/site/technology/PageHeader";
-import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
-import Image from "next/image";
 import Button from "@/components/ui/Button";
 import Container from "@/components/layout/Container";
 
@@ -130,6 +127,11 @@ export default async function TechnologyPage({
         ) : (
           <>
             <h2>¿Querés aprender {technology.name}?</h2>
+            <p>
+              ¡Te tenemos cubierto! Hemos seleccionado cuidadosamente los cursos
+              de {technology.name} más populares, tanto gratuitos como de pago.
+              ¡Así que puedes empezar a aprender de inmediato!
+            </p>
             <Button
               label={`Ver Cursos de ${technology.name}`}
               href={getLocalizedPathFromPrefix(

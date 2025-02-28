@@ -4,8 +4,9 @@ import dbConnect from "@/lib/dbConnect";
 import { Technology } from "@/lib/models";
 import { getDictionary } from "../../../dictionaries";
 import { fetchFilteredCourses } from "@/lib/data/courses";
+import { getLocalizedPathFromPrefix } from "@/lib/language";
 import Container from "@/components/layout/Container";
-import PageHeader from "@/ui/site/courses/PageHeader";
+import PageHeader from "@/components/layout/PageHeader";
 import SortingAndFilters from "@/ui/site/courses/SortingAndFilters";
 import List from "@/ui/site/courses/list/list";
 import Loading from "@/ui/site/courses/list/loading";
@@ -28,14 +29,14 @@ async function getTechnology(slug: String) {
 
   const technology = await Technology.findOne(
     { slug: slug },
-    "_id name slug imageWhite"
+    "_id name slug imageColor"
   ).exec();
 
   return {
     _id: technology._id.toString(),
     name: technology.name,
     slug: technology.slug,
-    imageWhite: technology.imageWhite,
+    imageColor: technology.imageColor,
   };
 }
 
@@ -127,7 +128,26 @@ export default async function TechnologyPage({
 
   return (
     <div className="technology">
-      <PageHeader dictionary={dictionary} lang={lang} technology={technology} />
+      <PageHeader
+        title={
+          lang === "en"
+            ? `${technology.name} Courses`
+            : `Cursos de ${technology.name}`
+        }
+        description={
+          lang === "en"
+            ? `Discover our selection of the best ${technology.name} courses, carefully curated to help you master web development. You can filter courses by language and price, and sort them based on your preferences to find the perfect fit for your learning journey.`
+            : `Descubre nuestra selección de los mejores cursos de ${technology.name}, cuidadosamente seleccionados para ayudarte a dominar el desarrollo web. Puedes filtrar los cursos por idioma y precio, y ordenarlos según tus preferencias para encontrar la opción perfecta para tu aprendizaje.`
+        }
+        image={technology.imageColor}
+        imageMobileHidden={true}
+        breadcrumb={[
+          {
+            name: dictionary.common.navigation.courses,
+            link: getLocalizedPathFromPrefix(lang, `/courses/`),
+          },
+        ]}
+      />
       <Container>
         <div className="content-wrapper">
           <SortingAndFilters
