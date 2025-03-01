@@ -6,7 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "e2e-test": "npx playwright test",
+    "e2e-test:ui": "npx playwright test --ui"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^3.5.0",
