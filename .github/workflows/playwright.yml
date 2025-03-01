@@ -11,11 +11,10 @@ jobs:
     steps:
       - name: Wait for Vercel deployment
         run: |
-          VERCEL_TOKEN="8pWfMU3up740lRADSs1m9bzJ"
-          DEPLOYMENT_URL="https://www.devslearning.com"
+          VERCEL_TOKEN="${{ secrets.VERCEL_TOKEN }}"
 
           while true; do
-            STATUS=$(curl -s "https://api.vercel.com/v8/projects/deployments?url=${DEPLOYMENT_URL}" -H "Authorization: Bearer ${VERCEL_TOKEN}" | jq -r '.deployments[0].state')
+            STATUS=$(curl -s "https://api.vercel.com/v6/deployments" -H "Authorization: Bearer ${VERCEL_TOKEN}" | jq -r '.deployments[0].state')
             if [ "$STATUS" == "READY" ]; then
               echo "Deployment is ready!"
               break
