@@ -46,7 +46,6 @@ describe("Button Component", () => {
   test("renders button with correct variant", () => {
     render(<Button label="Click Me" variant="darkBlue" />);
 
-    // Verificar que el botón tiene el estilo correcto según la variante
     const button = screen.getByText("Click Me");
     expect(button).toHaveClass("bg-blue-800 text-white hover:bg-blue-900");
   });
@@ -54,7 +53,6 @@ describe("Button Component", () => {
   test("renders Link when href is provided", () => {
     render(<Button label="Click Me" href="/about" />);
 
-    // Verificar si el componente es un <Link>
     const link = screen.getByRole("link");
     expect(link).toHaveAttribute("href", "/about");
   });
