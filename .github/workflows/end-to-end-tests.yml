@@ -1,4 +1,4 @@
-name: Playwright Tests After Production Deploy
+name: End to End Tests After Production Deploy
 
 on:
   push:
@@ -6,25 +6,7 @@ on:
       - main
 
 jobs:
-  check-vercel-status:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Wait for Vercel deployment
-        run: |
-          VERCEL_TOKEN="${{ secrets.VERCEL_TOKEN }}"
-
-          while true; do
-            STATUS=$(curl -s "https://api.vercel.com/v6/deployments" -H "Authorization: Bearer ${VERCEL_TOKEN}" | jq -r '.deployments[0].state')
-            if [ "$STATUS" == "READY" ]; then
-              echo "Deployment is ready!"
-              break
-            else
-              echo "Waiting for deployment to complete..."
-              sleep 30
-            fi
-          done
-
-  run-jest-tests:
+  run-unit-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -41,9 +23,28 @@ jobs:
       - name: Run Jest tests
         run: npm test
 
-  test:
+  check-production-deployment:
     runs-on: ubuntu-latest
-    needs: [check-vercel-status, run-jest-tests]
+    needs: [run-unit-tests]
+    steps:
+      - name: Wait for Vercel deployment
+        run: |
+          VERCEL_TOKEN="${{ secrets.VERCEL_TOKEN }}"
+
+          while true; do
+            STATUS=$(curl -s "https://api.vercel.com/v6/deployments" -H "Authorization: Bearer ${VERCEL_TOKEN}" | jq -r '.deployments[0].state')
+            if [ "$STATUS" == "READY" ]; then
+              echo "Deployment is ready!"
+              break
+            else
+              echo "Waiting for deployment to complete..."
+              sleep 30
+            fi
+          done
+
+  run-end-to-end-tests:
+    runs-on: ubuntu-latest
+    needs: [check-production-deployment]
     steps:
       - name: Set environment variable for baseURL
         run: echo "DOMAIN=https://www.devslearning.com" >> $GITHUB_ENV
