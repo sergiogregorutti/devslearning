@@ -1,5 +1,6 @@
 import React, { MouseEvent } from "react";
 import Link from "next/link";
+import clsx from "clsx";
 
 interface ButtonProps {
   label: string;
@@ -15,80 +16,81 @@ interface ButtonProps {
   iconRotate?: boolean;
 }
 
-export default function Button({
-  label,
-  onClick,
-  className = "",
-  type = "button",
-  href,
-  variant = "default",
-  size = "default",
-  disabled = false,
-  linkTarget = "_self",
-  icon,
-  iconRotate = false,
-}: ButtonProps) {
-  const baseStyles =
-    "rounded-full transition-all duration-500 cursor-pointer focus:outline-none inline-block ";
+const Button: React.FC<ButtonProps> = React.memo(
+  ({
+    label,
+    onClick,
+    className = "",
+    type = "button",
+    href,
+    variant = "default",
+    size = "default",
+    disabled = false,
+    linkTarget = "_self",
+    icon,
+    iconRotate = false,
+  }) => {
+    // Base styles
+    const baseStyles =
+      "rounded-full transition-all duration-500 cursor-pointer focus:outline-none inline-block";
 
-  // Size
-  const defaultSizeStyles = "text-lg py-[9px] px-[28px] ";
-  const smallSizeStyles = "text-sm py-[5px] px-[20px] ";
+    // Variant styles
+    const variantStyles = {
+      default: "bg-blue-500 text-white hover:bg-blue-600",
+      darkBlue: "bg-blue-800 text-white hover:bg-blue-900",
+      outline:
+        "text-blue-500 border-solid border-2 border-blue-500 hover:bg-blue-500 hover:text-white",
+    };
 
-  // Variant
-  const defaultStyles = "bg-blue-500 text-white hover:bg-blue-600";
-  const darkBlueStyles = "bg-blue-800 text-white hover:bg-blue-900";
-  const outlineStyles =
-    "text-blue-500 border-solid border-2 border-blue-500 hover:bg-blue-500 hover:text-white";
+    // Size styles
+    const sizeStyles = {
+      small: "text-sm py-[5px] px-[20px]",
+      default: "text-lg py-[9px] px-[28px]",
+    };
 
-  // Disabled
-  const disabledStyles =
-    "bg-gray-300 text-gray-500 hover:bg-gray-300 cursor-default";
+    // Disabled styles
+    const disabledStyles =
+      "bg-gray-300 text-gray-500 hover:bg-gray-300 cursor-default";
 
-  const getVariantStyles = () => {
-    if (variant === "darkBlue") return darkBlueStyles;
-    if (variant === "outline") return outlineStyles;
-    return defaultStyles;
-  };
+    // Combine all styles using clsx
+    const buttonClasses = clsx(
+      baseStyles,
+      variantStyles[variant],
+      sizeStyles[size],
+      { [disabledStyles]: disabled },
+      className
+    );
 
-  const getSizeStyles = () => {
-    if (size === "small") return smallSizeStyles;
-    return defaultSizeStyles;
-  };
+    const iconClass = clsx("ml-[10px] text-sm", {
+      "inline-block relative top-[-2px] rotate-180": iconRotate,
+    });
 
-  const buttonClasses = `${baseStyles} ${getVariantStyles()} ${getSizeStyles()} ${
-    disabled ? disabledStyles : ""
-  } ${className}`;
-
-  if (href) {
-    return (
-      <Link href={href} target={linkTarget} className={buttonClasses}>
+    const buttonContent = (
+      <>
         {label}
-        {icon && (
-          <span
-            className={`ml-[10px] text-sm test ${
-              iconRotate ? "inline-block relative top-[-2px] rotate-180" : null
-            }`}
-          >
-            {icon}
-          </span>
-        )}
-      </Link>
+        {icon && <span className={iconClass}>{icon}</span>}
+      </>
+    );
+
+    if (href) {
+      return (
+        <Link href={href} target={linkTarget} className={buttonClasses}>
+          {buttonContent}
+        </Link>
+      );
+    }
+
+    return (
+      <button
+        type={type}
+        onClick={onClick}
+        className={buttonClasses}
+        disabled={disabled}
+      >
+        {buttonContent}
+      </button>
     );
   }
+);
 
-  return (
-    <button type={type} onClick={onClick} className={buttonClasses}>
-      {label}
-      {icon && (
-        <span
-          className={`ml-[10px] text-sm test ${
-            iconRotate ? "inline-block relative top-[-4px] rotate-180" : null
-          }`}
-        >
-          {icon}
-        </span>
-      )}
-    </button>
-  );
-}
+export default Button;
