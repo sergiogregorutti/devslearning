@@ -10,6 +10,9 @@ const config: Config = {
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/setupTests.ts"],
   testPathIgnorePatterns: ["/node_modules/", "/tests/"],
+  collectCoverage: true,
+  collectCoverageFrom: ["components/**/*.{js,jsx,ts,tsx}", "!src/**/*.d.ts"],
+  coverageReporters: ["text", "lcov", "json", "html"],
 };
 
 export default createJestConfig(config);

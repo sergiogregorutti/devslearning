@@ -51,4 +51,6 @@ const Select: React.FC<SelectProps> = React.memo(
   }
 );
 
+Select.displayName = "Select";
+
 export default Select;
