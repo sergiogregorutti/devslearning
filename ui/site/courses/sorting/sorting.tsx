@@ -45,7 +45,7 @@ export default function Sorting({
         {isClient ? (
           <Select
             options={options}
-            value={options.find((option) => option.value === sortBy)}
+            value={options.find((option) => option.value === sortBy) || null}
             handleChange={handleChange}
           />
         ) : null}
