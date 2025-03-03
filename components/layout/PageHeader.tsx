@@ -45,7 +45,7 @@ export default function PageHeader({
   };
 
   return (
-    <section className="mt-12 sm:mt-18 lg:mt-22 mb-6 lg:mb-10">
+    <section className="mt-6 sm:mt-18 lg:mt-22 mb-6 lg:mb-10">
       <Container>
         <div
           className={

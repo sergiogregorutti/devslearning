@@ -38,22 +38,22 @@ export default function Roadmaps({
         </p>
 
         <h2>{dictionary.roadmaps.chooseYourPath}</h2>
-        <div className="grid grid-cols-3 gap-x-[40px] mt-6">
+        <div className="grid md:grid-cols-3 gap-x-[40px] gap-y-[20px] mt-6">
           <Link
             href={getLocalizedPathFromPrefix(lang, `/roadmaps/frontend`)}
-            className="font-poppins text-white text-[22px] p-4 min-h-[100px] flex items-center justify-center bg-blue-500 hover:bg-blue-600 rounded-2xl transition-all duration-500"
+            className="font-poppins text-white text-center text-[22px] p-4 min-h-[100px] flex items-center justify-center bg-blue-500 hover:bg-blue-600 rounded-2xl transition-all duration-500"
           >
             {dictionary.roadmaps.frontendName}
           </Link>
           <Link
             href={getLocalizedPathFromPrefix(lang, `/roadmaps/backend`)}
-            className="font-poppins text-white text-[22px] p-4 min-h-[100px] flex items-center justify-center bg-blue-500 hover:bg-blue-600 rounded-2xl transition-all duration-500"
+            className="font-poppins text-white text-center text-[22px] p-4 min-h-[100px] flex items-center justify-center bg-blue-500 hover:bg-blue-600 rounded-2xl transition-all duration-500"
           >
             {dictionary.roadmaps.backendName}
           </Link>
           <Link
             href={getLocalizedPathFromPrefix(lang, `/roadmaps/fullstack`)}
-            className="font-poppins text-white text-[22px] p-4 min-h-[100px] flex items-center justify-center bg-blue-500 hover:bg-blue-600 rounded-2xl transition-all duration-500"
+            className="font-poppins text-white text-center text-[22px] p-4 min-h-[100px] flex items-center justify-center bg-blue-500 hover:bg-blue-600 rounded-2xl transition-all duration-500"
           >
             {dictionary.roadmaps.fullstackName}
           </Link>
