@@ -19,15 +19,23 @@ export default function Roadmaps({
       />
       <Container>
         <h2>{dictionary.roadmaps.journeyTitle}</h2>
-        <p className="mb-6">{dictionary.roadmaps.journeyDescription}</p>
+        <p className="mb-6 leading-[30px]">
+          {dictionary.roadmaps.journeyDescription}
+        </p>
 
         <h2>{dictionary.roadmaps.rolesTitle}</h2>
         <h3>{dictionary.roadmaps.frontendName}</h3>
-        <p className="mb-6">{dictionary.roadmaps.frontendDescription}</p>
+        <p className="mb-6 leading-[30px]">
+          {dictionary.roadmaps.frontendDescription}
+        </p>
         <h3>{dictionary.roadmaps.backendName}</h3>
-        <p className="mb-6">{dictionary.roadmaps.backendDescription}</p>
+        <p className="mb-6 leading-[30px]">
+          {dictionary.roadmaps.backendDescription}
+        </p>
         <h3>{dictionary.roadmaps.fullstackName}</h3>
-        <p className="mb-6">{dictionary.roadmaps.fullstackDescription}</p>
+        <p className="mb-6 leading-[30px]">
+          {dictionary.roadmaps.fullstackDescription}
+        </p>
 
         <h2>{dictionary.roadmaps.chooseYourPath}</h2>
         <div className="grid grid-cols-3 gap-x-[40px] mt-6">
