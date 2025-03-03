@@ -37,7 +37,10 @@ export default function FeaturedTechnologies({
     <div className="featured-technologies">
       <Container>
         <div className="content">
-          <h2>{dictionary.home.technologiesTitle}</h2>
+          <h2>{dictionary.home.coursesSection.title}</h2>
+          <p className="mb-6 leading-[30px] w-full text-center">
+            {dictionary.home.coursesSection.description}
+          </p>
           <div className="technologies-list">
             {technologies.map((technology: any) => (
               <Link
@@ -73,8 +76,8 @@ export default function FeaturedTechnologies({
             ))}
           </div>
           <Button
-            label={dictionary.home.seeAllTechnologies}
-            href={getLocalizedPathFromPrefix(lang, `/technologies`)}
+            label={dictionary.home.coursesSection.cta}
+            href={getLocalizedPathFromPrefix(lang, `/courses`)}
             variant="darkBlue"
           />
         </div>

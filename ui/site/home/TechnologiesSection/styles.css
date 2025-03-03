@@ -1,4 +1,10 @@
 .free-content {
+  padding: 15px 0;
+
+  @media (min-width: 768px) {
+    padding: 0;
+  }
+
   & .content {
     padding: 15px 0;
     display: grid;

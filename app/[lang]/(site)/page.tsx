@@ -7,9 +7,10 @@ import { getDictionary } from "./dictionaries";
 import Image from "next/image";
 import { fetchTechnologies } from "@/lib/data/technologies";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
-import InfoBanner from "@/ui/site/home/InfoBanner";
-import TechnologiesList from "@/ui/site/home/FeaturedTechnologies";
-import FreeContent from "@/ui/site/home/FreeContent";
+import StatsSection from "@/ui/site/home/StatsSection";
+import CoursesSection from "@/ui/site/home/CoursesSection";
+import TechnologiesSection from "@/ui/site/home/TechnologiesSection";
+import RoadmapsSection from "@/ui/site/home/RoadmapsSection";
 import Button from "@/components/ui/Button";
 import Container from "@/components/layout/Container";
 
@@ -121,13 +122,14 @@ export default async function Home(props: {
           </div>
         </Container>
       </div>
-      <InfoBanner dictionary={dictionary} />
-      <TechnologiesList
+      <StatsSection dictionary={dictionary} />
+      <CoursesSection
         dictionary={dictionary}
         lang={lang}
         technologies={technologies}
       />
-      <FreeContent dictionary={dictionary} />
+      <TechnologiesSection dictionary={dictionary} lang={lang} />
+      <RoadmapsSection dictionary={dictionary} lang={lang} />
     </>
   );
 }

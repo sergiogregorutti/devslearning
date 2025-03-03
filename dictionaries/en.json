@@ -32,17 +32,32 @@
     "title2": "Learning Hub",
     "subtitle": "A curated directory of the best programming courses—free and paid.",
     "browseTechnologies": "Start Exploring",
-    "info": {
+    "stats": {
       "browseBetween": "Browse between",
-      "coursesIn": "courses in",
-      "technologies": "technologies"
+      "courses": "courses",
+      "technologies": "technologies",
+      "and": "and",
+      "roadmaps": "roadmaps"
     },
-    "technologiesTitle": "Learn The Most Requested Technologies",
-    "seeAllTechnologies": "See All Technologies",
+    "coursesSection": {
+      "title": "Best Courses, Handpicked for You",
+      "description": "We offer a curated collection of the most popular courses in web development, programming languages, and more. Our platform features both free and paid courses that provide comprehensive content to help you grow as a developer. Whether you’re looking to learn HTML, CSS, JavaScript, or dive into frameworks like React and Node.js, we have a course for you.",
+      "cta": "See All Courses"
+    },
+    "technologiesSection": {
+      "title": "Understand the Technologies Behind Development",
+      "description": "Explore the essential technologies in web development. In our Technologies section, you’ll find clear insights on what each technology is, how long it takes to learn, and what to learn next. Whether it’s Frontend (React, Vue.js), Backend (Node.js, Python), or others, we guide you through the key steps to make informed learning choices.",
+      "cta": "Start Learning Today"
+    },
+    "roadmapsSection": {
+      "title": "Clear Learning Paths to Become a Developer",
+      "description": "Our Roadmaps section helps you understand the skills needed to become a Frontend, Backend, or Full Stack Developer. We provide structured guides that outline the essential steps and learning order to follow. Whether you’re focused on frontend technologies, backend development, or full-stack, we’ve got a roadmap for you.",
+      "cta": "Explore Our Roadmaps"
+    },
     "courses": "courses",
     "freeContent": {
-      "title": "Start Learning for Free!",
-      "description": "At Devs Learning, we believe that knowledge should be accessible to everyone. That's why every technology includes free courses—so you can start learning today without spending a dime. Whether you're taking your first steps or leveling up your skills, you'll always find great free resources to kickstart your journey!"
+      "title": "Understand the Technologies Behind Development",
+      "description": "Want to know more about the technologies you need to learn? In our Technologies section, you’ll find detailed information about each key technology, including what it is and why it's important, how long it takes to learn and what to learn next. We provide insights into technologies such as Frontend (React, Vue.js), Backend (Node.js, Python), and others to help you make informed decisions about your learning journey. Each page gives you a snapshot of the learning path, so you know exactly where to start and where to go next."
     }
   },
   "notFound": {

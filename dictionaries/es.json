@@ -32,13 +32,28 @@
     "title2": "para Desarrolladores",
     "subtitle": "Un directorio curado con los mejores cursos de programación—gratuitos y pagos.",
     "browseTechnologies": "Comienza a Explorar",
-    "info": {
+    "stats": {
       "browseBetween": "Navega entre",
-      "coursesIn": "cursos en",
-      "technologies": "tecnologías"
+      "coursesIn": "cursos",
+      "technologies": "tecnologías",
+      "and": "y",
+      "roadmaps": "carreras"
     },
-    "technologiesTitle": "Aprende Las Tecnologías Más Solicitadas",
-    "seeAllTechnologies": "Ver Todas Las Tecnologías",
+    "coursesSection": {
+      "title": "Los Mejores Cursos, Seleccionados para Vos",
+      "description": "Ofrecemos una colección curada de los cursos más populares en desarrollo web, lenguajes de programación y más. Nuestra plataforma cuenta con cursos gratuitos y de pago que proporcionan contenido completo para ayudarte a crecer como desarrollador. Ya sea que desees aprender HTML, CSS, JavaScript o sumergirte en frameworks como React y Node.js, tenemos un curso para ti.",
+      "cta": "Ver Todos los Cursos"
+    },
+    "technologiesSection": {
+      "title": "Entiende las Tecnologías Detrás del Desarrollo",
+      "description": "Explora las tecnologías esenciales en el desarrollo web. En nuestra sección de Tecnologías, encontrarás información clara sobre qué es cada tecnología, cuánto tiempo lleva aprenderla y qué aprender después. Ya sea Frontend (React, Vue.js), Backend (Node.js, Python) u otras, te guiamos a través de los pasos clave para tomar decisiones informadas sobre tu aprendizaje.",
+      "cta": "Comienza a Aprender Hoy"
+    },
+    "roadmapsSection": {
+      "title": "Rutas de Aprendizaje Claras para Convertirte en Desarrollador",
+      "description": "Nuestra sección de Carreras te ayuda a entender las habilidades necesarias para convertirte en un Desarrollador Frontend, Backend o Full Stack. Ofrecemos guías estructuradas que detallan los pasos esenciales y el orden de aprendizaje. Ya sea que te concentres en tecnologías frontend, desarrollo backend o full-stack, tenemos una ruta de aprendizaje para vos.",
+      "cta": "Explora Nuestras Carreras"
+    },
     "courses": "cursos",
     "freeContent": {
       "title": "¡Empezá a Aprender Gratis!",
