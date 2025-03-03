@@ -4,6 +4,7 @@
     "goBack": "Volver",
     "navigation": {
       "home": "Inicio",
+      "roadmaps": "Carreras",
       "technologies": "Tecnologías",
       "courses": "Cursos",
       "about": "Acerca De"
@@ -16,6 +17,7 @@
     },
     "navigation": {
       "home": "Inicio",
+      "roadmaps": "Carreras",
       "technologies": "Tecnologías",
       "courses": "Cursos",
       "about": "Acerca De",
@@ -81,6 +83,20 @@
     "title": "Recuperar Contraseña",
     "newPassword": "Nueva Contraseña",
     "resetPassword": "Crear Nueva Contraseña"
+  },
+  "roadmaps": {
+    "title": "Carreras",
+    "description": "Devs Learning ofrece rutas de aprendizaje estructuradas para ayudarte a dominar el desarrollo web. Ya sea que te enfoques en el front-end, back-end o full-stack, estas guías proporcionan una hoja de ruta clara de las habilidades y tecnologías esenciales que debes aprender.",
+    "journeyTitle": "Comienza tu camino en el desarrollo web",
+    "journeyDescription": "¿Te interesa convertirte en desarrollador web pero no sabes por dónde empezar? Ya sea que sueñes con crear sitios web impresionantes, manejar sistemas de back-end o dominar todo lo que hay entre medio, nuestras rutas de aprendizaje están diseñadas para ayudarte a dar el primer paso. Sigue un camino claro y construye las habilidades necesarias para comenzar tu viaje en el mundo del desarrollo web.",
+    "rolesTitle": "Entendiendo los roles de los desarrolladores web",
+    "frontendName": "Desarrollador Frontend",
+    "frontendDescription": "Un desarrollador frontend se enfoca en el diseño y la maquetación de sitios web. Trabajan con HTML, CSS y JavaScript para crear la interfaz y la experiencia del usuario. Se aseguran de que un sitio web se vea bien y funcione de manera fluida en todos los dispositivos y navegadores.",
+    "backendName": "Desarrollador Backend",
+    "backendDescription": "Los desarrolladores backend trabajan en el lado del servidor de las aplicaciones web. Crean bases de datos, manejan la comunicación con el servidor y gestionan la autenticación de usuarios. Usan lenguajes como Node.js, Python y Ruby para asegurarse de que todo en segundo plano funcione sin problemas.",
+    "fullstackName": "Desarrollador Full Stack",
+    "fullstackDescription": "Los desarrolladores full stack son expertos tanto en el desarrollo frontend como backend. Son capaces de construir tanto la interfaz del lado del cliente como la lógica del lado del servidor. Los desarrolladores full stack tienen un conjunto de habilidades amplio y pueden gestionar tanto el front-end como el back-end de una aplicación web de principio a fin.",
+    "chooseYourPath": "Elige tu camino y comienza a aprender"
   },
   "technologies": {
     "title": "Tecnologías",

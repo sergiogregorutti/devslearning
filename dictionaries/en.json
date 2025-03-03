@@ -4,6 +4,7 @@
     "goBack": "Go Back",
     "navigation": {
       "home": "Home",
+      "roadmaps": "Roadmaps",
       "technologies": "Technologies",
       "courses": "Courses",
       "about": "About"
@@ -16,6 +17,7 @@
     },
     "navigation": {
       "home": "Home",
+      "roadmaps": "Roadmaps",
       "technologies": "Technologies",
       "courses": "Courses",
       "about": "About",
@@ -81,6 +83,20 @@
     "title": "Reset Password",
     "newPassword": "New Password",
     "resetPassword": "Create New Password"
+  },
+  "roadmaps": {
+    "title": "Roadmaps",
+    "description": "Devs Learning offers structured learning paths to help you master web development. Whether you’re focused on front-end, back-end, or full-stack, these guides provide a clear roadmap of the essential skills and technologies to learn.",
+    "journeyTitle": "Starting Your Web Development Journey",
+    "journeyDescription": "Are you interested in becoming a web developer but don’t know where to begin? Whether you dream of building stunning websites, handling back-end systems, or mastering everything in between, our roadmap guides are designed to help you take the first step. Follow a clear path and build the skills you need to start your journey into the world of web development.",
+    "rolesTitle": "Understanding the Roles of Web Developers",
+    "frontendName": "Frontend Developer",
+    "frontendDescription": "A frontend developer focuses on the design and layout of websites. They work with HTML, CSS, and JavaScript to create the user interface and experience. They ensure that a website looks good and functions smoothly on all devices and browsers.",
+    "backendName": "Backend Developer",
+    "backendDescription": "Backend developers work on the server-side of web applications. They create databases, handle server communication, and manage user authentication. They use languages like Node.js, Python, and Ruby to make sure everything behind the scenes works seamlessly.",
+    "fullstackName": "Full Stack Developer",
+    "fullstackDescription": "Full stack developers are skilled in both frontend and backend development. They are capable of building both the client-side interface and the server-side logic. Full stack developers have a broad skill set and can manage both the front and back end of a web application from start to finish.",
+    "chooseYourPath": "Choose Your Path and Start Learning"
   },
   "technologies": {
     "title": "Technologies",

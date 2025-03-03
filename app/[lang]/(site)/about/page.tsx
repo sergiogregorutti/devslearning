@@ -69,9 +69,9 @@ export default async function Technologies(props: {
       <PageHeader title={dictionary.about.title} />
       <Container>
         <h2>{dictionary.about.mission}</h2>
-        <p className="text">{dictionary.about.mission_description}</p>
+        <p className="mb-6">{dictionary.about.mission_description}</p>
         <h2>{dictionary.about.vision}</h2>
-        <p className="text">{dictionary.about.vision_description}</p>
+        <p className="mb-6">{dictionary.about.vision_description}</p>
         <h2>{dictionary.about.team}</h2>
         <div className="team">
           <div className="card">

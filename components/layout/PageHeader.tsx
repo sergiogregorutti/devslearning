@@ -102,7 +102,7 @@ export default function PageHeader({
             )}
             <Title label={title} className="mb-3 md:mb-0" />
             {description && (
-              <p className="text-gray-500 text-sm md:text-base md:grow md:flex md:items-center">
+              <p className=" text-gray-500 text-sm md:text-base md:grow md:flex md:items-center">
                 {description}
               </p>
             )}

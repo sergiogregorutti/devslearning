@@ -1,48 +1,4 @@
 .about-page {
-  & .content {
-    display: grid;
-    grid-template-columns: 1fr;
-
-    @media (min-width: 1024px) {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  & .col-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  & .col-image {
-    display: none;
-
-    @media (min-width: 1024px) {
-      display: flex;
-      align-items: start;
-      justify-content: center;
-    }
-
-    & img {
-      height: auto;
-      width: 65%;
-      position: sticky;
-      top: 100px;
-      margin: 15px 0;
-
-      @media (min-width: 768px) {
-        margin: 0;
-        width: 55%;
-      }
-    }
-  }
-
-  & p.text {
-    line-height: 30px;
-    margin-bottom: 30px;
-  }
-
   .team {
     display: grid;
     grid-template-columns: 1fr;

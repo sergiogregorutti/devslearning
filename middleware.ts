@@ -9,6 +9,7 @@ const sections = new Set([
   "auth/forgot-password",
   "auth/reset-password",
   "auth/activate-account",
+  "roadmaps",
   "technologies",
   "courses",
   "about",

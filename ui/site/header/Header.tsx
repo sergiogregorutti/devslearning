@@ -43,6 +43,14 @@ const Header = ({
             <ul className="menu">
               <li>
                 <Link
+                  href={getLocalizedPathFromPrefix(lang, `/courses`)}
+                  className="text-white text-lg py-[5px] px-[20px] hover:bg-blue-600 rounded-full focus:outline-none transition-all duration-500"
+                >
+                  {dictionary.header.navigation.courses}
+                </Link>
+              </li>
+              <li>
+                <Link
                   href={getLocalizedPathFromPrefix(lang, `/technologies`)}
                   className="text-white text-lg py-[5px] px-[20px] hover:bg-blue-600 rounded-full focus:outline-none transition-all duration-500"
                 >
@@ -51,10 +59,10 @@ const Header = ({
               </li>
               <li>
                 <Link
-                  href={getLocalizedPathFromPrefix(lang, `/courses`)}
+                  href={getLocalizedPathFromPrefix(lang, `/roadmaps`)}
                   className="text-white text-lg py-[5px] px-[20px] hover:bg-blue-600 rounded-full focus:outline-none transition-all duration-500"
                 >
-                  {dictionary.header.navigation.courses}
+                  {dictionary.header.navigation.roadmaps}
                 </Link>
               </li>
               <li>
@@ -120,6 +128,11 @@ const Header = ({
                   </Link>
                 </li>
                 <li className="item" onClick={toggleMobileMenu}>
+                  <Link href={getLocalizedPathFromPrefix(lang, `/courses`)}>
+                    {dictionary.header.navigation.courses}
+                  </Link>
+                </li>
+                <li className="item" onClick={toggleMobileMenu}>
                   <Link
                     href={getLocalizedPathFromPrefix(lang, `/technologies`)}
                   >
@@ -127,8 +140,8 @@ const Header = ({
                   </Link>
                 </li>
                 <li className="item" onClick={toggleMobileMenu}>
-                  <Link href={getLocalizedPathFromPrefix(lang, `/courses`)}>
-                    {dictionary.header.navigation.courses}
+                  <Link href={getLocalizedPathFromPrefix(lang, `/roadmaps`)}>
+                    {dictionary.header.navigation.roadmaps}
                   </Link>
                 </li>
                 <li className="item" onClick={toggleMobileMenu}>

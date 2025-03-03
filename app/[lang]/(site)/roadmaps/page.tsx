@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { getDictionary } from "../dictionaries";
-import { fetchCategoriesWithTechnologies } from "@/lib/data/technologiesCategories";
-import PageHeader from "@/components/layout/PageHeader";
-import CategoriesList from "@/ui/site/coursesHome/CategoriesList";
-import Container from "@/components/layout/Container";
+import RoadmapsPage from "@/components/pages/roadmaps/Roadmaps";
 
 type Props = {
   params: Promise<{ lang: string; id: string }>;
@@ -17,14 +14,15 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
   switch (params.lang) {
     case "en":
-      pageTitle = "Devs Learning | Technologies";
-      description = "Browse between our technologies to learn web development";
+      pageTitle = "Roadmaps | Devs Learning";
+      description =
+        "Discover structured learning paths at Devs Learning. Explore detailed roadmaps for Frontend, Backend, and Full Stack development. Start your journey into web development with clear and actionable guides.";
       break;
 
     case "es":
-      pageTitle = "Devs Learning | Tecnologías";
+      pageTitle = "Carreras | Devs Learning";
       description =
-        "Navega entre nuestras tecnologías para aprender desarrollo web";
+        "Descubre rutas de aprendizaje estructurados en Devs Learning. Explora carreras detalladas para desarrollo Frontend, Backend y Full Stack. Comienza tu camino en el desarrollo web con guías claras y prácticas.";
       break;
   }
 
@@ -53,7 +51,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   };
 }
 
-export default async function Technologies(props: {
+export default async function Roadmaps(props: {
   params: Promise<{ lang: string }>;
 }) {
   const params = await props.params;
@@ -61,22 +59,6 @@ export default async function Technologies(props: {
   const { lang } = params;
 
   const dictionary = await getDictionary(lang);
-  const categories = await fetchCategoriesWithTechnologies();
 
-  return (
-    <div className="courses-page">
-      <PageHeader
-        title={dictionary.courses.title}
-        description={dictionary.courses.description}
-        image="/assets/boy2.svg"
-      />
-      <Container>
-        <CategoriesList
-          dictionary={dictionary}
-          lang={lang}
-          categories={categories}
-        />
-      </Container>
-    </div>
-  );
+  return <RoadmapsPage lang={lang} dictionary={dictionary} />;
 }

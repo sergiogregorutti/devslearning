@@ -24,13 +24,21 @@ export default function Footer({
     <footer className="mt-auto pt-10">
       <Container>
         <div className="flex flex-col text-center text-base">
-          <ul className="flex justify-center space-x-5 border-b border-gray-300 pb-4">
+          <ul className="flex flex-wrap justify-center gap-x-[20px] gap-y-[10px] border-b border-gray-300 pb-4 px-4">
             <li>
               <Link
                 className="text-gray-400 hover:text-gray-600"
                 href={getLocalizedPathFromPrefix(lang, `/`)}
               >
                 {dictionary.common.navigation.home}
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="text-gray-400 hover:text-gray-600"
+                href={getLocalizedPathFromPrefix(lang, `/courses/`)}
+              >
+                {dictionary.common.navigation.courses}
               </Link>
             </li>
             <li>
@@ -44,9 +52,9 @@ export default function Footer({
             <li>
               <Link
                 className="text-gray-400 hover:text-gray-600"
-                href={getLocalizedPathFromPrefix(lang, `/courses/`)}
+                href={getLocalizedPathFromPrefix(lang, `/roadmaps/`)}
               >
-                {dictionary.common.navigation.courses}
+                {dictionary.common.navigation.roadmaps}
               </Link>
             </li>
             <li>

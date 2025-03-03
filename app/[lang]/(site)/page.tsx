@@ -106,7 +106,7 @@ export default async function Home(props: {
               <p>{dictionary.home.subtitle}</p>
               <Button
                 label={dictionary.home.browseTechnologies}
-                href={getLocalizedPathFromPrefix(lang, `/technologies`)}
+                href={getLocalizedPathFromPrefix(lang, `/courses`)}
               />
             </div>
             <div className="col-image">

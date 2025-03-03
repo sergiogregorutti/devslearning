@@ -10,6 +10,8 @@
 /* Tailwind */
 @import "tailwindcss";
 @theme {
+  --font-nunito: "Nunito", "Nunito Fallback";
+  --font-poppins: "Poppins", "Poppins Fallback";
   --color-blue-300: #d7ebfe;
   --color-blue-500: #2197f9;
   --color-blue-600: #1a73e8;
@@ -34,6 +36,7 @@ body {
 
 p {
   font-family: var(--font-poppins);
+  line-height: 30px;
 }
 
 h2 {
@@ -47,6 +50,18 @@ h2 {
   @media (min-width: 768px) {
     font-size: 32px;
     line-height: 32px;
+  }
+}
+
+h3 {
+  color: #0b376b;
+  font-weight: bold;
+  font-size: 23px;
+  line-height: 42px;
+  margin: 0;
+
+  @media (min-width: 768px) {
+    font-size: 24px;
   }
 }
 

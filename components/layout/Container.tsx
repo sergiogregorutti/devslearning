@@ -11,9 +11,9 @@ export default function Container({
   className = "",
   fluid = false,
 }: ContainerProps) {
-  const baseStyles = "px-10 sm:px-14 lg:px-16 mx-auto ";
+  const baseStyles = "px-10 sm:px-14 lg:px-16 mx-auto w-full ";
   const defaultStyles = "max-w-screen-xl";
-  const fluidStyles = "w-full";
+  const fluidStyles = "";
 
   const containerClasses = `${baseStyles} ${
     fluid ? fluidStyles : defaultStyles
