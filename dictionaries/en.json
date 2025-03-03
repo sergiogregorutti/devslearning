@@ -142,9 +142,9 @@
   "about": {
     "title": "About",
     "mission": "Mission",
-    "mission_description": "Our mission is to provide a reliable and accessible directory of programming courses, offering developers the opportunity to learn, grow, and continuously update their technical skills. We aim to provide access to quality resources and help individuals enhance their professional potential in the digital world.",
+    "mission_description": "Our mission is to provide a reliable and accessible directory of free programming resources, offering courses, roadmaps, and guides to help developers of all levels learn, grow, and continuously update their technical skills. We aim to be a reference site, providing users with not only access to the best courses but also key information about technologies, estimated learning times, and clear pathways for further progress in their careers.",
     "vision": "Vision",
-    "vision_description": "Our vision is to become the leading platform for learning programming, supporting developers of all skill levels on their path to professional success. We strive to be the go-to reference for accessing quality courses while staying up-to-date with the latest technologies and market trends.",
+    "vision_description": "Our vision is to become the leading platform for learning programming, supporting developers of all levels on their path to professional success. We want to be the go-to site for discovering structured roadmaps, gaining insights into technologies, and finding quality courses that help users stay updated with the latest technologies and market trends. We aim to democratize access to programming education for free, providing accessible, high-quality resources for everyone.",
     "team": "Team",
     "team_members": {
       "sergio": {

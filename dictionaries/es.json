@@ -142,9 +142,9 @@
   "about": {
     "title": "Acerca De",
     "mission": "Misión",
-    "mission_description": "Nuestra misión es ofrecer un directorio confiable y accesible de cursos de programación, brindando a los desarrolladores la oportunidad de aprender, crecer y actualizar sus habilidades tecnológicas de manera continua. Queremos facilitar el acceso a recursos de calidad y ayudar a las personas a mejorar su potencial profesional en el mundo digital.",
+    "mission_description": "Nuestra misión es ofrecer un directorio confiable y accesible de recursos gratuitos para aprender programación, proporcionando cursos, hojas de ruta y guías para que los desarrolladores de todos los niveles puedan aprender, crecer y actualizar sus habilidades técnicas de manera continua. Queremos ser un sitio de referencia, brindando a los usuarios no solo acceso a los mejores cursos, sino también información clave sobre tecnologías, estimaciones de tiempo para aprenderlas y caminos claros para seguir avanzando en su carrera.",
     "vision": "Visión",
-    "vision_description": "Nuestra visión es convertirnos en la plataforma líder para aprender programación, apoyando a desarrolladores de todas las habilidades y niveles en su camino hacia el éxito profesional. Buscamos ser el punto de referencia para acceder a cursos de calidad, manteniéndonos al día con las últimas tecnologías y tendencias del mercado.",
+    "vision_description": "Nuestra visión es convertirnos en la plataforma líder para aprender programación, apoyando a desarrolladores de todos los niveles en su camino hacia el éxito profesional. Queremos ser el sitio al que los estudiantes acudan para obtener información clara sobre tecnologías y seguir roadmaps estructurados, además de descubrir cursos de calidad que los ayuden a mantenerse actualizados con las últimas tecnologías y tendencias del mercado. Buscamos democratizar el acceso al aprendizaje de la programación de manera gratuita, brindando recursos accesibles y de calidad para todos.",
     "team": "Equipo",
     "team_members": {
       "sergio": {

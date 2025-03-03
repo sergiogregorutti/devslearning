@@ -13,14 +13,14 @@ interface ICourse {
 const technologies: ITechnology[] = await fetchTechnologies();
 const courses: ICourse[] = await fetchCourses();
 
+const coursesRoutes: any = courses.map(
+  (course) => `https://www.devslearning.com/courses/${course._id}/`
+);
 const technologiesRoutes: any = technologies.map(
   (tech) => `https://www.devslearning.com/technologies/${tech.slug}/`
 );
 const technologiesCoursesRoutes: any = technologies.map(
   (tech) => `https://www.devslearning.com/technologies/${tech.slug}/courses`
-);
-const coursesRoutes: any = courses.map(
-  (course) => `https://www.devslearning.com/courses/${course._id}/`
 );
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -37,17 +37,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
-      url: "https://www.devslearning.com/technologies",
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.7,
-      alternates: {
-        languages: {
-          es: "https://www.devslearning.com/es/technologies",
-        },
-      },
-    },
-    {
       url: "https://www.devslearning.com/courses",
       lastModified: new Date(),
       changeFrequency: "daily",
@@ -58,14 +47,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       },
     },
+    ...coursesRoutes.map((url: string) => ({
+      url,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.8,
+      alternates: {
+        languages: {
+          es: url.replace("devslearning.com", "devslearning.com/es"),
+        },
+      },
+    })),
     {
-      url: "https://www.devslearning.com/about",
+      url: "https://www.devslearning.com/technologies",
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.7,
       alternates: {
         languages: {
-          es: "https://www.devslearning.com/es/about",
+          es: "https://www.devslearning.com/es/technologies",
         },
       },
     },
@@ -91,16 +91,60 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       },
     })),
-    ...coursesRoutes.map((url: string) => ({
-      url,
+    {
+      url: "https://www.devslearning.com/roadmaps",
       lastModified: new Date(),
       changeFrequency: "daily",
-      priority: 0.8,
+      priority: 0.7,
       alternates: {
         languages: {
-          es: url.replace("devslearning.com", "devslearning.com/es"),
+          es: "https://www.devslearning.com/es/roadmaps",
         },
       },
-    })),
+    },
+    {
+      url: "https://www.devslearning.com/roadmaps/frontend",
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.7,
+      alternates: {
+        languages: {
+          es: "https://www.devslearning.com/es/roadmaps/frontend",
+        },
+      },
+    },
+    {
+      url: "https://www.devslearning.com/roadmaps/backend",
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.7,
+      alternates: {
+        languages: {
+          es: "https://www.devslearning.com/es/roadmaps/backend",
+        },
+      },
+    },
+    {
+      url: "https://www.devslearning.com/roadmaps/fullstack",
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.7,
+      alternates: {
+        languages: {
+          es: "https://www.devslearning.com/es/roadmaps/fullstack",
+        },
+      },
+    },
+    {
+      url: "https://www.devslearning.com/about",
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.7,
+      alternates: {
+        languages: {
+          es: "https://www.devslearning.com/es/about",
+        },
+      },
+    },
   ];
 }
