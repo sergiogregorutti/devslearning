@@ -67,7 +67,7 @@ export default function FullStackEn() {
         <p className="mb-6">
           Testing is essential for ensuring your code works as expected. Learn
           to write unit tests and perform integration testing to catch bugs and
-          improve your web applications' reliability.
+          improve your web applications&apos; reliability.
         </p>
 
         <h2>9. Deployment and Hosting (Netlify, Vercel, AWS)</h2>

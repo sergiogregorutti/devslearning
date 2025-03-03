@@ -94,15 +94,15 @@ export default function FrontendEn() {
           Learn how to deploy your applications using modern platforms like
           Netlify and Vercel. Master the process of pushing your code to
           production with Continuous Deployment (CD) pipelines and monitor your
-          site's performance.
+          site&apos;s performance.
         </p>
 
         <h2>12. Stay Up-to-date</h2>
         <p className="mb-6">
           Frontend development is constantly evolving. Stay current with the
-          latest frameworks, best practices, and tools to ensure you're always
-          on top of your game as a frontend developer. Follow blogs, attend
-          events, and participate in the community.
+          latest frameworks, best practices, and tools to ensure you&apos;re
+          always on top of your game as a frontend developer. Follow blogs,
+          attend events, and participate in the community.
         </p>
       </Container>
     </>
