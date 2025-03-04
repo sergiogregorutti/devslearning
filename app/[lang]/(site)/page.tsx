@@ -6,15 +6,11 @@ import { redirect } from "next/navigation";
 import { getDictionary } from "./dictionaries";
 import Image from "next/image";
 import { fetchTechnologies } from "@/lib/data/technologies";
-import { getLocalizedPathFromPrefix } from "@/lib/language";
+import HeroSlider from "@/ui/site/home/HeroSlider";
 import StatsSection from "@/ui/site/home/StatsSection";
 import CoursesSection from "@/ui/site/home/CoursesSection";
 import TechnologiesSection from "@/ui/site/home/TechnologiesSection";
 import RoadmapsSection from "@/ui/site/home/RoadmapsSection";
-import Button from "@/components/ui/Button";
-import Container from "@/components/layout/Container";
-
-import "./styles.css";
 
 type Props = {
   params: Promise<{ lang: string; id: string }>;
@@ -98,30 +94,7 @@ export default async function Home(props: {
 
   return (
     <>
-      <div className="hero-section bg-blue-300">
-        <Container>
-          <div className="content">
-            <div className="col-text">
-              <span className={`title ${lang}`}>{dictionary.home.title}</span>
-              <span className={`title2 ${lang}`}>{dictionary.home.title2}</span>
-              <p>{dictionary.home.subtitle}</p>
-              <Button
-                label={dictionary.home.browseTechnologies}
-                href={getLocalizedPathFromPrefix(lang, `/courses`)}
-              />
-            </div>
-            <div className="col-image">
-              <Image
-                src="/assets/boy.svg"
-                width={555}
-                height={286}
-                alt="Devs Learning"
-                priority={true}
-              />
-            </div>
-          </div>
-        </Container>
-      </div>
+      <HeroSlider dictionary={dictionary} lang={lang} />
       <StatsSection dictionary={dictionary} />
       <CoursesSection
         dictionary={dictionary}

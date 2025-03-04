@@ -28,13 +28,34 @@
     "createdBy": "Creado por"
   },
   "home": {
-    "title": "Tu Centro de Aprendizaje",
-    "title2": "para Desarrolladores",
-    "subtitle": "Un directorio curado con los mejores cursos de programación—gratuitos y pagos.",
-    "browseTechnologies": "Comienza a Explorar",
+    "heroSlider": [
+      {
+        "title": "Bienvenido a",
+        "title2": "Devs Learning",
+        "subtitle": "Tu plataforma de referencia para aprender programación desde cero. ¡Comienza tu viaje de desarrollo aquí!"
+      },
+      {
+        "title": "Explora nuestros",
+        "title2": "Cursos",
+        "subtitle": "Tenemos los mejores cursos de desarrollo web, tanto gratuitos como de pago, para ayudarte a crecer como desarrollador.",
+        "cta": "Ver Todos los Cursos"
+      },
+      {
+        "title": "Domina las",
+        "title2": "Tecnologías Web",
+        "subtitle": "Aprende tecnologías como HTML, CSS, JavaScript y más. Entiende las herramientas que necesitas para construir aplicaciones web.",
+        "cta": "Descubre las Tecnologías"
+      },
+      {
+        "title": "Elige tu",
+        "title2": "Carrera",
+        "subtitle": "Ya sea que quieras convertirte en desarrollador frontend, backend o full-stack, nuestras hojas de ruta te guiarán en cada paso del camino.",
+        "cta": "Ver Carreras"
+      }
+    ],
     "stats": {
       "browseBetween": "Navega entre",
-      "coursesIn": "cursos",
+      "courses": "cursos",
       "technologies": "tecnologías",
       "and": "y",
       "roadmaps": "carreras"

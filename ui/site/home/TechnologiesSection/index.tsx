@@ -5,7 +5,7 @@ import { getLocalizedPathFromPrefix } from "@/lib/language";
 
 import "./styles.css";
 
-export default function FreeContent({
+export default function TechnologiesSection({
   dictionary,
   lang,
 }: {

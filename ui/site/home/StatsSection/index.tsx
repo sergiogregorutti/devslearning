@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import Counter from "@/ui/common/Counter";
 import { ITechnologyCoursesCount } from "@/interfaces/course";
 import Container from "@/components/layout/Container";
@@ -31,28 +32,65 @@ export default function InfoBanner({
   }, []);
 
   return (
-    <div className="info-banner bg-blue-500">
+    <div className="py-6 md:py-12 bg-blue-500">
       <Container>
-        <div className="content">
-          <span>
-            {dictionary.home.stats["browseBetween"]}{" "}
-            {coursesCount ? (
-              <Counter initialValue={0} targetValue={coursesCount} />
-            ) : (
-              0
-            )}{" "}
-            {dictionary.home.stats["courses"]}
-            {", "}
-            {coursesCount ? (
-              <Counter initialValue={0} targetValue={technologiesCount} />
-            ) : (
-              0
-            )}{" "}
-            {dictionary.home.stats["technologies"]}{" "}
-            {dictionary.home.stats["and"]}{" "}
-            <Counter initialValue={0} targetValue={3} />{" "}
-            {dictionary.home.stats["roadmaps"]}
-          </span>
+        <div className="grid gap-[30px] grid-cols-3 max-w-[700px] mx-auto">
+          <div className="text-white">
+            <Image
+              src="/assets/stats/training.svg"
+              width={555}
+              height={286}
+              alt="Courses"
+              priority={true}
+              className="h-[50px] md:h-[70px] mb-4"
+            />
+            <span className="block text-center text-2xl md:text-4xl font-bold">
+              {coursesCount ? (
+                <Counter initialValue={0} targetValue={coursesCount} />
+              ) : (
+                0
+              )}
+            </span>
+            <span className="block text-center md:text-xl leading-none">
+              {dictionary.home.stats["courses"]}
+            </span>
+          </div>
+          <div className="text-white">
+            <Image
+              src="/assets/stats/technologies.svg"
+              width={555}
+              height={286}
+              alt="Courses"
+              priority={true}
+              className="h-[50px] md:h-[70px] mb-4"
+            />
+            <span className="block text-center text-2xl md:text-4xl font-bold">
+              {technologiesCount ? (
+                <Counter initialValue={0} targetValue={technologiesCount} />
+              ) : (
+                0
+              )}
+            </span>
+            <span className="block text-center md:text-xl leading-none">
+              {dictionary.home.stats["technologies"]}
+            </span>
+          </div>
+          <div className="text-white">
+            <Image
+              src="/assets/stats/roadmap.svg"
+              width={555}
+              height={286}
+              alt="Courses"
+              priority={true}
+              className="h-[50px] md:h-[70px] mb-4"
+            />
+            <span className="block text-center text-2xl md:text-4xl font-bold">
+              {coursesCount ? <Counter initialValue={0} targetValue={3} /> : 0}
+            </span>
+            <span className="block text-center md:text-xl leading-none">
+              {dictionary.home.stats["roadmaps"]}
+            </span>
+          </div>
         </div>
       </Container>
     </div>
