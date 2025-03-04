@@ -88,9 +88,11 @@ export default async function Technologies(props: {
             />
             <h3>Sergio Gregorutti</h3>
             <span className="position">
-              {dictionary.about.team_members.sergio.position}
+              {dictionary.about.team_members.sergio.role}
             </span>
-            <span className="description"></span>
+            <span className="description">
+              {dictionary.about.team_members.sergio.professionalProfile}
+            </span>
             <ul className="contact-info">
               <li>
                 <Link
@@ -132,9 +134,11 @@ export default async function Technologies(props: {
             />
             <h3>Florencia De Luca</h3>
             <span className="position">
-              {dictionary.about.team_members.florencia.position}
+              {dictionary.about.team_members.florencia.role}
             </span>
-            <span className="description"></span>
+            <span className="description">
+              {dictionary.about.team_members.florencia.professionalProfile}
+            </span>
             <ul className="contact-info">
               <li>
                 <Link

@@ -30,7 +30,7 @@
   "home": {
     "heroSlider": [
       {
-        "title": "Bienvenido a",
+        "title": "Bienvenid@ a",
         "title2": "Devs Learning",
         "subtitle": "Tu plataforma de referencia para aprender programación desde cero. ¡Comienza tu viaje de desarrollo aquí!"
       },
@@ -184,10 +184,12 @@
     "team": "Equipo",
     "team_members": {
       "sergio": {
-        "position": "Desarrollador Full-stack"
+        "role": "Creador",
+        "professionalProfile": "Desarrollador Full-stack"
       },
       "florencia": {
-        "position": "Diseñadora Gráfica, Ilustradora y Diseñadora UX-UI"
+        "role": "Colaboradora",
+        "professionalProfile": "Diseñadora Gráfica, Ilustradora y Diseñadora UX-UI"
       }
     }
   }

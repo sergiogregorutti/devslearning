@@ -184,10 +184,12 @@
     "team": "Team",
     "team_members": {
       "sergio": {
-        "position": "Full-stack Developer"
+        "role": "Creator",
+        "professionalProfile": "Full-stack Developer"
       },
       "florencia": {
-        "position": "Graphic Designer, Illustrator and UX-UI Designer"
+        "role": "Contributor",
+        "professionalProfile": "Graphic Designer, Illustrator and UX-UI Designer"
       }
     }
   }

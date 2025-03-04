@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import BackendPage from "@/components/pages/roadmaps/backend/Backend";
+import BackendPage from "@/components/pages/roadmaps/backend";
 
 type Props = {
   params: Promise<{ lang: string; id: string }>;

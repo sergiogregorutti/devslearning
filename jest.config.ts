@@ -16,6 +16,9 @@ const config: Config = {
     "!components/**/*.d.ts",
   ],
   coverageReporters: ["text", "lcov", "json", "html"],
+  moduleNameMapper: {
+    "^@/(.*)$": "<rootDir>/$1", // Esto mapea el alias '@' a la raíz del proyecto
+  },
 };
 
 export default createJestConfig(config);

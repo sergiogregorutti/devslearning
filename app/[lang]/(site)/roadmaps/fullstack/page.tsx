@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import FullstackPage from "@/components/pages/roadmaps/fullstack/Fullstack";
+import FullstackPage from "@/components/pages/roadmaps/fullstack";
 
 type Props = {
   params: Promise<{ lang: string; id: string }>;

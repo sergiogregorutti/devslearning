@@ -1,7 +1,7 @@
 import PageHeader from "@/components/layout/PageHeader";
 import Container from "@/components/layout/Container";
 
-export default function BackendEn() {
+export default function Backend() {
   return (
     <>
       <PageHeader

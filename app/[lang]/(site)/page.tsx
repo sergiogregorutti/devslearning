@@ -24,13 +24,15 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
   switch (params.lang) {
     case "en":
-      pageTitle = "Devs Learning | Course directory for developers";
-      description = "Discover the best courses to learn web development";
+      pageTitle = "Devs Learning | Learn, Explore, and Master Web Development";
+      description =
+        "Discover courses, technologies, and roadmaps to guide your development journey and become a web development expert.";
       break;
 
     case "es":
-      pageTitle = "Devs Learning | Directorio de cursos para desarrolladores";
-      description = "Descubre los mejores cursos para aprender desarrollo web";
+      pageTitle = "Devs Learning | Aprende, Explora y Domina el Desarrollo Web";
+      description =
+        "Descubre cursos, tecnologías y rutas de aprendizaje que guiarán tu viaje de desarrollo para convertirte en un experto en programación web.";
       break;
   }
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getDictionary } from "../dictionaries";
-import RoadmapsPage from "@/components/pages/roadmaps/Roadmaps";
+import RoadmapsPage from "@/components/pages/roadmaps";
 
 type Props = {
   params: Promise<{ lang: string; id: string }>;
