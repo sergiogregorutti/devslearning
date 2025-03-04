@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import FullstackPage from "@/components/pages/roadmaps/fullstack";
+import { Language } from "@/interfaces/course";
 
 type Props = {
   params: Promise<{ lang: string; id: string }>;
@@ -52,7 +53,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 export default async function Fullstack(props: {
-  params: Promise<{ lang: string }>;
+  params: Promise<{ lang: Language }>;
 }) {
   const params = await props.params;
 

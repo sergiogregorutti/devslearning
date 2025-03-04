@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { Language } from "@/interfaces/course";
 import BackendPage from "@/components/pages/roadmaps/backend";
 
 type Props = {
-  params: Promise<{ lang: string; id: string }>;
+  params: Promise<{ lang: Language; id: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
@@ -52,11 +53,11 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 }
 
 export default async function Backend(props: {
-  params: Promise<{ lang: string }>;
+  params: Promise<{ lang: Language }>;
 }) {
   const params = await props.params;
 
   const { lang } = params;
 
-  return <BackendPage lang={lang} />;
+  return <BackendPage lang={lang as "en" | "es"} />;
 }
