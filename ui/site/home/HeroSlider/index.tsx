@@ -19,11 +19,10 @@ export default function HeroSlider({
   lang: string;
 }) {
   var sliderSettings = {
-    //adaptiveHeight: true,
     arrows: false,
     dots: true,
     infinite: true,
-    //autoplay: true,
+    autoplay: true,
     autoplaySpeed: 5000,
     speed: 800,
     slidesToShow: 1,
