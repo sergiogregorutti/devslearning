@@ -23,7 +23,7 @@ export default function HeroSlider({
     dots: true,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 6000,
     speed: 800,
     slidesToShow: 1,
     slidesToScroll: 1,
