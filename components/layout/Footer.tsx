@@ -1,18 +1,9 @@
 "use client";
 
-import React, { useEffect, useCallback } from "react";
+import React from "react";
 import Link from "next/link";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import Container from "@/components/layout/Container";
-
-const initializeSmartlook = () => {
-  if (process.env.NODE_ENV === "production" && typeof window !== "undefined") {
-    const { Smartlook } = require("smartlook-client");
-    if (!Smartlook.initialized()) {
-      Smartlook.init("bf44692fcb061ad2509652dae2260a7ded59bfac");
-    }
-  }
-};
 
 interface FooterProps {
   dictionary: Record<string, any>;
@@ -20,14 +11,6 @@ interface FooterProps {
 }
 
 export default function Footer({ dictionary, lang }: FooterProps) {
-  const initialize = useCallback(() => {
-    initializeSmartlook();
-  }, []);
-
-  useEffect(() => {
-    initialize();
-  }, [initialize]);
-
   const navigationLinks = [
     { href: "/", label: dictionary.common.navigation.home },
     { href: "/courses/", label: dictionary.common.navigation.courses },

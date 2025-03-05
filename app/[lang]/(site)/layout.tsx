@@ -5,6 +5,7 @@ import { Nunito, Poppins } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import SmartlookInit from "@/components/utils/Smartlook";
 import type { Metadata } from "next";
 import Header from "@/ui/site/header/Header";
 import Footer from "@/components/layout/Footer";
@@ -91,6 +92,7 @@ export default async function RootLayout(
             <GoogleAnalytics
               gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ?? ""}
             />
+            <SmartlookInit />
           </>
         ) : null}
       </body>
