@@ -1,11 +1,17 @@
 "use client";
 
 import React from "react";
-
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import Container from "@/components/layout/Container";
 import Title from "../ui/Title";
+import clsx from "clsx";
+
+interface BreadcrumbItem {
+  name: string;
+  link: string;
+}
 
 interface PageHeaderProps {
   title: string;
@@ -13,52 +19,52 @@ interface PageHeaderProps {
   image?: string;
   imagePositionMobile?: "top" | "bottom";
   imageMobileHidden?: boolean;
-  breadcrumb?: any;
-  previousPage?: any;
+  breadcrumb?: BreadcrumbItem[];
+  previousPage?: { name: string };
 }
 
-export default function PageHeader({
+const PageHeader: React.FC<PageHeaderProps> = ({
   title,
   description,
   image,
   imagePositionMobile = "top",
   imageMobileHidden = false,
-  breadcrumb = null,
-  previousPage = null,
-}: PageHeaderProps) {
-  let imagePositionMobileClasses = "";
-  let titlePositionMobileClasses = "";
+  breadcrumb,
+  previousPage,
+}) => {
+  const router = useRouter();
 
-  switch (imagePositionMobile) {
-    case "top":
-      imagePositionMobileClasses = "mb-3 md:mb-0 md:order-2";
-      titlePositionMobileClasses = "sm:order-1";
-      break;
-    case "bottom":
-      imagePositionMobileClasses = "mt-6 md:mt-0 order-2";
-      titlePositionMobileClasses = "order-1";
-      break;
-  }
+  const imagePositionMobileClasses = clsx({
+    "mb-3 md:mb-0 md:order-2": imagePositionMobile === "top",
+    "mt-6 md:mt-0 order-2": imagePositionMobile === "bottom",
+  });
+
+  const titlePositionMobileClasses = clsx({
+    "sm:order-1": imagePositionMobile === "top",
+    "order-1": imagePositionMobile === "bottom",
+  });
 
   const handleGoBack = () => {
-    window.history.back();
+    router.back();
   };
 
   return (
     <section className="mt-6 sm:mt-18 lg:mt-22 mb-6 lg:mb-10">
       <Container>
         <div
-          className={
+          className={clsx(
             image
               ? "grid md:grid-cols-[60%_40%] lg:grid-cols-[70%_30%] md:gap-[20px]"
               : ""
-          }
+          )}
         >
           {image && (
             <div
-              className={`md:flex md:justify-center md:items-center ${imagePositionMobileClasses} ${
+              className={clsx(
+                "md:flex md:justify-center md:items-center",
+                imagePositionMobileClasses,
                 imageMobileHidden ? "hidden" : ""
-              }`}
+              )}
             >
               <Image
                 src={image}
@@ -76,9 +82,13 @@ export default function PageHeader({
                 <ol className="breadcrumb">
                   {previousPage && (
                     <li className="breadcrumb-item">
-                      <a onClick={handleGoBack} className="item back">
+                      <button
+                        onClick={handleGoBack}
+                        className="item back text-blue-500"
+                        aria-label={`Go back to ${previousPage.name}`}
+                      >
                         {previousPage.name}
-                      </a>
+                      </button>
                     </li>
                   )}
                   <li className="breadcrumb-item">
@@ -102,7 +112,7 @@ export default function PageHeader({
             )}
             <Title label={title} className="mb-3 md:mb-0" />
             {description && (
-              <p className=" text-gray-500 text-sm md:text-base md:grow md:flex md:items-center">
+              <p className="text-gray-500 text-sm md:text-base md:grow md:flex md:items-center">
                 {description}
               </p>
             )}
@@ -111,4 +121,6 @@ export default function PageHeader({
       </Container>
     </section>
   );
-}
+};
+
+export default PageHeader;

@@ -124,7 +124,7 @@ export default async function CoursePage(props: {
             ),
           },
         ]}
-        previousPage={{ referer, name: dictionary.common.goBack }}
+        previousPage={{ name: dictionary.common.goBack }}
       />
       <CourseDetail dictionary={dictionary} lang={lang} course={course} />
     </div>
