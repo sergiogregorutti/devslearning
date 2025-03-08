@@ -1,24 +1,26 @@
-import React, { MouseEvent } from "react";
+import React, { MouseEvent, ReactNode } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 
 interface ButtonProps {
-  label: string;
+  label?: string; // Optional to allow children
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
   className?: string;
   type?: "button" | "submit" | "reset";
   href?: string;
-  variant?: "default" | "darkBlue" | "outline";
-  size?: "small" | "default";
+  variant?: "default" | "darkBlue" | "outline" | "ghost" | "disabled";
+  size?: "extraSmall" | "small" | "default";
   disabled?: boolean;
   linkTarget?: "_self" | "_blank";
   icon?: React.ReactNode;
   iconRotate?: boolean;
+  children?: ReactNode; // Optional children prop
 }
 
 const Button: React.FC<ButtonProps> = React.memo(
   ({
     label,
+    children,
     onClick,
     className = "",
     type = "button",
@@ -32,32 +34,31 @@ const Button: React.FC<ButtonProps> = React.memo(
   }) => {
     // Base styles
     const baseStyles =
-      "rounded-full transition-all duration-500 cursor-pointer focus:outline-none inline-block";
+      "rounded-full transition-all duration-500 focus:outline-none";
 
     // Variant styles
     const variantStyles = {
-      default: "bg-blue-500 text-white hover:bg-blue-600",
-      darkBlue: "bg-blue-800 text-white hover:bg-blue-900",
+      default: "bg-blue-500 text-white hover:bg-blue-600 cursor-pointer",
+      darkBlue: "bg-blue-800 text-white hover:bg-blue-900 cursor-pointer",
       outline:
-        "text-blue-500 border-solid border-2 border-blue-500 hover:bg-blue-500 hover:text-white",
+        "text-blue-500 border-solid border-blue-500 hover:bg-blue-500 hover:text-white border-1 cursor-pointer",
+      ghost: "hover:bg-neutral-100 cursor-pointer",
+      disabled:
+        "bg-neutral-200 text-neutral-500 hover:bg-neutral-200 cursor-default",
     };
 
     // Size styles
     const sizeStyles = {
+      extraSmall: "text-xs py-[2px] px-[10px]",
       small: "text-sm py-[5px] px-[20px]",
       default: "text-lg py-[9px] px-[28px]",
     };
-
-    // Disabled styles
-    const disabledStyles =
-      "bg-gray-300 text-gray-500 hover:bg-gray-300 cursor-default";
 
     // Combine all styles using clsx
     const buttonClasses = clsx(
       baseStyles,
       variantStyles[variant],
       sizeStyles[size],
-      { [disabledStyles]: disabled },
       className
     );
 
@@ -65,7 +66,8 @@ const Button: React.FC<ButtonProps> = React.memo(
       "inline-block relative top-[-2px] rotate-180": iconRotate,
     });
 
-    const buttonContent = (
+    // Content rendering logic
+    const buttonContent = children || (
       <>
         {label}
         {icon && <span className={iconClass}>{icon}</span>}

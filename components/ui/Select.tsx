@@ -16,12 +16,12 @@ const customStyles: StylesConfig<any, false> = {
   }),
   control: (base) => ({
     ...base,
-    border: "1px solid #000",
+    border: "1px solid #2197f9",
     borderRadius: "5px",
     boxShadow: "none",
     ":hover": {
       cursor: "pointer",
-      border: "1px solid #000",
+      border: "1px solid #2197f9",
     },
   }),
   valueContainer: (base) => ({

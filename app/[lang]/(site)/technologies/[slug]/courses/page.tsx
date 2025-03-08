@@ -11,6 +11,7 @@ import SortingAndFilters from "@/ui/site/courses/SortingAndFilters";
 import List from "@/ui/site/courses/list/list";
 import Loading from "@/ui/site/courses/list/loading";
 import Pagination from "@/ui/site/courses/pagination/pagination";
+import CoursesPage from "@/components/pages/technologies/[slug]/courses";
 
 import "./styles.css";
 
@@ -94,20 +95,38 @@ export default async function TechnologyPage({
   params: Promise<{ lang: string; slug: string }>;
   searchParams?: Promise<{
     page?: string;
-    language?: string;
-    pricing?: string;
+    filters?: string;
     sortBy?: string;
   }>;
 }) {
   const { lang, slug } = await params;
   const {
     page = 1,
-    language = "",
-    pricing = "",
+    filters = "",
     sortBy = "newest",
   } = (await searchParams) || {};
   const dictionary = await getDictionary(lang);
   const technology = await getTechnology(slug);
+
+  const filtersArray = filters ? filters.split(",").filter(Boolean) : [];
+
+  const languageMap: Record<string, string> = {
+    english: "en",
+    spanish: "es",
+  };
+
+  const languageFilters = filtersArray
+    .filter((f) => f === "english" || f === "spanish")
+    .map((f) => languageMap[f]);
+
+  const pricingFilters = filtersArray.filter(
+    (f) => f === "free" || f === "paid"
+  );
+
+  const languageQuery =
+    languageFilters.length > 0 ? languageFilters.join(",") : "";
+  const pricingQuery =
+    pricingFilters.length > 0 ? pricingFilters.join(",") : "";
 
   const queryObject: {
     technology: string;
@@ -116,16 +135,29 @@ export default async function TechnologyPage({
   } = {
     technology: technology._id.toString(),
   };
-  if (language) {
-    queryObject.language = language;
+
+  if (languageQuery) {
+    queryObject.language = languageQuery;
   }
-  if (pricing) {
-    queryObject.pricing = pricing;
+  if (pricingQuery) {
+    queryObject.pricing = pricingQuery;
   }
 
   const currentPage = Number(page) || 1;
   const courses = await fetchFilteredCourses(queryObject);
 
+  console.log("courses", courses);
+
+  return (
+    <CoursesPage
+      technology={technology}
+      filtersArray={filtersArray}
+      lang={lang}
+      dictionary={dictionary}
+    />
+  );
+
+  /*
   return (
     <div className="technology">
       <PageHeader
@@ -180,4 +212,5 @@ export default async function TechnologyPage({
       </Container>
     </div>
   );
+  */
 }
