@@ -119,9 +119,11 @@ export default async function TechnologyPage({
               label={`View ${technology.name} Courses`}
               href={getLocalizedPathFromPrefix(
                 lang,
-                `/technologies/${technology.slug}/courses/`
+                `/technologies/${technology.slug}/courses?filters=${
+                  lang === "en" ? "english" : "spanish"
+                }`
               )}
-              className="mt-3"
+              className="inline-block mt-3"
             />
           </>
         ) : (
@@ -136,9 +138,11 @@ export default async function TechnologyPage({
               label={`Ver Cursos de ${technology.name}`}
               href={getLocalizedPathFromPrefix(
                 lang,
-                `/technologies/${technology.slug}/courses/`
+                `/technologies/${technology.slug}/courses?filters=${
+                  lang === "en" ? "english" : "spanish"
+                }`
               )}
-              className="mt-2"
+              className="inline-block mt-3"
             />
           </>
         )}

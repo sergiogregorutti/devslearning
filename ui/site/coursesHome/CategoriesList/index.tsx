@@ -45,7 +45,9 @@ export default function TechnologiesList({
                     key={technology.name}
                     href={getLocalizedPathFromPrefix(
                       lang,
-                      `/technologies/${technology.slug}/courses/`
+                      `/technologies/${technology.slug}/courses?filters=${
+                        lang === "en" ? "english" : "spanish"
+                      }`
                     )}
                   >
                     <Image

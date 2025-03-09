@@ -11,6 +11,7 @@ import SortingAndFilters from "@/ui/site/courses/SortingAndFilters";
 import List from "@/ui/site/courses/list/list";
 import Loading from "@/ui/site/courses/list/loading";
 import Pagination from "@/ui/site/courses/pagination/pagination";
+import CoursesPage from "@/components/pages/technologies/[slug]/courses";
 
 import "./styles.css";
 
@@ -94,20 +95,56 @@ export default async function TechnologyPage({
   params: Promise<{ lang: string; slug: string }>;
   searchParams?: Promise<{
     page?: string;
-    language?: string;
-    pricing?: string;
+    filters?: string;
     sortBy?: string;
   }>;
 }) {
   const { lang, slug } = await params;
   const {
     page = 1,
-    language = "",
-    pricing = "",
+    filters = "",
     sortBy = "newest",
   } = (await searchParams) || {};
   const dictionary = await getDictionary(lang);
   const technology = await getTechnology(slug);
+
+  const filtersArray = filters ? filters.split(",").filter(Boolean) : [];
+
+  const languageMap: Record<string, string> = {
+    english: "en",
+    spanish: "es",
+  };
+
+  const languageFilters = filtersArray
+    .filter((f) => f === "english" || f === "spanish")
+    .map((f) => languageMap[f]);
+
+  const pricingFilters = filtersArray.filter(
+    (f) => f === "free" || f === "paid"
+  );
+
+  const languageQuery =
+    languageFilters.length > 0 ? languageFilters.join(",") : "";
+  const pricingQuery =
+    pricingFilters.length > 0 ? pricingFilters.join(",") : "";
+
+  const currentPage = Number(page) || 1;
+
+  let sortByValue, order;
+  switch (sortBy) {
+    case "priceHighToLow":
+      sortByValue = "price";
+      order = "desc";
+      break;
+    case "priceLowToHigh":
+      sortByValue = "price";
+      order = "asc";
+      break;
+    case "newest":
+      sortByValue = "year";
+      order = "desc";
+      break;
+  }
 
   const queryObject: {
     technology: string;
@@ -116,68 +153,43 @@ export default async function TechnologyPage({
   } = {
     technology: technology._id.toString(),
   };
-  if (language) {
-    queryObject.language = language;
+
+  if (languageQuery) {
+    queryObject.language = languageQuery;
   }
-  if (pricing) {
-    queryObject.pricing = pricing;
+  if (pricingQuery) {
+    queryObject.pricing = pricingQuery;
   }
 
-  const currentPage = Number(page) || 1;
-  const courses = await fetchFilteredCourses(queryObject);
+  const courses = await fetchFilteredCourses(
+    queryObject,
+    currentPage,
+    sortByValue,
+    order
+  );
+
+  const coursesArray = JSON.parse(JSON.stringify(courses.docs));
+
+  const coursesData = {
+    totalDocs: courses.totalDocs,
+    limit: courses.limit,
+    totalPages: courses.totalPages,
+    page: courses.page,
+    pagingCounter: courses.pagingCounter,
+    hasPrevPage: courses.hasPrevPage,
+    hasNextPage: courses.hasNextPage,
+    prevPage: courses.prevPage,
+    nextPage: courses.nextPage,
+  };
 
   return (
-    <div className="technology">
-      <PageHeader
-        title={
-          lang === "en"
-            ? `${technology.name} Courses`
-            : `Cursos de ${technology.name}`
-        }
-        description={
-          lang === "en"
-            ? `Discover our selection of the best ${technology.name} courses, carefully curated to help you master web development. You can filter courses by language and price, and sort them based on your preferences to find the perfect fit for your learning journey.`
-            : `Descubre nuestra selección de los mejores cursos de ${technology.name}, cuidadosamente seleccionados para ayudarte a dominar el desarrollo web. Puedes filtrar los cursos por idioma y precio, y ordenarlos según tus preferencias para encontrar la opción perfecta para tu aprendizaje.`
-        }
-        image={technology.imageColor}
-        imageMobileHidden={true}
-        breadcrumb={[
-          {
-            name: dictionary.common.navigation.courses,
-            link: getLocalizedPathFromPrefix(lang, `/courses/`),
-          },
-        ]}
-      />
-      <Container>
-        <div className="content-wrapper">
-          <SortingAndFilters
-            technologyId={technology._id}
-            language={language}
-            pricing={pricing}
-            dictionary={dictionary}
-          />
-          <p className="courses-count">
-            {courses.totalDocs} {dictionary.technologies.coursesLowercase}
-          </p>
-          <div className="courses">
-            <Suspense fallback={<Loading />}>
-              <List
-                query={queryObject}
-                sortBy={sortBy}
-                currentPage={currentPage}
-                dictionary={dictionary}
-                lang={lang}
-              />
-            </Suspense>
-            {courses.totalPages > 1 && (
-              <Pagination totalPages={courses.totalPages} />
-            )}
-            {courses.totalDocs === 0 && (
-              <p className="no-results">{dictionary.technologies.noResults}</p>
-            )}
-          </div>
-        </div>
-      </Container>
-    </div>
+    <CoursesPage
+      technology={technology}
+      filtersArray={filtersArray}
+      courses={coursesArray}
+      coursesData={coursesData}
+      lang={lang}
+      dictionary={dictionary}
+    />
   );
 }

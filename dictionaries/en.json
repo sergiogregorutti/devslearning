@@ -165,7 +165,18 @@
   },
   "courses": {
     "title": "Courses",
-    "description": "Explore the best programming courses on Devs Learning. We have carefully curated the most popular courses, both free and paid, in English and Spanish, so you can learn the most in-demand technologies, improve your skills, and advance in your career as a developer."
+    "description": "Explore the best programming courses on Devs Learning. We have carefully curated the most popular courses, both free and paid, in English and Spanish, so you can learn the most in-demand technologies, improve your skills, and advance in your career as a developer.",
+    "list": "List",
+    "grid": "Grid",
+    "coursesFound": "courses found",
+    "orderBy": "Order by",
+    "filters": "Filters",
+    "language": "Language",
+    "price": "Price",
+    "clearFilters": "Clear filters",
+    "activeFilters": "Active filters",
+    "next": "Next",
+    "previous": "Previous"
   },
   "technologyCourses": {
     "showFilters": "Show Sorting and Filters",
