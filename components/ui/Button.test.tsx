@@ -34,10 +34,12 @@ describe("Button Component", () => {
   });
 
   test("button is disabled when disabled prop is true", () => {
-    render(<Button label="Click Me" disabled />);
+    render(<Button variant="disabled" label="Click Me" disabled />);
 
     const button = screen.getByText("Click Me");
-    expect(button).toHaveClass("bg-gray-300 text-gray-500 cursor-default");
+    expect(button).toHaveClass(
+      "rounded-full transition-all duration-500 focus:outline-none text-center bg-neutral-200 text-neutral-500 hover:bg-neutral-200 cursor-default text-lg py-[9px] px-[28px]"
+    );
 
     fireEvent.click(button);
     expect(button).toBeDisabled();

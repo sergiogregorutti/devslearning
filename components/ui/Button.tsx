@@ -34,7 +34,7 @@ const Button: React.FC<ButtonProps> = React.memo(
   }) => {
     // Base styles
     const baseStyles =
-      "rounded-full transition-all duration-500 focus:outline-none";
+      "rounded-full transition-all duration-500 focus:outline-none text-center";
 
     // Variant styles
     const variantStyles = {

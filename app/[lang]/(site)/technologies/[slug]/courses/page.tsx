@@ -128,6 +128,24 @@ export default async function TechnologyPage({
   const pricingQuery =
     pricingFilters.length > 0 ? pricingFilters.join(",") : "";
 
+  const currentPage = Number(page) || 1;
+
+  let sortByValue, order;
+  switch (sortBy) {
+    case "priceHighToLow":
+      sortByValue = "price";
+      order = "desc";
+      break;
+    case "priceLowToHigh":
+      sortByValue = "price";
+      order = "asc";
+      break;
+    case "newest":
+      sortByValue = "year";
+      order = "desc";
+      break;
+  }
+
   const queryObject: {
     technology: string;
     language?: string;
@@ -143,74 +161,35 @@ export default async function TechnologyPage({
     queryObject.pricing = pricingQuery;
   }
 
-  const currentPage = Number(page) || 1;
-  const courses = await fetchFilteredCourses(queryObject);
+  const courses = await fetchFilteredCourses(
+    queryObject,
+    currentPage,
+    sortByValue,
+    order
+  );
 
-  console.log("courses", courses);
+  const coursesArray = JSON.parse(JSON.stringify(courses.docs));
+
+  const coursesData = {
+    totalDocs: courses.totalDocs,
+    limit: courses.limit,
+    totalPages: courses.totalPages,
+    page: courses.page,
+    pagingCounter: courses.pagingCounter,
+    hasPrevPage: courses.hasPrevPage,
+    hasNextPage: courses.hasNextPage,
+    prevPage: courses.prevPage,
+    nextPage: courses.nextPage,
+  };
 
   return (
     <CoursesPage
       technology={technology}
       filtersArray={filtersArray}
+      courses={coursesArray}
+      coursesData={coursesData}
       lang={lang}
       dictionary={dictionary}
     />
   );
-
-  /*
-  return (
-    <div className="technology">
-      <PageHeader
-        title={
-          lang === "en"
-            ? `${technology.name} Courses`
-            : `Cursos de ${technology.name}`
-        }
-        description={
-          lang === "en"
-            ? `Discover our selection of the best ${technology.name} courses, carefully curated to help you master web development. You can filter courses by language and price, and sort them based on your preferences to find the perfect fit for your learning journey.`
-            : `Descubre nuestra selección de los mejores cursos de ${technology.name}, cuidadosamente seleccionados para ayudarte a dominar el desarrollo web. Puedes filtrar los cursos por idioma y precio, y ordenarlos según tus preferencias para encontrar la opción perfecta para tu aprendizaje.`
-        }
-        image={technology.imageColor}
-        imageMobileHidden={true}
-        breadcrumb={[
-          {
-            name: dictionary.common.navigation.courses,
-            link: getLocalizedPathFromPrefix(lang, `/courses/`),
-          },
-        ]}
-      />
-      <Container>
-        <div className="content-wrapper">
-          <SortingAndFilters
-            technologyId={technology._id}
-            language={language}
-            pricing={pricing}
-            dictionary={dictionary}
-          />
-          <p className="courses-count">
-            {courses.totalDocs} {dictionary.technologies.coursesLowercase}
-          </p>
-          <div className="courses">
-            <Suspense fallback={<Loading />}>
-              <List
-                query={queryObject}
-                sortBy={sortBy}
-                currentPage={currentPage}
-                dictionary={dictionary}
-                lang={lang}
-              />
-            </Suspense>
-            {courses.totalPages > 1 && (
-              <Pagination totalPages={courses.totalPages} />
-            )}
-            {courses.totalDocs === 0 && (
-              <p className="no-results">{dictionary.technologies.noResults}</p>
-            )}
-          </div>
-        </div>
-      </Container>
-    </div>
-  );
-  */
 }
