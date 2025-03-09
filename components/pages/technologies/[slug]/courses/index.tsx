@@ -254,10 +254,22 @@ const Courses: React.FC<CoursesProps> = ({
               </div>
             )}
 
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-0 items-center justify-between mb-6">
               <p className="text-sm text-gray-600">
+                {coursesData.totalPages > 1 && (
+                  <>
+                    {coursesData.startIndex}-{coursesData.endIndex}{" "}
+                    {dictionary.courses.of}{" "}
+                  </>
+                )}
                 {coursesData.totalDocs} {dictionary.courses.coursesFound}
               </p>
+              {coursesData.totalPages > 1 && (
+                <Pagination
+                  totalPages={coursesData.totalPages}
+                  dictionary={dictionary}
+                />
+              )}
               <div className="flex border border-neutral-200 rounded-md overflow-hidden">
                 <Button
                   variant={viewMode === "grid" ? "default" : "ghost"}
@@ -356,7 +368,9 @@ const Courses: React.FC<CoursesProps> = ({
                               ? dictionary.technologies.english
                               : dictionary.technologies.spanish}
                           </Badge>
-                          <Badge variant="outline">{course.platform}</Badge>
+                          {course.platform !== "" && (
+                            <Badge variant="outline">{course.platform}</Badge>
+                          )}
                           <Badge variant="outline">{course.year}</Badge>
                           <span
                             className={`ml-auto text-sm font-medium ${
@@ -403,6 +417,7 @@ const Courses: React.FC<CoursesProps> = ({
 
             {coursesData.totalPages > 1 && (
               <Pagination
+                className="mt-8"
                 totalPages={coursesData.totalPages}
                 dictionary={dictionary}
               />

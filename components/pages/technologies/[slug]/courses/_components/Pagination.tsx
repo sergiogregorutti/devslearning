@@ -1,16 +1,16 @@
 "use client";
 
 import clsx from "clsx";
-import Link from "next/link";
 import Button from "@/components/ui/Button";
 import { generatePagination } from "@/lib/helpers";
 import { usePathname, useSearchParams } from "next/navigation";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 
 export default function Pagination({
+  className,
   totalPages,
   dictionary,
 }: {
+  className?: string;
   totalPages: number;
   dictionary: any;
 }) {
@@ -28,7 +28,7 @@ export default function Pagination({
 
   return (
     <>
-      <div className="mt-8 flex justify-center">
+      <div className={clsx("flex justify-center", className)}>
         <div className="flex items-center space-x-2">
           <Button
             variant={currentPage <= 1 ? "disabled" : "outline"}

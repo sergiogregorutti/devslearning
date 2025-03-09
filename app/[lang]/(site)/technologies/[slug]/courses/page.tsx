@@ -170,6 +170,9 @@ export default async function TechnologyPage({
 
   const coursesArray = JSON.parse(JSON.stringify(courses.docs));
 
+  const startIndex = courses.pagingCounter;
+  const endIndex = Math.min(startIndex + courses.limit - 1, courses.totalDocs);
+
   const coursesData = {
     totalDocs: courses.totalDocs,
     limit: courses.limit,
@@ -180,6 +183,8 @@ export default async function TechnologyPage({
     hasNextPage: courses.hasNextPage,
     prevPage: courses.prevPage,
     nextPage: courses.nextPage,
+    startIndex,
+    endIndex,
   };
 
   return (
