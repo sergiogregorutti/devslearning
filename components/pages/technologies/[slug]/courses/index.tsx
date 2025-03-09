@@ -61,8 +61,6 @@ const Courses: React.FC<CoursesProps> = ({
 
   const [stats, setStats] = useState({});
 
-  console.log("coursesData", coursesData);
-
   useEffect(() => {
     const languageMap: Record<string, string> = {
       english: "en",
@@ -113,7 +111,9 @@ const Courses: React.FC<CoursesProps> = ({
     }
 
     if (newParams.toString() !== searchParams.toString()) {
-      replace(`${pathname}?${decodeURIComponent(newParams.toString())}`);
+      replace(`${pathname}?${decodeURIComponent(newParams.toString())}`, {
+        scroll: false,
+      });
     }
   }, [activeFilters]);
 
@@ -266,7 +266,7 @@ const Courses: React.FC<CoursesProps> = ({
                   onClick={() => setViewMode("grid")}
                 >
                   <FaTableCells className="h-4 w-4 mr-2" />
-                  <span>{dictionary.courses.list}</span>
+                  <span>{dictionary.courses.grid}</span>
                 </Button>
                 <Button
                   variant={viewMode === "list" ? "default" : "ghost"}
@@ -275,7 +275,7 @@ const Courses: React.FC<CoursesProps> = ({
                   onClick={() => setViewMode("list")}
                 >
                   <FaListUl className="h-4 w-4 mr-2" />
-                  <span>{dictionary.courses.grid}</span>
+                  <span>{dictionary.courses.list}</span>
                 </Button>
               </div>
             </div>
