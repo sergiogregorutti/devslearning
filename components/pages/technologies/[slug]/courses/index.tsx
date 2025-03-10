@@ -42,11 +42,10 @@ const Courses: React.FC<CoursesProps> = ({
 }) => {
   const [activeFilters, setActiveFilters] = useState<string[]>(filtersArray);
   const [showMobileFilters, setShowMobileFilters] = useState(false);
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [viewMode, setViewMode] = useState<"grid" | "list">("list");
 
   const searchParams = useSearchParams();
   const pathname = usePathname();
-  const params = new URLSearchParams(searchParams);
   const { replace } = useRouter();
 
   const addFilter = (filter: string) => {
@@ -144,7 +143,7 @@ const Courses: React.FC<CoursesProps> = ({
           <Button
             size="small"
             variant="outline"
-            className="w-full flex items-center justify-between"
+            className="flex items-center gap-2 justify-between"
             onClick={() => setShowMobileFilters(!showMobileFilters)}
           >
             <span className="flex items-center">
@@ -155,16 +154,16 @@ const Courses: React.FC<CoursesProps> = ({
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-16">
           <div
             className={`${
               showMobileFilters ? "block" : "hidden"
-            } md:block rounded-lg border border-neutral-200 p-6 h-fit`}
+            } md:block h-fit sticky top-[80px]`}
           >
-            <div className="flex items-center justify-between mb-4">
+            <div className="hidden md:flex items-center justify-between mb-4">
               <h3>{dictionary.courses.filters}</h3>
             </div>
-            <div className="space-y-6">
+            <div className="space-y-6 sticky">
               <div>
                 <Label className="mb-1.5 block">
                   {dictionary.courses.orderBy}
@@ -211,7 +210,7 @@ const Courses: React.FC<CoursesProps> = ({
           <div className="md:col-span-3">
             {activeFilters.length > 0 && (
               <div className="mb-4 flex flex-wrap gap-2 items-center">
-                <span className="text-sm text-gray-500">
+                <span className="text-sm text-gray-500 w-100 md:w-auto">
                   {dictionary.courses.activeFilters}:
                 </span>
                 {activeFilters.map((filter) => {
@@ -254,7 +253,7 @@ const Courses: React.FC<CoursesProps> = ({
               </div>
             )}
 
-            <div className="flex flex-col md:flex-row gap-4 md:gap-0 items-center justify-between mb-6">
+            <div className="flex flex-row gap-4 md:gap-0 items-center justify-between mb-6">
               <p className="text-sm text-gray-600">
                 {coursesData.totalPages > 1 && (
                   <>
@@ -264,36 +263,101 @@ const Courses: React.FC<CoursesProps> = ({
                 )}
                 {coursesData.totalDocs} {dictionary.courses.coursesFound}
               </p>
-              {coursesData.totalPages > 1 && (
-                <Pagination
-                  totalPages={coursesData.totalPages}
-                  dictionary={dictionary}
-                />
-              )}
               <div className="flex border border-neutral-200 rounded-md overflow-hidden">
-                <Button
-                  variant={viewMode === "grid" ? "default" : "ghost"}
-                  size="small"
-                  className="flex items-center rounded-none px-3"
-                  onClick={() => setViewMode("grid")}
-                >
-                  <FaTableCells className="h-4 w-4 mr-2" />
-                  <span>{dictionary.courses.grid}</span>
-                </Button>
                 <Button
                   variant={viewMode === "list" ? "default" : "ghost"}
                   size="small"
                   className="flex items-center rounded-none px-3"
                   onClick={() => setViewMode("list")}
                 >
-                  <FaListUl className="h-4 w-4 mr-2" />
-                  <span>{dictionary.courses.list}</span>
+                  <FaListUl className="h-4 w-4 md:mr-2" />
+                  <span className="hidden md:block">
+                    {dictionary.courses.list}
+                  </span>
+                </Button>
+                <Button
+                  variant={viewMode === "grid" ? "default" : "ghost"}
+                  size="small"
+                  className="flex items-center rounded-none px-3"
+                  onClick={() => setViewMode("grid")}
+                >
+                  <FaTableCells className="h-4 w-4 md:mr-2" />
+                  <span className="hidden md:block">
+                    {dictionary.courses.grid}
+                  </span>
                 </Button>
               </div>
             </div>
 
+            {viewMode === "list" && (
+              <div className="flex flex-col gap-10 md:gap-14">
+                {courses.map((course: any) => (
+                  <Card key={course._id} className="overflow-hidden">
+                    <div className="flex flex-row">
+                      <div className="w-1/4 relative flex items-start">
+                        <img
+                          src={course.image}
+                          alt={course.name}
+                          className="w-full h-auto object-contain"
+                        />
+                      </div>
+                      <div className="pl-4 md:pl-6 w-3/4 flex flex-col">
+                        <div className="order-3 md:order-1 flex flex-wrap items-center gap-2 mb-2">
+                          <Badge>
+                            {course.language === "en"
+                              ? dictionary.technologies.english
+                              : dictionary.technologies.spanish}
+                          </Badge>
+                          {course.platform !== "" && (
+                            <Badge variant="outline">{course.platform}</Badge>
+                          )}
+                          <Badge variant="outline">{course.year}</Badge>
+                          <span
+                            className={`w-100 md:w-auto md:ml-auto text-sm font-medium ${
+                              course.pricing === "free" ? "text-green-600" : ""
+                            }`}
+                          >
+                            {course.pricing === "free"
+                              ? dictionary.technologies.pricingFree
+                              : `USD $${course.price}`}
+                          </span>
+                        </div>
+                        <h3 className="order1 md:order-2 !text-base md:!text-xl !leading-[16px] md:!leading-[20px] font-semibold !mb-1 md:!mb-2">
+                          {course.name}
+                        </h3>
+                        <p className="order-2 md:order-3 text-xs md:text-sm text-gray-600 mb-2 md:mb-4">
+                          {course.description}
+                        </p>
+                        <div className="order-4 mt-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                          <div className="hidden md:flex items-center gap-2">
+                            {course.author !== "" && (
+                              <>
+                                <div className="w-6 md:w-8 h-6 md:h-8 rounded-full bg-gray-200 flex items-center justify-center text-xs font-medium">
+                                  <FaUser className="text-neutral-500" />
+                                </div>
+                                <span className="text-sm">{course.author}</span>
+                              </>
+                            )}
+                          </div>
+                          <Button
+                            href={getLocalizedPathFromPrefix(
+                              lang,
+                              `/courses/${course._id}/`
+                            )}
+                            className="w-[100%] md:w-auto"
+                          >
+                            {dictionary.technologies.viewMore}
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            )}
+
             {viewMode === "grid" && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {courses.map((course: any) => (
                   <Card
                     key={course._id}
@@ -306,7 +370,7 @@ const Courses: React.FC<CoursesProps> = ({
                         className="absolute inset-0 w-full h-full object-contain"
                       />
                     </div>
-                    <div className="p-4 flex flex-col flex-grow">
+                    <div className="py-4 flex flex-col flex-grow">
                       <div className="flex items-center justify-between mb-2">
                         <Badge>
                           {course.language === "en"
@@ -323,7 +387,7 @@ const Courses: React.FC<CoursesProps> = ({
                             : `USD $${course.price}`}
                         </span>
                       </div>
-                      <h3 className="text-lg font-semibold mb-2">
+                      <h3 className="!text-base md:!text-xl !leading-[16px] md:!leading-[20px] font-semibold !mb-2">
                         {course.name}
                       </h3>
                       <p className="text-sm text-gray-600 mb-4 flex-grow">
@@ -343,72 +407,6 @@ const Courses: React.FC<CoursesProps> = ({
                       >
                         {dictionary.technologies.viewMore}
                       </Button>
-                    </div>
-                  </Card>
-                ))}
-              </div>
-            )}
-
-            {viewMode === "list" && (
-              <div className="space-y-4">
-                {courses.map((course: any) => (
-                  <Card key={course._id} className="overflow-hidden">
-                    <div className="flex flex-col md:flex-row">
-                      <div className="md:w-1/4 relative flex items-start py-6 bg-gray-100">
-                        <img
-                          src={course.image}
-                          alt={course.name}
-                          className="w-full h-auto object-contain"
-                        />
-                      </div>
-                      <div className="p-4 md:p-6 md:w-3/4 flex flex-col">
-                        <div className="flex flex-wrap items-center gap-2 mb-2">
-                          <Badge>
-                            {course.language === "en"
-                              ? dictionary.technologies.english
-                              : dictionary.technologies.spanish}
-                          </Badge>
-                          {course.platform !== "" && (
-                            <Badge variant="outline">{course.platform}</Badge>
-                          )}
-                          <Badge variant="outline">{course.year}</Badge>
-                          <span
-                            className={`ml-auto text-sm font-medium ${
-                              course.pricing === "free" ? "text-green-600" : ""
-                            }`}
-                          >
-                            {course.pricing === "free"
-                              ? dictionary.technologies.pricingFree
-                              : `USD $${course.price}`}
-                          </span>
-                        </div>
-                        <h3 className="text-xl font-semibold mb-2">
-                          {course.name}
-                        </h3>
-                        <p className="text-sm text-gray-600 mb-4">
-                          {course.description}
-                        </p>
-                        <div className="mt-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                          <div className="flex items-center gap-2">
-                            {course.author !== "" && (
-                              <>
-                                <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-xs font-medium">
-                                  <FaUser className="text-neutral-500" />
-                                </div>
-                                <span className="text-sm">{course.author}</span>
-                              </>
-                            )}
-                          </div>
-                          <Button
-                            href={getLocalizedPathFromPrefix(
-                              lang,
-                              `/courses/${course._id}/`
-                            )}
-                          >
-                            {dictionary.technologies.viewMore}
-                          </Button>
-                        </div>
-                      </div>
                     </div>
                   </Card>
                 ))}

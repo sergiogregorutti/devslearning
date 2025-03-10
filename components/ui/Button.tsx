@@ -51,7 +51,7 @@ const Button: React.FC<ButtonProps> = React.memo(
     const sizeStyles = {
       extraSmall: "text-xs py-[2px] px-[10px]",
       small: "text-sm py-[5px] px-[20px]",
-      default: "text-lg py-[9px] px-[28px]",
+      default: "text-sm md:text-lg py-[5px] md:py-[9px] px-[20px] md:px-[28px]",
     };
 
     // Combine all styles using clsx

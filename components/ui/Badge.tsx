@@ -18,7 +18,7 @@ const Badge: React.FC<BadgeProps> = ({
 
   // Variant styles
   const variantStyles = {
-    default: "bg-blue-500 text-white",
+    default: "bg-blue-500 text-white opacity-75",
     secondary: "bg-neutral-100",
     outline: "border border-neutral-200",
   };
