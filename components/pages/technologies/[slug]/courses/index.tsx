@@ -160,9 +160,6 @@ const Courses: React.FC<CoursesProps> = ({
               showMobileFilters ? "block" : "hidden"
             } md:block h-fit sticky top-[80px]`}
           >
-            <div className="hidden md:flex items-center justify-between mb-4">
-              <h3>{dictionary.courses.filters}</h3>
-            </div>
             <div className="space-y-6 sticky">
               <div>
                 <Label className="mb-1.5 block">
@@ -294,14 +291,19 @@ const Courses: React.FC<CoursesProps> = ({
                 {courses.map((course: any) => (
                   <Card key={course._id} className="overflow-hidden">
                     <div className="flex flex-row">
-                      <div className="w-1/4 relative flex items-start">
+                      <div className="w-1/4 relative bg-neutral-100 flex items-start">
                         <img
                           src={course.image}
                           alt={course.name}
-                          className="w-full h-auto object-contain"
+                          className="py-4 md:py-6 w-full object-contain relative z-1"
+                        />
+                        <img
+                          src={course.image}
+                          alt={course.name}
+                          className="w-full h-48 md:h-full object-cover absolute blur-sm opacity-20"
                         />
                       </div>
-                      <div className="pl-4 md:pl-6 w-3/4 flex flex-col">
+                      <div className="p-4 md:p-6 w-3/4 flex flex-col">
                         <div className="order-3 md:order-1 flex flex-wrap items-center gap-2 mb-2">
                           <Badge>
                             {course.language === "en"
@@ -369,8 +371,13 @@ const Courses: React.FC<CoursesProps> = ({
                         alt={course.name}
                         className="absolute inset-0 w-full h-full object-contain"
                       />
+                      <img
+                        src={course.image}
+                        alt={course.name}
+                        className="w-full h-48 md:h-full object-cover absolute blur-sm opacity-20"
+                      />
                     </div>
-                    <div className="py-4 flex flex-col flex-grow">
+                    <div className="p-4 flex flex-col flex-grow">
                       <div className="flex items-center justify-between mb-2">
                         <Badge>
                           {course.language === "en"

@@ -1,19 +1,9 @@
-import { Suspense } from "react";
 import type { Metadata, ResolvingMetadata } from "next";
 import dbConnect from "@/lib/dbConnect";
 import { Technology } from "@/lib/models";
 import { getDictionary } from "../../../dictionaries";
 import { fetchFilteredCourses } from "@/lib/data/courses";
-import { getLocalizedPathFromPrefix } from "@/lib/language";
-import Container from "@/components/layout/Container";
-import PageHeader from "@/components/layout/PageHeader";
-import SortingAndFilters from "@/ui/site/courses/SortingAndFilters";
-import List from "@/ui/site/courses/list/list";
-import Loading from "@/ui/site/courses/list/loading";
-import Pagination from "@/ui/site/courses/pagination/pagination";
 import CoursesPage from "@/components/pages/technologies/[slug]/courses";
-
-import "./styles.css";
 
 type Props = {
   params: Promise<{ lang: string; slug: string }>;

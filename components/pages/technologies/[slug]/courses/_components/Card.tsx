@@ -7,10 +7,8 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ className = "", children }) => {
-  // Base styles
-  const baseStyles = "";
+  const baseStyles = "rounded-lg border border-neutral-200";
 
-  // Combine all styles using clsx
   const buttonClasses = clsx(baseStyles, className);
 
   return <div className={buttonClasses}>{children}</div>;
