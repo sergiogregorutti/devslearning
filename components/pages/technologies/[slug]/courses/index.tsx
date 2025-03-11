@@ -42,7 +42,7 @@ const Courses: React.FC<CoursesProps> = ({
 }) => {
   const [activeFilters, setActiveFilters] = useState<string[]>(filtersArray);
   const [showMobileFilters, setShowMobileFilters] = useState(false);
-  const [viewMode, setViewMode] = useState<"grid" | "list">("list");
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -131,6 +131,7 @@ const Courses: React.FC<CoursesProps> = ({
         }
         image={technology.imageColor}
         imageMobileHidden={true}
+        descriptionMobileHidden={true}
         breadcrumb={[
           {
             name: dictionary.common.navigation.courses,
@@ -241,7 +242,7 @@ const Courses: React.FC<CoursesProps> = ({
                   );
                 })}
                 <Button
-                  variant="ghost"
+                  variant="outline"
                   size="extraSmall"
                   onClick={() => setActiveFilters([])}
                 >
@@ -262,17 +263,6 @@ const Courses: React.FC<CoursesProps> = ({
               </p>
               <div className="flex border border-neutral-200 rounded-md overflow-hidden">
                 <Button
-                  variant={viewMode === "list" ? "default" : "ghost"}
-                  size="small"
-                  className="flex items-center rounded-none px-3"
-                  onClick={() => setViewMode("list")}
-                >
-                  <FaListUl className="h-4 w-4 md:mr-2" />
-                  <span className="hidden md:block">
-                    {dictionary.courses.list}
-                  </span>
-                </Button>
-                <Button
                   variant={viewMode === "grid" ? "default" : "ghost"}
                   size="small"
                   className="flex items-center rounded-none px-3"
@@ -283,8 +273,81 @@ const Courses: React.FC<CoursesProps> = ({
                     {dictionary.courses.grid}
                   </span>
                 </Button>
+                <Button
+                  variant={viewMode === "list" ? "default" : "ghost"}
+                  size="small"
+                  className="flex items-center rounded-none px-3"
+                  onClick={() => setViewMode("list")}
+                >
+                  <FaListUl className="h-4 w-4 md:mr-2" />
+                  <span className="hidden md:block">
+                    {dictionary.courses.list}
+                  </span>
+                </Button>
               </div>
             </div>
+
+            {viewMode === "grid" && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                {courses.map((course: any) => (
+                  <Card
+                    key={course._id}
+                    className="overflow-hidden flex flex-col h-full"
+                  >
+                    <div className="relative pb-[56.25%] bg-gray-100">
+                      <img
+                        src={course.image}
+                        alt={course.name}
+                        className="absolute inset-0 w-full h-full object-contain"
+                      />
+                      <img
+                        src={course.image}
+                        alt={course.name}
+                        className="w-full h-48 md:h-full object-cover absolute blur-sm opacity-20"
+                      />
+                    </div>
+                    <div className="p-4 flex flex-col flex-grow">
+                      <div className="flex items-center justify-between mb-2">
+                        <Badge>
+                          {course.language === "en"
+                            ? dictionary.technologies.english
+                            : dictionary.technologies.spanish}
+                        </Badge>
+                        <span
+                          className={`text-sm font-medium ${
+                            course.pricing === "free" ? "text-green-600" : ""
+                          }`}
+                        >
+                          {course.pricing === "free"
+                            ? dictionary.technologies.pricingFree
+                            : `USD $${course.price}`}
+                        </span>
+                      </div>
+                      <h3 className="!text-base md:!text-xl !leading-[16px] md:!leading-[20px] font-semibold !mb-2">
+                        {course.name}
+                      </h3>
+                      <p className="text-sm text-gray-600 mb-4 flex-grow">
+                        {course.description}
+                      </p>
+                      <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
+                        <span>{course.platform}</span>
+                        <span>{course.author}</span>
+                        <span>{course.year}</span>
+                      </div>
+                      <Button
+                        href={getLocalizedPathFromPrefix(
+                          lang,
+                          `/courses/${course._id}/`
+                        )}
+                        className="w-full"
+                      >
+                        {dictionary.technologies.viewMore}
+                      </Button>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            )}
 
             {viewMode === "list" && (
               <div className="flex flex-col gap-10 md:gap-14">
@@ -352,68 +415,6 @@ const Courses: React.FC<CoursesProps> = ({
                           </Button>
                         </div>
                       </div>
-                    </div>
-                  </Card>
-                ))}
-              </div>
-            )}
-
-            {viewMode === "grid" && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                {courses.map((course: any) => (
-                  <Card
-                    key={course._id}
-                    className="overflow-hidden flex flex-col h-full"
-                  >
-                    <div className="relative pb-[56.25%] bg-gray-100">
-                      <img
-                        src={course.image}
-                        alt={course.name}
-                        className="absolute inset-0 w-full h-full object-contain"
-                      />
-                      <img
-                        src={course.image}
-                        alt={course.name}
-                        className="w-full h-48 md:h-full object-cover absolute blur-sm opacity-20"
-                      />
-                    </div>
-                    <div className="p-4 flex flex-col flex-grow">
-                      <div className="flex items-center justify-between mb-2">
-                        <Badge>
-                          {course.language === "en"
-                            ? dictionary.technologies.english
-                            : dictionary.technologies.spanish}
-                        </Badge>
-                        <span
-                          className={`text-sm font-medium ${
-                            course.pricing === "free" ? "text-green-600" : ""
-                          }`}
-                        >
-                          {course.pricing === "free"
-                            ? dictionary.technologies.pricingFree
-                            : `USD $${course.price}`}
-                        </span>
-                      </div>
-                      <h3 className="!text-base md:!text-xl !leading-[16px] md:!leading-[20px] font-semibold !mb-2">
-                        {course.name}
-                      </h3>
-                      <p className="text-sm text-gray-600 mb-4 flex-grow">
-                        {course.description}
-                      </p>
-                      <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
-                        <span>{course.platform}</span>
-                        <span>{course.author}</span>
-                        <span>{course.year}</span>
-                      </div>
-                      <Button
-                        href={getLocalizedPathFromPrefix(
-                          lang,
-                          `/courses/${course._id}/`
-                        )}
-                        className="w-full"
-                      >
-                        {dictionary.technologies.viewMore}
-                      </Button>
                     </div>
                   </Card>
                 ))}

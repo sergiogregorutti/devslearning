@@ -4,7 +4,7 @@ import { getLocalizedPathFromPrefix } from "@/lib/language";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
-import Counter from "@/ui/common/Counter";
+import Counter from "@/components/common/Counter";
 import { ITechnologyCoursesCount } from "@/interfaces/course";
 import Container from "@/components/layout/Container";
 

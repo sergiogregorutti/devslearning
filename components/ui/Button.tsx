@@ -42,9 +42,9 @@ const Button: React.FC<ButtonProps> = React.memo(
       darkBlue: "bg-blue-800 text-white hover:bg-blue-900 cursor-pointer",
       outline:
         "text-blue-500 border-solid border-blue-500 hover:bg-blue-500 hover:text-white border-1 cursor-pointer",
-      ghost: "hover:bg-neutral-100 cursor-pointer",
+      ghost: "text-blue-500 hover:text-blue-600 cursor-pointer",
       disabled:
-        "bg-neutral-200 text-neutral-500 hover:bg-neutral-200 cursor-default",
+        "bg-neutral-100 text-neutral-400 hover:bg-neutral-100 cursor-default",
     };
 
     // Size styles

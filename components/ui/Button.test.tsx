@@ -38,7 +38,7 @@ describe("Button Component", () => {
 
     const button = screen.getByText("Click Me");
     expect(button).toHaveClass(
-      "rounded-full transition-all duration-500 focus:outline-none text-center bg-neutral-200 text-neutral-500 hover:bg-neutral-200 cursor-default text-sm md:text-lg py-[5px] md:py-[9px] px-[20px] md:px-[28px]"
+      "rounded-full transition-all duration-500 focus:outline-none text-center bg-neutral-100 text-neutral-400 hover:bg-neutral-100 cursor-default text-sm md:text-lg py-[5px] md:py-[9px] px-[20px] md:px-[28px]"
     );
 
     fireEvent.click(button);

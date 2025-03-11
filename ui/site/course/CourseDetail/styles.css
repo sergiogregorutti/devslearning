@@ -6,21 +6,13 @@
   }
 
   & .description {
-    margin: 0 0 20px;
-
     @media (min-width: 768px) {
-      margin: 0 0 30px;
       line-height: 24px;
     }
 
     @media (min-width: 1200px) {
-      margin: 0 0 40px;
       line-height: 28px;
     }
-  }
-
-  & .cta {
-    margin-bottom: 30px;
   }
 
   & .image-container {
@@ -38,7 +30,6 @@
     grid-template-columns: 1fr 1fr;
     width: 100%;
     gap: 10px 25px;
-    margin-bottom: 30px;
 
     @media (min-width: 768px) {
       display: flex;
@@ -46,6 +37,7 @@
       flex-wrap: wrap;
       gap: 25px;
     }
+
     & .item {
       & span {
         font-weight: bold;

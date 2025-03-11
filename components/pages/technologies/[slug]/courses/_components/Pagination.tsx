@@ -33,7 +33,6 @@ export default function Pagination({
           <Button
             variant={currentPage <= 1 ? "disabled" : "outline"}
             size="extraSmall"
-            className="border-1 border-neutral-200"
             href={createPageURL(currentPage - 1)}
             disabled={currentPage <= 1}
           >

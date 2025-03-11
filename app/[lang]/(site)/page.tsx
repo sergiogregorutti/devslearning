@@ -4,13 +4,8 @@ import { cookies } from "next/headers";
 const jwt = require("jsonwebtoken");
 import { redirect } from "next/navigation";
 import { getDictionary } from "./dictionaries";
-import Image from "next/image";
 import { fetchTechnologies } from "@/lib/data/technologies";
-import HeroSlider from "@/ui/site/home/HeroSlider";
-import StatsSection from "@/ui/site/home/StatsSection";
-import CoursesSection from "@/ui/site/home/CoursesSection";
-import TechnologiesSection from "@/ui/site/home/TechnologiesSection";
-import RoadmapsSection from "@/ui/site/home/RoadmapsSection";
+import HomePage from "@/components/pages/home";
 
 type Props = {
   params: Promise<{ lang: string; id: string }>;
@@ -95,16 +90,6 @@ export default async function Home(props: {
   const technologies = await fetchTechnologies(4);
 
   return (
-    <>
-      <HeroSlider dictionary={dictionary} lang={lang} />
-      <StatsSection dictionary={dictionary} />
-      <CoursesSection
-        dictionary={dictionary}
-        lang={lang}
-        technologies={technologies}
-      />
-      <TechnologiesSection dictionary={dictionary} lang={lang} />
-      <RoadmapsSection dictionary={dictionary} lang={lang} />
-    </>
+    <HomePage technologies={technologies} lang={lang} dictionary={dictionary} />
   );
 }

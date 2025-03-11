@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Counter from "@/ui/common/Counter";
+import Counter from "@/components/common/Counter";
 import Container from "@/components/layout/Container";
 
 export default function InfoBanner({

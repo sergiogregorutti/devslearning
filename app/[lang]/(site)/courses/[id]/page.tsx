@@ -120,7 +120,9 @@ export default async function CoursePage(props: {
             name: course.technologyName,
             link: getLocalizedPathFromPrefix(
               lang,
-              `/technologies/${course.technologySlug}/courses/`
+              `/technologies/${course.technologySlug}/courses?filters=${
+                lang === "en" ? "english" : "spanish"
+              }`
             ),
           },
         ]}

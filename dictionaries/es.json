@@ -184,8 +184,8 @@
     "hideFilters": "Ocultar Ordenamiento y Filtros"
   },
   "courseDetail": {
-    "information": "Información",
-    "description": "Descripción"
+    "information": "Características",
+    "description": "Resumen del curso"
   },
   "about": {
     "title": "Acerca De",

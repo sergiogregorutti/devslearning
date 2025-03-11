@@ -19,6 +19,7 @@ interface PageHeaderProps {
   image?: string;
   imagePositionMobile?: "top" | "bottom";
   imageMobileHidden?: boolean;
+  descriptionMobileHidden?: boolean;
   breadcrumb?: BreadcrumbItem[];
   previousPage?: { name: string };
 }
@@ -29,6 +30,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   image,
   imagePositionMobile = "top",
   imageMobileHidden = false,
+  descriptionMobileHidden = false,
   breadcrumb,
   previousPage,
 }) => {
@@ -72,7 +74,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
                 height={308}
                 alt={title}
                 priority={true}
-                className="h-fit w-[50%] md:w-[80%] md:max-h-[200px]"
+                className="h-fit w-[100%] md:w-[80%] md:max-h-[200px]"
               />
             </div>
           )}
@@ -110,9 +112,13 @@ const PageHeader: React.FC<PageHeaderProps> = ({
                 </ol>
               </nav>
             )}
-            <Title label={title} className="mb-3 md:mb-0" />
+            <Title label={title} />
             {description && (
-              <p className="text-gray-500 text-sm md:text-base md:grow md:flex md:items-center">
+              <p
+                className={`${
+                  descriptionMobileHidden ? "hidden " : ""
+                }text-gray-500 text-sm mt-3 md:mt-0 md:text-base md:grow md:flex md:items-center`}
+              >
                 {description}
               </p>
             )}

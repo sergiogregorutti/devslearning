@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import Image from "next/image";
 import Link from "next/link";
-import Counter from "@/ui/common/Counter";
+import Counter from "@/components/common/Counter";
 import { ITechnologyCoursesCount } from "@/interfaces/course";
 
 import "./styles.css";

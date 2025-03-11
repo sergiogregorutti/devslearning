@@ -99,7 +99,7 @@ describe("PageHeader Component", () => {
     );
 
     const image = screen.getByAltText("Test Title");
-    expect(image).toHaveClass("h-fit w-[50%] md:w-[80%] md:max-h-[200px]");
+    expect(image).toHaveClass("h-fit w-[100%] md:w-[80%] md:max-h-[200px]");
   });
 
   test("applies correct classes for image position (bottom)", () => {
