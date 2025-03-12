@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import Roadmaps from ".";
-import { getLocalizedPathFromPrefix } from "@/lib/language";
+import { LanguageProvider } from "@/components/context/LanguageContext";
 
 const mockDictionary = {
   roadmaps: {
@@ -26,8 +26,16 @@ jest.mock("@/lib/language", () => ({
 }));
 
 describe("Roadmaps Component", () => {
+  const renderWithProvider = (lang: string) => {
+    render(
+      <LanguageProvider lang={lang} dictionary={mockDictionary}>
+        <Roadmaps />
+      </LanguageProvider>
+    );
+  };
+
   test("renders the correct page title and description", () => {
-    render(<Roadmaps lang="en" dictionary={mockDictionary} />);
+    renderWithProvider("en");
 
     expect(screen.getByText(mockDictionary.roadmaps.title)).toBeInTheDocument();
     expect(
@@ -36,7 +44,7 @@ describe("Roadmaps Component", () => {
   });
 
   test("renders the journey title and description", () => {
-    render(<Roadmaps lang="en" dictionary={mockDictionary} />);
+    renderWithProvider("en");
 
     expect(
       screen.getByText(mockDictionary.roadmaps.journeyTitle)
@@ -47,7 +55,7 @@ describe("Roadmaps Component", () => {
   });
 
   test("renders roles section with descriptions", () => {
-    render(<Roadmaps lang="en" dictionary={mockDictionary} />);
+    renderWithProvider("en");
 
     expect(
       screen.getByText(mockDictionary.roadmaps.rolesTitle)
@@ -81,7 +89,7 @@ describe("Roadmaps Component", () => {
   });
 
   test("renders correct links for the different paths", () => {
-    render(<Roadmaps lang="en" dictionary={mockDictionary} />);
+    renderWithProvider("en");
 
     const links = screen.getAllByRole("link");
 
@@ -101,7 +109,7 @@ describe("Roadmaps Component", () => {
   });
 
   test("applies correct CSS classes to the links", () => {
-    render(<Roadmaps lang="en" dictionary={mockDictionary} />);
+    renderWithProvider("en");
 
     const links = screen.getAllByRole("link");
     links.forEach((link) => {

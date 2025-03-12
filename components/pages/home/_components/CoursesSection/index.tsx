@@ -1,4 +1,6 @@
 "use client";
+
+import { useLanguage } from "@/components/context/LanguageContext";
 import React, { useEffect, useState } from "react";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import Image from "next/image";
@@ -11,14 +13,11 @@ import Container from "@/components/layout/Container";
 import "./styles.css";
 
 export default function FeaturedTechnologies({
-  dictionary,
-  lang,
   technologies,
 }: {
-  dictionary: { [key: string]: any };
-  lang: string;
   technologies: any;
 }) {
+  const { lang, dictionary } = useLanguage();
   const [courses, setCourses] = useState<ITechnologyCoursesCount>({});
 
   useEffect(() => {

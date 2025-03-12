@@ -1,3 +1,6 @@
+"use client";
+
+import { useLanguage } from "@/components/context/LanguageContext";
 import Image from "next/image";
 import Container from "@/components/layout/Container";
 import Button from "@/components/ui/Button";
@@ -5,13 +8,9 @@ import { getLocalizedPathFromPrefix } from "@/lib/language";
 
 import "./styles.css";
 
-export default function RoadmapsContent({
-  dictionary,
-  lang,
-}: {
-  dictionary: { [key: string]: any };
-  lang: string;
-}) {
+export default function RoadmapsContent() {
+  const { lang, dictionary } = useLanguage();
+
   return (
     <div className="roadmaps-content">
       <Container>

@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 const jwt = require("jsonwebtoken");
+import { LanguageProvider } from "@/components/context/LanguageContext";
 import { getDictionary } from "@/app/[lang]/(site)/dictionaries";
 import { Nunito, Poppins } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -81,9 +82,11 @@ export default async function RootLayout(
   return (
     <html lang={lang} className={`${nunito.variable} ${poppins.variable}`}>
       <body suppressHydrationWarning>
-        <Header dictionary={dictionary} user={user} lang={lang} />
-        {children}
-        <Footer lang={lang} dictionary={dictionary} />
+        <LanguageProvider lang={lang} dictionary={dictionary}>
+          <Header dictionary={dictionary} user={user} lang={lang} />
+          {children}
+          <Footer lang={lang} dictionary={dictionary} />
+        </LanguageProvider>
 
         {process.env.ENVIRONMENT === "production" ? (
           <>

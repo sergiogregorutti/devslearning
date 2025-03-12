@@ -6,26 +6,16 @@ import RoadmapsSection from "./_components/RoadmapsSection";
 
 interface HomepageProps {
   technologies: any;
-  lang: string;
-  dictionary: any;
 }
 
-const Homepage: React.FC<HomepageProps> = ({
-  technologies,
-  lang,
-  dictionary,
-}) => {
+const Homepage: React.FC<HomepageProps> = ({ technologies }) => {
   return (
     <>
-      <HeroSlider dictionary={dictionary} lang={lang} />
-      <StatsSection dictionary={dictionary} />
-      <CoursesSection
-        dictionary={dictionary}
-        lang={lang}
-        technologies={technologies}
-      />
-      <TechnologiesSection dictionary={dictionary} lang={lang} />
-      <RoadmapsSection dictionary={dictionary} lang={lang} />
+      <HeroSlider />
+      <StatsSection />
+      <CoursesSection technologies={technologies} />
+      <TechnologiesSection />
+      <RoadmapsSection />
     </>
   );
 };

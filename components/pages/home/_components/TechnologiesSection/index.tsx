@@ -1,3 +1,6 @@
+"use client";
+
+import { useLanguage } from "@/components/context/LanguageContext";
 import Image from "next/image";
 import Container from "@/components/layout/Container";
 import Button from "@/components/ui/Button";
@@ -5,13 +8,9 @@ import { getLocalizedPathFromPrefix } from "@/lib/language";
 
 import "./styles.css";
 
-export default function TechnologiesSection({
-  dictionary,
-  lang,
-}: {
-  dictionary: { [key: string]: any };
-  lang: string;
-}) {
+export default function TechnologiesSection() {
+  const { lang, dictionary } = useLanguage();
+
   return (
     <div className="free-content bg-blue-300">
       <Container>

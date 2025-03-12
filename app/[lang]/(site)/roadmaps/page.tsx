@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { getDictionary } from "../dictionaries";
 import { Language } from "@/interfaces/course";
 import RoadmapsPage from "@/components/pages/roadmaps";
 
@@ -52,14 +51,6 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   };
 }
 
-export default async function Roadmaps(props: {
-  params: Promise<{ lang: Language }>;
-}) {
-  const params = await props.params;
-
-  const { lang } = params;
-
-  const dictionary: any = await getDictionary(lang);
-
-  return <RoadmapsPage lang={lang} dictionary={dictionary} />;
+export default async function Roadmaps() {
+  return <RoadmapsPage />;
 }

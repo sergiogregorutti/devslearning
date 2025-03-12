@@ -89,7 +89,5 @@ export default async function Home(props: {
   const dictionary = await getDictionary(lang);
   const technologies = await fetchTechnologies(4);
 
-  return (
-    <HomePage technologies={technologies} lang={lang} dictionary={dictionary} />
-  );
+  return <HomePage technologies={technologies} />;
 }

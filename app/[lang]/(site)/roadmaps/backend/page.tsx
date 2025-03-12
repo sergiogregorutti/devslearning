@@ -52,12 +52,6 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   };
 }
 
-export default async function Backend(props: {
-  params: Promise<{ lang: Language }>;
-}) {
-  const params = await props.params;
-
-  const { lang } = params;
-
-  return <BackendPage lang={lang as "en" | "es"} />;
+export default async function Backend() {
+  return <BackendPage />;
 }

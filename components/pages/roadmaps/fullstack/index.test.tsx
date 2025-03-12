@@ -1,5 +1,6 @@
 import { render, screen, act } from "@testing-library/react";
-import Backend from ".";
+import Fullstack from ".";
+import { LanguageProvider } from "@/components/context/LanguageContext";
 
 jest.mock("./en", () => ({
   __esModule: true,
@@ -11,28 +12,29 @@ jest.mock("./es", () => ({
   default: () => <div>Spanish Component</div>,
 }));
 
-describe("Backend Component", () => {
-  test("renders the English component when lang is 'en'", async () => {
+describe("Fullstack Component", () => {
+  const renderWithProvider = async (lang: string) => {
     await act(async () => {
-      render(<Backend lang="en" />);
+      render(
+        <LanguageProvider lang={lang} dictionary={{}}>
+          <Fullstack />
+        </LanguageProvider>
+      );
     });
+  };
 
+  test("renders the English component when lang is 'en'", async () => {
+    await renderWithProvider("en");
     expect(screen.getByText("English Component")).toBeInTheDocument();
   });
 
   test("renders the Spanish component when lang is 'es'", async () => {
-    await act(async () => {
-      render(<Backend lang="es" />);
-    });
-
+    await renderWithProvider("es");
     expect(screen.getByText("Spanish Component")).toBeInTheDocument();
   });
 
   test("renders the default English component when lang is invalid", async () => {
-    await act(async () => {
-      render(<Backend lang="fr" />);
-    });
-
+    await renderWithProvider("invalid-lang");
     expect(screen.getByText("English Component")).toBeInTheDocument();
   });
 });

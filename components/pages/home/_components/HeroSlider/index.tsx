@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from "@/components/context/LanguageContext";
 import React from "react";
 import Slider from "react-slick";
 import Image from "next/image";
@@ -11,13 +12,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./styles.css";
 
-export default function HeroSlider({
-  dictionary,
-  lang,
-}: {
-  dictionary: { [key: string]: any };
-  lang: string;
-}) {
+export default function HeroSlider() {
+  const { lang, dictionary } = useLanguage();
+
   var sliderSettings = {
     arrows: false,
     dots: true,

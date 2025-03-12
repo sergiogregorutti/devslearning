@@ -1,15 +1,13 @@
 "use client";
 
+import { useLanguage } from "@/components/context/LanguageContext";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Counter from "@/components/common/Counter";
 import Container from "@/components/layout/Container";
 
-export default function InfoBanner({
-  dictionary,
-}: {
-  dictionary: { [key: string]: any };
-}) {
+export default function InfoBanner() {
+  const { dictionary } = useLanguage();
   const [coursesCount, setCoursesCount] = useState(0);
   const [technologiesCount, setTechnologiesCount] = useState(0);
 

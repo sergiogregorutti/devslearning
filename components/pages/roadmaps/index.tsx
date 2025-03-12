@@ -1,27 +1,10 @@
+"use client";
+
+import { useLanguage } from "@/components/context/LanguageContext";
 import Link from "next/link";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import PageHeader from "@/components/layout/PageHeader";
 import Container from "@/components/layout/Container";
-
-interface RoadmapsProps {
-  lang: string;
-  dictionary: {
-    roadmaps: {
-      title: string;
-      description: string;
-      journeyTitle: string;
-      journeyDescription: string;
-      rolesTitle: string;
-      frontendName: string;
-      frontendDescription: string;
-      backendName: string;
-      backendDescription: string;
-      fullstackName: string;
-      fullstackDescription: string;
-      chooseYourPath: string;
-    };
-  };
-}
 
 const RoadmapLink = ({
   lang,
@@ -41,7 +24,8 @@ const RoadmapLink = ({
   </Link>
 );
 
-const Roadmaps: React.FC<RoadmapsProps> = ({ lang, dictionary }) => {
+const Roadmaps: React.FC = () => {
+  const { lang, dictionary } = useLanguage();
   const { roadmaps } = dictionary;
 
   return (
