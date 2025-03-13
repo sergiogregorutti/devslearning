@@ -1,24 +1,17 @@
 "use client";
-import React, { useEffect, useState } from "react";
+
+import { useLanguage } from "@/components/context/LanguageContext";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import Image from "next/image";
 import Link from "next/link";
-import Counter from "@/components/common/Counter";
-import { ITechnologyCoursesCount } from "@/interfaces/course";
 
 import "./styles.css";
 
-export default function TechnologiesList({
-  dictionary,
-  lang,
-  categories,
-}: {
-  dictionary: { [key: string]: any };
-  lang: string;
-  categories: any;
-}) {
+export default function TechnologiesList({ categories }: { categories: any }) {
+  const { lang } = useLanguage();
+
   return (
-    <div className="categories">
+    <div className="categories-component">
       <div className="container">
         <div className="categories-list">
           {categories.map((category: any) => (
