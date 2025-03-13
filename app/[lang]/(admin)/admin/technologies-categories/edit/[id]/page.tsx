@@ -1,4 +1,4 @@
-import Form from "@/ui/admin/technologies-categories/edit-form";
+import Form from "@/components/pages/admin/technologies-categories/edit-form";
 import { fetchTechnologyCategoryById } from "@/lib/data/technologiesCategories";
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {

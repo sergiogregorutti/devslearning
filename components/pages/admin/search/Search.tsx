@@ -25,9 +25,14 @@ export default function Search({ placeholder }: { placeholder: string }) {
   return (
     <div className="search-wrapper">
       <FaMagnifyingGlass />
-      <input type="email" className="form-input" onChange={(e) => {
+      <input
+        type="email"
+        className="form-input"
+        onChange={(e) => {
           handleSearch(e.target.value);
-        }} defaultValue={searchParams.get("query")?.toString()} />
+        }}
+        defaultValue={searchParams.get("query")?.toString()}
+      />
     </div>
   );
 }

@@ -1,13 +1,11 @@
 import { Metadata } from "next";
 import * as React from "react";
 import { getDictionary } from "../../dictionaries";
-import ResetPasswordComponent from "@/ui/site/auth/resetPassword/ResetPassword";
+import ResetPasswordComponent from "@/components/pages/auth/resetPassword/ResetPassword";
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ lang: string }>;
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
   let pageTitle;
 
@@ -26,16 +24,12 @@ export async function generateMetadata(
   };
 }
 
-export default async function ResetPassword(
-  props: {
-    params: Promise<{ lang: string }>;
-  }
-) {
+export default async function ResetPassword(props: {
+  params: Promise<{ lang: string }>;
+}) {
   const params = await props.params;
 
-  const {
-    lang
-  } = params;
+  const { lang } = params;
 
   const dictionary = await getDictionary(lang);
 

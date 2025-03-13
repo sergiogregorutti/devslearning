@@ -1,13 +1,11 @@
 import { Metadata } from "next";
 import * as React from "react";
 import { getDictionary } from "../../dictionaries";
-import SignInComponent from "@/ui/site/auth/signIn/SignIn";
+import SignInComponent from "@/components/pages/auth/signIn/SignIn";
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ lang: string }>;
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
   let pageTitle;
 
@@ -26,16 +24,12 @@ export async function generateMetadata(
   };
 }
 
-export default async function SignIn(
-  props: {
-    params: Promise<{ lang: string }>;
-  }
-) {
+export default async function SignIn(props: {
+  params: Promise<{ lang: string }>;
+}) {
   const params = await props.params;
 
-  const {
-    lang
-  } = params;
+  const { lang } = params;
 
   const dictionary = await getDictionary(lang);
 

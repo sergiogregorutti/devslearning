@@ -1,8 +1,7 @@
-import Link from "next/link";
-import Search from "../../../../../ui/admin/search/Search";
-import Table from "../../../../../ui/admin/technologies-categories/table/table";
+import Search from "@/components/pages/admin/search/Search";
+import Table from "@/components/pages/admin/technologies-categories/table/table";
 import { fetchTechnologiesCategoriesPages } from "@/lib/data/technologiesCategories";
-import Pagination from "../../../../../ui/admin/technologies/pagination/pagination";
+import Pagination from "@/components/pages/admin/technologies/pagination/pagination";
 import Button from "@/components/ui/Button";
 
 export default async function Technologies(props: {

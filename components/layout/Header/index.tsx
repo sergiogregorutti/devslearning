@@ -1,7 +1,8 @@
 "use client";
+
 import React, { useState } from "react";
 import Link from "next/link";
-import LanguageSelector from "@/ui/site/languageSelector/LanguageSelector";
+import LanguageSelector from "@/components/common/LanguageSelector";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import Image from "next/image";
 import { FaBars } from "react-icons/fa6";

@@ -1,12 +1,8 @@
 import type { Metadata, ResolvingMetadata } from "next";
-import { headers } from "next/headers";
 import dbConnect from "@/lib/dbConnect";
 import { Course } from "@/lib/models";
 import { Technology } from "@/lib/models";
-import { getDictionary } from "../../dictionaries";
-import { getLocalizedPathFromPrefix } from "@/lib/language";
-import PageHeader from "@/components/layout/PageHeader";
-import CourseDetail from "@/ui/site/course/CourseDetail";
+import CoursePageComponent from "@/components/pages/courses/[id]";
 
 type Props = {
   params: Promise<{ lang: string; id: string }>;
@@ -89,46 +85,11 @@ export async function generateMetadata(
 }
 
 export default async function CoursePage(props: {
-  params: Promise<{ lang: string; id: string }>;
-  searchParams?: Promise<{
-    page?: string;
-  }>;
+  params: Promise<{ id: string }>;
 }) {
   const params = await props.params;
-
-  const { lang, id } = params;
-
-  const dictionary = await getDictionary(lang);
+  const { id } = params;
   const course = await getCourse(id);
 
-  const headersList = await headers();
-  const referer = headersList.get("referer");
-
-  return (
-    <div className="course-page">
-      <PageHeader
-        title={course.name}
-        description={course.description}
-        image={course.image}
-        imagePositionMobile="bottom"
-        breadcrumb={[
-          {
-            name: dictionary.common.navigation.courses,
-            link: getLocalizedPathFromPrefix(lang, `/courses/`),
-          },
-          {
-            name: course.technologyName,
-            link: getLocalizedPathFromPrefix(
-              lang,
-              `/technologies/${course.technologySlug}/courses?filters=${
-                lang === "en" ? "english" : "spanish"
-              }`
-            ),
-          },
-        ]}
-        previousPage={{ name: dictionary.common.goBack }}
-      />
-      <CourseDetail dictionary={dictionary} lang={lang} course={course} />
-    </div>
-  );
+  return <CoursePageComponent course={course} />;
 }

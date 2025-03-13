@@ -8,7 +8,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import SmartlookInit from "@/components/utils/Smartlook";
 import type { Metadata } from "next";
-import Header from "@/ui/site/header/Header";
+import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 const nunito = Nunito({
