@@ -1,13 +1,7 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import dbConnect from "@/lib/dbConnect";
 import { Technology } from "@/lib/models";
-import { getDictionary } from "../../dictionaries";
-import { getLocalizedPathFromPrefix } from "@/lib/language";
-import PageHeader from "@/components/layout/PageHeader";
-import Button from "@/components/ui/Button";
-import Container from "@/components/layout/Container";
-
-import "./styles.css";
+import TechnologyPageComponent from "@/components/pages/technologies/[slug]";
 
 type Props = {
   params: Promise<{ lang: string; slug: string }>;
@@ -75,78 +69,10 @@ export async function generateMetadata(
 export default async function TechnologyPage({
   params,
 }: {
-  params: Promise<{ lang: string; slug: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const { lang, slug } = await params;
-  const dictionary = await getDictionary(lang);
+  const { slug } = await params;
   const technology = await getTechnology(slug);
 
-  return (
-    <div className="technology-page">
-      <PageHeader
-        title={technology.name}
-        description={
-          lang === "en" ? technology.description : technology.description_es
-        }
-        image={technology.imageColor}
-        imagePositionMobile={"bottom"}
-        breadcrumb={[
-          {
-            name: dictionary.technologies.technologies,
-            link: getLocalizedPathFromPrefix(lang, `/technologies/`),
-          },
-        ]}
-      />
-      <Container>
-        <div
-          className="long-description"
-          dangerouslySetInnerHTML={{
-            __html:
-              lang === "en"
-                ? technology.long_description
-                : technology.long_description_es,
-          }}
-        ></div>
-        {lang === "en" ? (
-          <>
-            <h2>Do you want to learn {technology.name}?</h2>
-            <p>
-              We got you covered! We have carefully curated the most popular{" "}
-              {technology.name} courses, both free and paid. So you can start
-              learning it right away!
-            </p>
-            <Button
-              label={`View ${technology.name} Courses`}
-              href={getLocalizedPathFromPrefix(
-                lang,
-                `/technologies/${technology.slug}/courses?filters=${
-                  lang === "en" ? "english" : "spanish"
-                }`
-              )}
-              className="inline-block mt-3"
-            />
-          </>
-        ) : (
-          <>
-            <h2>¿Querés aprender {technology.name}?</h2>
-            <p>
-              ¡Te tenemos cubierto! Hemos seleccionado cuidadosamente los cursos
-              de {technology.name} más populares, tanto gratuitos como de pago.
-              ¡Así que puedes empezar a aprender de inmediato!
-            </p>
-            <Button
-              label={`Ver Cursos de ${technology.name}`}
-              href={getLocalizedPathFromPrefix(
-                lang,
-                `/technologies/${technology.slug}/courses?filters=${
-                  lang === "en" ? "english" : "spanish"
-                }`
-              )}
-              className="inline-block mt-3"
-            />
-          </>
-        )}
-      </Container>
-    </div>
-  );
+  return <TechnologyPageComponent technology={technology} />;
 }
