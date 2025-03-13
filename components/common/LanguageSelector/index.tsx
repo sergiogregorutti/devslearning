@@ -31,10 +31,16 @@ export default function LanguageSelector({
   };
 
   return (
-    <div className={`language-selector${mobile === true ? " mobile" : ""}`}>
+    <div
+      className={`language-selector flex gap-3${
+        mobile === true ? " mobile" : ""
+      }`}
+    >
       <Link
         href="/"
-        className={lang === "en" ? "active" : ""}
+        className={`uppercase rounded-md px-3 py-1 ${
+          lang === "en" ? "active bg-blue-500" : ""
+        }`}
         data-language="en"
         onClick={changeLanguage}
       >
@@ -42,7 +48,9 @@ export default function LanguageSelector({
       </Link>
       <Link
         href="/es/"
-        className={lang === "es" ? "active" : ""}
+        className={`uppercase rounded-md px-3 py-1 ${
+          lang === "es" ? "active bg-blue-500" : ""
+        }`}
         data-language="es"
         onClick={changeLanguage}
       >
