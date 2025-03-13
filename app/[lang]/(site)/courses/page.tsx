@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import { getDictionary } from "../dictionaries";
 import { fetchCategoriesWithTechnologies } from "@/lib/data/technologiesCategories";
-import PageHeader from "@/components/layout/PageHeader";
-import CategoriesList from "@/ui/site/coursesHome/CategoriesList";
-import Container from "@/components/layout/Container";
+import CoursesPage from "@/components/pages/courses";
 
 type Props = {
   params: Promise<{ lang: string; id: string }>;
@@ -53,30 +50,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   };
 }
 
-export default async function Technologies(props: {
-  params: Promise<{ lang: string }>;
-}) {
-  const params = await props.params;
-
-  const { lang } = params;
-
-  const dictionary = await getDictionary(lang);
+export default async function Courses() {
   const categories = await fetchCategoriesWithTechnologies();
 
-  return (
-    <div className="courses-page">
-      <PageHeader
-        title={dictionary.courses.title}
-        description={dictionary.courses.description}
-        image="/assets/boy2.svg"
-      />
-      <Container>
-        <CategoriesList
-          dictionary={dictionary}
-          lang={lang}
-          categories={categories}
-        />
-      </Container>
-    </div>
-  );
+  return <CoursesPage categories={categories} />;
 }

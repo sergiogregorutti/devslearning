@@ -1,8 +1,8 @@
 "use client";
 
+import { useLanguage } from "@/components/context/LanguageContext";
 import Link from "next/link";
 import Image from "next/image";
-import { useLanguage } from "@/components/context/LanguageContext";
 import PageHeader from "@/components/layout/PageHeader";
 import Container from "@/components/layout/Container";
 
