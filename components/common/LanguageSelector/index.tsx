@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { setCookie } from "@/lib/helpers";
 
@@ -31,22 +32,22 @@ export default function LanguageSelector({
 
   return (
     <div className={`language-selector${mobile === true ? " mobile" : ""}`}>
-      <a
+      <Link
         href="/"
         className={lang === "en" ? "active" : ""}
         data-language="en"
         onClick={changeLanguage}
       >
         {dictionary.header.language.english}
-      </a>
-      <a
+      </Link>
+      <Link
         href="/es/"
         className={lang === "es" ? "active" : ""}
         data-language="es"
         onClick={changeLanguage}
       >
         {dictionary.header.language.spanish}
-      </a>
+      </Link>
     </div>
   );
 }
