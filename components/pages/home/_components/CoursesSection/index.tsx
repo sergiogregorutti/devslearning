@@ -3,12 +3,11 @@
 import { useLanguage } from "@/components/context/LanguageContext";
 import React, { useEffect, useState } from "react";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
-import Image from "next/image";
-import Link from "next/link";
 import Button from "@/components/ui/Button";
 import Counter from "@/components/common/Counter";
 import { ITechnologyCoursesCount } from "@/interfaces/course";
 import Container from "@/components/layout/Container";
+import CardLink from "@/components/ui/CardLink";
 
 import "./styles.css";
 
@@ -42,26 +41,11 @@ export default function FeaturedTechnologies({
           </p>
           <div className="technologies-list">
             {technologies.map((technology: any) => (
-              <Link
-                className="item transition-all duration-500"
+              <CardLink
                 key={technology.name}
-                href={getLocalizedPathFromPrefix(
-                  lang,
-                  `/technologies/${technology.slug}/courses?filters=${
-                    lang === "en" ? "english" : "spanish"
-                  }`
-                )}
-              >
-                <Image
-                  src={technology.imageWhite}
-                  width={100}
-                  height={100}
-                  alt={technology.name}
-                  priority={true}
-                />
-                <div className="item-content">
-                  <span>{technology.name}</span>
-                  <span className="small">
+                title={technology.name}
+                subtitle={
+                  <>
                     {courses[technology._id]?.total ? (
                       <Counter
                         initialValue={0}
@@ -71,9 +55,17 @@ export default function FeaturedTechnologies({
                       0
                     )}{" "}
                     {dictionary.home.courses}
-                  </span>
-                </div>
-              </Link>
+                  </>
+                }
+                imageSrc={technology.imageWhite}
+                layout="vertical"
+                href={getLocalizedPathFromPrefix(
+                  lang,
+                  `/technologies/${technology.slug}/courses?filters=${
+                    lang === "en" ? "english" : "spanish"
+                  }`
+                )}
+              />
             ))}
           </div>
           <Button

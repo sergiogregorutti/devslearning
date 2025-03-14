@@ -1,28 +1,10 @@
 "use client";
 
 import { useLanguage } from "@/components/context/LanguageContext";
-import Link from "next/link";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import PageHeader from "@/components/layout/PageHeader";
 import Container from "@/components/layout/Container";
-
-const RoadmapLink = ({
-  lang,
-  path,
-  name,
-}: {
-  lang: string;
-  path: string;
-  name: string;
-}) => (
-  <Link
-    href={getLocalizedPathFromPrefix(lang, path)}
-    aria-label={`View the ${name} roadmap`}
-    className="font-poppins text-white text-center text-[22px] p-4 min-h-[100px] flex items-center justify-center bg-blue-500 hover:bg-blue-600 rounded-2xl transition-all duration-500"
-  >
-    {name}
-  </Link>
-);
+import CardLink from "@/components/ui/CardLink";
 
 const Roadmaps: React.FC = () => {
   const { lang, dictionary } = useLanguage();
@@ -63,20 +45,17 @@ const Roadmaps: React.FC = () => {
         <section>
           <h2>{roadmaps.chooseYourPath}</h2>
           <div className="grid md:grid-cols-3 gap-x-[40px] gap-y-[20px] mt-6">
-            <RoadmapLink
-              lang={lang}
-              path="/roadmaps/frontend"
-              name={roadmaps.frontendName}
+            <CardLink
+              title={roadmaps.frontendName}
+              href={getLocalizedPathFromPrefix(lang, "/roadmaps/frontend")}
             />
-            <RoadmapLink
-              lang={lang}
-              path="/roadmaps/backend"
-              name={roadmaps.backendName}
+            <CardLink
+              title={roadmaps.backendName}
+              href={getLocalizedPathFromPrefix(lang, "/roadmaps/backend")}
             />
-            <RoadmapLink
-              lang={lang}
-              path="/roadmaps/fullstack"
-              name={roadmaps.fullstackName}
+            <CardLink
+              title={roadmaps.fullstackName}
+              href={getLocalizedPathFromPrefix(lang, "/roadmaps/fullstack")}
             />
           </div>
         </section>

@@ -14,14 +14,13 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
   switch (params.lang) {
     case "en":
-      pageTitle = "Devs Learning | Technologies";
-      description = "Browse between our technologies to learn web development";
+      pageTitle = "Devs Learning | Courses";
+      description = "Browse between our courses to learn web development";
       break;
 
     case "es":
-      pageTitle = "Devs Learning | Tecnologías";
-      description =
-        "Navega entre nuestras tecnologías para aprender desarrollo web";
+      pageTitle = "Devs Learning | Cursos";
+      description = "Navega entre nuestros cursos para aprender desarrollo web";
       break;
   }
 

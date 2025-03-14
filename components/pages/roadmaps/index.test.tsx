@@ -114,7 +114,7 @@ describe("Roadmaps Component", () => {
     const links = screen.getAllByRole("link");
     links.forEach((link) => {
       expect(link).toHaveClass(
-        "font-poppins text-white text-center text-[22px] p-4 min-h-[100px] flex items-center justify-center bg-blue-500 hover:bg-blue-600 rounded-2xl transition-all duration-500"
+        "flex flex-row items-center font-poppins text-white bg-blue-500 rounded-2xl text-[22px] px-[20px] py-[15px] min-h-[100px] transition-all duration-300 hover:bg-blue-600"
       );
     });
   });
