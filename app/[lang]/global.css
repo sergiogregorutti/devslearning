@@ -19,6 +19,12 @@
   --color-blue-900: #03254c;
 }
 
+.wysiwyg-content {
+  & p {
+    line-height: 30px;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
