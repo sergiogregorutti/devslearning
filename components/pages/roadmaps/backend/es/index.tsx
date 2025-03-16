@@ -1,5 +1,6 @@
 import PageHeader from "@/components/layout/PageHeader";
 import Container from "@/components/layout/Container";
+import Heading from "@/components/ui/Heading";
 
 export default function BackendEs() {
   return (
@@ -15,35 +16,38 @@ export default function BackendEs() {
         ]}
       />
       <Container>
-        <h2>1. Aprende los Fundamentos de la Programación</h2>
+        <Heading
+          as="h2"
+          label="1. Aprende los Fundamentos de la Programación"
+        />
         <p className="mb-6 leading-[30px]">
           Comienza con los fundamentos de la programación. Aprende a trabajar
           con variables, bucles, funciones y control de flujo. Elige un lenguaje
           de programación como JavaScript, Python o Ruby para construir tu base.
         </p>
 
-        <h2>2. Aprende sobre Bases de Datos</h2>
+        <Heading as="h2" label="2. Aprende sobre Bases de Datos" />
         <p className="mb-6 leading-[30px]">
           Aprende sobre bases de datos y cómo interactúan con las aplicaciones.
           Entiende SQL y bases de datos NoSQL como PostgreSQL, MySQL y MongoDB.
           Aprende a gestionar datos, crear tablas y realizar consultas.
         </p>
 
-        <h2>3. Aprende sobre Servidores Web</h2>
+        <Heading as="h2" label="3. Aprende sobre Servidores Web" />
         <p className="mb-6 leading-[30px]">
           Los servidores web son la base del desarrollo backend. Aprende cómo
           configurar servidores web como Apache, Nginx o Express.js para manejar
           solicitudes HTTP, servir archivos y gestionar el enrutamiento.
         </p>
 
-        <h2>4. Entiende las APIs REST</h2>
+        <Heading as="h2" label="4. Entiende las APIs REST" />
         <p className="mb-6 leading-[30px]">
           Aprende cómo crear y consumir APIs RESTful. Entiende cómo trabajar con
           métodos HTTP como GET, POST, PUT, DELETE y cómo estructurar y
           gestionar rutas para manejar solicitudes.
         </p>
 
-        <h2>5. Autenticación y Autorización</h2>
+        <Heading as="h2" label="5. Autenticación y Autorización" />
         <p className="mb-6 leading-[30px]">
           Asegura tus aplicaciones con técnicas de autenticación y autorización.
           Aprende cómo implementar la autenticación de usuarios con herramientas
@@ -51,7 +55,7 @@ export default function BackendEs() {
           seguros.
         </p>
 
-        <h2>6. Aprende sobre Frameworks Web</h2>
+        <Heading as="h2" label="6. Aprende sobre Frameworks Web" />
         <p className="mb-6 leading-[30px]">
           Domina frameworks backend como Express.js (Node.js), Django (Python) o
           Ruby on Rails. Estas herramientas ayudan a agilizar el desarrollo
@@ -59,7 +63,10 @@ export default function BackendEs() {
           seguridad y gestión de sesiones.
         </p>
 
-        <h2>7. Aprende sobre Estructuras de Datos y Algoritmos</h2>
+        <Heading
+          as="h2"
+          label="7. Aprende sobre Estructuras de Datos y Algoritmos"
+        />
         <p className="mb-6 leading-[30px]">
           El desarrollo backend requiere habilidades sólidas para resolver
           problemas. Aprende sobre estructuras de datos (arreglos, árboles,
@@ -67,7 +74,7 @@ export default function BackendEs() {
           optimizar el rendimiento.
         </p>
 
-        <h2>8. Control de Versiones (Git)</h2>
+        <Heading as="h2" label="8. Control de Versiones (Git)" />
         <p className="mb-6 leading-[30px]">
           Git es esencial para gestionar el código en el desarrollo backend.
           Aprende a realizar commits, crear ramas, fusionar y trabajar con
@@ -75,7 +82,7 @@ export default function BackendEs() {
           colaborar en equipos.
         </p>
 
-        <h2>9. Testing (Pruebas Unitarias e Integración)</h2>
+        <Heading as="h2" label="9. Testing (Pruebas Unitarias e Integración)" />
         <p className="mb-6 leading-[30px]">
           Las pruebas son fundamentales para garantizar la fiabilidad de tu
           código backend. Aprende a escribir pruebas unitarias usando frameworks
@@ -83,14 +90,17 @@ export default function BackendEs() {
           errores y asegurar una interacción fluida entre componentes.
         </p>
 
-        <h2>10. Despliegue y Hosting</h2>
+        <Heading as="h2" label="10. Despliegue y Hosting" />
         <p className="mb-6 leading-[30px]">
           Aprende a desplegar tus aplicaciones backend en la nube o servidores
           locales. Adquiere experiencia con plataformas como Heroku, AWS o
           DigitalOcean para alojar tus aplicaciones y bases de datos.
         </p>
 
-        <h2>11. Integración Continua y Entrega Continua (CI/CD)</h2>
+        <Heading
+          as="h2"
+          label="11. Integración Continua y Entrega Continua (CI/CD)"
+        />
         <p className="mb-6 leading-[30px]">
           Automatiza tu proceso de desarrollo backend con herramientas de CI/CD.
           Aprende a integrar herramientas como Jenkins o GitHub Actions para
@@ -98,7 +108,7 @@ export default function BackendEs() {
           backend.
         </p>
 
-        <h2>12. Mantente Actualizado</h2>
+        <Heading as="h2" label="12. Mantente Actualizado" />
         <p className="mb-6 leading-[30px]">
           El desarrollo backend está siempre en constante evolución. Mantente
           actualizado con las últimas herramientas, tecnologías y mejores

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import PageHeader from "@/components/layout/PageHeader";
 import Container from "@/components/layout/Container";
+import Heading from "@/components/ui/Heading";
 
 const About: React.FC = () => {
   const { dictionary } = useLanguage();
@@ -13,16 +14,16 @@ const About: React.FC = () => {
     <>
       <PageHeader title={dictionary.about.title} />
       <Container>
-        <h2>{dictionary.about.mission}</h2>
+        <Heading as="h2" label={dictionary.about.mission} />
         <p className="mb-6 leading-[30px]">
           {dictionary.about.mission_description}
         </p>
-        <h2>{dictionary.about.vision}</h2>
+        <Heading as="h2" label={dictionary.about.vision} />
         <p className="mb-6 leading-[30px]">
           {dictionary.about.vision_description}
         </p>
-        <h2>{dictionary.about.team}</h2>
-        <div className="grid grid-cols-1 gap-8 mt-6 md:grid-cols-2 lg:grid-cols-4">
+        <Heading as="h2" label={dictionary.about.team} />
+        <div className="grid grid-cols-1 gap-8 mt-3 md:grid-cols-2 lg:grid-cols-4">
           <div className="flex flex-col items-center text-center bg-blue-100 rounded-[40px] p-8">
             <Image
               src="/assets/team/sergio.jpg"
@@ -31,13 +32,13 @@ const About: React.FC = () => {
               alt="Sergio Gregorutti"
               className="rounded-full"
             />
-            <h3 className="font-bold text-2xl text-blue-900 !mt-4 !mb-2">
+            <h3 className="font-bold text-2xl text-blue-900 mt-4">
               Sergio Gregorutti
             </h3>
             <span className="block text-lg text-gray-500">
               {dictionary.about.team_members.sergio.role}
             </span>
-            <span className="text-gray-700 mt-2">
+            <span className="font-poppins mt-2">
               {dictionary.about.team_members.sergio.professionalProfile}
             </span>
             <ul className="flex grow items-end justify-center gap-4 mt-4">
@@ -81,13 +82,13 @@ const About: React.FC = () => {
               alt="Florencia De Luca"
               className="rounded-full"
             />
-            <h3 className="font-bold text-2xl text-blue-900 !mt-4 !mb-2">
+            <h3 className="font-bold text-2xl text-blue-900 mt-4">
               Florencia De Luca
             </h3>
             <span className="block text-lg text-gray-500">
               {dictionary.about.team_members.florencia.role}
             </span>
-            <span className="text-gray-700 mt-2">
+            <span className="font-poppins mt-2">
               {dictionary.about.team_members.florencia.professionalProfile}
             </span>
             <ul className="flex grow items-end justify-center gap-4 mt-4">

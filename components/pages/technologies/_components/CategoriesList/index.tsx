@@ -3,6 +3,7 @@
 import { useLanguage } from "@/components/context/LanguageContext";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import CardLink from "@/components/ui/CardLink";
+import Heading from "@/components/ui/Heading";
 
 export default function TechnologiesList({ categories }: { categories: any }) {
   const { lang } = useLanguage();
@@ -11,7 +12,11 @@ export default function TechnologiesList({ categories }: { categories: any }) {
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
       {categories.map((category: any) => (
         <div key={category._id}>
-          <h2>{lang === "en" ? category.name : category.name_es}</h2>
+          <Heading
+            as="h2"
+            label={lang === "en" ? category.name : category.name_es}
+            className="mb-5"
+          />
           <div className="grid grid-cols-1 gap-4 md:gap-5">
             {category.technologies.map((technology: any) => (
               <CardLink

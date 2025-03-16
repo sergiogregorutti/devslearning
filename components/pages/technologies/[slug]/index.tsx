@@ -5,6 +5,7 @@ import { getLocalizedPathFromPrefix } from "@/lib/language";
 import PageHeader from "@/components/layout/PageHeader";
 import Container from "@/components/layout/Container";
 import Button from "@/components/ui/Button";
+import Heading from "@/components/ui/Heading";
 
 interface TechnologyProps {
   technology: any;
@@ -31,7 +32,7 @@ const Technology: React.FC<TechnologyProps> = ({ technology }) => {
       />
       <Container>
         <div
-          className="long-description"
+          className="wysiwyg-content mb-5"
           dangerouslySetInnerHTML={{
             __html:
               lang === "en"
@@ -41,8 +42,11 @@ const Technology: React.FC<TechnologyProps> = ({ technology }) => {
         ></div>
         {lang === "en" ? (
           <>
-            <h2>Do you want to learn {technology.name}?</h2>
-            <p>
+            <Heading
+              as="h2"
+              label={`Do you want to learn ${technology.name}?`}
+            />
+            <p className="mb-3">
               We got you covered! We have carefully curated the most popular{" "}
               {technology.name} courses, both free and paid. So you can start
               learning it right away!
@@ -60,8 +64,8 @@ const Technology: React.FC<TechnologyProps> = ({ technology }) => {
           </>
         ) : (
           <>
-            <h2>¿Querés aprender {technology.name}?</h2>
-            <p>
+            <Heading as="h2" label={`¿Querés aprender {technology.name}?`} />
+            <p className="mb-3">
               ¡Te tenemos cubierto! Hemos seleccionado cuidadosamente los cursos
               de {technology.name} más populares, tanto gratuitos como de pago.
               ¡Así que puedes empezar a aprender de inmediato!

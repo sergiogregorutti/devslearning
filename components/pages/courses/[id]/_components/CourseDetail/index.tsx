@@ -3,6 +3,7 @@
 import { FaUpRightFromSquare } from "react-icons/fa6";
 import Button from "@/components/ui/Button";
 import Container from "@/components/layout/Container";
+import Heading from "@/components/ui/Heading";
 
 export default function CourseDetail({
   course,
@@ -33,7 +34,11 @@ export default function CourseDetail({
         icon={<FaUpRightFromSquare />}
       />
 
-      <h2 className="mt-6 !mb-3">{dictionary.courseDetail.information}</h2>
+      <Heading
+        as="h2"
+        label={dictionary.courseDetail.information}
+        className="mt-6 mb-3"
+      />
       <div className="w-[100%] rounded-lg border border-neutral-200 p-4 md:p-6">
         <div className="grid grid-cols-2 md:flex md:items-center md:flex-wrap gap-x-[25px] gap-y-[10px] md:gap-8">
           <div>
@@ -72,7 +77,11 @@ export default function CourseDetail({
         </div>
       </div>
 
-      <h2 className="mt-6 !mb-3">{dictionary.courseDetail.description}</h2>
+      <Heading
+        as="h2"
+        label={dictionary.courseDetail.description}
+        className="mt-6 mb-3"
+      />
       <div className="rounded-lg border border-neutral-200 p-4 md:p-6">
         <div className="wysiwyg-content">
           {course.long_description && (

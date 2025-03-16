@@ -5,6 +5,7 @@ import { getLocalizedPathFromPrefix } from "@/lib/language";
 import PageHeader from "@/components/layout/PageHeader";
 import Container from "@/components/layout/Container";
 import CardLink from "@/components/ui/CardLink";
+import Heading from "@/components/ui/Heading";
 
 const Roadmaps: React.FC = () => {
   const { lang, dictionary } = useLanguage();
@@ -19,23 +20,23 @@ const Roadmaps: React.FC = () => {
       />
       <Container>
         <section>
-          <h2>{roadmaps.journeyTitle}</h2>
+          <Heading as="h2" label={roadmaps.journeyTitle} className="mb-3" />
           <p className="mb-6 leading-[30px]">{roadmaps.journeyDescription}</p>
         </section>
 
         <section>
-          <h2>{roadmaps.rolesTitle}</h2>
+          <Heading as="h2" label={roadmaps.rolesTitle} className="mb-3" />
 
           <div>
-            <h3>{roadmaps.frontendName}</h3>
+            <Heading as="h3" label={roadmaps.frontendName} className="mt-5" />
             <p className="mb-6 leading-[30px]">
               {roadmaps.frontendDescription}
             </p>
 
-            <h3>{roadmaps.backendName}</h3>
+            <Heading as="h3" label={roadmaps.backendName} className="mt-5" />
             <p className="mb-6 leading-[30px]">{roadmaps.backendDescription}</p>
 
-            <h3>{roadmaps.fullstackName}</h3>
+            <Heading as="h3" label={roadmaps.fullstackName} className="mt-5" />
             <p className="mb-6 leading-[30px]">
               {roadmaps.fullstackDescription}
             </p>
@@ -43,7 +44,7 @@ const Roadmaps: React.FC = () => {
         </section>
 
         <section>
-          <h2>{roadmaps.chooseYourPath}</h2>
+          <Heading as="h2" label={roadmaps.chooseYourPath} className="mb-3" />
           <div className="grid md:grid-cols-3 gap-x-[40px] gap-y-[20px] mt-6">
             <CardLink
               title={roadmaps.frontendName}

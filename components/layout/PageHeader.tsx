@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Container from "@/components/layout/Container";
-import Title from "../ui/Title";
+import Title from "../ui/Heading";
 import clsx from "clsx";
 
 interface BreadcrumbItem {

@@ -265,7 +265,7 @@ const Courses: React.FC<CoursesProps> = ({
                 <Button
                   variant={viewMode === "grid" ? "default" : "ghost"}
                   size="small"
-                  className="flex items-center rounded-none px-3"
+                  className="!flex items-center rounded-none px-3"
                   onClick={() => setViewMode("grid")}
                 >
                   <FaTableCells className="h-4 w-4 md:mr-2" />
@@ -276,7 +276,7 @@ const Courses: React.FC<CoursesProps> = ({
                 <Button
                   variant={viewMode === "list" ? "default" : "ghost"}
                   size="small"
-                  className="flex items-center rounded-none px-3"
+                  className="!flex items-center rounded-none px-3"
                   onClick={() => setViewMode("list")}
                 >
                   <FaListUl className="h-4 w-4 md:mr-2" />
@@ -323,7 +323,7 @@ const Courses: React.FC<CoursesProps> = ({
                             : `USD $${course.price}`}
                         </span>
                       </div>
-                      <h3 className="!text-base md:!text-xl !leading-[16px] md:!leading-[20px] font-semibold !mb-2">
+                      <h3 className="text-base md:text-xl leading-[16px] md:leading-[20px] font-semibold mb-2">
                         {course.name}
                       </h3>
                       <p className="text-sm text-gray-600 mb-4 flex-grow">
@@ -339,7 +339,7 @@ const Courses: React.FC<CoursesProps> = ({
                           lang,
                           `/courses/${course._id}/`
                         )}
-                        className="w-full"
+                        className="w-full text-sm md:text-lg py-[5px] md:py-[9px] px-[20px] md:px-[28px]"
                       >
                         {dictionary.technologies.viewMore}
                       </Button>
@@ -387,7 +387,7 @@ const Courses: React.FC<CoursesProps> = ({
                               : `USD $${course.price}`}
                           </span>
                         </div>
-                        <h3 className="order1 md:order-2 !text-base md:!text-xl !leading-[16px] md:!leading-[20px] font-semibold !mb-1 md:!mb-2">
+                        <h3 className="order1 md:order-2 text-base md:text-xl leading-[16px] md:leading-[20px] font-semibold mb-1 md:mb-2">
                           {course.name}
                         </h3>
                         <p className="order-2 md:order-3 text-xs md:text-sm text-gray-600 mb-2 md:mb-4">
@@ -409,7 +409,7 @@ const Courses: React.FC<CoursesProps> = ({
                               lang,
                               `/courses/${course._id}/`
                             )}
-                            className="w-[100%] md:w-auto"
+                            className="w-[100%] md:w-auto text-sm md:text-lg py-[5px] md:py-[9px] px-[20px] md:px-[28px]"
                           >
                             {dictionary.technologies.viewMore}
                           </Button>
