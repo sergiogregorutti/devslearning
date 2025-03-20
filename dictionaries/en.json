@@ -33,7 +33,8 @@
         "title": "Welcome to Devs Learning",
         "subtitle": "Your go-to platform for learning programming from scratch. Start your development journey here!",
         "image": "boy.svg",
-        "imageNoMaxHeigh": true
+        "imageNoMaxHeigh": true,
+        "showStats": true
       },
       {
         "title": "Explore Our Courses",

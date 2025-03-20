@@ -32,7 +32,9 @@
       {
         "title": "Bienvenid@ a   Devs Learning",
         "subtitle": "Tu plataforma de referencia para aprender programación desde cero. ¡Comienza tu viaje de desarrollo aquí!",
-        "image": "boy.svg"
+        "image": "boy.svg",
+        "imageNoMaxHeigh": true,
+        "showStats": true
       },
       {
         "title": "Explora nuestros Cursos",
