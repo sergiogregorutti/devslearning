@@ -10,7 +10,7 @@ header {
     justify-content: center;
     height: 60px;
 
-    @media (min-width: 768px) {
+    @media (min-width: 1200px) {
       justify-content: space-between;
     }
   }
@@ -33,7 +33,7 @@ header {
         }
       }
 
-      @media (min-width: 768px) {
+      @media (min-width: 1200px) {
         & a {
           width: 136px;
           height: 40px;
@@ -59,7 +59,7 @@ header {
   & .right {
     display: none;
 
-    @media (min-width: 768px) {
+    @media (min-width: 1200px) {
       display: flex;
       align-items: center;
     }
@@ -67,7 +67,7 @@ header {
     > .language-selector {
       display: none;
 
-      @media (min-width: 768px) {
+      @media (min-width: 1200px) {
         display: flex;
       }
     }
@@ -89,7 +89,7 @@ header {
       font-size: 20px;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 1200px) {
       display: none;
     }
   }
@@ -115,7 +115,7 @@ header {
       transition: opacity 0.5s ease, visibility 0s;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 1200px) {
       display: none;
     }
 
@@ -227,7 +227,7 @@ header {
 header .left .menu {
   display: none;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1200px) {
     display: flex;
   }
 }

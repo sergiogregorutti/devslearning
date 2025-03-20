@@ -30,27 +30,30 @@
   "home": {
     "heroSlider": [
       {
-        "title": "Bienvenid@ a",
-        "title2": "Devs Learning",
-        "subtitle": "Tu plataforma de referencia para aprender programación desde cero. ¡Comienza tu viaje de desarrollo aquí!"
+        "title": "Bienvenid@ a   Devs Learning",
+        "subtitle": "Tu plataforma de referencia para aprender programación desde cero. ¡Comienza tu viaje de desarrollo aquí!",
+        "image": "boy.svg"
       },
       {
-        "title": "Explora nuestros",
-        "title2": "Cursos",
+        "title": "Explora nuestros Cursos",
         "subtitle": "Tenemos los mejores cursos de desarrollo web, tanto gratuitos como de pago, para ayudarte a crecer como desarrollador.",
-        "cta": "Ver Todos los Cursos"
+        "link": "/es/courses",
+        "cta": "Ver Todos los Cursos",
+        "image": "boy2.svg"
       },
       {
-        "title": "Domina las",
-        "title2": "Tecnologías Web",
+        "title": "Domina las Tecnologías Web",
         "subtitle": "Aprende tecnologías como HTML, CSS, JavaScript y más. Entiende las herramientas que necesitas para construir aplicaciones web.",
-        "cta": "Descubre las Tecnologías"
+        "link": "/es/technologies",
+        "cta": "Descubre las Tecnologías",
+        "image": "man_working.svg"
       },
       {
-        "title": "Elige tu",
-        "title2": "Carrera",
+        "title": "Elige tu Carrera",
         "subtitle": "Ya sea que quieras convertirte en desarrollador frontend, backend o full-stack, nuestras hojas de ruta te guiarán en cada paso del camino.",
-        "cta": "Ver Carreras"
+        "link": "/es/roadmaps",
+        "cta": "Ver Carreras",
+        "image": "girl.svg"
       }
     ],
     "stats": {

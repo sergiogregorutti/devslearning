@@ -52,6 +52,7 @@
     "slick-carousel": "^1.8.1",
     "smartlook-client": "^9.0.0",
     "styled-components": "^6.1.8",
+    "swiper": "^11.2.5",
     "type-teller": "^1.0.8",
     "use-debounce": "^10.0.3",
     "zod": "^3.23.8"

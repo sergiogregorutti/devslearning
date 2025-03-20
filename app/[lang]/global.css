@@ -25,6 +25,7 @@
   }
 }
 
+/* WYSIWYG */
 .wysiwyg-content h2 {
   font-size: 1.875rem;
   line-height: 1;
@@ -34,7 +35,6 @@
   width: 100%;
   margin-bottom: 10px;
 }
-
 .wysiwyg-content h3 {
   color: #0b376b;
   font-weight: bold;
@@ -46,6 +46,15 @@
     font-size: 24px;
     line-height: 24px;
   }
+}
+
+/* Slider */
+.swiper-wrapper {
+  align-items: center;
+}
+.swiper-slide {
+  display: flex !important;
+  align-items: center;
 }
 
 * {

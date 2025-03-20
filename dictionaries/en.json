@@ -30,27 +30,31 @@
   "home": {
     "heroSlider": [
       {
-        "title": "Welcome to",
-        "title2": "Devs Learning",
-        "subtitle": "Your go-to platform for learning programming from scratch. Start your development journey here!"
+        "title": "Welcome to Devs Learning",
+        "subtitle": "Your go-to platform for learning programming from scratch. Start your development journey here!",
+        "image": "boy.svg",
+        "imageNoMaxHeigh": true
       },
       {
-        "title": "Explore Our",
-        "title2": "Courses",
+        "title": "Explore Our Courses",
         "subtitle": "Find a curated list of the best web development courses, both free and paid, to help you grow as a developer.",
-        "cta": "See All Courses"
+        "link": "/courses",
+        "cta": "See All Courses",
+        "image": "boy2.svg"
       },
       {
-        "title": "Master Web",
-        "title2": "Technologies",
+        "title": "Master Web Technologies",
         "subtitle": "Learn essential technologies like HTML, CSS, JavaScript, and more. Understand the tools you need to build web applications.",
-        "cta": "Discover Technologies"
+        "link": "/technologies",
+        "cta": "Discover Technologies",
+        "image": "man_working.svg"
       },
       {
-        "title": "Choose Your",
-        "title2": "Developer Path",
+        "title": "Choose Your Developer Path",
         "subtitle": "Whether you want to become a frontend, backend, or full-stack developer, our roadmaps will guide you every step of the way.",
-        "cta": "See Roadmaps"
+        "link": "/roadmaps",
+        "cta": "See Roadmaps",
+        "image": "girl.svg"
       }
     ],
     "stats": {
