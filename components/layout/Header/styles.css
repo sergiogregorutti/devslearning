@@ -1,51 +1,5 @@
 header {
-  position: sticky;
-  top: 0;
-  height: 60px;
-  background: #0b376b;
-  z-index: 9999;
-
-  & .content {
-    display: flex;
-    justify-content: center;
-    height: 60px;
-
-    @media (min-width: 1200px) {
-      justify-content: space-between;
-    }
-  }
-
   & .left {
-    display: flex;
-
-    & h1 {
-      margin: 0;
-
-      & a {
-        position: relative;
-        display: inline-block;
-        height: 30px;
-        margin: 10px 0;
-
-        & img {
-          height: 40px;
-          width: auto;
-        }
-      }
-
-      @media (min-width: 1200px) {
-        & a {
-          width: 136px;
-          height: 40px;
-          margin: 10px 0;
-
-          & img {
-            height: 40px;
-          }
-        }
-      }
-    }
-
     & .menu {
       display: flex;
       gap: 10px;

@@ -27,25 +27,31 @@ const Header = ({
   };
 
   return (
-    <header>
+    <header className="sticky h-[60px] bg-white drop-shadow-sm top-[0] z-[9999]">
       <Container>
-        <div className="content">
-          <div className="left">
-            <h1>
-              <Link href={getLocalizedPathFromPrefix(lang, `/`)}>
+        <div className="flex h-[60px] justify-center xl:justify-between">
+          <div className="flex">
+            <h1 className="m-0">
+              <Link
+                className="relative inline-block m-[10px_0]"
+                href={getLocalizedPathFromPrefix(lang, `/`)}
+              >
                 <Image
-                  src="/assets/logo.svg"
+                  src="/assets/logo_dark.svg"
                   width={136}
                   height={40}
                   alt="Devs Learning"
+                  className="w-auto"
                 />
               </Link>
             </h1>
-            <ul className="menu">
+          </div>
+          <div className="hidden xl:flex gap-5 items-center">
+            <ul className="flex gap-3">
               <li>
                 <Link
                   href={getLocalizedPathFromPrefix(lang, `/courses`)}
-                  className="text-white text-lg py-[5px] px-[20px] hover:bg-blue-600 rounded-full focus:outline-none transition-all duration-500"
+                  className="font-poppins text-neutral-500 py-[5px] px-[15px] hover:text-neutral-800 focus:outline-none transition-all duration-500"
                 >
                   {dictionary.header.navigation.courses}
                 </Link>
@@ -53,7 +59,7 @@ const Header = ({
               <li>
                 <Link
                   href={getLocalizedPathFromPrefix(lang, `/technologies`)}
-                  className="text-white text-lg py-[5px] px-[20px] hover:bg-blue-600 rounded-full focus:outline-none transition-all duration-500"
+                  className="font-poppins text-neutral-500 py-[5px] px-[15px] hover:text-neutral-800 focus:outline-none transition-all duration-500"
                 >
                   {dictionary.header.navigation.technologies}
                 </Link>
@@ -61,7 +67,7 @@ const Header = ({
               <li>
                 <Link
                   href={getLocalizedPathFromPrefix(lang, `/roadmaps`)}
-                  className="text-white text-lg py-[5px] px-[20px] hover:bg-blue-600 rounded-full focus:outline-none transition-all duration-500"
+                  className="font-poppins text-neutral-500 py-[5px] px-[15px] hover:text-neutral-800 focus:outline-none transition-all duration-500"
                 >
                   {dictionary.header.navigation.roadmaps}
                 </Link>
@@ -69,14 +75,13 @@ const Header = ({
               <li>
                 <Link
                   href={getLocalizedPathFromPrefix(lang, `/about`)}
-                  className="text-white text-lg py-[5px] px-[20px] hover:bg-blue-600 rounded-full focus:outline-none transition-all duration-500"
+                  className="font-poppins text-neutral-500 py-[5px] px-[15px] hover:text-neutral-800 focus:outline-none transition-all duration-500"
                 >
                   {dictionary.header.navigation.about}
                 </Link>
               </li>
             </ul>
-          </div>
-          <div className="right">
+
             <LanguageSelector dictionary={dictionary} lang={lang} />
           </div>
 

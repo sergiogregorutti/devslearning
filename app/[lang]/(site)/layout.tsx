@@ -81,7 +81,7 @@ export default async function RootLayout(
 
   return (
     <html lang={lang} className={`${nunito.variable} ${poppins.variable}`}>
-      <body suppressHydrationWarning>
+      <body suppressHydrationWarning className="bg-neutral-50">
         <LanguageProvider lang={lang} dictionary={dictionary}>
           <Header dictionary={dictionary} user={user} lang={lang} />
           {children}
