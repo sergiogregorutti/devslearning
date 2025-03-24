@@ -2,6 +2,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 import dbConnect from "@/lib/dbConnect";
 import { Course } from "@/lib/models";
 import { Technology } from "@/lib/models";
+import { fetchRelatedCourses } from "@/lib/data/courses";
 import CoursePageComponent from "@/components/pages/courses/[id]";
 
 type Props = {
@@ -32,6 +33,7 @@ async function getCourse(id: String) {
     year: course.year,
     language: course.language,
     link: course.link,
+    technologyId: technology._id.toString(),
     technologyName: technology.name,
     technologySlug: technology.slug,
   };
@@ -85,11 +87,18 @@ export async function generateMetadata(
 }
 
 export default async function CoursePage(props: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: string; lang: string }>;
 }) {
   const params = await props.params;
-  const { id } = params;
+  const { id, lang } = params;
   const course = await getCourse(id);
+  const relatedCourses = await fetchRelatedCourses(
+    course.technologyId,
+    course._id,
+    lang
+  );
 
-  return <CoursePageComponent course={course} />;
+  return (
+    <CoursePageComponent course={course} relatedCourses={relatedCourses} />
+  );
 }

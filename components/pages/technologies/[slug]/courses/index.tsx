@@ -20,7 +20,7 @@ import Badge from "@/components/ui/Badge";
 import Sorting from "./_components/Sorting";
 import Language from "./_components/Language";
 import Pricing from "./_components/Pricing";
-import Card from "./_components/Card";
+import Card from "@/components/ui/Card";
 import Pagination from "./_components/Pagination";
 
 interface CoursesProps {

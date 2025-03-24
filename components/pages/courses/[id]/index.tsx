@@ -4,12 +4,14 @@ import { useLanguage } from "@/components/context/LanguageContext";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import PageHeader from "@/components/layout/PageHeader";
 import CourseDetail from "./_components/CourseDetail";
+import RelatedCourses from "./_components/RelatedCourses";
 
 interface CourseProps {
   course: any;
+  relatedCourses: any;
 }
 
-const Course: React.FC<CourseProps> = ({ course }) => {
+const Course: React.FC<CourseProps> = ({ course, relatedCourses }) => {
   const { lang, dictionary } = useLanguage();
 
   return (
@@ -37,6 +39,7 @@ const Course: React.FC<CourseProps> = ({ course }) => {
         previousPage={{ name: dictionary.common.goBack }}
       />
       <CourseDetail dictionary={dictionary} lang={lang} course={course} />
+      <RelatedCourses relatedCourses={relatedCourses} />
     </>
   );
 };

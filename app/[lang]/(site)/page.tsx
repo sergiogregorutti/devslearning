@@ -3,8 +3,8 @@ import { headers } from "next/headers";
 import { cookies } from "next/headers";
 const jwt = require("jsonwebtoken");
 import { redirect } from "next/navigation";
-import { getDictionary } from "./dictionaries";
 import { fetchTechnologies } from "@/lib/data/technologies";
+import { fetchLatestCourses } from "@/lib/data/courses";
 import HomePage from "@/components/pages/home";
 
 type Props = {
@@ -86,8 +86,8 @@ export default async function Home(props: {
     }
   }
 
-  const dictionary = await getDictionary(lang);
   const technologies = await fetchTechnologies(4);
+  const latestCourses = await fetchLatestCourses();
 
-  return <HomePage technologies={technologies} />;
+  return <HomePage technologies={technologies} latestCourses={latestCourses} />;
 }

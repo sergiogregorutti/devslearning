@@ -70,6 +70,9 @@
       "description": "We offer a curated collection of the most popular courses in web development, programming languages, and more. Our platform features both free and paid courses that provide comprehensive content to help you grow as a developer. Whether you’re looking to learn HTML, CSS, JavaScript, or dive into frameworks like React and Node.js, we have a course for you.",
       "cta": "See All Courses"
     },
+    "latestCoursesSection": {
+      "title": "Latest Courses Added"
+    },
     "technologiesSection": {
       "title": "Understand the Technologies Behind Development",
       "description": "Explore the essential technologies in web development. In our Technologies section, you’ll find clear insights on what each technology is, how long it takes to learn, and what to learn next. Whether it’s Frontend (React, Vue.js), Backend (Node.js, Python), or others, we guide you through the key steps to make informed learning choices.",
@@ -189,8 +192,9 @@
     "hideFilters": "Hide Sorting and Filters"
   },
   "courseDetail": {
-    "information": "Features",
-    "description": "Course Overview"
+    "information": "Course Details",
+    "description": "Course Overview",
+    "relatedCourses": "Related Courses"
   },
   "about": {
     "title": "About",

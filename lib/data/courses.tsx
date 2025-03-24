@@ -1,6 +1,6 @@
 import { unstable_noStore as noStore } from "next/cache";
 import dbConnect from "@/lib/dbConnect";
-import { Course } from "@/lib/models";
+import { Course, Technology } from "@/lib/models";
 
 export async function fetchCourses() {
   noStore();
@@ -13,6 +13,77 @@ export async function fetchCourses() {
   const courses = await Course.find({}, {}, options);
 
   return courses;
+}
+
+export async function fetchLatestCourses(limit: number = 6) {
+  await dbConnect();
+
+  const courses = await Course.find({})
+    .sort({ createdAt: -1 })
+    .limit(limit)
+    .exec();
+
+  const enrichedCourses = await Promise.all(
+    courses.map(async (course: any) => {
+      const technology = await Technology.findOne(
+        { _id: course.technology },
+        "_id name slug imageWhite"
+      ).exec();
+
+      return {
+        ...course.toObject(),
+        _id: course._id.toString(),
+        technologyName: technology?.name || null,
+        technologySlug: technology?.slug || null,
+        technologyImageWhite: technology?.imageWhite || null,
+      };
+    })
+  );
+
+  const enrichedCoursesArray = JSON.parse(JSON.stringify(enrichedCourses));
+
+  return enrichedCoursesArray;
+}
+
+export async function fetchRelatedCourses(
+  technologyId: string,
+  currentCourseId: string,
+  lang: string,
+  limit: number = 4
+) {
+  await dbConnect();
+
+  const languageSort = lang === "es" ? -1 : 1;
+  console.log("languageSort", languageSort);
+
+  const courses = await Course.find({
+    technology: technologyId,
+    _id: { $ne: currentCourseId },
+  })
+    .sort({ language: Number(languageSort), createdAt: -1 })
+    .limit(limit)
+    .exec();
+
+  const enrichedCourses = await Promise.all(
+    courses.map(async (course: any) => {
+      const technology = await Technology.findOne(
+        { _id: course.technology },
+        "_id name slug imageWhite"
+      ).exec();
+
+      return {
+        ...course.toObject(),
+        _id: course._id.toString(),
+        technologyName: technology?.name || null,
+        technologySlug: technology?.slug || null,
+        technologyImageWhite: technology?.imageWhite || null,
+      };
+    })
+  );
+
+  const enrichedCoursesArray = JSON.parse(JSON.stringify(enrichedCourses));
+
+  return enrichedCoursesArray;
 }
 
 const ITEMS_PER_PAGE = 10;
