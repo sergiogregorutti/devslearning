@@ -104,7 +104,7 @@ const Header = ({
         </button>
 
         <div
-          className={`h-[100vh] h-[100svh] flex opacity-0 invisible transition-all bg-white fixed left-0 top-0 w-[100%] flex-col justify-between items-center xl:hidden ${
+          className={`h-[100vh] h-[100svh] pb-[50px] flex opacity-0 invisible transition-all bg-white fixed left-0 top-0 w-[100%] flex-col justify-between items-center xl:hidden ${
             showMobileMenu ? "opacity-100 visible" : ""
           }`}
         >
