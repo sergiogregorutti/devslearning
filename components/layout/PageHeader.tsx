@@ -81,33 +81,43 @@ const PageHeader: React.FC<PageHeaderProps> = ({
           <div className={`sm:flex sm:flex-col ${titlePositionMobileClasses}`}>
             {breadcrumb && (
               <nav aria-label="breadcrumb">
-                <ol className="breadcrumb">
+                <ol className="flex flex-wrap list-none p-0 mb-[5px]">
                   {previousPage && (
-                    <li className="breadcrumb-item">
+                    <li className="mr-[5px]">
                       <button
                         onClick={handleGoBack}
-                        className="item back text-blue-500"
+                        className="cursor-pointer text-blue-500 hover:text-blue-600 pr-[8px] mr-[5px] border-r border-neutral-400"
                         aria-label={`Go back to ${previousPage.name}`}
                       >
                         {previousPage.name}
                       </button>
                     </li>
                   )}
-                  <li className="breadcrumb-item">
-                    <Link className="item" href={breadcrumb[0].link}>
+                  <li className="mr-[5px]">
+                    <Link
+                      className="cursor-pointer text-blue-500 hover:text-blue-600"
+                      href={breadcrumb[0].link}
+                    >
                       {breadcrumb[0].name}
                     </Link>
                   </li>
                   {breadcrumb[1] && (
-                    <li className="breadcrumb-item">
-                      <span className="separator">/</span>
-                      <Link className="item" href={breadcrumb[1].link}>
+                    <li className="mr-[5px]">
+                      <span className="inline-block ml-[5px] mr-[8px] text-neutral-400">
+                        /
+                      </span>
+                      <Link
+                        className="cursor-pointer text-blue-500 hover:text-blue-600"
+                        href={breadcrumb[1].link}
+                      >
                         {breadcrumb[1].name}
                       </Link>
                     </li>
                   )}
-                  <li className="breadcrumb-item active" aria-current="page">
-                    <span className="separator">/</span>
+                  <li className="mr-[5px] active" aria-current="page">
+                    <span className="inline-block ml-[5px] mr-[8px] text-neutral-400">
+                      /
+                    </span>
                   </li>
                 </ol>
               </nav>
