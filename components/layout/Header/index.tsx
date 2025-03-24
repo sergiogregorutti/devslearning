@@ -136,60 +136,77 @@ const Header = ({
                   />
                 </Link>
               </div>
-              <ul className="w-[100%] list-none p-0 flex flex-col justify-center grow">
-                <li className="relative text-center" onClick={toggleMobileMenu}>
-                  <Link
-                    className="inline-block w-[100%] no-underline p-[10px_0] text-2xl"
-                    href={getLocalizedPathFromPrefix(lang, `/`)}
+
+              <div className="w-[100%] grow flex flex-col justify-center">
+                <ul className="w-[100%] list-none p-0 flex flex-col justify-center">
+                  <li
+                    className="relative text-center"
+                    onClick={toggleMobileMenu}
                   >
-                    {dictionary.header.navigation.home}
-                  </Link>
-                </li>
-                <li className="relative text-center" onClick={toggleMobileMenu}>
-                  <Link
-                    className="inline-block w-[100%] no-underline p-[10px_0] text-2xl"
-                    href={getLocalizedPathFromPrefix(lang, `/courses`)}
+                    <Link
+                      className="inline-block w-[100%] no-underline p-[10px_0] text-2xl"
+                      href={getLocalizedPathFromPrefix(lang, `/`)}
+                    >
+                      {dictionary.header.navigation.home}
+                    </Link>
+                  </li>
+                  <li
+                    className="relative text-center"
+                    onClick={toggleMobileMenu}
                   >
-                    {dictionary.header.navigation.courses}
-                  </Link>
-                </li>
-                <li className="relative text-center" onClick={toggleMobileMenu}>
-                  <Link
-                    className="inline-block w-[100%] no-underline p-[10px_0] text-2xl"
-                    href={getLocalizedPathFromPrefix(lang, `/technologies`)}
+                    <Link
+                      className="inline-block w-[100%] no-underline p-[10px_0] text-2xl"
+                      href={getLocalizedPathFromPrefix(lang, `/courses`)}
+                    >
+                      {dictionary.header.navigation.courses}
+                    </Link>
+                  </li>
+                  <li
+                    className="relative text-center"
+                    onClick={toggleMobileMenu}
                   >
-                    {dictionary.header.navigation.technologies}
-                  </Link>
-                </li>
-                <li className="relative text-center" onClick={toggleMobileMenu}>
-                  <Link
-                    className="inline-block w-[100%] no-underline p-[10px_0] text-2xl"
-                    href={getLocalizedPathFromPrefix(lang, `/roadmaps`)}
+                    <Link
+                      className="inline-block w-[100%] no-underline p-[10px_0] text-2xl"
+                      href={getLocalizedPathFromPrefix(lang, `/technologies`)}
+                    >
+                      {dictionary.header.navigation.technologies}
+                    </Link>
+                  </li>
+                  <li
+                    className="relative text-center"
+                    onClick={toggleMobileMenu}
                   >
-                    {dictionary.header.navigation.roadmaps}
-                  </Link>
-                </li>
-                <li className="relative text-center" onClick={toggleMobileMenu}>
-                  <Link
-                    className="inline-block w-[100%] no-underline p-[10px_0] text-2xl"
-                    href={getLocalizedPathFromPrefix(lang, `/about`)}
+                    <Link
+                      className="inline-block w-[100%] no-underline p-[10px_0] text-2xl"
+                      href={getLocalizedPathFromPrefix(lang, `/roadmaps`)}
+                    >
+                      {dictionary.header.navigation.roadmaps}
+                    </Link>
+                  </li>
+                  <li
+                    className="relative text-center"
+                    onClick={toggleMobileMenu}
                   >
-                    {dictionary.header.navigation.about}
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="w-[100%] px-6">
-            <h3 className="text-center font-normal text-2xl mb-3 text-neutral-400">
-              {dictionary.header.navigation.language}
-            </h3>
-            <div className="flex justify-center mb-6">
-              <LanguageSelector
-                mobile={true}
-                dictionary={dictionary}
-                lang={lang}
-              />
+                    <Link
+                      className="inline-block w-[100%] no-underline p-[10px_0] text-2xl"
+                      href={getLocalizedPathFromPrefix(lang, `/about`)}
+                    >
+                      {dictionary.header.navigation.about}
+                    </Link>
+                  </li>
+                </ul>
+
+                <h3 className="text-center font-normal text-2xl mt-6 mb-3 text-neutral-400">
+                  {dictionary.header.navigation.language}
+                </h3>
+                <div className="flex justify-center mb-6">
+                  <LanguageSelector
+                    mobile={true}
+                    dictionary={dictionary}
+                    lang={lang}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
