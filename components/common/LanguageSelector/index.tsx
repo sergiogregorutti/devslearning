@@ -10,8 +10,6 @@ interface LanguageSelectorProps {
   lang: string;
 }
 
-import "./styles.css";
-
 export default function LanguageSelector({
   mobile = false,
   dictionary,
@@ -31,15 +29,13 @@ export default function LanguageSelector({
   };
 
   return (
-    <div
-      className={`language-selector flex gap-3${
-        mobile === true ? " mobile" : ""
-      }`}
-    >
+    <div className={`flex gap-3`}>
       <Link
         href="/"
         className={`uppercase rounded-md px-3 py-1 ${
-          lang === "en" ? "active bg-blue-500" : ""
+          lang === "en"
+            ? "bg-blue-500 text-white"
+            : "text-blue-500 hover:text-white"
         }`}
         data-language="en"
         onClick={changeLanguage}
@@ -49,7 +45,9 @@ export default function LanguageSelector({
       <Link
         href="/es/"
         className={`uppercase rounded-md px-3 py-1 ${
-          lang === "es" ? "active bg-blue-500" : ""
+          lang === "es"
+            ? "bg-blue-500 text-white"
+            : "text-blue-500 hover:text-white"
         }`}
         data-language="es"
         onClick={changeLanguage}

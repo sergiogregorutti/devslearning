@@ -23,7 +23,7 @@ export default function HeroSlider() {
           modules={[Autoplay, Pagination]}
           slidesPerView={1}
           loop={true}
-          //autoplay={{ delay: 6000, disableOnInteraction: true }}
+          autoplay={{ delay: 6000, disableOnInteraction: true }}
           pagination={{ clickable: true }}
           className="!pb-6 !py-3 lg:!pb-6 lg:!py-0"
         >
@@ -31,7 +31,7 @@ export default function HeroSlider() {
             <SwiperSlide key={index}>
               <div className="grid grid-cols-1 md:grid-cols-[55%_45%]">
                 <div className="flex flex-col items-start justify-center order-2 md:order-1 pb-6 md:pb-0 lg:pr-[10%]">
-                  <span className="text-blue-800 text-4xl md:text-5xl lg:text-6xl font-bold leading-[34px] md:leading-[50px] mb-3 lg:pr-[10%]">
+                  <span className="text-blue-800 text-4xl md:text-5xl lg:text-6xl font-bold leading-[34px] md:leading-[50px] mb-3 pr-[15%]">
                     {slide.title}
                   </span>
                   <p className="mb-3">{slide.subtitle}</p>
