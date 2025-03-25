@@ -19,7 +19,7 @@ const Courses: React.FC<CoursesProps> = ({ categories }) => {
         description={dictionary.courses.description}
         image="/assets/boy2.svg"
       />
-      <Container>
+      <Container className="pb-10">
         <CategoriesList categories={categories} />
       </Container>
     </>

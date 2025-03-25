@@ -23,14 +23,14 @@ export default function Footer({ dictionary, lang }: FooterProps) {
   ];
 
   return (
-    <footer className="mt-auto pt-10">
+    <footer className="mt-auto pt-4 bg-blue-500">
       <Container>
         <div className="flex flex-col text-center text-base">
-          <ul className="flex flex-wrap justify-center gap-x-[20px] gap-y-[10px] border-b border-gray-300 pb-4 px-4">
+          <ul className="flex flex-wrap justify-center gap-x-[20px] gap-y-[10px] border-b border-white pb-4 px-4">
             {navigationLinks.map(({ href, label }) => (
               <li key={href}>
                 <Link
-                  className="text-gray-400 hover:text-gray-600"
+                  className="text-white hover:text-blue-800"
                   href={getLocalizedPathFromPrefix(lang, href)}
                 >
                   {label}
@@ -38,7 +38,7 @@ export default function Footer({ dictionary, lang }: FooterProps) {
               </li>
             ))}
           </ul>
-          <p className="text-gray-400 mt-4 mb-4">
+          <p className="text-white mt-4 mb-4">
             © {new Date().getFullYear()} Devs Learning
           </p>
         </div>

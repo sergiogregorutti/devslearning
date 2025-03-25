@@ -139,12 +139,12 @@ const Courses: React.FC<CoursesProps> = ({
           },
         ]}
       />
-      <Container>
+      <Container className="pb-10">
         <div className="md:hidden mb-6">
           <Button
             size="small"
             variant="outline"
-            className="flex items-center gap-2 justify-between"
+            className="!flex items-center gap-2 justify-between bg-white w-full"
             onClick={() => setShowMobileFilters(!showMobileFilters)}
           >
             <span className="flex items-center">
@@ -155,11 +155,11 @@ const Courses: React.FC<CoursesProps> = ({
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div
             className={`${
               showMobileFilters ? "block" : "hidden"
-            } md:block h-fit sticky top-[80px]`}
+            } md:block h-fit sticky top-[80px] bg-white rounded-xl p-4 border border-neutral-200`}
           >
             <div className="space-y-6 sticky">
               <div>
@@ -207,7 +207,7 @@ const Courses: React.FC<CoursesProps> = ({
 
           <div className="md:col-span-3">
             {activeFilters.length > 0 && (
-              <div className="mb-4 flex flex-wrap gap-2 items-center">
+              <div className="mb-4 flex flex-wrap gap-2 items-center bg-white rounded-xl p-4 border border-neutral-200">
                 <span className="text-sm text-gray-500 w-100 md:w-auto">
                   {dictionary.courses.activeFilters}:
                 </span>
@@ -251,7 +251,7 @@ const Courses: React.FC<CoursesProps> = ({
               </div>
             )}
 
-            <div className="flex flex-row gap-4 md:gap-0 items-center justify-between mb-6">
+            <div className="flex flex-row gap-4 md:gap-0 items-center justify-between mb-6 bg-white rounded-xl p-4 border border-neutral-200">
               <p className="text-sm text-gray-600">
                 {coursesData.totalPages > 1 && (
                   <>
@@ -292,7 +292,7 @@ const Courses: React.FC<CoursesProps> = ({
                 {courses.map((course: any) => (
                   <Card
                     key={course._id}
-                    className="overflow-hidden flex flex-col h-full"
+                    className="overflow-hidden flex flex-col h-full bg-white"
                   >
                     <div className="relative pb-[56.25%] bg-gray-100">
                       <img
@@ -352,7 +352,7 @@ const Courses: React.FC<CoursesProps> = ({
             {viewMode === "list" && (
               <div className="flex flex-col gap-10 md:gap-14">
                 {courses.map((course: any) => (
-                  <Card key={course._id} className="overflow-hidden">
+                  <Card key={course._id} className="overflow-hidden bg-white">
                     <div className="flex flex-row">
                       <div className="w-1/4 relative bg-neutral-100 flex items-start">
                         <img
@@ -422,11 +422,12 @@ const Courses: React.FC<CoursesProps> = ({
             )}
 
             {coursesData.totalPages > 1 && (
-              <Pagination
-                className="mt-8"
-                totalPages={coursesData.totalPages}
-                dictionary={dictionary}
-              />
+              <div className="bg-white rounded-xl p-4 border border-neutral-200 mt-8">
+                <Pagination
+                  totalPages={coursesData.totalPages}
+                  dictionary={dictionary}
+                />
+              </div>
             )}
           </div>
         </div>

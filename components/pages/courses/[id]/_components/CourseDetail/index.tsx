@@ -26,74 +26,80 @@ export default function CourseDetail({
   };
 
   return (
-    <Container>
-      <Button
-        label={dictionary.technologies.visitCourse}
-        href={course.link}
-        linkTarget="_blank"
-        icon={<FaUpRightFromSquare />}
-      />
+    <Container className="flex flex-col gap-10">
+      <div className="bg-white rounded-xl p-4 border border-neutral-200">
+        <Button
+          label={dictionary.technologies.visitCourse}
+          href={course.link}
+          linkTarget="_blank"
+          icon={<FaUpRightFromSquare />}
+        />
+      </div>
 
-      <Heading
-        as="h2"
-        label={dictionary.courseDetail.information}
-        className="mt-6 mb-3"
-      />
-      <div className="w-[100%] rounded-lg border border-neutral-200 p-4 md:p-6">
-        <div className="grid grid-cols-2 md:flex md:items-center md:flex-wrap gap-x-[25px] gap-y-[10px] md:gap-8">
-          <div>
-            <span className="font-bold block">
-              {dictionary.technologies.price}:
-            </span>
-            {course.price > 0 ? `US$ ${course.price}` : ""}
-            {renderPricing(course.pricing)}
-          </div>
-          <div>
-            <span className="font-bold block">
-              {dictionary.technologies.platform}:
-            </span>
-            {course.platform || "---"}
-          </div>
-          <div>
-            <span className="font-bold block">
-              {dictionary.technologies.author}:
-            </span>
-            {course.author || "---"}
-          </div>
-          <div>
-            <span className="font-bold block">
-              {dictionary.technologies.year}:
-            </span>
-            {course.year}
-          </div>
-          <div>
-            <span className="font-bold block">
-              {dictionary.technologies.language}:
-            </span>
-            {course.language === "en"
-              ? dictionary.technologies.english
-              : dictionary.technologies.spanish}
+      <div className="bg-white rounded-xl p-4 border border-neutral-200">
+        <Heading
+          as="h2"
+          label={dictionary.courseDetail.information}
+          className="mb-3"
+        />
+        <div>
+          <div className="grid grid-cols-2 md:flex md:items-center md:flex-wrap gap-x-[25px] gap-y-[10px] md:gap-8">
+            <div>
+              <span className="font-bold block">
+                {dictionary.technologies.price}:
+              </span>
+              {course.price > 0 ? `US$ ${course.price}` : ""}
+              {renderPricing(course.pricing)}
+            </div>
+            <div>
+              <span className="font-bold block">
+                {dictionary.technologies.platform}:
+              </span>
+              {course.platform || "---"}
+            </div>
+            <div>
+              <span className="font-bold block">
+                {dictionary.technologies.author}:
+              </span>
+              {course.author || "---"}
+            </div>
+            <div>
+              <span className="font-bold block">
+                {dictionary.technologies.year}:
+              </span>
+              {course.year}
+            </div>
+            <div>
+              <span className="font-bold block">
+                {dictionary.technologies.language}:
+              </span>
+              {course.language === "en"
+                ? dictionary.technologies.english
+                : dictionary.technologies.spanish}
+            </div>
           </div>
         </div>
       </div>
 
-      <Heading
-        as="h2"
-        label={dictionary.courseDetail.description}
-        className="mt-6 mb-3"
-      />
-      <div className="rounded-lg border border-neutral-200 p-4 md:p-6">
-        <div className="wysiwyg-content">
-          {course.long_description && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html:
-                  lang === "en"
-                    ? course.long_description
-                    : course.long_description_es,
-              }}
-            />
-          )}
+      <div className="bg-white rounded-xl p-4 border border-neutral-200">
+        <Heading
+          as="h2"
+          label={dictionary.courseDetail.description}
+          className="mb-3"
+        />
+        <div>
+          <div className="wysiwyg-content">
+            {course.long_description && (
+              <div
+                dangerouslySetInnerHTML={{
+                  __html:
+                    lang === "en"
+                      ? course.long_description
+                      : course.long_description_es,
+                }}
+              />
+            )}
+          </div>
         </div>
       </div>
     </Container>

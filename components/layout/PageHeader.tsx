@@ -51,10 +51,11 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   };
 
   return (
-    <section className="mt-6 sm:mt-18 lg:mt-22 mb-6 lg:mb-10">
+    <section className="mt-6 sm:mt-10 lg:mt-10 mb-6 lg:mb-10">
       <Container>
         <div
           className={clsx(
+            "bg-white rounded-xl p-4 border border-neutral-200",
             image
               ? "grid md:grid-cols-[60%_40%] lg:grid-cols-[70%_30%] md:gap-[20px]"
               : ""

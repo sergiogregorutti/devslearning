@@ -13,8 +13,8 @@ export default function Heading({
 }: HeadingProps) {
   const headingStyles: Record<string, string> = {
     h1: "text-blue-800 text-4xl/10 md:text-5xl/[58px] lg:text-6xl/[58px] font-bold leading-none",
-    h2: "text-blue-500 text-3xl font-bold mb-2 leading-none",
-    h3: "text-blue-800 text-2xl font-bold mb-2 leaging-none",
+    h2: "text-blue-500 text-2xl md:text-3xl font-bold mb-2 leading-none",
+    h3: "text-blue-800 text-xl md:text-2xl font-bold mb-2 leaging-none",
     h4: "",
     h5: "",
     h6: "",

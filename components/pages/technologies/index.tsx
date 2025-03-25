@@ -19,7 +19,7 @@ const Technologies: React.FC<TechnologiesProps> = ({ categories }) => {
         description={dictionary.technologies.description}
         image="/assets/man_working.svg"
       />
-      <Container>
+      <Container className="pb-10">
         <CategoriesList categories={categories} />
       </Container>
     </>

@@ -31,49 +31,51 @@ export default function FeaturedTechnologies({
   }, []);
 
   return (
-    <Container className="py-12 text-right">
-      <Heading
-        as="h2"
-        label={dictionary.home.coursesSection.title}
-        className="text-center text-4xl mb-4"
-      />
-      <p className="mb-6 leading-[30px] w-full text-center">
-        {dictionary.home.coursesSection.description}
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-5 md:gap-6 xl:gap-14 mb-6 md:mb-8">
-        {technologies.map((technology: any) => (
-          <CardLink
-            key={technology.name}
-            title={technology.name}
-            subtitle={
-              <>
-                {courses[technology._id]?.total ? (
-                  <Counter
-                    initialValue={0}
-                    targetValue={courses[technology._id]?.total}
-                  />
-                ) : (
-                  0
-                )}{" "}
-                {dictionary.home.courses}
-              </>
-            }
-            imageSrc={technology.imageWhite}
-            layout="vertical"
-            href={getLocalizedPathFromPrefix(
-              lang,
-              `/technologies/${technology.slug}/courses?filters=${
-                lang === "en" ? "english" : "spanish"
-              }`
-            )}
-          />
-        ))}
-      </div>
-      <Button
-        label={dictionary.home.coursesSection.cta}
-        href={getLocalizedPathFromPrefix(lang, `/courses`)}
-        variant="darkBlue"
-      />
-    </Container>
+    <div className="bg-white">
+      <Container className="py-12 text-right">
+        <Heading
+          as="h2"
+          label={dictionary.home.coursesSection.title}
+          className="text-center text-4xl mb-4"
+        />
+        <p className="mb-6 leading-[30px] w-full text-center">
+          {dictionary.home.coursesSection.description}
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-5 md:gap-6 xl:gap-14 mb-6 md:mb-8">
+          {technologies.map((technology: any) => (
+            <CardLink
+              key={technology.name}
+              title={technology.name}
+              subtitle={
+                <>
+                  {courses[technology._id]?.total ? (
+                    <Counter
+                      initialValue={0}
+                      targetValue={courses[technology._id]?.total}
+                    />
+                  ) : (
+                    0
+                  )}{" "}
+                  {dictionary.home.courses}
+                </>
+              }
+              imageSrc={technology.imageWhite}
+              layout="vertical"
+              href={getLocalizedPathFromPrefix(
+                lang,
+                `/technologies/${technology.slug}/courses?filters=${
+                  lang === "en" ? "english" : "spanish"
+                }`
+              )}
+            />
+          ))}
+        </div>
+        <Button
+          label={dictionary.home.coursesSection.cta}
+          href={getLocalizedPathFromPrefix(lang, `/courses`)}
+          variant="darkBlue"
+        />
+      </Container>
+    </div>
   );
 }

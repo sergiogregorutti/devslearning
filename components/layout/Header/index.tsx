@@ -25,7 +25,7 @@ const Header = ({
   };
 
   return (
-    <header className="sticky h-[60px] bg-blue-800 drop-shadow-sm top-[0] z-[9999]">
+    <header className="sticky h-[60px] bg-blue-800 shadow-md shadow-blue-800/50 top-[0] z-[9999]">
       <Container>
         <div className="flex h-[60px] justify-center xl:justify-between items-center">
           <div className="flex gap-8">
