@@ -11,7 +11,7 @@ export default function RoadmapsContent() {
   const { lang, dictionary } = useLanguage();
 
   return (
-    <div className="bg-blue-300">
+    <div className="bg-white">
       <Container className="grid grid-cols-1 md:grid-cols-[45%_55%] py-12">
         <div className="flex justify-center">
           <Image

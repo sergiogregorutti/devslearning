@@ -11,7 +11,7 @@ export default function TechnologiesSection() {
   const { lang, dictionary } = useLanguage();
 
   return (
-    <div className="bg-white">
+    <div className="bg-blue-300">
       <Container className="grid grid-cols-1 md:grid-cols-[45%_55%] py-12">
         <div className="flex flex-col order-2 md:order-1 items-center md:items-start justify-center">
           <Heading

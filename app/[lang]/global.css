@@ -46,13 +46,29 @@
   }
 }
 
-/* Slider */
-.swiper-wrapper {
+/* Sliders */
+.home-hero-slider .swiper-wrapper {
   align-items: center;
 }
-.swiper-slide {
+.home-hero-slider .swiper-slide {
   display: flex !important;
   align-items: center;
+}
+
+.hero-latest-courses-slider .swiper-slide {
+  height: auto;
+}
+.hero-latest-courses-slider .swiper-pagination {
+  position: relative;
+  bottom: -15px !important;
+}
+.hero-latest-courses-slider .swiper-pagination-bullet {
+  width: 10px !important;
+  height: 10px !important;
+}
+.hero-latest-courses-slider
+  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: #fff;
 }
 
 * {

@@ -15,7 +15,7 @@ export async function fetchCourses() {
   return courses;
 }
 
-export async function fetchLatestCourses(limit: number = 6) {
+export async function fetchLatestCourses(limit: number = 8) {
   await dbConnect();
 
   const courses = await Course.find({})

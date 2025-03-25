@@ -25,7 +25,7 @@ export default function HeroSlider() {
           loop={true}
           autoplay={{ delay: 6000, disableOnInteraction: true }}
           pagination={{ clickable: true }}
-          className="!pb-6 !py-3 lg:!pb-6 lg:!py-0"
+          className="home-hero-slider !pb-6 !py-3 lg:!pb-6 lg:!py-0"
         >
           {dictionary.home.heroSlider.map((slide: any, index: number) => (
             <SwiperSlide key={index}>
