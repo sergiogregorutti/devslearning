@@ -168,7 +168,7 @@ describe("PageHeader Component", () => {
     render(<PageHeader {...defaultProps} dictionary={dictionary} lang="en" />);
 
     const container = screen.getByText("Test Title").closest("section");
-    expect(container).toHaveClass("mt-6 sm:mt-18 lg:mt-22 mb-6 lg:mb-10");
+    expect(container).toHaveClass("mt-6 sm:mt-10 lg:mt-10 mb-6 lg:mb-10");
   });
 
   test("handles previousPage being undefined", () => {

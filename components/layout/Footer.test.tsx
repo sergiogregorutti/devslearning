@@ -47,8 +47,7 @@ describe("Footer Component", () => {
     const links = screen.getAllByRole("link");
 
     links.forEach((link) => {
-      expect(link).toHaveClass("text-gray-400");
-      expect(link).toHaveClass("hover:text-gray-600");
+      expect(link).toHaveClass("text-white hover:text-blue-800");
     });
   });
 

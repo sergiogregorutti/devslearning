@@ -56,7 +56,7 @@ describe("Backend Component", () => {
 
     paragraphs.forEach((paragraph) => {
       if (!paragraph.classList.contains("text-gray-500")) {
-        expect(paragraph).toHaveClass("mb-6");
+        expect(paragraph).toHaveClass("leading-[30px]");
       }
     });
   });

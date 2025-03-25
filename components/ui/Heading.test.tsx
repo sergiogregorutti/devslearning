@@ -43,7 +43,7 @@ describe("Heading Component", () => {
 
     const headingElement = screen.getByText("Test Heading");
     expect(headingElement).toHaveClass(
-      "text-blue-500 text-3xl font-bold mb-2 leading-none"
+      "text-blue-500 text-2xl md:text-3xl font-bold mb-2 leading-none"
     );
   });
 
@@ -52,7 +52,7 @@ describe("Heading Component", () => {
 
     const headingElement = screen.getByText("Test Heading");
     expect(headingElement).toHaveClass(
-      "text-blue-800 text-2xl font-bold mb-2 leaging-none"
+      "text-blue-800 text-xl md:text-2xl font-bold mb-2 leaging-none"
     );
   });
 });
