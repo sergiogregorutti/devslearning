@@ -55,7 +55,6 @@ const PageHeader: React.FC<PageHeaderProps> = ({
       <Container>
         <div
           className={clsx(
-            "bg-white rounded-xl p-4 border border-neutral-200",
             image
               ? "grid md:grid-cols-[60%_40%] lg:grid-cols-[70%_30%] md:gap-[20px]"
               : ""

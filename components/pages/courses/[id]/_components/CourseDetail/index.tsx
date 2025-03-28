@@ -36,11 +36,11 @@ export default function CourseDetail({
         />
       </div>
 
-      <div className="bg-white rounded-xl p-4 border border-neutral-200">
+      <div>
         <Heading
           as="h2"
-          label={dictionary.courseDetail.information}
           className="mb-3"
+          label={dictionary.courseDetail.information}
         />
         <div>
           <div className="grid grid-cols-2 md:flex md:items-center md:flex-wrap gap-x-[25px] gap-y-[10px] md:gap-8">
@@ -81,11 +81,11 @@ export default function CourseDetail({
         </div>
       </div>
 
-      <div className="bg-white rounded-xl p-4 border border-neutral-200">
+      <div>
         <Heading
           as="h2"
-          label={dictionary.courseDetail.description}
           className="mb-3"
+          label={dictionary.courseDetail.description}
         />
         <div>
           <div className="wysiwyg-content">

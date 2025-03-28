@@ -51,8 +51,14 @@
   align-items: center;
 }
 .home-hero-slider .swiper-slide {
-  display: flex !important;
-  align-items: center;
+  height: auto;
+}
+.home-hero-slider .swiper-pagination {
+  position: relative;
+}
+.home-hero-slider .swiper-pagination-bullet {
+  width: 10px !important;
+  height: 10px !important;
 }
 
 .hero-latest-courses-slider .swiper-slide {

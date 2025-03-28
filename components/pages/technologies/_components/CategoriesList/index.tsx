@@ -11,10 +11,7 @@ export default function TechnologiesList({ categories }: { categories: any }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
       {categories.map((category: any) => (
-        <div
-          key={category._id}
-          className="bg-white rounded-xl p-4 border border-neutral-200"
-        >
+        <div key={category._id}>
           <Heading
             as="h2"
             label={lang === "en" ? category.name : category.name_es}

@@ -19,12 +19,12 @@ const Roadmaps: React.FC = () => {
         image="/assets/girl.svg"
       />
       <Container className="pb-10 flex flex-col gap-10">
-        <section className="bg-white rounded-xl p-4 border border-neutral-200">
+        <section>
           <Heading as="h2" label={roadmaps.journeyTitle} className="mb-3" />
           <p className="leading-[30px]">{roadmaps.journeyDescription}</p>
         </section>
 
-        <section className="bg-white rounded-xl p-4 border border-neutral-200">
+        <section>
           <Heading as="h2" label={roadmaps.rolesTitle} className="mb-3" />
 
           <div>
@@ -41,7 +41,7 @@ const Roadmaps: React.FC = () => {
           </div>
         </section>
 
-        <section className="bg-white rounded-xl p-4 border border-neutral-200">
+        <section>
           <Heading as="h2" label={roadmaps.chooseYourPath} className="mb-3" />
           <div className="grid md:grid-cols-3 gap-x-[40px] gap-y-[20px] mt-6">
             <CardLink

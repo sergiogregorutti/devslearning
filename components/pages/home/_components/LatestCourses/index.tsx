@@ -5,7 +5,7 @@ import { formatDistanceToNow } from "date-fns";
 import { enUS, es } from "date-fns/locale";
 import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 import { getLocalizedPathFromPrefix } from "@/lib/language";
 import Button from "@/components/ui/Button";
 import Container from "@/components/layout/Container";
@@ -38,7 +38,7 @@ export default function LatestCourses({
         />
         <div className="relative">
           <Swiper
-            modules={[Autoplay, Navigation]}
+            modules={[Autoplay, Pagination]}
             spaceBetween={50}
             breakpoints={{
               0: {
@@ -52,18 +52,8 @@ export default function LatestCourses({
               },
             }}
             loop={true}
-            autoplay={{ delay: 6000, disableOnInteraction: true }}
+            autoplay={{ delay: 6000 }}
             pagination={{ clickable: true }}
-            navigation={{
-              prevEl: prevRef.current,
-              nextEl: nextRef.current,
-            }}
-            onBeforeInit={(swiper) => {
-              // @ts-ignore
-              swiper.params.navigation.prevEl = prevRef.current;
-              // @ts-ignore
-              swiper.params.navigation.nextEl = nextRef.current;
-            }}
             className="hero-latest-courses-slider !pb-6 !py-3 lg:!pb-6 lg:!py-0 h-full"
             wrapperClass="items-stretch"
           >
@@ -148,18 +138,6 @@ export default function LatestCourses({
               </SwiperSlide>
             ))}
           </Swiper>
-          <button
-            ref={prevRef}
-            className="custom-prev text-white text-xl md:text-4xl cursor-pointer absolute left-[-22px] md:left-[-2.8rem] top-1/2 -translate-y-1/2 z-10"
-          >
-            <FaCaretLeft />
-          </button>
-          <button
-            ref={nextRef}
-            className="custom-next text-white text-xl md:text-4xl cursor-pointer absolute right-[-22px] md:right-[-2.8rem] top-1/2 -translate-y-1/2 z-10"
-          >
-            <FaCaretRight />
-          </button>
         </div>
       </Container>
     </div>
