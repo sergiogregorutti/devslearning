@@ -16,7 +16,7 @@ const Roadmaps: React.FC = () => {
       <PageHeader
         title={roadmaps.title}
         description={roadmaps.description}
-        image="/assets/girl.svg"
+        image="/assets/home_hero/hero4.svg"
       />
       <Container className="pb-10 flex flex-col gap-10">
         <section>

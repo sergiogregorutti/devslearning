@@ -17,7 +17,7 @@ const Technologies: React.FC<TechnologiesProps> = ({ categories }) => {
       <PageHeader
         title={dictionary.technologies.title}
         description={dictionary.technologies.description}
-        image="/assets/man_working.svg"
+        image="/assets/home_hero/hero3.svg"
       />
       <Container className="pb-10">
         <CategoriesList categories={categories} />

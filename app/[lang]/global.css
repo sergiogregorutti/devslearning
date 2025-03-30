@@ -55,6 +55,7 @@
 }
 .home-hero-slider .swiper-pagination {
   position: relative;
+  bottom: -15px !important;
 }
 .home-hero-slider .swiper-pagination-bullet {
   width: 10px !important;

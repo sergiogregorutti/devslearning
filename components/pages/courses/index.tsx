@@ -17,7 +17,7 @@ const Courses: React.FC<CoursesProps> = ({ categories }) => {
       <PageHeader
         title={dictionary.courses.title}
         description={dictionary.courses.description}
-        image="/assets/boy2.svg"
+        image="/assets/home_hero/hero2.svg"
       />
       <Container className="pb-10">
         <CategoriesList categories={categories} />

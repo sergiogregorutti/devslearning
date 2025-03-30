@@ -17,7 +17,7 @@ export default function HeroSlider() {
   const { lang, dictionary } = useLanguage();
 
   return (
-    <div className="bg-blue-300 pb-2 md:py-0">
+    <div className="bg-blue-300 py-6 md:py-12">
       <Container>
         <Swiper
           modules={[Autoplay, Pagination]}
@@ -25,16 +25,18 @@ export default function HeroSlider() {
           loop={true}
           autoplay={{ delay: 6000 }}
           pagination={{ clickable: true }}
-          className="home-hero-slider !pb-3 !py-3 lg:!pb-3 lg:!py-0"
+          className="home-hero-slider !pb-3"
         >
           {dictionary.home.heroSlider.map((slide: any, index: number) => (
             <SwiperSlide key={index}>
-              <div className="grid grid-cols-1 md:grid-cols-[55%_45%]">
-                <div className="flex flex-col items-start justify-center order-2 md:order-1 pb-6 md:pb-0 lg:pr-[10%]">
-                  <span className="text-blue-800 text-4xl md:text-5xl lg:text-6xl font-bold leading-[34px] md:leading-[50px] mb-3 pr-[15%]">
+              <div className="grid grid-cols-1 md:grid-cols-[55%_45%] md:gap-3">
+                <div className="flex flex-col items-center md:items-start justify-center order-2 md:order-1 lg:pr-[10%]">
+                  <span className="text-blue-800 text-center md:text-left text-4xl md:text-5xl lg:text-6xl font-bold leading-[34px] md:leading-[50px] mb-3 px-[10%] md:pl-0 md:pr-[15%]">
                     {slide.title}
                   </span>
-                  <p className="mb-3">{slide.subtitle}</p>
+                  <p className="mb-4 text-center md:text-left">
+                    {slide.subtitle}
+                  </p>
                   {slide.cta && (
                     <Button
                       label={slide.cta}
@@ -50,9 +52,7 @@ export default function HeroSlider() {
                     height={286}
                     alt="Devs Learning"
                     priority={true}
-                    className={`${
-                      slide.imageNoMaxHeigh ? "" : "max-h-[100%] md:max-h-[80%]"
-                    }`}
+                    className="max-h-[250px]"
                   />
                 </div>
               </div>

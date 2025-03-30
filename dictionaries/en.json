@@ -32,8 +32,7 @@
       {
         "title": "Welcome to Devs Learning",
         "subtitle": "Your go-to platform for learning programming from scratch. Start your development journey here!",
-        "image": "boy.svg",
-        "imageNoMaxHeigh": true,
+        "image": "home_hero/hero1.svg",
         "showStats": true
       },
       {
@@ -41,21 +40,21 @@
         "subtitle": "Find a curated list of the best web development courses, both free and paid, to help you grow as a developer.",
         "link": "/courses",
         "cta": "See All Courses",
-        "image": "boy2.svg"
+        "image": "home_hero/hero2.svg"
       },
       {
         "title": "Master Web Technologies",
         "subtitle": "Learn essential technologies like HTML, CSS, JavaScript, and more. Understand the tools you need to build web applications.",
         "link": "/technologies",
         "cta": "Discover Technologies",
-        "image": "man_working.svg"
+        "image": "home_hero/hero3.svg"
       },
       {
         "title": "Choose Your Developer Path",
         "subtitle": "Whether you want to become a frontend, backend, or full-stack developer, our roadmaps will guide you every step of the way.",
         "link": "/roadmaps",
         "cta": "See Roadmaps",
-        "image": "girl.svg"
+        "image": "home_hero/hero4.svg"
       }
     ],
     "stats": {

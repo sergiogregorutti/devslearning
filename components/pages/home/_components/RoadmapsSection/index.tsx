@@ -15,7 +15,7 @@ export default function RoadmapsContent() {
       <Container className="grid grid-cols-1 md:grid-cols-[45%_55%] py-12">
         <div className="flex justify-center">
           <Image
-            src="/assets/man_sitting_with_a_laptop.svg"
+            src="/assets/boy_with_notebook.svg"
             width={400}
             height={274}
             alt="Free Content"
