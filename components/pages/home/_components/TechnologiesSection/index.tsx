@@ -16,10 +16,10 @@ export default function TechnologiesSection() {
         <div className="flex flex-col order-2 md:order-1 items-center md:items-start justify-center">
           <Heading
             as="h2"
-            className="text-blue-800 text-4xl mb-4"
+            className="text-blue-800 text-center md:text-left text-4xl mb-4"
             label={dictionary.home.technologiesSection.title}
           />
-          <p className="mb-6 leading-[30px]">
+          <p className="text-center md:text-left mb-6 leading-[30px]">
             {dictionary.home.technologiesSection.description}
           </p>
           <Button
