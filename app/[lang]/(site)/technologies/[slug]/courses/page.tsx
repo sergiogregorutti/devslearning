@@ -56,6 +56,12 @@ export async function generateMetadata(
   return {
     title: pageTitle,
     description,
+    alternates: {
+      canonical: `https://www.devslearning.com/technologies/${slug}/courses`,
+      languages: {
+        es: `https://www.devslearning.com/es/technologies/${slug}/courses`,
+      },
+    },
     openGraph: {
       title: pageTitle,
       description,

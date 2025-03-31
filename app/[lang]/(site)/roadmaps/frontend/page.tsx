@@ -30,6 +30,12 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   return {
     title: pageTitle,
     description,
+    alternates: {
+      canonical: "https://www.devslearning.com/roadmaps/frontend",
+      languages: {
+        es: "https://www.devslearning.com/es/roadmaps/frontend",
+      },
+    },
     openGraph: {
       title: pageTitle,
       description,
