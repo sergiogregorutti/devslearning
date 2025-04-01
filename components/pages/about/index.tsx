@@ -14,21 +14,21 @@ const About: React.FC = () => {
     <>
       <PageHeader title={dictionary.about.title} />
       <Container className="flex flex-col gap-10 mb-10">
-        <div className="bg-white rounded-xl p-4 border border-neutral-200">
+        <div>
           <Heading as="h2" label={dictionary.about.mission} />
           <p className="leading-[30px]">
             {dictionary.about.mission_description}
           </p>
         </div>
 
-        <div className="bg-white rounded-xl p-4 border border-neutral-200">
+        <div>
           <Heading as="h2" label={dictionary.about.vision} />
           <p className="leading-[30px]">
             {dictionary.about.vision_description}
           </p>
         </div>
 
-        <div className="bg-white rounded-xl p-4 border border-neutral-200">
+        <div>
           <Heading as="h2" label={dictionary.about.team} />
           <div className="grid grid-cols-1 gap-8 mt-3 md:grid-cols-2 lg:grid-cols-4">
             <div className="flex flex-col items-center text-center bg-blue-100 rounded-[40px] p-8">
