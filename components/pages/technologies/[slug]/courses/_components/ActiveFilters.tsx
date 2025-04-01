@@ -27,7 +27,9 @@ const ActiveFilters = ({
           variant="secondary"
           className="flex items-center gap-1 capitalize font-bold"
         >
-          {translate[filter] || filter}
+          {filter in translate
+            ? translate[filter as keyof typeof translate]
+            : filter}
           <button
             onClick={() => removeFilter(filter)}
             className="flex ml-1 hover:text-gray-700 cursor-pointer"
